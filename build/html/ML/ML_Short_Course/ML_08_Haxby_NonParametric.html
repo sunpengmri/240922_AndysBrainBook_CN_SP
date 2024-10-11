@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Machine Learning Tutorial #8: Non-Parametric Analysis &mdash; Andy&#39;s Brain Book 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b76e3c8a" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=f2a433a1"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Machine Learning Tutorial #9: Representational Similarity Analysis" href="ML_09_RSA.html" />
+    <link rel="prev" title="Machine Learning Tutorial #7: Group Analysis" href="ML_07_Haxby_GroupAnalysis.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Andy's Brain Book
+          </a>
+              <div class="version">
+                1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Install</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../installation/fsl_mac_install.html">Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Unix for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_Intro.html">What is Unix?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_01_Navigation.html">Unix Tutorial #1: 目录操作 (Directories and Navigation)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_02_CopyRemove.html">Unix Tutorial #2: Copying and Removing Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_03_ReadingTextFiles.html">Unix Tutorial #3: Reading Text Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_04_ShellsVariables.html">Unix Tutorial #4: Shells and Path Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_05_ForLoops.html">Unix Tutorial #5: For-Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_06_IfElse.html">Unix Tutorial #6: Conditional Statements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_07_Scripting.html">Unix Tutorial #7: Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_08_Sed.html">Unix Tutorial #8: The Sed Command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_09_AutomatingTheAnalysis.html">Unix Tutorial #9: Automating The Analysis</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">fMRI Short Course with FSL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_Intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_01_DataDownload.html">fMRI Tutorial #1: Downloading the Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_02_ExperimentalDesign.html">fMRI Tutorial #2: Overview of The Flanker Task</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_03_LookingAtTheData.html">fMRI Tutorial #3: Looking at the Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_04_Preprocessing.html">fMRI Tutorial #4: Preprocessing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_05_1stLevelAnalysis.html">fMRI Tutorial #5: Statistics and Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_06_Scripting.html">fMRI Tutorial #6: Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_07_2ndLevelAnalysis.html">fMRI Tutorial #7: 2nd-Level Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_08_3rdLevelAnalysis.html">fMRI Tutorial #8: 3rd-Level Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_09_ROIAnalysis.html">fMRI Tutorial #9: ROI Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_10_Summary.html">fMRI Tutorial #10: Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_Appendices.html">fMRI Short Course: Appendices</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">FreeSurfer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../FreeSurfer/FreeSurfer_Introduction.html">FreeSurfer Short Course</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">E-Prime</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../E-Prime/E-Prime_Overview.html">Overview of E-Prime</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">AFNI</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../AFNI/AFNI_Overview.html">AFNI Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">SPM</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../SPM/SPM_Overview.html">SPM Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Functional Connectivity with the CONN Toolbox</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../FunctionalConnectivity/CONN_Overview.html">Functional Connectivity and the CONN Toolbox</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Parametric Modulation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../PM/PM_Overview.html">Parametric Modulation in SPM, FSL, and AFNI</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Image Visualization with MRIcroGL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../MRIcroGL/MRIcroGL_Overview.html">Image Visualization with MRIcroGL</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Introduction to the Human Connectome Project (HCP)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../HCP/HCP_Overview.html">Introduction to the Human Connectome Project</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Finite Impulse Response (FIR) Models</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../FIR/FIR_Overview.html">Finite Impulse Response (FIR)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">fMRI Concepts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Practicals/DesignOptimization.html">Design Optimization</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Diffusion Analysis with MRtrix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../MRtrix/MRtrix_Introduction.html">Introduction to MRtrix</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ASL Analysis</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/ASL_Techniques.html">fASL Tutorial #1: Background</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/fASL_02_Download.html">fASL Tutorial #2: Downloading and Installing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/fASL_03_Task.html">fASL Tutorial #3: The N-Back Task</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/04_fASL_GUI.html">fASL Tutorial #4: The GUI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/05_fASL_Results.html">fASL Tutorial #5: Examining the Results</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/06_fASL_Quantification.html">fASL Tutorial #6: Quantification</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Frequently Asked Questions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../FrequentlyAskedQuestions/FrequentlyAskedQuestions.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Statistics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Statistics/GIMME.html">GIMME (Group Iterative Multiple Model Estimation)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Open Science</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../OpenScience/OS_Overview.html">Open Science</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced Normalization Tools (ANTs)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ANTs/ANTs_Overview.html">Advanced Normalization Tools (ANTs)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tract-Based Spatial Statistics (TBSS)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../TBSS/TBSS_Overview.html">Introduction to Tract-Based Spatial Statistics (TBSS)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Statistics for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Stats/Stats_Overview.html">Statistics for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Machine Learning for Neuroimagers</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../ML_Overview.html">Machine Learning for Neuroimagers</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../ML_Overview.html#overview">Overview</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="ML_00_Introduction.html">Machine Learning: Introduction to Basic Terms and Concepts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ML_01_Brown_Example.html">Machine Learning Tutorial #1: Basic Example with Support Vector Machines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ML_02_Haxby_Intro_Download.html">Machine Learning Tutorial #2: The Haxby Dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ML_03_Haxby_Preprocessing.html">Machine Learning Tutorial #3: Preprocessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ML_04_Haxby_Timing.html">Machine Learning Tutorial #4: Creating the Timing Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ML_05_Haxby_MVPA.html">Machine Learning Tutorial #5: MVPA Analysis with The Decoding Toolbox</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ML_06_Haxby_Scripting.html">Machine Learning Tutorial #6: Scripting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ML_07_Haxby_GroupAnalysis.html">Machine Learning Tutorial #7: Group Analysis</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Machine Learning Tutorial #8: Non-Parametric Analysis</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#downloading-snpm">Downloading SnPM</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#creating-the-snpm-batch">Creating the SnPM Batch</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#next-steps">Next Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ML_09_RSA.html">Machine Learning Tutorial #9: Representational Similarity Analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ML_10_Hyperalignment.html">Machine Learning Tutorial #10: Hyperalignment</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Slicer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Slicer/Slicer_Overview.html">Slicer Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">CAT12</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../CAT12/CAT12_Overview.html">Voxel-Based Morphometry with CAT12</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Using the Supercomputer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Supercomputer/Supercomputer_Overview.html">Introduction to Supercomputing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Matlab for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Matlab/Matlab_Overview.html">Matlab for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ITK-Snap</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ITK-Snap/ITK-Snap_Overview.html">ITK-Snap_Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Python for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../PythonForNeuroimagers/PythonForNeuroimagers_Overview.html">Python for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Meta-Analysis for fMRI</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../MetaAnalysis/MetaAnalysis_Overview.html">Meta-Analysis for Neuroimagers</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Andy's Brain Book</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../ML_Overview.html">Machine Learning for Neuroimagers</a></li>
+      <li class="breadcrumb-item active">Machine Learning Tutorial #8: Non-Parametric Analysis</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/ML/ML_Short_Course/ML_08_Haxby_NonParametric.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="machine-learning-tutorial-8-non-parametric-analysis">
+<span id="ml-08-haxby-nonparametric"></span><h1>Machine Learning Tutorial #8: Non-Parametric Analysis<a class="headerlink" href="#machine-learning-tutorial-8-non-parametric-analysis" title="Link to this heading"></a></h1>
+<hr class="docutils" />
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading"></a></h2>
+<p>In the previous chapter, we used a t-test to determine whether there were significant differences in classification accuracies compared to chance. While this approach has been used by several researchers in the past (e.g., Li et al., 2009), the nature of the classification accuracies violates some of the assumptions of the t-test, which is a parametric test. For example, this test assumes that the values are normally distributed around zero; in the case of classification accuracies, however, all of the numbers are constrained to be positive. (A review of the problems of applying parametric methods to classification results can be found in <a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S1053811916303470?casa_token=MkG6Tz_0BxAAAAAA:FwSVkWX7SCwJDL9t4OpJ5jTzDjsyWaGs7tZ_bDRJBYmZGQLXr16kqZKvVVuG1DemsOrt6GY6">Allefeld et al., 2016</a>).</p>
+<p>To remedy this, we can use other analyses. Here, we will review how to do non-parametric analyses with a toolbox called Statistical non-Parametric Mapping (SnPM).</p>
+</section>
+<section id="downloading-snpm">
+<h2>Downloading SnPM<a class="headerlink" href="#downloading-snpm" title="Link to this heading"></a></h2>
+<p>SnPM can be downloaded by clicking on <a class="reference external" href="http://www.nisox.org/Software/SnPM13/">this link</a> and clicking on <code class="docutils literal notranslate"><span class="pre">Registration</span></code>. You will be required to fill out a form with your email address. When you have finished filling out the form, you will be able to download the package. Unzip it, open a Terminal, navigate to the folder <code class="docutils literal notranslate"><span class="pre">~/spm12/toolbox/</span></code>, and type:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mv</span> <span class="o">~/</span><span class="n">Downloads</span><span class="o">/</span><span class="n">SnPM</span><span class="o">-</span><span class="n">devel</span><span class="o">-</span><span class="n">SnPM13</span><span class="mf">.1.08</span> <span class="n">SnPM13</span>
+</pre></div>
+</div>
+<p>Then open a Matlab terminal, click on the <code class="docutils literal notranslate"><span class="pre">Set</span> <span class="pre">Path</span></code> button, and click <code class="docutils literal notranslate"><span class="pre">Add</span> <span class="pre">Folder</span></code>. Select the folder <code class="docutils literal notranslate"><span class="pre">SnPM13</span></code> in the toolbox directory, click <code class="docutils literal notranslate"><span class="pre">Save</span></code>, and then close the window.</p>
+</section>
+<section id="creating-the-snpm-batch">
+<h2>Creating the SnPM Batch<a class="headerlink" href="#creating-the-snpm-batch" title="Link to this heading"></a></h2>
+<p>From the Matlab terminal, open SPM by typing <code class="docutils literal notranslate"><span class="pre">spm</span> <span class="pre">fmri</span></code>. Click on <code class="docutils literal notranslate"><span class="pre">Batch</span></code>, then select <code class="docutils literal notranslate"><span class="pre">SPM</span> <span class="pre">-&gt;</span> <span class="pre">Tools</span> <span class="pre">-&gt;</span> <span class="pre">SnPM</span> <span class="pre">-&gt;</span> <span class="pre">Specify</span> <span class="pre">-&gt;</span> <span class="pre">Multisub:</span> <span class="pre">One-sample</span> <span class="pre">T-test</span> <span class="pre">on</span> <span class="pre">diffs/contrasts</span></code>. This will open a new editor window. Add the following modules as well: <code class="docutils literal notranslate"><span class="pre">SPM</span> <span class="pre">-&gt;</span> <span class="pre">Tools</span> <span class="pre">-&gt;</span> <span class="pre">SnPM</span> <span class="pre">-&gt;</span> <span class="pre">Compute</span></code> and <code class="docutils literal notranslate"><span class="pre">SPM</span> <span class="pre">-&gt;</span> <span class="pre">Tools</span> <span class="pre">-&gt;</span> <span class="pre">SnPM</span> <span class="pre">-&gt;</span> <span class="pre">Inference</span></code>.</p>
+<p>From the Matlab terminal, navigate to the Haxby_Data directory, and create a new directory for our non-parametric results by typing <code class="docutils literal notranslate"><span class="pre">mkdir</span> <span class="pre">2ndLevel_GroupResults_SnPM</span></code>. Select this as the Analysis Directory in the Batch Editor window, and for Images to Analyze, select the smoothed and warped res_minus_chance images, entering <code class="docutils literal notranslate"><span class="pre">swres</span></code> in the filter field to help with your search. Leave the number of permutations at 5000, and change the “Cluster inference” option from <code class="docutils literal notranslate"><span class="pre">None</span></code> to <code class="docutils literal notranslate"><span class="pre">Yes</span> <span class="pre">(slow)</span></code>. Leave the rest of the defaults the same.</p>
+<figure class="align-default">
+<img alt="../../_images/08_MultiSubModule.png" src="../../_images/08_MultiSubModule.png" />
+</figure>
+<p>Next, click on the <code class="docutils literal notranslate"><span class="pre">Compute</span></code> module, click the <code class="docutils literal notranslate"><span class="pre">Dependency</span></code> button, and select the configuration file from the MultiSub module.</p>
+<p>Lastly, click on the <code class="docutils literal notranslate"><span class="pre">Inference</span></code> module, select <code class="docutils literal notranslate"><span class="pre">Dependency</span></code> and choose the output from the Compute module. From the <code class="docutils literal notranslate"><span class="pre">Type</span> <span class="pre">of</span> <span class="pre">Thresholding</span></code> menu, select <code class="docutils literal notranslate"><span class="pre">Cluster-Level</span> <span class="pre">Inference</span></code> and change the <code class="docutils literal notranslate"><span class="pre">Cluster-Forming</span> <span class="pre">Threshold</span></code> from NaN to 0.001. This will calculate an appropriate cluster-forming threshold with a voxel-wise threshold of 0.001; for more details, see <a class="reference internal" href="../../fMRI_Short_Course/fMRI_Appendices/Appendix_A_ClusterCorrection.html#appendix-a-clustercorrection"><span class="std std-ref">this chapter</span></a>. You can also choose to write a thresholded statistic image from the <code class="docutils literal notranslate"><span class="pre">Write</span> <span class="pre">thresholded/filtered</span> <span class="pre">statistic</span> <span class="pre">image?</span></code> to generate a statistical map that will only show those voxels that pass the cluster correction you specified. For now, we will set this to <code class="docutils literal notranslate"><span class="pre">Image</span> <span class="pre">name</span> <span class="pre">to</span> <span class="pre">write</span></code>, which will label the output image <code class="docutils literal notranslate"><span class="pre">SnPM_filtered</span></code>.</p>
+<figure class="align-default">
+<img alt="../../_images/08_InferenceModule.png" src="../../_images/08_InferenceModule.png" />
+</figure>
+<p>When you have filled out all of the modules, click the green “Go” button. Since we only have six subjects in this experiment, this should only take a few seconds. When it finishes, you will see a Maximum Intensity Projection (MIP) map, similar to what we observed when viewing the results from an fMRI experiment analyzed with SPM:</p>
+<figure class="align-default">
+<img alt="../../_images/08_MIP.png" src="../../_images/08_MIP.png" />
+</figure>
+<p>There are two major clusters that we see from this analysis: One that covers virtually all of the occipital lobes, with the highest intensity in the ventral occipital and temporal lobes, and another cluster in the left lateral frontal cortex. This replicates our previous analysis using parametric methods, which is reassuring, and it also uses a statistical approach that is more robust to violations of assumptions of normality.</p>
+</section>
+<section id="next-steps">
+<h2>Next Steps<a class="headerlink" href="#next-steps" title="Link to this heading"></a></h2>
+<p>These non-parametric results can be reported from the MIP table, just as you would for fMRI results. If you generated the thresholded image as well, you can display this in a viewer of your choice, such as AFNI or fsleyes.</p>
+<p>As of now (December 18th, 2020), we have not yet covered prevalence tests, which are considered the appropriate method for analyzing classification results (Allefeld et al., 2016). In the meantime, however, nonparametric tests should still be able to give you reliable results, especially if they are found in areas that were predicted by your hypothesis.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="ML_07_Haxby_GroupAnalysis.html" class="btn btn-neutral float-left" title="Machine Learning Tutorial #7: Group Analysis" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="ML_09_RSA.html" class="btn btn-neutral float-right" title="Machine Learning Tutorial #9: Representational Similarity Analysis" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Andy Jahn.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

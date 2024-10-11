@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Matlab Tutorial #2: Variables and Structures &mdash; Andy&#39;s Brain Book 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=f2a433a1"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Matlab Tutorial #3: Paths and Functions" href="Matlab_03_FunctionsPaths.html" />
+    <link rel="prev" title="Matlab Tutorial #1: Navigation &amp; Matrices" href="Matlab_01_Navigation.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Andy's Brain Book
+          </a>
+              <div class="version">
+                1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Install</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation/fsl_mac_install.html">Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Unix for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../unix/Unix_Intro.html">What is Unix?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unix/Unix_01_Navigation.html">Unix Tutorial #1: 目录操作 (Directories and Navigation)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unix/Unix_02_CopyRemove.html">Unix Tutorial #2: Copying and Removing Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unix/Unix_03_ReadingTextFiles.html">Unix Tutorial #3: Reading Text Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unix/Unix_04_ShellsVariables.html">Unix Tutorial #4: Shells and Path Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unix/Unix_05_ForLoops.html">Unix Tutorial #5: For-Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unix/Unix_06_IfElse.html">Unix Tutorial #6: Conditional Statements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unix/Unix_07_Scripting.html">Unix Tutorial #7: Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unix/Unix_08_Sed.html">Unix Tutorial #8: The Sed Command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unix/Unix_09_AutomatingTheAnalysis.html">Unix Tutorial #9: Automating The Analysis</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">fMRI Short Course with FSL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../fMRI_Short_Course/fMRI_Intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fMRI_Short_Course/fMRI_01_DataDownload.html">fMRI Tutorial #1: Downloading the Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fMRI_Short_Course/fMRI_02_ExperimentalDesign.html">fMRI Tutorial #2: Overview of The Flanker Task</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fMRI_Short_Course/fMRI_03_LookingAtTheData.html">fMRI Tutorial #3: Looking at the Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fMRI_Short_Course/fMRI_04_Preprocessing.html">fMRI Tutorial #4: Preprocessing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fMRI_Short_Course/fMRI_05_1stLevelAnalysis.html">fMRI Tutorial #5: Statistics and Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fMRI_Short_Course/fMRI_06_Scripting.html">fMRI Tutorial #6: Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fMRI_Short_Course/fMRI_07_2ndLevelAnalysis.html">fMRI Tutorial #7: 2nd-Level Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fMRI_Short_Course/fMRI_08_3rdLevelAnalysis.html">fMRI Tutorial #8: 3rd-Level Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fMRI_Short_Course/fMRI_09_ROIAnalysis.html">fMRI Tutorial #9: ROI Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fMRI_Short_Course/fMRI_10_Summary.html">fMRI Tutorial #10: Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fMRI_Short_Course/fMRI_Appendices.html">fMRI Short Course: Appendices</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">FreeSurfer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../FreeSurfer/FreeSurfer_Introduction.html">FreeSurfer Short Course</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">E-Prime</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../E-Prime/E-Prime_Overview.html">Overview of E-Prime</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">AFNI</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../AFNI/AFNI_Overview.html">AFNI Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">SPM</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../SPM/SPM_Overview.html">SPM Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Functional Connectivity with the CONN Toolbox</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../FunctionalConnectivity/CONN_Overview.html">Functional Connectivity and the CONN Toolbox</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Parametric Modulation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../PM/PM_Overview.html">Parametric Modulation in SPM, FSL, and AFNI</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Image Visualization with MRIcroGL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../MRIcroGL/MRIcroGL_Overview.html">Image Visualization with MRIcroGL</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Introduction to the Human Connectome Project (HCP)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../HCP/HCP_Overview.html">Introduction to the Human Connectome Project</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Finite Impulse Response (FIR) Models</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../FIR/FIR_Overview.html">Finite Impulse Response (FIR)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">fMRI Concepts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Practicals/DesignOptimization.html">Design Optimization</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Diffusion Analysis with MRtrix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../MRtrix/MRtrix_Introduction.html">Introduction to MRtrix</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ASL Analysis</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../ASL/ASL_Techniques.html">fASL Tutorial #1: Background</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ASL/fASL_02_Download.html">fASL Tutorial #2: Downloading and Installing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ASL/fASL_03_Task.html">fASL Tutorial #3: The N-Back Task</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ASL/04_fASL_GUI.html">fASL Tutorial #4: The GUI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ASL/05_fASL_Results.html">fASL Tutorial #5: Examining the Results</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ASL/06_fASL_Quantification.html">fASL Tutorial #6: Quantification</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Frequently Asked Questions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../FrequentlyAskedQuestions/FrequentlyAskedQuestions.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Statistics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Statistics/GIMME.html">GIMME (Group Iterative Multiple Model Estimation)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Open Science</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../OpenScience/OS_Overview.html">Open Science</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced Normalization Tools (ANTs)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../ANTs/ANTs_Overview.html">Advanced Normalization Tools (ANTs)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tract-Based Spatial Statistics (TBSS)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../TBSS/TBSS_Overview.html">Introduction to Tract-Based Spatial Statistics (TBSS)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Statistics for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Stats/Stats_Overview.html">Statistics for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Machine Learning for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../ML/ML_Overview.html">Machine Learning for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Slicer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Slicer/Slicer_Overview.html">Slicer Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">CAT12</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../CAT12/CAT12_Overview.html">Voxel-Based Morphometry with CAT12</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Using the Supercomputer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Supercomputer/Supercomputer_Overview.html">Introduction to Supercomputing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Matlab for Neuroimagers</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="Matlab_Overview.html">Matlab for Neuroimagers</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="Matlab_Overview.html#what-is-matlab">What is Matlab?</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="Matlab_01_Navigation.html">Matlab Tutorial #1: Navigation &amp; Matrices</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Matlab Tutorial #2: Variables and Structures</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#overview-of-variables-and-structures">Overview of Variables and Structures</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#structures">Structures</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#exercises">Exercises</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Matlab_03_FunctionsPaths.html">Matlab Tutorial #3: Paths and Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Matlab_04_ControlStructures.html">Matlab Tutorial #4: Control Structures</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ITK-Snap</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../ITK-Snap/ITK-Snap_Overview.html">ITK-Snap_Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Python for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../PythonForNeuroimagers/PythonForNeuroimagers_Overview.html">Python for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Meta-Analysis for fMRI</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../MetaAnalysis/MetaAnalysis_Overview.html">Meta-Analysis for Neuroimagers</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Andy's Brain Book</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="Matlab_Overview.html">Matlab for Neuroimagers</a></li>
+      <li class="breadcrumb-item active">Matlab Tutorial #2: Variables and Structures</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/Matlab/Matlab_02_VariablesStructures.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="matlab-tutorial-2-variables-and-structures">
+<span id="matlab-02-variablesstructures"></span><h1>Matlab Tutorial #2: Variables and Structures<a class="headerlink" href="#matlab-tutorial-2-variables-and-structures" title="Link to this heading"></a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Topics covered: Variables, structures, saving</p>
+<p>Commands used: save, clear, load</p>
+</div>
+<section id="overview-of-variables-and-structures">
+<h2>Overview of Variables and Structures<a class="headerlink" href="#overview-of-variables-and-structures" title="Link to this heading"></a></h2>
+<p>Once we create a variable or set of variables, we may want to store them for future use. For example, let’s say that we have two variables, x and y, defined using the following code:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mi">20</span>
+</pre></div>
+</div>
+<p>If we wanted to use these later, we can save them into a <code class="docutils literal notranslate"><span class="pre">.mat</span></code> file using the <code class="docutils literal notranslate"><span class="pre">save</span></code> command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">save</span> <span class="n">myVariables</span><span class="o">.</span><span class="n">mat</span> <span class="n">x</span> <span class="n">y</span>
+</pre></div>
+</div>
+<p>Note that the format of this command is <code class="docutils literal notranslate"><span class="pre">save</span></code>, followed by a .mat file, which you can call anything you want. This is followed by a list of variables that you want to store in the .mat file. If you don’t provide any variables after the .mat file, by default it will save all variables in the workspace into the .mat file.</p>
+<p>If we want to clear the workspace of all of the currently defined variables, we can remove them using the <code class="docutils literal notranslate"><span class="pre">clear</span></code> command. You can remove a single variable, e.g.,</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">clear</span> <span class="n">x</span>
+</pre></div>
+</div>
+<p>Or you can clear all of the variables in the workspace by typing <code class="docutils literal notranslate"><span class="pre">clear</span> <span class="pre">all</span></code>. Let’s say that we have created the file <code class="docutils literal notranslate"><span class="pre">myVariables.mat</span></code> as above, and we have cleared all of the current variables in the workspace. We can recover them by using the <code class="docutils literal notranslate"><span class="pre">load</span></code> command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">load</span> <span class="n">myVariables</span><span class="o">.</span><span class="n">mat</span>
+</pre></div>
+</div>
+<p>Note that the variables of x and y are now present in your workspace, and you can use them in the command window as you like.</p>
+<p>If you want to save variables into a file format that can be read as a text file, you can use the -ascii option. For example, let’s say we had two columns of numbers, representing the onset of each trial (the first column), and the duration of the trial (the second column):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Onsets</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span> <span class="mi">2</span><span class="p">;</span> <span class="mi">10</span> <span class="mi">1</span><span class="p">;</span> <span class="mi">16</span> <span class="mi">2</span><span class="p">;</span> <span class="mi">24</span> <span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>These can be saved into a new text file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;Onsets.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;Onsets&#39;</span><span class="p">,</span> <span class="s1">&#39;-ASCII&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>We will return to this concept during the chapter on <strong>scripting</strong>.</p>
+<p>As a last exercise, create another variable, z:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">z</span> <span class="o">=</span> <span class="s1">&#39;fMRI&#39;</span>
+</pre></div>
+</div>
+<p>This is a string, which we can save along with the x and y variables we created earlier:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">save</span> <span class="n">myVars</span> <span class="n">x</span> <span class="n">y</span> <span class="n">z</span>
+</pre></div>
+</div>
+<p>Instead of simply using the <code class="docutils literal notranslate"><span class="pre">load</span></code> command, we can assign the output from <code class="docutils literal notranslate"><span class="pre">load</span></code> into another variable, e.g.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Variables</span> <span class="o">=</span> <span class="n">load</span><span class="p">(</span><span class="s1">&#39;myVars&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>You will now see a new object we haven’t seen before, called a <strong>structure</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Variables</span> <span class="o">=</span>
+
+<span class="n">struct</span> <span class="k">with</span> <span class="n">fields</span><span class="p">:</span>
+
+<span class="n">x</span><span class="p">:</span> <span class="mi">10</span>
+<span class="n">y</span><span class="p">:</span> <span class="mi">20</span>
+<span class="n">z</span><span class="p">:</span> <span class="s1">&#39;fMRI&#39;</span>
+</pre></div>
+</div>
+<p>Let’s explore in more detail what a structure is.</p>
+</section>
+<section id="structures">
+<h2>Structures<a class="headerlink" href="#structures" title="Link to this heading"></a></h2>
+<p>Similar to the integers and strings we have been using so far, a <strong>structure</strong> is another data type. In this case, however, it stores other data types as well, and organizes them into containers called <strong>fields</strong>. The structure we just created, <code class="docutils literal notranslate"><span class="pre">Variables</span></code>, has three fields. These fields, in turn, can contain sub-fields, and those sub-fields can contain sub-fields, and so on, depending on your needs.</p>
+<p>For example, let’s say that we have a subject, and we have that person’s name, profession, hobby, and heart rate. We could create his structure using this code:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">subject</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Andy&#39;</span><span class="p">;</span>
+<span class="n">subject</span><span class="o">.</span><span class="n">profession</span> <span class="o">=</span> <span class="s1">&#39;Teacher&#39;</span><span class="p">;</span>
+<span class="n">subject</span><span class="o">.</span><span class="n">hobby</span> <span class="o">=</span> <span class="s1">&#39;Running&#39;</span><span class="p">;</span>
+<span class="n">subject</span><span class="o">.</span><span class="n">Heart_rate</span> <span class="o">=</span> <span class="s1">&#39;60&#39;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Similarly, we could type this all on one line to achieve the same end:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">subject</span> <span class="o">=</span> <span class="n">struct</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;Andy&#39;</span><span class="p">,</span> <span class="s1">&#39;profession&#39;</span><span class="p">,</span> <span class="s1">&#39;Teacher&#39;</span><span class="p">,</span> <span class="s1">&#39;hobby&#39;</span><span class="p">,</span> <span class="s1">&#39;Running&#39;</span><span class="p">,</span> <span class="s1">&#39;Heart_rate&#39;</span><span class="p">,</span> <span class="mi">60</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Let’s say that we wanted to change the <code class="docutils literal notranslate"><span class="pre">name</span></code> field so that it now contains two components, a <code class="docutils literal notranslate"><span class="pre">First</span></code> and <code class="docutils literal notranslate"><span class="pre">Last</span></code> name. If you try typing <code class="docutils literal notranslate"><span class="pre">subject.name.first='Andy'</span></code>, it will throw an error. We could remove the <code class="docutils literal notranslate"><span class="pre">subject</span></code> structure completely by typing <code class="docutils literal notranslate"><span class="pre">clear</span> <span class="pre">subject</span></code> and starting over, or we could remove that specific field by using the <code class="docutils literal notranslate"><span class="pre">rmfield</span></code> command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">subject</span> <span class="o">=</span> <span class="n">rmfield</span><span class="p">(</span><span class="n">subject</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Note that this command takes two arguments, the name of the structure (i.e., <code class="docutils literal notranslate"><span class="pre">subject</span></code>), and the field we want to remove (i.e., <code class="docutils literal notranslate"><span class="pre">name</span></code>). The first part of this command, “subject = “, will overwrite the structure, minus the field you just removed. We can then create a new structure within the structure, a field called <code class="docutils literal notranslate"><span class="pre">name</span></code> with two sub-fields, <code class="docutils literal notranslate"><span class="pre">First</span></code> and <code class="docutils literal notranslate"><span class="pre">Last</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">subject</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">First</span> <span class="o">=</span> <span class="s1">&#39;Andy&#39;</span><span class="p">;</span>
+<span class="n">subject</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">Last</span> <span class="o">=</span> <span class="s1">&#39;Last&#39;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Now when you type the variable name <code class="docutils literal notranslate"><span class="pre">subject</span></code>, you will see the structure <code class="docutils literal notranslate"><span class="pre">name</span></code> located within the current structure:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  subject =
+
+struct with fields:
+
+  profession: &#39;Teacher&#39;
+       hobby: &#39;Running&#39;
+  Heart_rate: 60
+        name: [1×1 struct]
+</pre></div>
+</div>
+<p>You can add as many fields as you want; there are no limits to how many fields the structure can contain.</p>
+<section id="the-spm-mat-file-and-plotting">
+<h3>The SPM.mat File and Plotting<a class="headerlink" href="#the-spm-mat-file-and-plotting" title="Link to this heading"></a></h3>
+<p>When you begin analyzing fMRI data with SPM12, at a certain point you will generate a file called <code class="docutils literal notranslate"><span class="pre">SPM.mat</span></code>. These files will be generated both at the first-level per subject, or at the group-level. Let’s begin with an SPM.mat file generated at the first-level. Click <a class="reference external" href="https://github.com/andrewjahn/PSYCH808">here</a> to access the Psych808 repository, and then click on the file <code class="docutils literal notranslate"><span class="pre">SPM_SingleSubj.mat</span></code>. This is a .mat file generated during the first-level analysis for a single subject with two runs, with each run containing 146 volumes, and with 2 conditions: Incongruent and Congruent. Then, click on the <code class="docutils literal notranslate"><span class="pre">Download</span></code> button to download it to your computer. Move the file to your Desktop directory by typing the following in the Matlab terminal:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">movefile</span><span class="p">(</span><span class="s1">&#39;~/Downloads/SPM_SingleSubj.mat&#39;</span><span class="p">,</span> <span class="s1">&#39;~/Desktop&#39;</span><span class="p">)</span>
+<span class="n">cd</span> <span class="o">~/</span><span class="n">Desktop</span><span class="o">/</span>
+</pre></div>
+</div>
+<p>Then, load the .mat file by typing <code class="docutils literal notranslate"><span class="pre">load</span> <span class="pre">SPM_SingleSubj.mat</span></code>. There will be a new variable in the workspace called <code class="docutils literal notranslate"><span class="pre">SPM</span></code>, which is a 1x1 structure. From the command line, type <code class="docutils literal notranslate"><span class="pre">SPM</span></code>, and see the following output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SPM =
+
+struct with fields:
+
+    xY: [1×1 struct]
+   xBF: [1×1 struct]
+ nscan: [146 146]
+  Sess: [1×2 struct]
+factor: []
+   xGX: [1×1 struct]
+    xM: [1×1 struct]
+    xX: [1×1 struct]
+   xVi: [1×1 struct]
+ SPMid: &#39;SPM12: spm_spm (v7738)&#39;
+ xsDes: [1×1 struct]
+   swd: &#39;/Users/ajahn/Desktop/Flanker/sub-01/1stLevel&#39;
+  xVol: [1×1 struct]
+ Vbeta: [1×6 struct]
+VResMS: [1×1 struct]
+    VM: [1×1 struct]
+  xCon: [1×4 struct]
+</pre></div>
+</div>
+<p>Many of these fields have unintelligible abbreviations, but over time you will become more familiar with them. The more decipherable ones are fields such as <code class="docutils literal notranslate"><span class="pre">nscan</span></code>, a vector containing the number of volumes in each run, and <code class="docutils literal notranslate"><span class="pre">SPMid</span></code>, which is the version of SPM that was used to analyze the data. Some of the less obvious field names are those such as xY, which contains information about the files that were loaded for the first-level analysis. For example, if you type <code class="docutils literal notranslate"><span class="pre">SPM.xY.P</span></code>, each row is a separate volume that was loaded into the design matrix.</p>
+<p>Some of the fields contain structures of their own which can be indexed using numbers inside parentheses. For example, if we look within the field <code class="docutils literal notranslate"><span class="pre">SPM.Sess</span></code>, we see that it is a 2x1 structure, corresponding to the two runs of imaging data that were used to generate this SPM.mat file. If we just wanted to focus on the first run, we would type <code class="docutils literal notranslate"><span class="pre">SPM.Sess(1)</span></code>. This also contains fields that are structures, such as <code class="docutils literal notranslate"><span class="pre">U</span></code>, which is another 2x1 structure. To access the first run of this structure, we would type <code class="docutils literal notranslate"><span class="pre">SPM.Sess(1).U(1)</span></code>, which in turn would give us a list of fields within that structure.</p>
+<p>Lastly, take a look at <code class="docutils literal notranslate"><span class="pre">SPM.xBF</span></code>: the Basis Function that was used for this analysis, which in this case was the canonical hemodynamic response function. You can see what this basis function looks like by typing:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">plot</span><span class="p">(</span><span class="n">SPM</span><span class="o">.</span><span class="n">xBF</span><span class="o">.</span><span class="n">bf</span><span class="p">)</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../_images/02_HRF.png" src="../_images/02_HRF.png" />
+</figure>
+<p>This introduces a new function, <code class="docutils literal notranslate"><span class="pre">plot</span></code>, which creates a 2-dimensional figure of x-values against y-values; in this example, time is on the x-axis, and the height of the BOLD response is on the y-axis. We can close the figure by simply typing <code class="docutils literal notranslate"><span class="pre">close</span></code>. If you want to create other plots, such as sine waves, we can define it by creating a line from 0 to 3*pi, with intervals of 0.1:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mf">0.1</span><span class="p">:</span><span class="mi">3</span><span class="o">*</span><span class="n">pi</span><span class="p">];</span>
+<span class="n">figure</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+<span class="n">figure</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">sin</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Note that the command <code class="docutils literal notranslate"><span class="pre">figure</span></code> precedes each <code class="docutils literal notranslate"><span class="pre">plot</span></code> command, and that two figures are generated as a result. If we type <code class="docutils literal notranslate"><span class="pre">close</span></code>, it will close the last generated figure. Alternatively, you could type <code class="docutils literal notranslate"><span class="pre">close(2)</span></code>, using the index as an argument to close a specific figure; or, you could just type <code class="docutils literal notranslate"><span class="pre">close</span> <span class="pre">all</span></code> to close all of the figures.</p>
+<p>If you wanted to plot two figures overlapping each other, you can use the <code class="docutils literal notranslate"><span class="pre">hold</span></code> command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">figure</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="n">hold</span> <span class="n">on</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">sin</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../_images/02_Hold.png" src="../_images/02_Hold.png" />
+</figure>
+<p>Lastly, we will plot a <strong>phantom</strong> image, or a non-living object that has been scanned using MRI. Type each of the following commands one by one, noting how the figure changes after each line of code:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">figure</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">phantom</span><span class="p">;</span>
+<span class="n">imagesc</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="n">colorbar</span>
+<span class="n">colormap</span> <span class="n">gray</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../_images/02_Phantom.png" src="../_images/02_Phantom.png" />
+</figure>
+<p>As you can see, there are many different applications of the <code class="docutils literal notranslate"><span class="pre">plot</span></code> command. Knowing how to use this command, and how to create and manipulate structures, will be necessary for using the more complicated .mat files generated later on by SPM.</p>
+</section>
+</section>
+<section id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>Once you have loaded the SPM.mat file, type <code class="docutils literal notranslate"><span class="pre">SPM.xY.P</span></code>. Now, instead of printing every volume name to the terminal, extract the name of the 10th volume. (Hint: You will need to use the index syntax discussed in the previous chapter.) Show the code you used to do this.</p></li>
+<li><p>If you look at the field <code class="docutils literal notranslate"><span class="pre">SPM.xBF</span></code>, you will see all of the parameters used to generate the basis function for this particular analysis. This basis function is also known as the canonical hemodynamic response function, which takes about 4-6 seconds to peak, and another 6-8 seconds to return to baseline. (This is explained in more detail in the chapters on <a class="reference internal" href="../SPM/SPM_Short_Course/SPM_Statistics/SPM_03_Stats_HRF_Overview.html#spm-03-stats-hrf-overview"><span class="std std-ref">SPM</span></a>.) The field <code class="docutils literal notranslate"><span class="pre">SPM.xBF.dt</span></code> is the time interval that was used to generate this basis function, which by default is 0.125 seconds. In other words, each second encompasses eight of these time-steps (1 / 0.125 = 8). Type the following code:</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">figure</span><span class="p">;</span> <span class="n">plot</span><span class="p">(</span><span class="n">SPM</span><span class="o">.</span><span class="n">xBF</span><span class="o">.</span><span class="n">bf</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">8</span><span class="p">:</span><span class="n">end</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>And write down what you think it does, observing whether the hemodynamic response function seems smoother or more jagged (Hint: See the discussion in the previous chapter about indexing and the <code class="docutils literal notranslate"><span class="pre">end</span></code> keyword). Write the code you would use to plot the hemodynamic response function every three seconds. How does it compare to the previous figure you plotted? Why? Include the code you used, and screenshots of the figure you generated.</p>
+<p>What we’ve just done in this last exercise is called <strong>resampling</strong>, which is taking a sample every nth step along a time-course to generate a new time-course. This concept can be applied to both the temporal and spatial domains, and will be used often when preprocessing fMRI data to a common time-course and a common space.</p>
+<ol class="arabic simple" start="3">
+<li><p>Within the field <code class="docutils literal notranslate"><span class="pre">SPM.xCon</span></code>, which lists the contrasts that were created within this SPM structure, there is a field called <code class="docutils literal notranslate"><span class="pre">name</span></code>. We can index each of the separate names by typing <code class="docutils literal notranslate"><span class="pre">SPM.xCon(1).name</span></code>, <code class="docutils literal notranslate"><span class="pre">SPM.xCon(2).name</span></code>, and so on. Imagine that the fourth contrast in this structure was mistakenly called <code class="docutils literal notranslate"><span class="pre">Con</span></code> and needs to be called something else, which can sometimes happen. Replace that contrast name by typing:</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SPM</span><span class="o">.</span><span class="n">xCon</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Neutral&#39;</span>
+</pre></div>
+</div>
+<p>And overwrite the original SPM structure by typing:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;SPM_updated&#39;</span><span class="p">,</span> <span class="n">SPM</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Matlab_01_Navigation.html" class="btn btn-neutral float-left" title="Matlab Tutorial #1: Navigation &amp; Matrices" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Matlab_03_FunctionsPaths.html" class="btn btn-neutral float-right" title="Matlab Tutorial #3: Paths and Functions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Andy Jahn.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chapter #12: Scripting &mdash; Andy&#39;s Brain Book 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b76e3c8a" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=f2a433a1"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Appendix A: Graph Theory" href="CONN_AppendixA_GraphTheory.html" />
+    <link rel="prev" title="Chapter #11: Task-Related Connectivity and gPPI" href="CONN_11_Task_gPPI.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Andy's Brain Book
+          </a>
+              <div class="version">
+                1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Install</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../installation/fsl_mac_install.html">Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Unix for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_Intro.html">What is Unix?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_01_Navigation.html">Unix Tutorial #1: 目录操作 (Directories and Navigation)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_02_CopyRemove.html">Unix Tutorial #2: Copying and Removing Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_03_ReadingTextFiles.html">Unix Tutorial #3: Reading Text Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_04_ShellsVariables.html">Unix Tutorial #4: Shells and Path Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_05_ForLoops.html">Unix Tutorial #5: For-Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_06_IfElse.html">Unix Tutorial #6: Conditional Statements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_07_Scripting.html">Unix Tutorial #7: Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_08_Sed.html">Unix Tutorial #8: The Sed Command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_09_AutomatingTheAnalysis.html">Unix Tutorial #9: Automating The Analysis</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">fMRI Short Course with FSL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_Intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_01_DataDownload.html">fMRI Tutorial #1: Downloading the Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_02_ExperimentalDesign.html">fMRI Tutorial #2: Overview of The Flanker Task</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_03_LookingAtTheData.html">fMRI Tutorial #3: Looking at the Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_04_Preprocessing.html">fMRI Tutorial #4: Preprocessing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_05_1stLevelAnalysis.html">fMRI Tutorial #5: Statistics and Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_06_Scripting.html">fMRI Tutorial #6: Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_07_2ndLevelAnalysis.html">fMRI Tutorial #7: 2nd-Level Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_08_3rdLevelAnalysis.html">fMRI Tutorial #8: 3rd-Level Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_09_ROIAnalysis.html">fMRI Tutorial #9: ROI Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_10_Summary.html">fMRI Tutorial #10: Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_Appendices.html">fMRI Short Course: Appendices</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">FreeSurfer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../FreeSurfer/FreeSurfer_Introduction.html">FreeSurfer Short Course</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">E-Prime</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../E-Prime/E-Prime_Overview.html">Overview of E-Prime</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">AFNI</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../AFNI/AFNI_Overview.html">AFNI Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">SPM</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../SPM/SPM_Overview.html">SPM Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Functional Connectivity with the CONN Toolbox</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../CONN_Overview.html">Functional Connectivity and the CONN Toolbox</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../CONN_Overview.html#overview">Overview</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../CONN_Overview.html#recommended-tutorials">Recommended Tutorials</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="CONN_00_History.html">History of Functional Connectivity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CONN_01_FSL_Demo.html">Chapter #1: Functional Connectivity Demonstration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CONN_02_DataDownload.html">Chapter #2: Downloading the Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CONN_03_LookingAtData.html">Chapter #3: Downloading the CONN Toolbox</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CONN_04_GUI_Overview.html">Chapter #4: The CONN GUI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CONN_05_Preprocessing.html">Chapter #5: Preprocessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CONN_06_QA_Checks.html">Chapter #6: Quality Assurance Checks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CONN_07_Denoising.html">Chapter #7: Denoising</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CONN_08_1stLevel_Analysis.html">Chapter #8: 1st-Level Analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CONN_09_2ndLevel_Analysis.html">Chapter #9: Group-level analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CONN_10_Viewing_Results.html">Chapter #10: Viewing the Results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CONN_11_Task_gPPI.html">Chapter #11: Task-Related Connectivity and gPPI</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Chapter #12: Scripting</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#scripting-in-the-conn-toolbox">Scripting in the CONN Toolbox</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#creating-the-conn-batch-variable">Creating the conn Batch Variable</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#running-the-batch">Running the Batch</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#exercises">Exercises</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#video">Video</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#congratulations">Congratulations!</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="CONN_AppendixA_GraphTheory.html">Appendix A: Graph Theory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CONN_AppendixB_OtherSecondLevelDesigns.html">Appendix B: Other Second-Level Analyses</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CONN_AppendixC_ImportingROIs.html">Appendix C: Importing ROIs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CONN_AppendixD_SurfaceBasedConnectivity.html">Appendix D: Surface-Based Connectivity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CONN_AppendixE_DynamicConnectivity.html">Appendix E: Dynamic Connectivity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CONN_AppendixF_OpenScienceConnToolbox.html">Appendix F: Open Science and the CONN Toolbox</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Parametric Modulation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../PM/PM_Overview.html">Parametric Modulation in SPM, FSL, and AFNI</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Image Visualization with MRIcroGL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../MRIcroGL/MRIcroGL_Overview.html">Image Visualization with MRIcroGL</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Introduction to the Human Connectome Project (HCP)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../HCP/HCP_Overview.html">Introduction to the Human Connectome Project</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Finite Impulse Response (FIR) Models</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../FIR/FIR_Overview.html">Finite Impulse Response (FIR)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">fMRI Concepts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Practicals/DesignOptimization.html">Design Optimization</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Diffusion Analysis with MRtrix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../MRtrix/MRtrix_Introduction.html">Introduction to MRtrix</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ASL Analysis</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/ASL_Techniques.html">fASL Tutorial #1: Background</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/fASL_02_Download.html">fASL Tutorial #2: Downloading and Installing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/fASL_03_Task.html">fASL Tutorial #3: The N-Back Task</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/04_fASL_GUI.html">fASL Tutorial #4: The GUI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/05_fASL_Results.html">fASL Tutorial #5: Examining the Results</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/06_fASL_Quantification.html">fASL Tutorial #6: Quantification</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Frequently Asked Questions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../FrequentlyAskedQuestions/FrequentlyAskedQuestions.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Statistics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Statistics/GIMME.html">GIMME (Group Iterative Multiple Model Estimation)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Open Science</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../OpenScience/OS_Overview.html">Open Science</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced Normalization Tools (ANTs)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ANTs/ANTs_Overview.html">Advanced Normalization Tools (ANTs)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tract-Based Spatial Statistics (TBSS)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../TBSS/TBSS_Overview.html">Introduction to Tract-Based Spatial Statistics (TBSS)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Statistics for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Stats/Stats_Overview.html">Statistics for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Machine Learning for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ML/ML_Overview.html">Machine Learning for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Slicer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Slicer/Slicer_Overview.html">Slicer Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">CAT12</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../CAT12/CAT12_Overview.html">Voxel-Based Morphometry with CAT12</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Using the Supercomputer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Supercomputer/Supercomputer_Overview.html">Introduction to Supercomputing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Matlab for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Matlab/Matlab_Overview.html">Matlab for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ITK-Snap</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ITK-Snap/ITK-Snap_Overview.html">ITK-Snap_Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Python for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../PythonForNeuroimagers/PythonForNeuroimagers_Overview.html">Python for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Meta-Analysis for fMRI</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../MetaAnalysis/MetaAnalysis_Overview.html">Meta-Analysis for Neuroimagers</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Andy's Brain Book</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../CONN_Overview.html">Functional Connectivity and the CONN Toolbox</a></li>
+      <li class="breadcrumb-item active">Chapter #12: Scripting</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/FunctionalConnectivity/CONN_ShortCourse/CONN_12_Scripting.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="chapter-12-scripting">
+<span id="conn-12-scripting"></span><h1>Chapter #12: Scripting<a class="headerlink" href="#chapter-12-scripting" title="Link to this heading"></a></h1>
+<hr class="docutils" />
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A template script for this tutorial was provided by the <a class="reference external" href="https://medicine.umich.edu/dept/chronic-pain-fatigue-research-center">Chronic Pain &amp; Fatigue Research Center</a> of the University of Michigan. In particular, thanks to Chelsea Kaplan and Tony Larkin.</p>
+</div>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading"></a></h2>
+<p>After you’ve preprocessed and set up a model for a single run for a single subject, you will need to do the same steps for all of the runs for all of the subjects in your dataset. This may seem tedious but doable - we only have twenty-six subjects, and two runs per subject. You may think that it can be done over the course of a week or so; and you can always assign the task to a couple of Research Assistants.</p>
+<p>This attitude is admirable, and if you take this approach you will be able to analyze all of the data eventually. But at some point you will run into two problems:</p>
+<p>1.You will find that manually analyzing each run is not only tedious but prone to error, and the probability of making a mistake increases significantly as the number of runs to analyze also increases; and</p>
+<ol class="arabic simple" start="2">
+<li><p>For larger datasets - for example, eighty subjects with five runs each - this approach quickly becomes impractical.</p></li>
+</ol>
+<p>An alternative is to <strong>script</strong> your analysis. Just as an actor has a script which tells him what to say and where to stand and where to move, so can you write a script that tells your computer how to analyze your datasets. This has the double benefit of automating your analyses and being able to analyze datasets of any size - the code for analyzing two subjects or two hundred is virtually identical.</p>
+</section>
+<section id="scripting-in-the-conn-toolbox">
+<h2>Scripting in the CONN Toolbox<a class="headerlink" href="#scripting-in-the-conn-toolbox" title="Link to this heading"></a></h2>
+<section id="structures-fields-and-variables">
+<h3>Structures, Fields, and Variables<a class="headerlink" href="#structures-fields-and-variables" title="Link to this heading"></a></h3>
+<p>The CONN Toolbox comes with a command called <code class="docutils literal notranslate"><span class="pre">conn_batch</span></code>, which takes a <strong>structure</strong> as an argument. A structure is a Matlab data type that organizes several variables into containers called <strong>fields</strong>. The structure fields that are expected by the <code class="docutils literal notranslate"><span class="pre">conn_batch</span></code> command are the following (taken from the conn_batch help, which can also be found on the <a class="reference external" href="https://web.conn-toolbox.org/resources/documentation/conn_batch">CONN scripting page</a>):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">filename</span>          <span class="p">:</span> <span class="n">conn_</span><span class="o">*.</span><span class="n">mat</span> <span class="n">project</span> <span class="n">file</span> <span class="p">(</span><span class="n">defaults</span> <span class="n">to</span> <span class="n">currently</span> <span class="nb">open</span> <span class="n">project</span><span class="p">)</span>
+<span class="n">subjects</span>          <span class="p">:</span> <span class="n">Subset</span> <span class="n">of</span> <span class="n">subjects</span> <span class="n">to</span> <span class="n">run</span> <span class="n">processing</span> <span class="n">steps</span> <span class="ow">or</span> <span class="n">define</span> <span class="n">parameters</span> <span class="k">for</span> <span class="p">(</span><span class="n">defaults</span> <span class="n">to</span> <span class="nb">all</span> <span class="n">subjects</span><span class="p">)</span>
+<span class="n">parallel</span>          <span class="p">:</span> <span class="n">Parallelization</span> <span class="n">options</span> <span class="p">(</span><span class="n">defaults</span> <span class="n">to</span> <span class="n">local</span> <span class="n">processing</span> <span class="o">/</span> <span class="n">no</span> <span class="n">parallelization</span><span class="p">)</span>
+<span class="n">Setup</span>             <span class="p">:</span> <span class="n">Information</span><span class="o">/</span><span class="n">processes</span> <span class="n">regarding</span> <span class="n">experiment</span> <span class="n">Setup</span> <span class="ow">and</span> <span class="n">Preprocessing</span>
+<span class="n">Denoising</span>         <span class="p">:</span> <span class="n">Information</span><span class="o">/</span><span class="n">processes</span> <span class="n">regarding</span> <span class="n">Denoising</span> <span class="n">step</span>
+<span class="n">Analysis</span>          <span class="p">:</span> <span class="n">Information</span><span class="o">/</span><span class="n">processes</span> <span class="n">regarding</span> <span class="n">first</span><span class="o">-</span><span class="n">level</span> <span class="n">analyses</span>
+<span class="n">Results</span>           <span class="p">:</span> <span class="n">Information</span><span class="o">/</span><span class="n">processes</span> <span class="n">regarding</span> <span class="n">second</span><span class="o">-</span><span class="n">level</span> <span class="n">analyses</span><span class="o">/</span><span class="n">results</span>
+<span class="n">QA</span>                <span class="p">:</span> <span class="n">Information</span><span class="o">/</span><span class="n">processes</span> <span class="n">regarding</span> <span class="n">Quality</span> <span class="n">Assurance</span> <span class="n">plots</span>
+</pre></div>
+</div>
+<p>In other words, the variable that we will pass as an argument to the <code class="docutils literal notranslate"><span class="pre">conn_batch</span></code> command - a variable that we will call <strong>batch</strong> from now on - requires the fields listed above. If you recall from the earlier chapters, there were tabs in the CONN GUI that were labeled Setup, Denoising, Analysis, and Results; these fields will also contain sub-fields that specify the values that we entered into the GUI. For example, the field:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">batch</span><span class="o">.</span><span class="n">Setup</span><span class="o">.</span><span class="n">RT</span><span class="o">=</span><span class="mf">3.56</span>
+</pre></div>
+</div>
+<p>specifies that the RT for this experiment is 3.56 seconds.</p>
+</section>
+<section id="the-conn-x-structure">
+<h3>The CONN_x Structure<a class="headerlink" href="#the-conn-x-structure" title="Link to this heading"></a></h3>
+<p>The other fields and sub-fields can be found on the CONN scripting page, along with explanations about what each value and option means. But the easiest way to create and modify a structure is by generating one through the GUI.</p>
+<p>In fact, you already have created such a structure, even if you weren’t aware of it. Each time you save your project, a .mat file is created. This .mat file can be <strong>loaded</strong> into the Matlab terminal by using the <code class="docutils literal notranslate"><span class="pre">load</span></code> command. For example, if you have been following along with the tutorials up to this point, you have created a .mat file called <code class="docutils literal notranslate"><span class="pre">conn_Arithmetic_Project.mat</span></code>. You can load it by typing:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">load</span> <span class="n">conn_Arithmetic_Project</span><span class="o">.</span><span class="n">mat</span>
+</pre></div>
+</div>
+<p>This returns a structure in your workspace called <code class="docutils literal notranslate"><span class="pre">CONN_x</span></code>. When you type <code class="docutils literal notranslate"><span class="pre">CONN_x</span></code>, you will see the following text returned:</p>
+<figure class="align-default">
+<img alt="../../_images/12_CONN_x.png" src="../../_images/12_CONN_x.png" />
+</figure>
+<p>Each of these fields contain the values that you entered into each tab. For example, we can display the values that were entered in the <code class="docutils literal notranslate"><span class="pre">Setup</span></code> tab by typing <code class="docutils literal notranslate"><span class="pre">CONN_x.Setup</span></code>, which returns several fields (only the first few are displayed in the figure below):</p>
+<figure class="align-default">
+<img alt="../../_images/12_CONN_x_Setup.png" src="../../_images/12_CONN_x_Setup.png" />
+</figure>
+<p>Note the correspondence between the values entered in these fields, and the values that are entered when you load the <code class="docutils literal notranslate"><span class="pre">conn_Arithmetic_Project.mat</span></code> file. If we want, we can edit the values within the CONN_x structure from the Matlab terminal, save it as a .mat file, and then load it into the CONN toolbox. The edits we make in the Matlab terminal should then be reflected in the GUI.</p>
+<p>Try this by typing the following line of code in the Matlab terminal:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CONN_x</span><span class="o">.</span><span class="n">Setup</span><span class="o">.</span><span class="n">RT</span> <span class="o">=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>This replaces the original value of 3.56 with a value of 1. We can then save the updated CONN_x structure into our .mat file by typing:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;conn_Arithmetic_Sample.mat&#39;</span><span class="p">,</span> <span class="s1">&#39;CONN_x&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This uses the Matlab <code class="docutils literal notranslate"><span class="pre">save</span></code> command, which requires two arguments: The .mat file to be written, and any values or structures to be saved into it. In this case, we save the CONN_x structure into the .mat file. If you now load it from the CONN GUI (by clicking on <code class="docutils literal notranslate"><span class="pre">Project</span> <span class="pre">-&gt;</span> <span class="pre">Open</span></code> and selecting the file), the Basic Information tab should be updated with the new Repetition Time that you specified in the Matlab terminal.</p>
+<p>The CONN_x structure also specifies menu options. For example, the Batch.Setup section of the CONN help page says about the field <code class="docutils literal notranslate"><span class="pre">acquisitiontype</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">acquisitiontype</span> <span class="p">:</span> <span class="mi">1</span><span class="o">/</span><span class="mi">0</span><span class="p">:</span> <span class="n">Continuous</span> <span class="n">acquisition</span> <span class="n">of</span> <span class="n">functional</span> <span class="n">volumes</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>This is a binary variable, with 1 signalizing a continuous acquisition of functional volumes (which is the default, as indicated by the brackets). If we set this to 0, then it will be the other option that is available, which is sparse sampling. As an exercise, set the field <code class="docutils literal notranslate"><span class="pre">CONN_x.Setup.acquisitiontype</span></code> to 0, save the CONN_x structure into the .mat file, and reload the .mat file. What do you observe has changed?</p>
+</section>
+</section>
+<section id="creating-the-conn-batch-variable">
+<h2>Creating the conn Batch Variable<a class="headerlink" href="#creating-the-conn-batch-variable" title="Link to this heading"></a></h2>
+<p>Having seen how CONN creates a Matlab structure from the GUI, we will now create our own structure using Matlab code. The structure will be called <strong>batch</strong>, and it will contain fields indicating which files to load and which options to run.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The following code is adapted from the file <code class="docutils literal notranslate"><span class="pre">conn_batch_workshop_nyudataset.m</span></code>, which you can download from Alfonso Nieto-Castanon’s <a class="reference external" href="https://www.nitrc.org/frs/?group_id=279">NITRC website</a>. The CONN website also contains examples of how to modify your batch script. The website lists each of the different fields that can be entered into the batch structure, and what the defaults are. If you don’t write out one of the fields in your script, it will be set to the default listed on the webpage.
+For example, the field Analysis.type reads: <code class="docutils literal notranslate"><span class="pre">analysis</span> <span class="pre">type,</span> <span class="pre">1</span> <span class="pre">=</span> <span class="pre">'ROI-to-ROI',</span> <span class="pre">2</span> <span class="pre">=</span> <span class="pre">'Seed-to-Voxel',</span> <span class="pre">3</span> <span class="pre">=</span> <span class="pre">'all';</span> <span class="pre">[3]</span></code>. If we don’t include this in our script, the field will automatically be set to 3, meaning that both ROI-to-ROI and Seed-to-Voxel analyses will be run.</p>
+</div>
+<section id="loading-the-files">
+<h3>Loading the files<a class="headerlink" href="#loading-the-files" title="Link to this heading"></a></h3>
+<p>The first block of code in the script will load the anatomical and functional files. It uses a <strong>recursive search</strong> to look into every directory below the current directory to find the files matching the file you specified. This is done by the command <strong>conn_dir</strong>, which takes a string as an argument; if you want to load several subjects, you can use a regular expression such as an asterisk (see the “wildcard” section of <a class="reference internal" href="../../unix/Unix_07_Scripting.html#unix-07-scripting"><span class="std std-ref">this tutorial</span></a> for more details).</p>
+<p>Whichever method you choose, make sure that the <code class="docutils literal notranslate"><span class="pre">NSUBJECTS</span></code> variable matches the total number of subjects that will be selected. For example, if there are six subjects in the current directory and you are using a wildcard to select the resting-state data, you would set NSUBJECTS to 6:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">NSUBJECTS</span><span class="o">=</span><span class="mi">6</span><span class="p">;</span>
+<span class="n">cwd</span><span class="o">=</span><span class="n">pwd</span><span class="p">;</span>
+<span class="n">FUNCTIONAL_FILE</span><span class="o">=</span><span class="n">cellstr</span><span class="p">(</span><span class="n">conn_dir</span><span class="p">(</span><span class="s1">&#39;sub-*_func_sub-*_task-rest_bold.nii.gz&#39;</span><span class="p">));</span>
+<span class="n">STRUCTURAL_FILE</span><span class="o">=</span><span class="n">cellstr</span><span class="p">(</span><span class="n">conn_dir</span><span class="p">(</span><span class="s1">&#39;sub-*_anat_sub-*_T1w.nii&#39;</span><span class="p">));</span>
+<span class="k">if</span> <span class="n">rem</span><span class="p">(</span><span class="n">length</span><span class="p">(</span><span class="n">FUNCTIONAL_FILE</span><span class="p">),</span><span class="n">NSUBJECTS</span><span class="p">),</span><span class="n">error</span><span class="p">(</span><span class="s1">&#39;mismatch number of functional files %n&#39;</span><span class="p">,</span> <span class="n">length</span><span class="p">(</span><span class="n">FUNCTIONAL_FILE</span><span class="p">));</span><span class="n">end</span>
+<span class="k">if</span> <span class="n">rem</span><span class="p">(</span><span class="n">length</span><span class="p">(</span><span class="n">STRUCTURAL_FILE</span><span class="p">),</span><span class="n">NSUBJECTS</span><span class="p">),</span><span class="n">error</span><span class="p">(</span><span class="s1">&#39;mismatch number of anatomical files %n&#39;</span><span class="p">,</span> <span class="n">length</span><span class="p">(</span><span class="n">FUNCTIONAL_FILE</span><span class="p">));</span><span class="n">end</span>
+<span class="n">nsessions</span><span class="o">=</span><span class="n">length</span><span class="p">(</span><span class="n">FUNCTIONAL_FILE</span><span class="p">)</span><span class="o">/</span><span class="n">NSUBJECTS</span><span class="p">;</span>
+<span class="n">FUNCTIONAL_FILE</span><span class="o">=</span><span class="n">reshape</span><span class="p">(</span><span class="n">FUNCTIONAL_FILE</span><span class="p">,[</span><span class="n">NSUBJECTS</span><span class="p">,</span><span class="n">nsessions</span><span class="p">]);</span>
+<span class="n">STRUCTURAL_FILE</span><span class="o">=</span><span class="p">{</span><span class="n">STRUCTURAL_FILE</span><span class="p">{</span><span class="mi">1</span><span class="p">:</span><span class="n">NSUBJECTS</span><span class="p">}};</span>
+<span class="n">disp</span><span class="p">([</span><span class="n">num2str</span><span class="p">(</span><span class="n">size</span><span class="p">(</span><span class="n">FUNCTIONAL_FILE</span><span class="p">,</span><span class="mi">1</span><span class="p">)),</span><span class="s1">&#39; subjects&#39;</span><span class="p">]);</span>
+<span class="n">disp</span><span class="p">([</span><span class="n">num2str</span><span class="p">(</span><span class="n">size</span><span class="p">(</span><span class="n">FUNCTIONAL_FILE</span><span class="p">,</span><span class="mi">2</span><span class="p">)),</span><span class="s1">&#39; sessions&#39;</span><span class="p">]);</span>
+<span class="n">TR</span><span class="o">=</span><span class="mf">3.56</span><span class="p">;</span> <span class="o">%</span> <span class="n">Repetition</span> <span class="n">time</span>
+</pre></div>
+</div>
+<p>Executing this block of code will return both the number of subjects and the number of sessions per subject, and the wildcard <code class="docutils literal notranslate"><span class="pre">*</span></code> will return any files that contain the string <code class="docutils literal notranslate"><span class="pre">sub-</span></code>, <code class="docutils literal notranslate"><span class="pre">_func_sub-</span></code>, and <code class="docutils literal notranslate"><span class="pre">task-rest_bold.nii.gz</span></code>, in that order. For your own experiment, remember to change this filter so that it is specific to how your data is labeled. Remember to change the TR as well, if needed.</p>
+</section>
+<section id="the-setup-field">
+<h3>The Setup Field<a class="headerlink" href="#the-setup-field" title="Link to this heading"></a></h3>
+<p>Each field after the <code class="docutils literal notranslate"><span class="pre">batch</span></code> structure will be one of the tabs listed in the CONN GUI: Setup, Denoising, and Analysis.</p>
+<p>The first block of code will populate the <code class="docutils literal notranslate"><span class="pre">Setup</span></code> field of the <code class="docutils literal notranslate"><span class="pre">batch</span></code> structure. If the files above were correctly loaded, this block of code should be useable for any experiment. You may want to change the batch name to something more descriptive of your study, and change the processing pipeline and slice order if needed.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span> <span class="n">CONN</span><span class="o">-</span><span class="n">SPECIFIC</span> <span class="n">SECTION</span><span class="p">:</span> <span class="n">RUNS</span> <span class="n">PREPROCESSING</span><span class="o">/</span><span class="n">SETUP</span><span class="o">/</span><span class="n">DENOISING</span><span class="o">/</span><span class="n">ANALYSIS</span> <span class="n">STEPS</span>
+<span class="o">%%</span> <span class="n">Prepares</span> <span class="n">batch</span> <span class="n">structure</span>
+<span class="n">clear</span> <span class="n">batch</span><span class="p">;</span>
+<span class="n">batch</span><span class="o">.</span><span class="n">filename</span><span class="o">=</span><span class="n">fullfile</span><span class="p">(</span><span class="n">cwd</span><span class="p">,</span><span class="s1">&#39;Arithmetic_Scripted.mat&#39;</span><span class="p">);</span>            <span class="o">%</span> <span class="n">New</span> <span class="n">conn_</span><span class="o">*.</span><span class="n">mat</span> <span class="n">experiment</span> <span class="n">name</span>
+
+<span class="o">%%</span> <span class="n">SETUP</span> <span class="o">&amp;</span> <span class="n">PREPROCESSING</span> <span class="n">step</span> <span class="p">(</span><span class="n">using</span> <span class="n">default</span> <span class="n">values</span> <span class="k">for</span> <span class="n">most</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">see</span> <span class="n">help</span> <span class="n">conn_batch</span> <span class="n">to</span> <span class="n">define</span> <span class="n">non</span><span class="o">-</span><span class="n">default</span> <span class="n">values</span><span class="p">)</span>
+<span class="o">%</span> <span class="n">CONN</span> <span class="n">Setup</span>                                            <span class="o">%</span> <span class="n">Default</span> <span class="n">options</span> <span class="p">(</span><span class="n">uses</span> <span class="nb">all</span> <span class="n">ROIs</span> <span class="ow">in</span> <span class="n">conn</span><span class="o">/</span><span class="n">rois</span><span class="o">/</span> <span class="n">directory</span><span class="p">);</span> <span class="n">see</span> <span class="n">conn_batch</span> <span class="k">for</span> <span class="n">additional</span> <span class="n">options</span>
+<span class="o">%</span> <span class="n">CONN</span> <span class="n">Setup</span><span class="o">.</span><span class="n">preprocessing</span>                               <span class="p">(</span><span class="n">realignment</span><span class="o">/</span><span class="n">coregistration</span><span class="o">/</span><span class="n">segmentation</span><span class="o">/</span><span class="n">normalization</span><span class="o">/</span><span class="n">smoothing</span><span class="p">)</span>
+<span class="n">batch</span><span class="o">.</span><span class="n">Setup</span><span class="o">.</span><span class="n">isnew</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
+<span class="n">batch</span><span class="o">.</span><span class="n">Setup</span><span class="o">.</span><span class="n">nsubjects</span><span class="o">=</span><span class="n">NSUBJECTS</span><span class="p">;</span>
+<span class="n">batch</span><span class="o">.</span><span class="n">Setup</span><span class="o">.</span><span class="n">RT</span><span class="o">=</span><span class="n">TR</span><span class="p">;</span>                                        <span class="o">%</span> <span class="n">TR</span> <span class="p">(</span><span class="n">seconds</span><span class="p">)</span>
+<span class="n">batch</span><span class="o">.</span><span class="n">Setup</span><span class="o">.</span><span class="n">functionals</span><span class="o">=</span><span class="n">repmat</span><span class="p">({{}},[</span><span class="n">NSUBJECTS</span><span class="p">,</span><span class="mi">1</span><span class="p">]);</span>       <span class="o">%</span> <span class="n">Point</span> <span class="n">to</span> <span class="n">functional</span> <span class="n">volumes</span> <span class="k">for</span> <span class="n">each</span> <span class="n">subject</span><span class="o">/</span><span class="n">session</span>
+<span class="k">for</span> <span class="n">nsub</span><span class="o">=</span><span class="mi">1</span><span class="p">:</span><span class="n">NSUBJECTS</span><span class="p">,</span><span class="k">for</span> <span class="n">nses</span><span class="o">=</span><span class="mi">1</span><span class="p">:</span><span class="n">nsessions</span><span class="p">,</span><span class="n">batch</span><span class="o">.</span><span class="n">Setup</span><span class="o">.</span><span class="n">functionals</span><span class="p">{</span><span class="n">nsub</span><span class="p">}{</span><span class="n">nses</span><span class="p">}{</span><span class="mi">1</span><span class="p">}</span><span class="o">=</span><span class="n">FUNCTIONAL_FILE</span><span class="p">{</span><span class="n">nsub</span><span class="p">,</span><span class="n">nses</span><span class="p">};</span> <span class="n">end</span><span class="p">;</span> <span class="n">end</span> <span class="o">%</span><span class="n">note</span><span class="p">:</span> <span class="n">each</span> <span class="n">subject</span><span class="s1">&#39;s data is defined by three sessions and one single (4d) file per session</span>
+<span class="n">batch</span><span class="o">.</span><span class="n">Setup</span><span class="o">.</span><span class="n">structurals</span><span class="o">=</span><span class="n">STRUCTURAL_FILE</span><span class="p">;</span>                  <span class="o">%</span> <span class="n">Point</span> <span class="n">to</span> <span class="n">anatomical</span> <span class="n">volumes</span> <span class="k">for</span> <span class="n">each</span> <span class="n">subject</span>
+<span class="n">nconditions</span><span class="o">=</span><span class="n">nsessions</span><span class="p">;</span>                                  <span class="o">%</span> <span class="n">treats</span> <span class="n">each</span> <span class="n">session</span> <span class="k">as</span> <span class="n">a</span> <span class="n">different</span> <span class="n">condition</span> <span class="p">(</span><span class="n">comment</span> <span class="n">the</span> <span class="n">following</span> <span class="n">three</span> <span class="n">lines</span> <span class="ow">and</span> <span class="n">lines</span> <span class="mi">84</span><span class="o">-</span><span class="mi">86</span> <span class="n">below</span> <span class="k">if</span> <span class="n">you</span> <span class="n">do</span> <span class="ow">not</span> <span class="n">wish</span> <span class="n">to</span> <span class="n">analyze</span> <span class="n">between</span><span class="o">-</span><span class="n">session</span> <span class="n">differences</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">nconditions</span><span class="o">==</span><span class="mi">1</span>
+    <span class="n">batch</span><span class="o">.</span><span class="n">Setup</span><span class="o">.</span><span class="n">conditions</span><span class="o">.</span><span class="n">names</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;rest&#39;</span><span class="p">};</span>
+    <span class="k">for</span> <span class="n">ncond</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="k">for</span> <span class="n">nsub</span><span class="o">=</span><span class="mi">1</span><span class="p">:</span><span class="n">NSUBJECTS</span><span class="p">,</span><span class="k">for</span> <span class="n">nses</span><span class="o">=</span><span class="mi">1</span><span class="p">:</span><span class="n">nsessions</span><span class="p">,</span>              <span class="n">batch</span><span class="o">.</span><span class="n">Setup</span><span class="o">.</span><span class="n">conditions</span><span class="o">.</span><span class="n">onsets</span><span class="p">{</span><span class="n">ncond</span><span class="p">}{</span><span class="n">nsub</span><span class="p">}{</span><span class="n">nses</span><span class="p">}</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">batch</span><span class="o">.</span><span class="n">Setup</span><span class="o">.</span><span class="n">conditions</span><span class="o">.</span><span class="n">durations</span><span class="p">{</span><span class="n">ncond</span><span class="p">}{</span><span class="n">nsub</span><span class="p">}{</span><span class="n">nses</span><span class="p">}</span><span class="o">=</span><span class="n">inf</span><span class="p">;</span><span class="n">end</span><span class="p">;</span><span class="n">end</span><span class="p">;</span><span class="n">end</span>     <span class="o">%</span> <span class="n">rest</span> <span class="n">condition</span> <span class="p">(</span><span class="nb">all</span> <span class="n">sessions</span><span class="p">)</span>
+<span class="k">else</span>
+    <span class="n">batch</span><span class="o">.</span><span class="n">Setup</span><span class="o">.</span><span class="n">conditions</span><span class="o">.</span><span class="n">names</span><span class="o">=</span><span class="p">[{</span><span class="s1">&#39;rest&#39;</span><span class="p">},</span> <span class="n">arrayfun</span><span class="p">(</span><span class="o">@</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="n">sprintf</span><span class="p">(</span><span class="s1">&#39;Session</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">,</span><span class="n">n</span><span class="p">),</span><span class="mi">1</span><span class="p">:</span><span class="n">nconditions</span><span class="p">,</span><span class="s1">&#39;uni&#39;</span><span class="p">,</span><span class="mi">0</span><span class="p">)];</span>
+    <span class="k">for</span> <span class="n">ncond</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="k">for</span> <span class="n">nsub</span><span class="o">=</span><span class="mi">1</span><span class="p">:</span><span class="n">NSUBJECTS</span><span class="p">,</span><span class="k">for</span> <span class="n">nses</span><span class="o">=</span><span class="mi">1</span><span class="p">:</span><span class="n">nsessions</span><span class="p">,</span>              <span class="n">batch</span><span class="o">.</span><span class="n">Setup</span><span class="o">.</span><span class="n">conditions</span><span class="o">.</span><span class="n">onsets</span><span class="p">{</span><span class="n">ncond</span><span class="p">}{</span><span class="n">nsub</span><span class="p">}{</span><span class="n">nses</span><span class="p">}</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">batch</span><span class="o">.</span><span class="n">Setup</span><span class="o">.</span><span class="n">conditions</span><span class="o">.</span><span class="n">durations</span><span class="p">{</span><span class="n">ncond</span><span class="p">}{</span><span class="n">nsub</span><span class="p">}{</span><span class="n">nses</span><span class="p">}</span><span class="o">=</span><span class="n">inf</span><span class="p">;</span><span class="n">end</span><span class="p">;</span><span class="n">end</span><span class="p">;</span><span class="n">end</span>     <span class="o">%</span> <span class="n">rest</span> <span class="n">condition</span> <span class="p">(</span><span class="nb">all</span> <span class="n">sessions</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">ncond</span><span class="o">=</span><span class="mi">1</span><span class="p">:</span><span class="n">nconditions</span><span class="p">,</span><span class="k">for</span> <span class="n">nsub</span><span class="o">=</span><span class="mi">1</span><span class="p">:</span><span class="n">NSUBJECTS</span><span class="p">,</span><span class="k">for</span> <span class="n">nses</span><span class="o">=</span><span class="mi">1</span><span class="p">:</span><span class="n">nsessions</span><span class="p">,</span>  <span class="n">batch</span><span class="o">.</span><span class="n">Setup</span><span class="o">.</span><span class="n">conditions</span><span class="o">.</span><span class="n">onsets</span><span class="p">{</span><span class="mi">1</span><span class="o">+</span><span class="n">ncond</span><span class="p">}{</span><span class="n">nsub</span><span class="p">}{</span><span class="n">nses</span><span class="p">}</span><span class="o">=</span><span class="p">[];</span><span class="n">batch</span><span class="o">.</span><span class="n">Setup</span><span class="o">.</span><span class="n">conditions</span><span class="o">.</span><span class="n">durations</span><span class="p">{</span><span class="mi">1</span><span class="o">+</span><span class="n">ncond</span><span class="p">}{</span><span class="n">nsub</span><span class="p">}{</span><span class="n">nses</span><span class="p">}</span><span class="o">=</span><span class="p">[];</span> <span class="n">end</span><span class="p">;</span><span class="n">end</span><span class="p">;</span><span class="n">end</span>
+    <span class="k">for</span> <span class="n">ncond</span><span class="o">=</span><span class="mi">1</span><span class="p">:</span><span class="n">nconditions</span><span class="p">,</span><span class="k">for</span> <span class="n">nsub</span><span class="o">=</span><span class="mi">1</span><span class="p">:</span><span class="n">NSUBJECTS</span><span class="p">,</span><span class="k">for</span> <span class="n">nses</span><span class="o">=</span><span class="n">ncond</span><span class="p">,</span>        <span class="n">batch</span><span class="o">.</span><span class="n">Setup</span><span class="o">.</span><span class="n">conditions</span><span class="o">.</span><span class="n">onsets</span><span class="p">{</span><span class="mi">1</span><span class="o">+</span><span class="n">ncond</span><span class="p">}{</span><span class="n">nsub</span><span class="p">}{</span><span class="n">nses</span><span class="p">}</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">batch</span><span class="o">.</span><span class="n">Setup</span><span class="o">.</span><span class="n">conditions</span><span class="o">.</span><span class="n">durations</span><span class="p">{</span><span class="mi">1</span><span class="o">+</span><span class="n">ncond</span><span class="p">}{</span><span class="n">nsub</span><span class="p">}{</span><span class="n">nses</span><span class="p">}</span><span class="o">=</span><span class="n">inf</span><span class="p">;</span><span class="n">end</span><span class="p">;</span><span class="n">end</span><span class="p">;</span><span class="n">end</span> <span class="o">%</span> <span class="n">session</span><span class="o">-</span><span class="n">specific</span> <span class="n">conditions</span>
+<span class="n">end</span>
+<span class="n">batch</span><span class="o">.</span><span class="n">Setup</span><span class="o">.</span><span class="n">preprocessing</span><span class="o">.</span><span class="n">steps</span><span class="o">=</span><span class="s1">&#39;default_mni&#39;</span><span class="p">;</span>
+<span class="n">batch</span><span class="o">.</span><span class="n">Setup</span><span class="o">.</span><span class="n">preprocessing</span><span class="o">.</span><span class="n">sliceorder</span><span class="o">=</span><span class="s1">&#39;interleaved (Siemens)&#39;</span><span class="p">;</span>
+<span class="n">batch</span><span class="o">.</span><span class="n">Setup</span><span class="o">.</span><span class="n">done</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
+<span class="n">batch</span><span class="o">.</span><span class="n">Setup</span><span class="o">.</span><span class="n">overwrite</span><span class="o">=</span><span class="s1">&#39;Yes&#39;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>If you want, you can also load your custom atlas, discussed more in <a class="reference internal" href="CONN_AppendixC_ImportingROIs.html#conn-appendixc-importingrois"><span class="std std-ref">Appendix C</span></a>. For example, if I have a folder called <code class="docutils literal notranslate"><span class="pre">ROIs</span></code> which contains the atlas <code class="docutils literal notranslate"><span class="pre">AndyROIs.nii</span></code> and the header text file <code class="docutils literal notranslate"><span class="pre">AndyROIs.txt</span></code>, I could add the following code:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">batch</span><span class="o">.</span><span class="n">Setup</span><span class="o">.</span><span class="n">rois</span><span class="o">.</span><span class="n">files</span><span class="p">{</span><span class="mi">1</span><span class="p">}</span><span class="o">=</span><span class="s1">&#39;ROIs/AndyROIs.nii&#39;</span><span class="p">;</span>
+<span class="n">batch</span><span class="o">.</span><span class="n">Setup</span><span class="o">.</span><span class="n">rois</span><span class="o">.</span><span class="n">multiplelabels</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">multiplelabels</span></code> field, set to <code class="docutils literal notranslate"><span class="pre">1</span></code>, indicates that there is a text file in the folder where the ROIs are located. This file provides a label for each ROI in the atlas. Note that this will overwrite the default of files <code class="docutils literal notranslate"><span class="pre">atlas.nii</span></code> and <code class="docutils literal notranslate"><span class="pre">networks.nii</span></code>; if you want to include them in addition to your custom ROIs, you will need to add them in the script; e.g.,</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">batch</span><span class="o">.</span><span class="n">Setup</span><span class="o">.</span><span class="n">rois</span><span class="o">.</span><span class="n">files</span><span class="p">{</span><span class="mi">2</span><span class="p">}</span><span class="o">=</span><span class="s1">&#39;~/conn/rois/atlas.nii&#39;</span><span class="p">;</span>
+<span class="n">batch</span><span class="o">.</span><span class="n">Setup</span><span class="o">.</span><span class="n">rois</span><span class="o">.</span><span class="n">files</span><span class="p">{</span><span class="mi">3</span><span class="p">}</span><span class="o">=</span><span class="s1">&#39;~/conn/rois/networks.nii&#39;</span><span class="p">;</span>
+</pre></div>
+</div>
+</section>
+<section id="the-denoising-field">
+<h3>The Denoising Field<a class="headerlink" href="#the-denoising-field" title="Link to this heading"></a></h3>
+<p>This block of code controls all of the options that are specified in the Denoising tab of the GUI. Here, the code demonstrates how to change the filter to a customized range, such as 0.01 to 0.1 The other parameters, <code class="docutils literal notranslate"><span class="pre">done</span></code> and <code class="docutils literal notranslate"><span class="pre">overwrite</span></code>, will execute the code (<code class="docutils literal notranslate"><span class="pre">done=1</span></code> means run the Denoising step) and overwrite any previous results (<code class="docutils literal notranslate"><span class="pre">overwrite='Yes'</span></code>). You can set <code class="docutils literal notranslate"><span class="pre">overwrite</span></code> to “No” if you want the program to throw an error before it overwrites any previous data.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span> <span class="n">DENOISING</span> <span class="n">step</span>
+<span class="o">%</span> <span class="n">CONN</span> <span class="n">Denoising</span>                                    <span class="o">%</span> <span class="n">Default</span> <span class="n">options</span> <span class="p">(</span><span class="n">uses</span> <span class="n">White</span> <span class="n">Matter</span><span class="o">+</span><span class="n">CSF</span><span class="o">+</span><span class="n">realignment</span><span class="o">+</span><span class="n">scrubbing</span><span class="o">+</span><span class="n">conditions</span> <span class="k">as</span> <span class="n">confound</span> <span class="n">regressors</span><span class="p">);</span> <span class="n">see</span> <span class="n">conn_batch</span> <span class="k">for</span> <span class="n">additional</span> <span class="n">options</span>
+<span class="n">batch</span><span class="o">.</span><span class="n">Denoising</span><span class="o">.</span><span class="n">filter</span><span class="o">=</span><span class="p">[</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">];</span>                 <span class="o">%</span> <span class="n">frequency</span> <span class="nb">filter</span> <span class="p">(</span><span class="n">band</span><span class="o">-</span><span class="k">pass</span> <span class="n">values</span><span class="p">,</span> <span class="ow">in</span> <span class="n">Hz</span><span class="p">)</span>
+<span class="n">batch</span><span class="o">.</span><span class="n">Denoising</span><span class="o">.</span><span class="n">done</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
+<span class="n">batch</span><span class="o">.</span><span class="n">Denoising</span><span class="o">.</span><span class="n">overwrite</span><span class="o">=</span><span class="s1">&#39;Yes&#39;</span><span class="p">;</span>
+</pre></div>
+</div>
+</section>
+<section id="the-analysis-field">
+<h3>The Analysis Field<a class="headerlink" href="#the-analysis-field" title="Link to this heading"></a></h3>
+<p>Similar to the Denoising block of code above, this section will run both the 1st and 2nd-level analyses. If you want to run only one of the analysis types, such as ROI-to-ROI, you can set it with a new field <code class="docutils literal notranslate"><span class="pre">Analysis.type</span></code>. See the CONN batch webpage for more details.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span> <span class="n">FIRST</span><span class="o">-</span><span class="n">LEVEL</span> <span class="n">ANALYSIS</span> <span class="n">step</span>
+<span class="o">%</span> <span class="n">CONN</span> <span class="n">Analysis</span>                                     <span class="o">%</span> <span class="n">Default</span> <span class="n">options</span> <span class="p">(</span><span class="n">uses</span> <span class="nb">all</span> <span class="n">ROIs</span> <span class="ow">in</span> <span class="n">conn</span><span class="o">/</span><span class="n">rois</span><span class="o">/</span> <span class="k">as</span> <span class="n">connectivity</span> <span class="n">sources</span><span class="p">);</span> <span class="n">see</span> <span class="n">conn_batch</span> <span class="k">for</span> <span class="n">additional</span> <span class="n">options</span>
+<span class="n">batch</span><span class="o">.</span><span class="n">Analysis</span><span class="o">.</span><span class="n">done</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
+<span class="n">batch</span><span class="o">.</span><span class="n">Analysis</span><span class="o">.</span><span class="n">overwrite</span><span class="o">=</span><span class="s1">&#39;Yes&#39;</span><span class="p">;</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="running-the-batch">
+<h2>Running the Batch<a class="headerlink" href="#running-the-batch" title="Link to this heading"></a></h2>
+<p>You can run the batch from the Terminal by using the command <code class="docutils literal notranslate"><span class="pre">conn_batch</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conn_batch</span><span class="p">(</span><span class="n">batch</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>All of the steps you specified earlier will be run. The next three lines will open the CONN GUI and automatically load the second-level results. If everything ran without errors, you should see the same results that were generated using the point-and-click method of the GUI:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conn</span>
+<span class="n">conn</span><span class="p">(</span><span class="s1">&#39;load&#39;</span><span class="p">,</span><span class="n">fullfile</span><span class="p">(</span><span class="n">cwd</span><span class="p">,</span><span class="s1">&#39;Arithmetic_Scripted.mat&#39;</span><span class="p">));</span>
+<span class="n">conn</span> <span class="n">gui_results</span>
+</pre></div>
+</div>
+</section>
+<section id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>Within the field <code class="docutils literal notranslate"><span class="pre">CONN_x.Preproc</span></code>, set the sub-field <code class="docutils literal notranslate"><span class="pre">despiking</span></code> to 1. Before you do this, see if you can find where in the GUI this change will take place. Save the structure into a new .mat file, load it, and observe if the change occurs where you think it should.</p></li>
+<li><p>Using the script <code class="docutils literal notranslate"><span class="pre">conn_batch_Template.m</span></code>, change the <code class="docutils literal notranslate"><span class="pre">NSUBJECTS</span></code> value to 1. What happens if you try to run the script? Why? How would you fix it? (Hint: You would have to move all but one subject to a folder that won’t be detected by the conn_dir command run from the current directory.)</p></li>
+<li><p>Edit the <code class="docutils literal notranslate"><span class="pre">batch.Setup.preprocessing.steps</span></code> field, replacing “default_mni” with a cell array that does the following steps: functional_label, functional_realign, functional_center, functional_slicetime, functional_segement&amp;normalize_direct, structural_center, structural_segment&amp;normalize, functional_label. See the <a class="reference external" href="https://web.conn-toolbox.org/resources/conn_batch">CONN batch webpage</a> for details on how to label each step.</p></li>
+</ol>
+</section>
+<section id="video">
+<h2>Video<a class="headerlink" href="#video" title="Link to this heading"></a></h2>
+<p>For a video demonstration of scripting, click <a class="reference external" href="https://www.youtube.com/watch?v=NJmPYLfE7oo">here</a>.</p>
+</section>
+<section id="congratulations">
+<h2>Congratulations!<a class="headerlink" href="#congratulations" title="Link to this heading"></a></h2>
+<p>You now have everything you need to script an analysis in CONN, no matter how big the dataset is. The following chapters are a set of appendices covering other situations that you may come across in the CONN toolbox, such as graph theory, pre-post designs, and how to create your own custom ROIs.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="CONN_11_Task_gPPI.html" class="btn btn-neutral float-left" title="Chapter #11: Task-Related Connectivity and gPPI" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="CONN_AppendixA_GraphTheory.html" class="btn btn-neutral float-right" title="Appendix A: Graph Theory" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Andy Jahn.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

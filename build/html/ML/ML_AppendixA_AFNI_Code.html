@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Appendix A: AFNI Code &mdash; Andy&#39;s Brain Book 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=f2a433a1"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Andy's Brain Book
+          </a>
+              <div class="version">
+                1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Install</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation/fsl_mac_install.html">Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Unix for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../unix/Unix_Intro.html">什么是Unix系统?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unix/Unix_01_Navigation.html">Unix Tutorial #1: 目录操作</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unix/Unix_02_CopyRemove.html">Unix Tutorial #2: Copying and Removing Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unix/Unix_03_ReadingTextFiles.html">Unix Tutorial #3: Reading Text Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unix/Unix_04_ShellsVariables.html">Unix Tutorial #4: Shells and Path Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unix/Unix_05_ForLoops.html">Unix Tutorial #5: For-Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unix/Unix_06_IfElse.html">Unix Tutorial #6: Conditional Statements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unix/Unix_07_Scripting.html">Unix Tutorial #7: Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unix/Unix_08_Sed.html">Unix Tutorial #8: The Sed Command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unix/Unix_09_AutomatingTheAnalysis.html">Unix Tutorial #9: Automating The Analysis</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">fMRI Short Course with FSL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../fMRI_Short_Course/fMRI_Intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fMRI_Short_Course/fMRI_01_DataDownload.html">fMRI Tutorial #1: Downloading the Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fMRI_Short_Course/fMRI_02_ExperimentalDesign.html">fMRI Tutorial #2: Overview of The Flanker Task</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fMRI_Short_Course/fMRI_03_LookingAtTheData.html">fMRI Tutorial #3: Looking at the Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fMRI_Short_Course/fMRI_04_Preprocessing.html">fMRI Tutorial #4: Preprocessing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fMRI_Short_Course/fMRI_05_1stLevelAnalysis.html">fMRI Tutorial #5: Statistics and Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fMRI_Short_Course/fMRI_06_Scripting.html">fMRI Tutorial #6: Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fMRI_Short_Course/fMRI_07_2ndLevelAnalysis.html">fMRI Tutorial #7: 2nd-Level Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fMRI_Short_Course/fMRI_08_3rdLevelAnalysis.html">fMRI Tutorial #8: 3rd-Level Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fMRI_Short_Course/fMRI_09_ROIAnalysis.html">fMRI Tutorial #9: ROI Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fMRI_Short_Course/fMRI_10_Summary.html">fMRI Tutorial #10: Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fMRI_Short_Course/fMRI_Appendices.html">fMRI Short Course: Appendices</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">FreeSurfer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../FreeSurfer/FreeSurfer_Introduction.html">FreeSurfer Short Course</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">E-Prime</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../E-Prime/E-Prime_Overview.html">Overview of E-Prime</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">AFNI</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../AFNI/AFNI_Overview.html">AFNI Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">SPM</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../SPM/SPM_Overview.html">SPM Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Functional Connectivity with the CONN Toolbox</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../FunctionalConnectivity/CONN_Overview.html">Functional Connectivity and the CONN Toolbox</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Parametric Modulation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../PM/PM_Overview.html">Parametric Modulation in SPM, FSL, and AFNI</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Image Visualization with MRIcroGL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../MRIcroGL/MRIcroGL_Overview.html">Image Visualization with MRIcroGL</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Introduction to the Human Connectome Project (HCP)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../HCP/HCP_Overview.html">Introduction to the Human Connectome Project</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Finite Impulse Response (FIR) Models</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../FIR/FIR_Overview.html">Finite Impulse Response (FIR)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">fMRI Concepts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Practicals/DesignOptimization.html">Design Optimization</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Diffusion Analysis with MRtrix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../MRtrix/MRtrix_Introduction.html">Introduction to MRtrix</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ASL Analysis</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../ASL/ASL_Techniques.html">fASL Tutorial #1: Background</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ASL/fASL_02_Download.html">fASL Tutorial #2: Downloading and Installing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ASL/fASL_03_Task.html">fASL Tutorial #3: The N-Back Task</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ASL/04_fASL_GUI.html">fASL Tutorial #4: The GUI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ASL/05_fASL_Results.html">fASL Tutorial #5: Examining the Results</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ASL/06_fASL_Quantification.html">fASL Tutorial #6: Quantification</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Frequently Asked Questions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../FrequentlyAskedQuestions/FrequentlyAskedQuestions.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Statistics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Statistics/GIMME.html">GIMME (Group Iterative Multiple Model Estimation)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Open Science</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../OpenScience/OS_Overview.html">Open Science</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced Normalization Tools (ANTs)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../ANTs/ANTs_Overview.html">Advanced Normalization Tools (ANTs)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tract-Based Spatial Statistics (TBSS)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../TBSS/TBSS_Overview.html">Introduction to Tract-Based Spatial Statistics (TBSS)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Statistics for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Stats/Stats_Overview.html">Statistics for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Machine Learning for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="ML_Overview.html">Machine Learning for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Slicer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Slicer/Slicer_Overview.html">Slicer Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">CAT12</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../CAT12/CAT12_Overview.html">Voxel-Based Morphometry with CAT12</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Using the Supercomputer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Supercomputer/Supercomputer_Overview.html">Introduction to Supercomputing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Matlab for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Matlab/Matlab_Overview.html">Matlab for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ITK-Snap</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../ITK-Snap/ITK-Snap_Overview.html">ITK-Snap_Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Python for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../PythonForNeuroimagers/PythonForNeuroimagers_Overview.html">Python for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Meta-Analysis for fMRI</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../MetaAnalysis/MetaAnalysis_Overview.html">Meta-Analysis for Neuroimagers</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Andy's Brain Book</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Appendix A: AFNI Code</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/ML/ML_AppendixA_AFNI_Code.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="appendix-a-afni-code">
+<span id="ml-appendixa-afni-code"></span><h1>Appendix A: AFNI Code<a class="headerlink" href="#appendix-a-afni-code" title="Link to this heading"></a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The following are sketches for doing an individually modulated analysis in AFNI. (Move this to a different appendix chapter?)</p>
+</div>
+<section id="creating-the-timing-files">
+<h2>Creating the Timing Files<a class="headerlink" href="#creating-the-timing-files" title="Link to this heading"></a></h2>
+<p>Just as with our traditional fMRI analyses, we will need to create timing files that indicate which condition was presented at what time. These are found in the <code class="docutils literal notranslate"><span class="pre">func</span></code> folder for each subject with one timing file per run, with a “.tsv” extension. Within the file <code class="docutils literal notranslate"><span class="pre">sub-1_task_objectviewing_run-01_events.tsv</span></code> for example, we see the following lines:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">onset</span>   <span class="n">duration</span>        <span class="n">trial_type</span>
+<span class="mf">12.000</span>  <span class="mf">0.500</span>   <span class="n">scissors</span>
+<span class="mf">14.000</span>  <span class="mf">0.500</span>   <span class="n">scissors</span>
+<span class="mf">16.000</span>  <span class="mf">0.500</span>   <span class="n">scissors</span>
+<span class="mf">18.000</span>  <span class="mf">0.500</span>   <span class="n">scissors</span>
+<span class="mf">20.000</span>  <span class="mf">0.500</span>   <span class="n">scissors</span>
+<span class="mf">22.000</span>  <span class="mf">0.500</span>   <span class="n">scissors</span>
+<span class="mf">24.000</span>  <span class="mf">0.500</span>   <span class="n">scissors</span>
+<span class="mf">26.000</span>  <span class="mf">0.500</span>   <span class="n">scissors</span>
+<span class="mf">28.000</span>  <span class="mf">0.500</span>   <span class="n">scissors</span>
+<span class="mf">30.000</span>  <span class="mf">0.500</span>   <span class="n">scissors</span>
+<span class="mf">32.000</span>  <span class="mf">0.500</span>   <span class="n">scissors</span>
+<span class="mf">34.000</span>  <span class="mf">0.500</span>   <span class="n">scissors</span>
+<span class="mf">48.000</span>  <span class="mf">0.500</span>   <span class="n">face</span>
+<span class="mf">50.000</span>  <span class="mf">0.500</span>   <span class="n">face</span>
+<span class="mf">52.000</span>  <span class="mf">0.500</span>   <span class="n">face</span>
+<span class="mf">54.000</span>  <span class="mf">0.500</span>   <span class="n">face</span>
+<span class="mf">56.000</span>  <span class="mf">0.500</span>   <span class="n">face</span>
+<span class="mf">58.000</span>  <span class="mf">0.500</span>   <span class="n">face</span>
+<span class="mf">60.000</span>  <span class="mf">0.500</span>   <span class="n">face</span>
+<span class="mf">62.000</span>  <span class="mf">0.500</span>   <span class="n">face</span>
+<span class="mf">64.000</span>  <span class="mf">0.500</span>   <span class="n">face</span>
+<span class="mf">66.000</span>  <span class="mf">0.500</span>   <span class="n">face</span>
+<span class="mf">68.000</span>  <span class="mf">0.500</span>   <span class="n">face</span>
+<span class="mf">70.000</span>  <span class="mf">0.500</span>   <span class="n">face</span>
+</pre></div>
+</div>
+<p>The timings go on to include all of the other conditions, of which there are eight total: Bottles, Cats, Chairs, Faces, Houses, Scissors, Scrambled Pictures (labeled as ScrambledPix), and Shoes. Each condition was presented in a block containing several individual trials of the same stimulus type presented one after another, with each block lasting for 24 seconds. In order to write these timings into a format that AFNI understands, we will use the following code in the <code class="docutils literal notranslate"><span class="pre">func</span></code> directory for subject 1:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
+for cond in bottle cat chair face house scissors scrambledpix shoe; do
+        for i in `seq -w 1 12`; do
+                cat sub-1_task-objectviewing_run-${i}_events.tsv | awk -v i=&quot;$cond&quot; &#39;{if ($3==i) print $1}&#39; | head -1 &gt;&gt; ${cond}.1D
+        done
+done
+</pre></div>
+</div>
+<p>This loops over all of the runs in the experiment (12 total) and all of the conditions, extracting the first timestamp for the condition that is presented and placing it in a corresponding 1D file. For example, the timing file for <code class="docutils literal notranslate"><span class="pre">bottle.1D</span></code> looks like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mf">228.000</span>
+<span class="mf">192.000</span>
+<span class="mf">156.000</span>
+<span class="mf">228.000</span>
+<span class="mf">84.000</span>
+<span class="mf">228.000</span>
+<span class="mf">264.000</span>
+<span class="mf">156.000</span>
+<span class="mf">228.000</span>
+<span class="mf">264.000</span>
+<span class="mf">120.000</span>
+<span class="mf">12.000</span>
+</pre></div>
+</div>
+<p>Later, we will use options in the regression command <code class="docutils literal notranslate"><span class="pre">3dDeconvolve</span></code> to indicate that these are <strong>local times</strong>, one timestamp per run, and that each one lasted for 24 seconds. For now, run the above code to create a 1D timing file for each condition. When it is done, you should see something like this in the folder <code class="docutils literal notranslate"><span class="pre">sub-1/func</span></code>:</p>
+<figure class="align-default">
+<img alt="ML/02_TimingFiles.png" src="ML/02_TimingFiles.png" />
+</figure>
+</section>
+<section id="creating-the-afni-proc-file">
+<h2>Creating the AFNI_proc File<a class="headerlink" href="#creating-the-afni-proc-file" title="Link to this heading"></a></h2>
+<p>Next, we will create a preprocessing file using AFNI’s afni_proc.py command. Note that we include all of the usual preprocessing blocks <em>except</em> blurring, which smooths the data:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/tcsh</span>
+</pre></div>
+</div>
+<p>set subj=sub-1</p>
+<blockquote>
+<div><dl class="simple">
+<dt>afni_proc.py -subj_id $subj -script proc.$subj -scr_overwrite -blocks tshift                                                  </dt><dd><p>align tlrc volreg mask scale regress -copy_anat                                                                  $PWD/{$subj}/anat/{$subj}_T1w.nii.gz                     -dsets                                                                                                                $PWD/{$subj}/func/{$subj}_task-objectviewing_run-<a href="#id1"><span class="problematic" id="id2">*</span></a>_bold.nii.gz -tcat_remove_first_trs 0 -align_opts_aea -giant_move -tlrc_base                                                       MNI_avg152T1+tlrc -volreg_align_to MIN_OUTLIER -volreg_align_e2a                                                      -volreg_tlrc_warp -regress_local_times -regress_stim_types IM -regress_apply_mask -regress_stim_times                                                                 $PWD/{$subj}/func/bottle.1D                          $PWD/{$subj}/func/cat.1D                        $PWD/{$subj}/func/chair.1D                        $PWD/{$subj}/func/face.1D                        $PWD/{$subj}/func/house.1D                        $PWD/{$subj}/func/scissors.1D                        $PWD/{$subj}/func/scrambledpix.1D                        $PWD/{$subj}/func/shoe.1D                        -regress_stim_labels bottle cat chair face house scissors scrambledpix shoe -regress_basis ‘BLOCK(24,1)’                                                -regress_censor_motion 0.3 -regress_motion_per_run -regress_opts_3dD                                                  -local_times -jobs 8 -regress_make_ideal_sum sum_ideal.1D -regress_est_blur_epits                                                  -regress_est_blur_errts -regress_run_clustsim no</p>
+</dd>
+</dl>
+</div></blockquote>
+<p>As we saw in the previous tutorial analyzing the Brown data, we will use the option <code class="docutils literal notranslate"><span class="pre">-regress_stim_types</span> <span class="pre">IM</span></code> to Individually Modulate each condition; that is, estimate a separate beta map for each trial within that condition. These will then be used as training and testing maps for our classifier. Also note that we use the basis function BLOCK to model each condition as a 24-second boxcar regressor.</p>
+<p>Now run this script from the folder <code class="docutils literal notranslate"><span class="pre">Haxby_Data</span></code> which contains all of the individual subject folders. You can either copy and paste the code above directly into the terminal, or place it into a text file, save it as “Haxby_proc.sh”, and type:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tcsh</span> <span class="n">Haxby_proc</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+<p>This in turn will generate a file called “proc.sub-1”. The only edit I would make is on line 148, by adding the <code class="docutils literal notranslate"><span class="pre">-init_xform</span></code> option to the end of the <code class="docutils literal notranslate"><span class="pre">&#64;auto_tlrc</span></code> command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@auto_tlrc</span> <span class="o">-</span><span class="n">base</span> <span class="n">MNI_avg152T1</span><span class="o">+</span><span class="n">tlrc</span> <span class="o">-</span><span class="nb">input</span> <span class="n">sub</span><span class="o">-</span><span class="mi">1</span><span class="n">_T1w_ns</span><span class="o">+</span><span class="n">orig</span> <span class="o">-</span><span class="n">no_ss</span> <span class="o">-</span><span class="n">init_xform</span> <span class="n">AUTO_CENTER</span>
+</pre></div>
+</div>
+<p>Also, change the line <code class="docutils literal notranslate"><span class="pre">-bucket</span></code> to <code class="docutils literal notranslate"><span class="pre">-cbucket</span></code> to output only the coefficients (i.e., beta weights) for each regressor in the model. This will make it easier to write the script for extracting the beta weights.</p>
+<p>Then, run the script by typing:</p>
+<blockquote>
+<div><p>tcsh -xef proc.sub-1</p>
+</div></blockquote>
+<p>After about half an hour, you should see all of the files output into the folder <code class="docutils literal notranslate"><span class="pre">sub-1.results</span></code>. You can do QA checks by navigating into the directory and typing:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">afni_open</span> <span class="o">-</span><span class="n">b</span> <span class="n">sub</span><span class="o">-</span><span class="mf">1.</span><span class="n">results</span><span class="o">/</span><span class="n">QC_sub</span><span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="n">index</span><span class="o">.</span><span class="n">html</span>
+</pre></div>
+</div>
+<p>To check registration, normalization, and any volumes censored due to motion.</p>
+<section id="extracting-the-beta-maps">
+<h3>Extracting the Beta Maps<a class="headerlink" href="#extracting-the-beta-maps" title="Link to this heading"></a></h3>
+<p>To extract the beta maps from the output statistics file, <code class="docutils literal notranslate"><span class="pre">stats.sub-1+tlrc</span></code>, we can use the same for-loop structure that we used for the Brown data:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>for a in $(seq 48 59); do (( b =`expr $a - 47` )); 3dTcat -prefix bottle.$b.nii stats.sub-1+tlrc[${a}]; done
+for a in $(seq 60 71); do (( b =`expr $a - 59` )); 3dTcat -prefix cat.$b.nii stats.sub-1+tlrc[${a}]; done
+for a in $(seq 72 83); do (( b =`expr $a - 71` )); 3dTcat -prefix chair.$b.nii stats.sub-1+tlrc[${a}]; done
+for a in $(seq 84 95); do (( b =`expr $a - 83` )); 3dTcat -prefix face.$b.nii stats.sub-1+tlrc[${a}]; done
+for a in $(seq 96 107); do (( b =`expr $a - 95` )); 3dTcat -prefix house.$b.nii stats.sub-1+tlrc[${a}]; done
+for a in $(seq 108 119); do (( b =`expr $a - 107` )); 3dTcat -prefix scissors.$b.nii stats.sub-1+tlrc[${a}]; done
+for a in $(seq 120 131); do (( b =`expr $a - 119` )); 3dTcat -prefix scrambledpix.$b.nii stats.sub-1+tlrc[${a}]; done
+for a in $(seq 132 143); do (( b =`expr $a - 131` )); 3dTcat -prefix shoe.$b.nii stats.sub-1+tlrc[${a}]; done
+</pre></div>
+</div>
+<p>We will then use the even-numbered beta maps for training data, and the odd-numbered maps for testing:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">3</span><span class="n">dTcat</span> <span class="o">-</span><span class="n">prefix</span> <span class="n">bottle</span><span class="o">.</span><span class="n">train</span><span class="o">.</span><span class="n">nii</span> <span class="n">bottle</span><span class="mf">.1</span><span class="o">.</span><span class="n">nii</span> <span class="n">bottle</span><span class="mf">.3</span><span class="o">.</span><span class="n">nii</span> <span class="n">bottle</span><span class="mf">.5</span><span class="o">.</span><span class="n">nii</span> <span class="n">bottle</span><span class="mf">.7</span><span class="o">.</span><span class="n">nii</span> <span class="n">bottle</span><span class="mf">.9</span><span class="o">.</span><span class="n">nii</span> <span class="n">bottle</span><span class="mf">.11</span><span class="o">.</span><span class="n">nii</span>
+<span class="mi">3</span><span class="n">dTcat</span> <span class="o">-</span><span class="n">prefix</span> <span class="n">cat</span><span class="o">.</span><span class="n">train</span><span class="o">.</span><span class="n">nii</span> <span class="n">cat</span><span class="mf">.1</span><span class="o">.</span><span class="n">nii</span> <span class="n">cat</span><span class="mf">.3</span><span class="o">.</span><span class="n">nii</span> <span class="n">cat</span><span class="mf">.5</span><span class="o">.</span><span class="n">nii</span> <span class="n">cat</span><span class="mf">.7</span><span class="o">.</span><span class="n">nii</span> <span class="n">cat</span><span class="mf">.9</span><span class="o">.</span><span class="n">nii</span> <span class="n">cat</span><span class="mf">.11</span><span class="o">.</span><span class="n">nii</span>
+<span class="mi">3</span><span class="n">dTcat</span> <span class="o">-</span><span class="n">prefix</span> <span class="n">chair</span><span class="o">.</span><span class="n">train</span><span class="o">.</span><span class="n">nii</span> <span class="n">chair</span><span class="mf">.1</span><span class="o">.</span><span class="n">nii</span> <span class="n">chair</span><span class="mf">.3</span><span class="o">.</span><span class="n">nii</span> <span class="n">chair</span><span class="mf">.5</span><span class="o">.</span><span class="n">nii</span> <span class="n">chair</span><span class="mf">.7</span><span class="o">.</span><span class="n">nii</span> <span class="n">chair</span><span class="mf">.9</span><span class="o">.</span><span class="n">nii</span> <span class="n">chair</span><span class="mf">.11</span><span class="o">.</span><span class="n">nii</span>
+<span class="mi">3</span><span class="n">dTcat</span> <span class="o">-</span><span class="n">prefix</span> <span class="n">face</span><span class="o">.</span><span class="n">train</span><span class="o">.</span><span class="n">nii</span> <span class="n">face</span><span class="mf">.1</span><span class="o">.</span><span class="n">nii</span> <span class="n">face</span><span class="mf">.3</span><span class="o">.</span><span class="n">nii</span> <span class="n">face</span><span class="mf">.5</span><span class="o">.</span><span class="n">nii</span> <span class="n">face</span><span class="mf">.7</span><span class="o">.</span><span class="n">nii</span> <span class="n">face</span><span class="mf">.9</span><span class="o">.</span><span class="n">nii</span> <span class="n">face</span><span class="mf">.11</span><span class="o">.</span><span class="n">nii</span>
+<span class="mi">3</span><span class="n">dTcat</span> <span class="o">-</span><span class="n">prefix</span> <span class="n">house</span><span class="o">.</span><span class="n">train</span><span class="o">.</span><span class="n">nii</span> <span class="n">house</span><span class="mf">.1</span><span class="o">.</span><span class="n">nii</span> <span class="n">house</span><span class="mf">.3</span><span class="o">.</span><span class="n">nii</span> <span class="n">house</span><span class="mf">.5</span><span class="o">.</span><span class="n">nii</span> <span class="n">house</span><span class="mf">.7</span><span class="o">.</span><span class="n">nii</span> <span class="n">house</span><span class="mf">.9</span><span class="o">.</span><span class="n">nii</span> <span class="n">house</span><span class="mf">.11</span><span class="o">.</span><span class="n">nii</span>
+<span class="mi">3</span><span class="n">dTcat</span> <span class="o">-</span><span class="n">prefix</span> <span class="n">scissors</span><span class="o">.</span><span class="n">train</span><span class="o">.</span><span class="n">nii</span> <span class="n">scissors</span><span class="mf">.1</span><span class="o">.</span><span class="n">nii</span> <span class="n">scissors</span><span class="mf">.3</span><span class="o">.</span><span class="n">nii</span> <span class="n">scissors</span><span class="mf">.5</span><span class="o">.</span><span class="n">nii</span> <span class="n">scissors</span><span class="mf">.7</span><span class="o">.</span><span class="n">nii</span> <span class="n">scissors</span><span class="mf">.9</span><span class="o">.</span><span class="n">nii</span> <span class="n">scissors</span><span class="mf">.11</span><span class="o">.</span><span class="n">nii</span>
+<span class="mi">3</span><span class="n">dTcat</span> <span class="o">-</span><span class="n">prefix</span> <span class="n">scrambledpix</span><span class="o">.</span><span class="n">train</span><span class="o">.</span><span class="n">nii</span> <span class="n">scrambledpix</span><span class="mf">.1</span><span class="o">.</span><span class="n">nii</span> <span class="n">scrambledpix</span><span class="mf">.3</span><span class="o">.</span><span class="n">nii</span> <span class="n">scrambledpix</span><span class="mf">.5</span><span class="o">.</span><span class="n">nii</span> <span class="n">scrambledpix</span><span class="mf">.7</span><span class="o">.</span><span class="n">nii</span> <span class="n">scrambledpix</span><span class="mf">.9</span><span class="o">.</span><span class="n">nii</span> <span class="n">scrambledpix</span><span class="mf">.11</span><span class="o">.</span><span class="n">nii</span>
+<span class="mi">3</span><span class="n">dTcat</span> <span class="o">-</span><span class="n">prefix</span> <span class="n">shoe</span><span class="o">.</span><span class="n">train</span><span class="o">.</span><span class="n">nii</span> <span class="n">shoe</span><span class="mf">.1</span><span class="o">.</span><span class="n">nii</span> <span class="n">shoe</span><span class="mf">.3</span><span class="o">.</span><span class="n">nii</span> <span class="n">shoe</span><span class="mf">.5</span><span class="o">.</span><span class="n">nii</span> <span class="n">shoe</span><span class="mf">.7</span><span class="o">.</span><span class="n">nii</span> <span class="n">shoe</span><span class="mf">.9</span><span class="o">.</span><span class="n">nii</span> <span class="n">shoe</span><span class="mf">.11</span><span class="o">.</span><span class="n">nii</span>
+
+<span class="mi">3</span><span class="n">dTcat</span> <span class="o">-</span><span class="n">prefix</span> <span class="n">trainBlock</span><span class="o">.</span><span class="n">nii</span> <span class="o">*</span><span class="n">train</span><span class="o">.</span><span class="n">nii</span>
+
+<span class="mi">3</span><span class="n">dTcat</span> <span class="o">-</span><span class="n">prefix</span> <span class="n">bottle</span><span class="o">.</span><span class="n">test</span><span class="o">.</span><span class="n">nii</span> <span class="n">bottle</span><span class="mf">.2</span><span class="o">.</span><span class="n">nii</span> <span class="n">bottle</span><span class="mf">.4</span><span class="o">.</span><span class="n">nii</span> <span class="n">bottle</span><span class="mf">.6</span><span class="o">.</span><span class="n">nii</span> <span class="n">bottle</span><span class="mf">.8</span><span class="o">.</span><span class="n">nii</span> <span class="n">bottle</span><span class="mf">.10</span><span class="o">.</span><span class="n">nii</span> <span class="n">bottle</span><span class="mf">.12</span><span class="o">.</span><span class="n">nii</span>
+<span class="mi">3</span><span class="n">dTcat</span> <span class="o">-</span><span class="n">prefix</span> <span class="n">cat</span><span class="o">.</span><span class="n">test</span><span class="o">.</span><span class="n">nii</span> <span class="n">cat</span><span class="mf">.2</span><span class="o">.</span><span class="n">nii</span> <span class="n">cat</span><span class="mf">.4</span><span class="o">.</span><span class="n">nii</span> <span class="n">cat</span><span class="mf">.6</span><span class="o">.</span><span class="n">nii</span> <span class="n">cat</span><span class="mf">.8</span><span class="o">.</span><span class="n">nii</span> <span class="n">cat</span><span class="mf">.10</span><span class="o">.</span><span class="n">nii</span> <span class="n">cat</span><span class="mf">.12</span><span class="o">.</span><span class="n">nii</span>
+<span class="mi">3</span><span class="n">dTcat</span> <span class="o">-</span><span class="n">prefix</span> <span class="n">chair</span><span class="o">.</span><span class="n">test</span><span class="o">.</span><span class="n">nii</span> <span class="n">chair</span><span class="mf">.2</span><span class="o">.</span><span class="n">nii</span> <span class="n">chair</span><span class="mf">.4</span><span class="o">.</span><span class="n">nii</span> <span class="n">chair</span><span class="mf">.6</span><span class="o">.</span><span class="n">nii</span> <span class="n">chair</span><span class="mf">.8</span><span class="o">.</span><span class="n">nii</span> <span class="n">chair</span><span class="mf">.10</span><span class="o">.</span><span class="n">nii</span> <span class="n">chair</span><span class="mf">.12</span><span class="o">.</span><span class="n">nii</span>
+<span class="mi">3</span><span class="n">dTcat</span> <span class="o">-</span><span class="n">prefix</span> <span class="n">face</span><span class="o">.</span><span class="n">test</span><span class="o">.</span><span class="n">nii</span> <span class="n">face</span><span class="mf">.2</span><span class="o">.</span><span class="n">nii</span> <span class="n">face</span><span class="mf">.4</span><span class="o">.</span><span class="n">nii</span> <span class="n">face</span><span class="mf">.6</span><span class="o">.</span><span class="n">nii</span> <span class="n">face</span><span class="mf">.8</span><span class="o">.</span><span class="n">nii</span> <span class="n">face</span><span class="mf">.10</span><span class="o">.</span><span class="n">nii</span> <span class="n">face</span><span class="mf">.12</span><span class="o">.</span><span class="n">nii</span>
+<span class="mi">3</span><span class="n">dTcat</span> <span class="o">-</span><span class="n">prefix</span> <span class="n">house</span><span class="o">.</span><span class="n">test</span><span class="o">.</span><span class="n">nii</span> <span class="n">house</span><span class="mf">.2</span><span class="o">.</span><span class="n">nii</span> <span class="n">house</span><span class="mf">.4</span><span class="o">.</span><span class="n">nii</span> <span class="n">house</span><span class="mf">.6</span><span class="o">.</span><span class="n">nii</span> <span class="n">house</span><span class="mf">.8</span><span class="o">.</span><span class="n">nii</span> <span class="n">house</span><span class="mf">.10</span><span class="o">.</span><span class="n">nii</span> <span class="n">house</span><span class="mf">.12</span><span class="o">.</span><span class="n">nii</span>
+<span class="mi">3</span><span class="n">dTcat</span> <span class="o">-</span><span class="n">prefix</span> <span class="n">scissors</span><span class="o">.</span><span class="n">test</span><span class="o">.</span><span class="n">nii</span> <span class="n">scissors</span><span class="mf">.2</span><span class="o">.</span><span class="n">nii</span> <span class="n">scissors</span><span class="mf">.4</span><span class="o">.</span><span class="n">nii</span> <span class="n">scissors</span><span class="mf">.6</span><span class="o">.</span><span class="n">nii</span> <span class="n">scissors</span><span class="mf">.8</span><span class="o">.</span><span class="n">nii</span> <span class="n">scissors</span><span class="mf">.10</span><span class="o">.</span><span class="n">nii</span> <span class="n">scissors</span><span class="mf">.12</span><span class="o">.</span><span class="n">nii</span>
+<span class="mi">3</span><span class="n">dTcat</span> <span class="o">-</span><span class="n">prefix</span> <span class="n">scrambledpix</span><span class="o">.</span><span class="n">test</span><span class="o">.</span><span class="n">nii</span> <span class="n">scrambledpix</span><span class="mf">.2</span><span class="o">.</span><span class="n">nii</span> <span class="n">scrambledpix</span><span class="mf">.4</span><span class="o">.</span><span class="n">nii</span> <span class="n">scrambledpix</span><span class="mf">.6</span><span class="o">.</span><span class="n">nii</span> <span class="n">scrambledpix</span><span class="mf">.8</span><span class="o">.</span><span class="n">nii</span> <span class="n">scrambledpix</span><span class="mf">.10</span><span class="o">.</span><span class="n">nii</span> <span class="n">scrambledpix</span><span class="mf">.12</span><span class="o">.</span><span class="n">nii</span>
+<span class="mi">3</span><span class="n">dTcat</span> <span class="o">-</span><span class="n">prefix</span> <span class="n">shoe</span><span class="o">.</span><span class="n">test</span><span class="o">.</span><span class="n">nii</span> <span class="n">shoe</span><span class="mf">.2</span><span class="o">.</span><span class="n">nii</span> <span class="n">shoe</span><span class="mf">.4</span><span class="o">.</span><span class="n">nii</span> <span class="n">shoe</span><span class="mf">.6</span><span class="o">.</span><span class="n">nii</span> <span class="n">shoe</span><span class="mf">.8</span><span class="o">.</span><span class="n">nii</span> <span class="n">shoe</span><span class="mf">.10</span><span class="o">.</span><span class="n">nii</span> <span class="n">shoe</span><span class="mf">.12</span><span class="o">.</span><span class="n">nii</span>
+
+<span class="mi">3</span><span class="n">dTcat</span> <span class="o">-</span><span class="n">prefix</span> <span class="n">testBlock</span><span class="o">.</span><span class="n">nii</span> <span class="o">*</span><span class="n">test</span><span class="o">.</span><span class="n">nii</span>
+</pre></div>
+</div>
+<p>We will also create a file, <code class="docutils literal notranslate"><span class="pre">trainLabels.1D</span></code>, that contains a number indexing which volume in the dataset <code class="docutils literal notranslate"><span class="pre">trainBlock.nii</span></code> belongs to which category. For example, 1’s can represent the “bottle” beta maps, 2’s can represent the “cat” beta maps, and so on. Open a text editor such as TextWrangler or the vi editor, and enter six 1’s, one per row, followed by six 2’s, and so on, up until the number 8:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span>
+<span class="mi">1</span>
+<span class="mi">1</span>
+<span class="mi">1</span>
+<span class="mi">1</span>
+<span class="mi">1</span>
+<span class="mi">2</span>
+<span class="mi">2</span>
+<span class="mi">2</span>
+<span class="mi">2</span>
+<span class="mi">2</span>
+<span class="mi">2</span>
+</pre></div>
+</div>
+<p>etc.</p>
+</section>
+<section id="creating-the-mask">
+<h3>Creating the Mask<a class="headerlink" href="#creating-the-mask" title="Link to this heading"></a></h3>
+<p>In the original Haxby study, the authors created masks (called volumes of interest, or VOIs, in their paper), using the following criteria:</p>
+<blockquote>
+<div><p>Volumes of interest (VOI) were drawn on the high-resolution structural images to identify ventral temporal, lateral temporal, and ventrolateral occipital cortex. The VOI for ventral temporal cortex extended from 70 to 20 mm posterior to the anterior commissure in Talairach brain atlas coordinates (41) and consisted of the lingual, parahippocampal, fusiform, and inferior temporal gyri. The VOI for lateral temporal cortex also extended from 70 to 20 mm posterior to the anterior commissure and consisted of the middle temporal gyrus and both banks of the superior temporal sulcus. The VOI for ventrolateral occipital cortex extended from the occipital pole to 70 mm posterior to the anterior commissure and consisted of the lingual, fusiform, inferior occipital, and middle occipital gyri. Voxels within these VOIs that were significantly object-selective (P , 1026, uncorrected) were used for the analysis of within-category and between-category correlations.</p>
+</div></blockquote>
+<p>These regions were chosen because they usually show a BOLD response to faces and to objects. In particular, the ventral region of the temporal cortex can be parcellated into two functional regions: The Fusiform Face Area (FFA) and the Parahippocampal Place Area (PPA).</p>
+</section>
+<section id="creating-rois-from-freesurfer">
+<h3>Creating ROIs from FreeSurfer<a class="headerlink" href="#creating-rois-from-freesurfer" title="Link to this heading"></a></h3>
+<p>Since normalization can introduce unwanted interpolations into the data, we can run our ROI analyses in native space using the parcellations from FreeSurfer. Once you’ve run recon-all on a subject, convert the annotations to individual label files using <code class="docutils literal notranslate"><span class="pre">mri_annotation2label</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mri_annotation2label</span> <span class="o">--</span><span class="n">subject</span> <span class="n">Dev03</span> <span class="o">--</span><span class="n">hemi</span> <span class="n">lh</span> <span class="o">--</span><span class="n">outdir</span> <span class="n">label</span>
+</pre></div>
+</div>
+<p>This will store all of the labels as ROIs in a directory called <code class="docutils literal notranslate"><span class="pre">label</span></code>. We will then need to register the anatomical image to the subject that was run through recon-all:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tkregister2</span> <span class="o">--</span><span class="n">mov</span> <span class="n">rt1spgr_208sl</span><span class="o">.</span><span class="n">nii</span> <span class="o">--</span><span class="n">noedit</span> <span class="o">--</span><span class="n">s</span> <span class="n">Dev03</span> <span class="o">--</span><span class="n">regheader</span> <span class="o">--</span><span class="n">reg</span> <span class="n">register</span><span class="o">.</span><span class="n">dat</span>
+</pre></div>
+</div>
+<p>We can then pick whichever label we want to convert to volumetric space. For example, if I wanted to convert the left superior temporal gyrus to volumetric space, I would type:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mri_label2vol</span> <span class="o">--</span><span class="n">label</span> <span class="n">label</span><span class="o">/</span><span class="n">lh</span><span class="o">.</span><span class="n">superiortemporal</span><span class="o">.</span><span class="n">label</span> <span class="o">--</span><span class="n">temp</span> <span class="n">rt1spgr_208sl</span><span class="o">.</span><span class="n">nii</span> <span class="o">--</span><span class="n">subject</span> <span class="n">Dev03</span> <span class="o">--</span><span class="n">hemi</span> <span class="n">lh</span> <span class="o">--</span><span class="n">o</span> <span class="n">Dev03_lh_superiorTemporal</span><span class="o">.</span><span class="n">nii</span> <span class="o">--</span><span class="n">proj</span> <span class="n">frac</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mf">.1</span> <span class="o">--</span><span class="n">fillthresh</span> <span class="mf">.3</span> <span class="o">--</span><span class="n">reg</span> <span class="n">register</span><span class="o">.</span><span class="n">dat</span>
+</pre></div>
+</div>
+<p>You can then view the output image “Dev03_lh_superiorTemporal.nii” overlaid on the anatomical image to make sure it is aligned with the structure you intended.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Sometimes the header of the anatomical image will say that it is in normalized space, even if it hasn’t been warped. To correct this, use a command like 3drefit to fix the problem:</p>
+<p>3drefit -space ORIG anatomical.nii</p>
+</div>
+<p>Then run the classification script (ADD HERE)</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Andy Jahn.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

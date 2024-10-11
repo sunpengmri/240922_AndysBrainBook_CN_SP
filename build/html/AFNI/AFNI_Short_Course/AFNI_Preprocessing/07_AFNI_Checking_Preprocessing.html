@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chapter 7: Checking Preprocessing &mdash; Andy&#39;s Brain Book 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b76e3c8a" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=f2a433a1"></script>
+        <script src="../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="AFNI Tutorial #5: Statistics and Modeling" href="../AFNI_05_1stLevelAnalysis.html" />
+    <link rel="prev" title="Chapter 6: Masking and Scaling" href="06_AFNI_Masking_Scaling.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            Andy's Brain Book
+          </a>
+              <div class="version">
+                1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Install</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../installation/fsl_mac_install.html">Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Unix for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../unix/Unix_Intro.html">What is Unix?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../unix/Unix_01_Navigation.html">Unix Tutorial #1: 目录操作 (Directories and Navigation)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../unix/Unix_02_CopyRemove.html">Unix Tutorial #2: Copying and Removing Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../unix/Unix_03_ReadingTextFiles.html">Unix Tutorial #3: Reading Text Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../unix/Unix_04_ShellsVariables.html">Unix Tutorial #4: Shells and Path Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../unix/Unix_05_ForLoops.html">Unix Tutorial #5: For-Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../unix/Unix_06_IfElse.html">Unix Tutorial #6: Conditional Statements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../unix/Unix_07_Scripting.html">Unix Tutorial #7: Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../unix/Unix_08_Sed.html">Unix Tutorial #8: The Sed Command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../unix/Unix_09_AutomatingTheAnalysis.html">Unix Tutorial #9: Automating The Analysis</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">fMRI Short Course with FSL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../fMRI_Short_Course/fMRI_Intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../fMRI_Short_Course/fMRI_01_DataDownload.html">fMRI Tutorial #1: Downloading the Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../fMRI_Short_Course/fMRI_02_ExperimentalDesign.html">fMRI Tutorial #2: Overview of The Flanker Task</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../fMRI_Short_Course/fMRI_03_LookingAtTheData.html">fMRI Tutorial #3: Looking at the Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../fMRI_Short_Course/fMRI_04_Preprocessing.html">fMRI Tutorial #4: Preprocessing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../fMRI_Short_Course/fMRI_05_1stLevelAnalysis.html">fMRI Tutorial #5: Statistics and Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../fMRI_Short_Course/fMRI_06_Scripting.html">fMRI Tutorial #6: Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../fMRI_Short_Course/fMRI_07_2ndLevelAnalysis.html">fMRI Tutorial #7: 2nd-Level Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../fMRI_Short_Course/fMRI_08_3rdLevelAnalysis.html">fMRI Tutorial #8: 3rd-Level Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../fMRI_Short_Course/fMRI_09_ROIAnalysis.html">fMRI Tutorial #9: ROI Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../fMRI_Short_Course/fMRI_10_Summary.html">fMRI Tutorial #10: Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../fMRI_Short_Course/fMRI_Appendices.html">fMRI Short Course: Appendices</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">FreeSurfer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../FreeSurfer/FreeSurfer_Introduction.html">FreeSurfer Short Course</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">E-Prime</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../E-Prime/E-Prime_Overview.html">Overview of E-Prime</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">AFNI</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../AFNI_Overview.html">AFNI Overview</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../AFNI_Overview.html#what-is-afni">What is AFNI?</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../AFNI_fMRI_Intro.html">Introduction to AFNI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../AFNI_01_DataDownload.html">AFNI Tutorial #1: Downloading the Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../AFNI_02_ExperimentalDesign.html">AFNI Tutorial #2: The Flanker Experiment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../AFNI_03_LookingAtTheData.html">AFNI Tutorial #3: Looking at the Data</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../AFNI_04_Preprocessing.html">AFNI Tutorial #4: AFNI Commands and Preprocessing</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="../AFNI_04_Preprocessing.html#overview">Overview</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../AFNI_05_1stLevelAnalysis.html">AFNI Tutorial #5: Statistics and Modeling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../AFNI_06_Scripting.html">AFNI Tutorial #6: Scripting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../AFNI_07_GroupAnalysis.html">AFNI Tutorial #7: Group Analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../AFNI_08_ROIAnalysis.html">AFNI Tutorial #8: ROI Analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../AFNI_09_SurfaceAnalysis.html">AFNI Tutorial #9: Surface-Based Analysis with SUMA</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../AppendixA_ParametricModulation.html">Appendix A: Parametric Modulation in AFNI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../AppendixB_AnimalAnalysis.html">Appendix B: Analyzing Rat Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../AppendixC_HighlightingResults.html">Appendix C: Highlighting Vs. Hiding Results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../AppendixD_EffectSizes.html">Appendix D: Reporting Effect Sizes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">SPM</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../SPM/SPM_Overview.html">SPM Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Functional Connectivity with the CONN Toolbox</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../FunctionalConnectivity/CONN_Overview.html">Functional Connectivity and the CONN Toolbox</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Parametric Modulation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../PM/PM_Overview.html">Parametric Modulation in SPM, FSL, and AFNI</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Image Visualization with MRIcroGL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../MRIcroGL/MRIcroGL_Overview.html">Image Visualization with MRIcroGL</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Introduction to the Human Connectome Project (HCP)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../HCP/HCP_Overview.html">Introduction to the Human Connectome Project</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Finite Impulse Response (FIR) Models</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../FIR/FIR_Overview.html">Finite Impulse Response (FIR)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">fMRI Concepts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../Practicals/DesignOptimization.html">Design Optimization</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Diffusion Analysis with MRtrix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../MRtrix/MRtrix_Introduction.html">Introduction to MRtrix</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ASL Analysis</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../ASL/ASL_Techniques.html">fASL Tutorial #1: Background</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../ASL/fASL_02_Download.html">fASL Tutorial #2: Downloading and Installing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../ASL/fASL_03_Task.html">fASL Tutorial #3: The N-Back Task</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../ASL/04_fASL_GUI.html">fASL Tutorial #4: The GUI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../ASL/05_fASL_Results.html">fASL Tutorial #5: Examining the Results</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../ASL/06_fASL_Quantification.html">fASL Tutorial #6: Quantification</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Frequently Asked Questions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../FrequentlyAskedQuestions/FrequentlyAskedQuestions.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Statistics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../Statistics/GIMME.html">GIMME (Group Iterative Multiple Model Estimation)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Open Science</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../OpenScience/OS_Overview.html">Open Science</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced Normalization Tools (ANTs)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../ANTs/ANTs_Overview.html">Advanced Normalization Tools (ANTs)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tract-Based Spatial Statistics (TBSS)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../TBSS/TBSS_Overview.html">Introduction to Tract-Based Spatial Statistics (TBSS)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Statistics for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../Stats/Stats_Overview.html">Statistics for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Machine Learning for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../ML/ML_Overview.html">Machine Learning for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Slicer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../Slicer/Slicer_Overview.html">Slicer Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">CAT12</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../CAT12/CAT12_Overview.html">Voxel-Based Morphometry with CAT12</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Using the Supercomputer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../Supercomputer/Supercomputer_Overview.html">Introduction to Supercomputing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Matlab for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../Matlab/Matlab_Overview.html">Matlab for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ITK-Snap</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../ITK-Snap/ITK-Snap_Overview.html">ITK-Snap_Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Python for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../PythonForNeuroimagers/PythonForNeuroimagers_Overview.html">Python for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Meta-Analysis for fMRI</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../MetaAnalysis/MetaAnalysis_Overview.html">Meta-Analysis for Neuroimagers</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Andy's Brain Book</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../AFNI_Overview.html">AFNI Overview</a></li>
+          <li class="breadcrumb-item"><a href="../AFNI_04_Preprocessing.html">AFNI Tutorial #4: AFNI Commands and Preprocessing</a></li>
+      <li class="breadcrumb-item active">Chapter 7: Checking Preprocessing</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../_sources/AFNI/AFNI_Short_Course/AFNI_Preprocessing/07_AFNI_Checking_Preprocessing.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="chapter-7-checking-preprocessing">
+<span id="afni-checking-preprocessing"></span><h1>Chapter 7: Checking Preprocessing<a class="headerlink" href="#chapter-7-checking-preprocessing" title="Link to this heading"></a></h1>
+<hr class="docutils" />
+<section id="navigating-to-the-preprocessed-data-directory">
+<h2>Navigating to the Preprocessed Data Directory<a class="headerlink" href="#navigating-to-the-preprocessed-data-directory" title="Link to this heading"></a></h2>
+<p>After the script generated by uber_subject.py has completed, navigate to the directory containing the preprocessed data. By default, AFNI will create a new directory tree in the following format:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">subject_results</span><span class="o">/</span><span class="n">group</span><span class="o">.&lt;</span><span class="n">GroupName</span><span class="o">&gt;/</span><span class="n">subj</span><span class="o">.&lt;</span><span class="n">subjName</span><span class="o">&gt;/&lt;</span><span class="n">subjName</span><span class="o">&gt;.</span><span class="n">results</span>
+</pre></div>
+</div>
+<p>In which GroupName and subjName are assigned in the subject ID and group ID fields of the uber_subject.py GUI. In this case, you would navigate to the results directory by typing:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">subject_results</span><span class="o">/</span><span class="n">group</span><span class="o">.</span><span class="n">Flanker</span><span class="o">/</span><span class="n">subj</span><span class="o">.</span><span class="n">sub_08</span><span class="o">/</span><span class="n">sub_08</span><span class="o">.</span><span class="n">results</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Later on when we discuss <strong>scripting</strong> the analysis, or automating it over all of the subjects in our dataset, we will simplify the directory tree by pruning unnecessary sub-directories.</p>
+</div>
+<p>This directory contains different versions of the images after each step of preprocessing. For example, the files that contain the string <code class="docutils literal notranslate"><span class="pre">pb01</span></code> (i.e., Processing Block 01), and the string <code class="docutils literal notranslate"><span class="pre">tshift</span></code>, means that these images have been slice-time corrected using the 3dTshift command.</p>
+<figure class="align-default" id="id1">
+<img alt="../../../_images/04_07_Preprocessing_Directory.png" src="../../../_images/04_07_Preprocessing_Directory.png" />
+<figcaption>
+<p><span class="caption-text">Example output from uber_subject.py. The files containing the “pb” string are the preprocessed functional images at each preprocessing step, and the files with the “T1w” string are the preprocessed anatomical images. Auxiliary functional images are created to assist with specific preprocessing steps, and auxiliary text files contain information about transformation matrices and movement parameters.</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="viewing-the-processed-functional-images">
+<h2>Viewing the Processed Functional Images<a class="headerlink" href="#viewing-the-processed-functional-images" title="Link to this heading"></a></h2>
+<section id="viewing-the-slice-time-corrected-data">
+<h3>Viewing the Slice-Time Corrected Data<a class="headerlink" href="#viewing-the-slice-time-corrected-data" title="Link to this heading"></a></h3>
+<p>After familiarizing yourself with what is in the preprocessed data directory, type <code class="docutils literal notranslate"><span class="pre">afni</span></code> to open the AFNI GUI. Click the <code class="docutils literal notranslate"><span class="pre">Underlay</span></code> button, and left-click on the fil <code class="docutils literal notranslate"><span class="pre">pb00.sub_08.r01.tcat</span></code>; then, click on the <code class="docutils literal notranslate"><span class="pre">Graph</span></code> button next to any of the Axial, Sagittal, or Coronal views to view the time-series. Since the initial volumes had already been discarded before the data was uploaded to OpenNeuro, all of the time-points are of the same relative intensity. (In fact, there wasn’t any need for the 3dTcat preprocessing step in the first place; but, aside from taking up more computer memory, there is nothing wrong with leaving it in.)</p>
+<p>Similarly, the <code class="docutils literal notranslate"><span class="pre">pb01</span></code> images should be the same as the <code class="docutils literal notranslate"><span class="pre">pb00</span></code> images. If you examine the output text from the preprocessing, you will see a message printed during 3dTshift which states that the datasets are “already aligned in time”, and that the “output dataset is just a copy of the input dataset”. Up to this point, then, these files are essentially identical to the raw functional data. You could re-analyze this data by omitting both the 3dTcat and 3dTshift preprocessing steps, and it would get the same result. For now, however, look at each of these two processing outputs for each run in order to make sure that they do look the same, and that there are no apparent artifacts in them.</p>
+<figure class="align-default">
+<img alt="../../../_images/04_07_3dTshift_3dTcat_Output.png" src="../../../_images/04_07_3dTshift_3dTcat_Output.png" />
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The Underlay menu has two columns: The left column is the file name, and the right column contains header information about the file. “epan” indicates that it is an echo-planar image (i.e., a functional image), whereas “anat” indicates that the file is an anatomical image. (For most purposes, “anat” is synonymous with “abuc”.) Next to the “epan” string, “3D+t:146” indicates that it is a 3-dimensional image, plus a time dimension with 146 volumes, or time-points.</p>
+</div>
+</section>
+<section id="viewing-the-aligned-and-co-registered-data">
+<h3>Viewing the Aligned and Co-Registered Data<a class="headerlink" href="#viewing-the-aligned-and-co-registered-data" title="Link to this heading"></a></h3>
+<p>The next file to look at is the <code class="docutils literal notranslate"><span class="pre">pb02</span></code> “volreg” files, which have been 1) Motion-corrected - that is, each volume in the time-series for each run has been aligned to a reference volume; 2) Co-registered to the anatomical image; and 3) Warped to a standardized space, which in this case was the MNI152 template.</p>
+<p>If you click on the pb02 images, you will notice that the <strong>View</strong> changes. There is a section of the AFNI GUI that contains the strings “Original View”, “AC-PC Aligned”, and “Talairach View”. In this images, the “Talairach View” radio button is highlighted, signalizing that these images have been normalized. When you view this processing block for other subjects, the basic shape and outline of the images will look nearly identical, since they all have been warped to the same template. Again, check the images and the time-course in a few different locations to make sure there are no obvious artifacts.</p>
+<figure class="align-default">
+<img alt="../../../_images/04_07_Volreg_Output.png" src="../../../_images/04_07_Volreg_Output.png" />
+</figure>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>In AFNI, a +tlrc extension (and the “Talairach View”) simply means that the image has been normalized. It does <strong>not</strong> mean that the image is necessarily in Talairach space; for legacy purposes, however (i.e., in order to make sure the code still worked in newer versions), the Talairach label was retained. You can check which space the image has been warped to by using the <code class="docutils literal notranslate"><span class="pre">3dinfo</span></code> command on the image, and finding the “Template Space” field - the three possibilities are “ORIG” (i.e., it hasn’t been warped), “TLRC” (normalized to Talairach space), and “MNI” (normalized to MNI space).</p>
+</div>
+</section>
+<section id="viewing-the-smoothed-data">
+<h3>Viewing the Smoothed Data<a class="headerlink" href="#viewing-the-smoothed-data" title="Link to this heading"></a></h3>
+<p>The following preprocessing step is <strong>smoothing</strong>, which averages the signal of nearby voxels together in order to boost any signal that is there, and to cancel out noise. These images will look more blurry as a function of the size of the smoothing kernel that you apply to the data; in this case, a smoothing kernel of 4mm will blur the data slightly, but not by much. Look at the images to make sure that the blurring looks reasonable, as in the figure below.</p>
+<figure class="align-default">
+<img alt="../../../_images/04_07_Blur_Output.png" src="../../../_images/04_07_Blur_Output.png" />
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Open the “Graph” window and make sure your crosshairs are on the same voxel as you switch from the “volreg” image to the “blur” image. What do you notice about the time-series? Has it changed in any noticeable way? How would you describe the change, and why do you think it has changed the way it has?</p>
+</div>
+</section>
+<section id="viewing-the-scaled-data">
+<h3>Viewing the Scaled Data<a class="headerlink" href="#viewing-the-scaled-data" title="Link to this heading"></a></h3>
+<p>The last preprocessing step generates scaled images, in which each voxel has a mean signal intensity of 100. This allows us to specify any changes relative to the mean as percent signal change; i.e., a value of 101 could be interpreted as a signal change of 1%.</p>
+<p>Due to the greyscale of the images being more uniform in the brain voxels as compared to greater variability in the signal outside of the brain, these images will have less anatomical definition than the previous images. Nevertheless, you should still be able to see the outline of the brain, and the time-series values of the brain voxels should all be close to 100:</p>
+<figure class="align-default">
+<img alt="../../../_images/04_07_Scaling_Output.png" src="../../../_images/04_07_Scaling_Output.png" />
+</figure>
+</section>
+<section id="viewing-the-masks">
+<h3>Viewing the Masks<a class="headerlink" href="#viewing-the-masks" title="Link to this heading"></a></h3>
+<p>Because we are interested only in the voxels covering the brain, we created a mask that we can use to exclude any non-brain voxels. The mask will be binary: 1’s in the voxels that are determined to be within the skull, and 0’s outside of the skull. (More rigorous masks can be created which will also exclude cerebrospinal fluid and even white matter, but we are not considering those here.)</p>
+<p>There are two masks that you can choose between: <code class="docutils literal notranslate"><span class="pre">full_mask</span></code> and <code class="docutils literal notranslate"><span class="pre">mask_group</span></code>. The <code class="docutils literal notranslate"><span class="pre">full_mask</span></code> image is a union of all of the individual functional image masks, which have been determined to belong to the brain based on their signal intensity. Voxels with very low signal intensity are not considered brain voxels. As you can see with the <code class="docutils literal notranslate"><span class="pre">full_mask</span></code> image, this also excludes voxels in the orbitofrontal area, which is notorious for being susceptible to signal dropout:</p>
+<figure class="align-default">
+<img alt="../../../_images/04_07_Full_Mask_Output.png" src="../../../_images/04_07_Full_Mask_Output.png" />
+</figure>
+<p>The other mask, <code class="docutils literal notranslate"><span class="pre">mask_group</span></code>, is a more liberal mask that has been dilated to more closely match the template that you have warped to - in this case, the MNI152 brain:</p>
+<figure class="align-default">
+<img alt="../../../_images/04_07_Mask_Group_Output.png" src="../../../_images/04_07_Mask_Group_Output.png" />
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>What do you notice about the time-series for the mask images? Click both inside the mask and outside. Do these values make sense?</p>
+</div>
+</section>
+<section id="viewing-the-anatomical-images">
+<h3>Viewing the Anatomical Images<a class="headerlink" href="#viewing-the-anatomical-images" title="Link to this heading"></a></h3>
+<p>When viewing the results of the anatomical preprocessing, we will want to make sure that both the skull-stripping looks reasonable and that the images were normalized properly.</p>
+<p>First, open the image <code class="docutils literal notranslate"><span class="pre">anat_w_skull_warped</span></code>. If you have copied the MNI152 image into the <code class="docutils literal notranslate"><span class="pre">aglobal</span></code> directory, load it as an overlay image. (You can also copy it into the current directory by typing from the Terminal: <code class="docutils literal notranslate"><span class="pre">cp</span> <span class="pre">~/abin/MNI_avg152T1+tlrc*</span> <span class="pre">.</span></code>.) You may notice that while the sagittal view looks fine, the axial and coronal views look worse. In particular, it looks as though the image is slightly shifted to the right. Although it is common to have some variability in normalization, and that the anatomical and the template will never match perfectly, this is beyond the margin of error we are willing to extend to normalization.</p>
+<figure class="align-default">
+<img alt="../../../_images/04_07_Normalization_AnatWithSkull.png" src="../../../_images/04_07_Normalization_AnatWithSkull.png" />
+</figure>
+<p>The <code class="docutils literal notranslate"><span class="pre">anat_w_skull_warped</span></code> image, it should be noted, is the result of a warp being applied to the raw anatomical image. The warp itself was computed by normalizing the skull-stripped anatomical to a template. If that normalization was off somehow, it would have propagated to the other images. To check this, load as an underlay the image <code class="docutils literal notranslate"><span class="pre">anat_final</span></code>:</p>
+<figure class="align-default">
+<img alt="../../../_images/04_07_Normalization_AnatFinal.png" src="../../../_images/04_07_Normalization_AnatFinal.png" />
+</figure>
+<p>We have found the source of the error: Part of the brain on the left has been removed during normalization. But how do we fix this?</p>
+<p>When you detect an error in the preprocessed images, you should examine the output of your preprocessing script. If you started the script from the uber_subject.py GUI, the output will be printed to the “Processing Command” window; a copy of the text will also be stored in a file called <code class="docutils literal notranslate"><span class="pre">output.proc.&lt;subjID</span></code>, which is located one directory above the preprocessed data.</p>
+<p>This text will contain both Warnings and Errors. Errors indicate that either a file is missing, or a command was not able to run successfully. Usually the script will exit after an error is encountered. Warnings, on the other hand, point out something that <em>may</em> be a problem. An example of a warning is the “dataset already aligned in time” notification that we received during slice-timing correction.</p>
+<p>Another Warning, related to our current problem, occurred during the normalization step. This can be found slightly after halfway down the output, after the command <code class="docutils literal notranslate"><span class="pre">&#64;auto_tlrc</span></code>:</p>
+<figure class="align-default">
+<img alt="../../../_images/04_07_Normalization_Warning.png" src="../../../_images/04_07_Normalization_Warning.png" />
+</figure>
+<p>Apparently the centers of the anatomical and template images are very far apart. The output says that “if parts of the orignal anatomy gets cropped [sic]” (which is our current problem), “try adding option -init_xform AUTO_CENTER to your &#64;auto_tlrc command.” We can do so by navigating to one directory above the preprocessing directory (<code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">..</span></code>), removing the preprocessing directory (<code class="docutils literal notranslate"><span class="pre">rm</span> <span class="pre">-r</span> <span class="pre">sub_08.results</span></code>), and editing the file <code class="docutils literal notranslate"><span class="pre">proc.sub_08</span></code> to include the string <code class="docutils literal notranslate"><span class="pre">-init_xform</span> <span class="pre">AUTO_CENTER</span></code> after the &#64;auto_tlrc command, which should be line 119 in your proc file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@auto_tlrc</span> <span class="o">-</span><span class="n">base</span> <span class="n">MNI_avg152T1</span><span class="o">+</span><span class="n">tlrc</span> <span class="o">-</span><span class="nb">input</span> <span class="n">sub</span><span class="o">-</span><span class="mi">08</span><span class="n">_T1w_ns</span><span class="o">+</span><span class="n">orig</span> <span class="o">-</span><span class="n">no_ss</span> <span class="o">-</span><span class="n">init_xform</span> <span class="n">AUTO_CENTER</span>
+</pre></div>
+</div>
+<p>Save the file, and rerun it by typing <code class="docutils literal notranslate"><span class="pre">tcsh</span> <span class="pre">proc.sub_08</span></code>. Wait a few minutes for it to finish, and then navigate into the preprocessing directory and load the same set of images as before. You should now see that the problem is fixed:</p>
+<figure class="align-default">
+<img alt="../../../_images/04_07_Normalization_Fixed.png" src="../../../_images/04_07_Normalization_Fixed.png" />
+</figure>
+</section>
+</section>
+<section id="next-steps">
+<h2>Next Steps<a class="headerlink" href="#next-steps" title="Link to this heading"></a></h2>
+<p>Now that we have reviewed the preprocessing, we can move on to creating a <strong>General Linear Model</strong>, which will allow us to determine which conditions lead to greater BOLD signal compared to other conditions - which is the point of the experiment. To see how this is done, click the <code class="docutils literal notranslate"><span class="pre">Next</span></code> button.</p>
+</section>
+<section id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>Rerun the analysis, using a smoothing kernel of 10mm. What part of the preprocessing steps will be affected? Think about what the output will look like before running the script.</p></li>
+<li><p>Overlay the <code class="docutils literal notranslate"><span class="pre">full_mask</span></code> and <code class="docutils literal notranslate"><span class="pre">mask_group</span></code> images on the normalized anatomical image (or overlay them on the template that you warped to, i.e. the MNI152 image). What differences do you notice between the mask? Where is there the most difference in the coverage of the masks? Why?</p></li>
+</ol>
+</section>
+<section id="video">
+<h2>Video<a class="headerlink" href="#video" title="Link to this heading"></a></h2>
+<p>For a video review of how to check your preprocessing, click <a class="reference external" href="https://www.youtube.com/watch?v=r5GF_E03ClU">here</a>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="06_AFNI_Masking_Scaling.html" class="btn btn-neutral float-left" title="Chapter 6: Masking and Scaling" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../AFNI_05_1stLevelAnalysis.html" class="btn btn-neutral float-right" title="AFNI Tutorial #5: Statistics and Modeling" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Andy Jahn.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

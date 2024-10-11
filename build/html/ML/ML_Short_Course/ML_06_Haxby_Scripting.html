@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Machine Learning Tutorial #6: Scripting &mdash; Andy&#39;s Brain Book 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b76e3c8a" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=f2a433a1"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Machine Learning Tutorial #7: Group Analysis" href="ML_07_Haxby_GroupAnalysis.html" />
+    <link rel="prev" title="Machine Learning Tutorial #5: MVPA Analysis with The Decoding Toolbox" href="ML_05_Haxby_MVPA.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Andy's Brain Book
+          </a>
+              <div class="version">
+                1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Install</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../installation/fsl_mac_install.html">Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Unix for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_Intro.html">What is Unix?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_01_Navigation.html">Unix Tutorial #1: 目录操作 (Directories and Navigation)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_02_CopyRemove.html">Unix Tutorial #2: Copying and Removing Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_03_ReadingTextFiles.html">Unix Tutorial #3: Reading Text Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_04_ShellsVariables.html">Unix Tutorial #4: Shells and Path Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_05_ForLoops.html">Unix Tutorial #5: For-Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_06_IfElse.html">Unix Tutorial #6: Conditional Statements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_07_Scripting.html">Unix Tutorial #7: Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_08_Sed.html">Unix Tutorial #8: The Sed Command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_09_AutomatingTheAnalysis.html">Unix Tutorial #9: Automating The Analysis</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">fMRI Short Course with FSL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_Intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_01_DataDownload.html">fMRI Tutorial #1: Downloading the Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_02_ExperimentalDesign.html">fMRI Tutorial #2: Overview of The Flanker Task</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_03_LookingAtTheData.html">fMRI Tutorial #3: Looking at the Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_04_Preprocessing.html">fMRI Tutorial #4: Preprocessing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_05_1stLevelAnalysis.html">fMRI Tutorial #5: Statistics and Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_06_Scripting.html">fMRI Tutorial #6: Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_07_2ndLevelAnalysis.html">fMRI Tutorial #7: 2nd-Level Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_08_3rdLevelAnalysis.html">fMRI Tutorial #8: 3rd-Level Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_09_ROIAnalysis.html">fMRI Tutorial #9: ROI Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_10_Summary.html">fMRI Tutorial #10: Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_Appendices.html">fMRI Short Course: Appendices</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">FreeSurfer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../FreeSurfer/FreeSurfer_Introduction.html">FreeSurfer Short Course</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">E-Prime</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../E-Prime/E-Prime_Overview.html">Overview of E-Prime</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">AFNI</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../AFNI/AFNI_Overview.html">AFNI Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">SPM</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../SPM/SPM_Overview.html">SPM Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Functional Connectivity with the CONN Toolbox</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../FunctionalConnectivity/CONN_Overview.html">Functional Connectivity and the CONN Toolbox</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Parametric Modulation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../PM/PM_Overview.html">Parametric Modulation in SPM, FSL, and AFNI</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Image Visualization with MRIcroGL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../MRIcroGL/MRIcroGL_Overview.html">Image Visualization with MRIcroGL</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Introduction to the Human Connectome Project (HCP)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../HCP/HCP_Overview.html">Introduction to the Human Connectome Project</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Finite Impulse Response (FIR) Models</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../FIR/FIR_Overview.html">Finite Impulse Response (FIR)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">fMRI Concepts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Practicals/DesignOptimization.html">Design Optimization</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Diffusion Analysis with MRtrix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../MRtrix/MRtrix_Introduction.html">Introduction to MRtrix</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ASL Analysis</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/ASL_Techniques.html">fASL Tutorial #1: Background</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/fASL_02_Download.html">fASL Tutorial #2: Downloading and Installing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/fASL_03_Task.html">fASL Tutorial #3: The N-Back Task</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/04_fASL_GUI.html">fASL Tutorial #4: The GUI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/05_fASL_Results.html">fASL Tutorial #5: Examining the Results</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/06_fASL_Quantification.html">fASL Tutorial #6: Quantification</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Frequently Asked Questions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../FrequentlyAskedQuestions/FrequentlyAskedQuestions.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Statistics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Statistics/GIMME.html">GIMME (Group Iterative Multiple Model Estimation)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Open Science</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../OpenScience/OS_Overview.html">Open Science</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced Normalization Tools (ANTs)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ANTs/ANTs_Overview.html">Advanced Normalization Tools (ANTs)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tract-Based Spatial Statistics (TBSS)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../TBSS/TBSS_Overview.html">Introduction to Tract-Based Spatial Statistics (TBSS)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Statistics for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Stats/Stats_Overview.html">Statistics for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Machine Learning for Neuroimagers</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../ML_Overview.html">Machine Learning for Neuroimagers</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../ML_Overview.html#overview">Overview</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="ML_00_Introduction.html">Machine Learning: Introduction to Basic Terms and Concepts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ML_01_Brown_Example.html">Machine Learning Tutorial #1: Basic Example with Support Vector Machines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ML_02_Haxby_Intro_Download.html">Machine Learning Tutorial #2: The Haxby Dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ML_03_Haxby_Preprocessing.html">Machine Learning Tutorial #3: Preprocessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ML_04_Haxby_Timing.html">Machine Learning Tutorial #4: Creating the Timing Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ML_05_Haxby_MVPA.html">Machine Learning Tutorial #5: MVPA Analysis with The Decoding Toolbox</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Machine Learning Tutorial #6: Scripting</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#editing-the-preprocessing-script">Editing the Preprocessing Script</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#editing-the-mvpa-scripts">Editing the MVPA Scripts</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#next-steps">Next Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ML_07_Haxby_GroupAnalysis.html">Machine Learning Tutorial #7: Group Analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ML_08_Haxby_NonParametric.html">Machine Learning Tutorial #8: Non-Parametric Analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ML_09_RSA.html">Machine Learning Tutorial #9: Representational Similarity Analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ML_10_Hyperalignment.html">Machine Learning Tutorial #10: Hyperalignment</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Slicer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Slicer/Slicer_Overview.html">Slicer Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">CAT12</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../CAT12/CAT12_Overview.html">Voxel-Based Morphometry with CAT12</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Using the Supercomputer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Supercomputer/Supercomputer_Overview.html">Introduction to Supercomputing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Matlab for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Matlab/Matlab_Overview.html">Matlab for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ITK-Snap</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ITK-Snap/ITK-Snap_Overview.html">ITK-Snap_Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Python for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../PythonForNeuroimagers/PythonForNeuroimagers_Overview.html">Python for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Meta-Analysis for fMRI</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../MetaAnalysis/MetaAnalysis_Overview.html">Meta-Analysis for Neuroimagers</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Andy's Brain Book</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../ML_Overview.html">Machine Learning for Neuroimagers</a></li>
+      <li class="breadcrumb-item active">Machine Learning Tutorial #6: Scripting</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/ML/ML_Short_Course/ML_06_Haxby_Scripting.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="machine-learning-tutorial-6-scripting">
+<span id="ml-06-haxby-scripting"></span><h1>Machine Learning Tutorial #6: Scripting<a class="headerlink" href="#machine-learning-tutorial-6-scripting" title="Link to this heading"></a></h1>
+<hr class="docutils" />
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading"></a></h2>
+<p>In a <a class="reference internal" href="ML_04_Haxby_Timing.html#ml-04-haxby-timing"><span class="std std-ref">previous chapter</span></a> in this module, you edited a script that was generated through the SPM GUI. We will use that same script and impose a for-loop on it in order to analyze all of the subjects, one after another, without having to do anything in between. This makes it much easier and less tedious to analyze large numbers of subjects, especially when they are all formatted identically with the same number of runs and timing files - the only difference is the subject number, which will be changed on each iteration of the loop.</p>
+</section>
+<section id="editing-the-preprocessing-script">
+<h2>Editing the Preprocessing Script<a class="headerlink" href="#editing-the-preprocessing-script" title="Link to this heading"></a></h2>
+<p>We will first make a copy of the script <code class="docutils literal notranslate"><span class="pre">Haxby_Script_job.m</span></code> by saving it as <code class="docutils literal notranslate"><span class="pre">Haxby_Script_allSubjs.m</span></code> and saving it in the <code class="docutils literal notranslate"><span class="pre">Haxby_Data</span></code> folder. Then add this line of code near the top of the script:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">subjects</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">6</span><span class="p">];</span>
+
+<span class="k">for</span> <span class="n">subject</span><span class="o">=</span><span class="n">subjects</span>
+</pre></div>
+</div>
+<p>and remember to add the string <code class="docutils literal notranslate"><span class="pre">end</span></code> to the very last line of the script to close the for-loop.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Subject 5 has 11 runs instead of the usual 12 runs that all of the other subjects have, so we will save that for another script below.</p>
+</div>
+<p>To make this script work for any subject, we will need to replace any occurrences of <code class="docutils literal notranslate"><span class="pre">sub-1</span></code> with the variable located in <code class="docutils literal notranslate"><span class="pre">subject</span></code>. Open the Find and Replace menu, and replace every instance of <code class="docutils literal notranslate"><span class="pre">pwd</span> <span class="pre">'/sub-1/func/sub-1</span></code> with <code class="docutils literal notranslate"><span class="pre">pwd</span> <span class="pre">'/sub-'</span> <span class="pre">subject</span> <span class="pre">'/func/sub-'</span> <span class="pre">subject</span> <span class="pre">'</span></code>. Also change <code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">pwd</span> <span class="pre">'/SPM_Results_1'</span> <span class="pre">]</span></code> to <code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">pwd</span> <span class="pre">'/SPM_Results_'</span> <span class="pre">subject]</span></code>.</p>
+<p>In the section that loads the onset times, you will need to change each condition from something like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;sub-1/func/bottle.txt&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>to this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">load</span><span class="p">([</span><span class="s1">&#39;sub-&#39;</span> <span class="n">subject</span> <span class="s1">&#39;/func/bottle.txt&#39;</span><span class="p">]);</span>
+</pre></div>
+</div>
+<p>Repeat for all of the other conditions.</p>
+<p>Lastly, near the beginning of the script, just after the for loop is defined, insert the following code:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">subject</span> <span class="o">=</span> <span class="n">num2str</span><span class="p">(</span><span class="n">subject</span><span class="p">);</span>
+<span class="o">%</span> <span class="n">Check</span> <span class="n">whether</span> <span class="n">the</span> <span class="n">files</span> <span class="n">have</span> <span class="n">been</span> <span class="n">unzipped</span><span class="o">.</span> <span class="n">If</span> <span class="ow">not</span><span class="p">,</span> <span class="n">unzip</span> <span class="n">them</span> <span class="n">using</span>
+<span class="o">%</span> <span class="n">gunzip</span>
+
+<span class="k">if</span> <span class="n">exist</span><span class="p">([</span> <span class="n">pwd</span> <span class="n">filesep</span> <span class="s1">&#39;sub-&#39;</span> <span class="n">subject</span> <span class="s1">&#39;/anat/sub-&#39;</span> <span class="n">subject</span> <span class="s1">&#39;_T1w.nii&#39;</span> <span class="p">])</span> <span class="o">==</span> <span class="mi">0</span>
+    <span class="n">display</span><span class="p">(</span><span class="s1">&#39;Anatomical image has not been unzipped; unzipping now&#39;</span><span class="p">)</span>
+    <span class="n">gunzip</span><span class="p">([</span> <span class="n">pwd</span> <span class="n">filesep</span> <span class="s1">&#39;sub-&#39;</span> <span class="n">subject</span> <span class="s1">&#39;/anat/sub-&#39;</span> <span class="n">subject</span> <span class="s1">&#39;_T1w.nii.gz&#39;</span> <span class="p">])</span>
+<span class="k">else</span>
+    <span class="n">display</span><span class="p">(</span><span class="s1">&#39;Anatomical image is already unzipped; doing nothing&#39;</span><span class="p">)</span>
+<span class="n">end</span>
+
+<span class="n">runs</span> <span class="o">=</span> <span class="p">[</span> <span class="mi">01</span> <span class="mi">02</span> <span class="mi">03</span> <span class="mi">04</span> <span class="mi">05</span> <span class="mi">06</span> <span class="mi">07</span> <span class="mi">08</span> <span class="mi">09</span> <span class="mi">10</span> <span class="mi">11</span> <span class="mi">12</span> <span class="p">];</span>
+
+<span class="k">for</span> <span class="n">run</span><span class="o">=</span><span class="n">runs</span>
+
+<span class="n">run</span> <span class="o">=</span> <span class="n">num2str</span><span class="p">(</span><span class="n">run</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">%02d</span><span class="s1">&#39;</span><span class="p">);</span> <span class="o">%</span> <span class="n">Zero</span><span class="o">-</span><span class="n">pads</span> <span class="n">each</span> <span class="n">number</span> <span class="n">so</span> <span class="n">that</span> <span class="n">the</span> <span class="s2">&quot;run&quot;</span> <span class="n">variable</span> <span class="ow">is</span> <span class="mi">2</span> <span class="n">characters</span> <span class="n">long</span>
+
+<span class="k">if</span> <span class="n">exist</span><span class="p">([</span> <span class="n">pwd</span> <span class="n">filesep</span> <span class="s1">&#39;sub-&#39;</span> <span class="n">subject</span> <span class="s1">&#39;/func/sub-&#39;</span> <span class="n">subject</span> <span class="s1">&#39;_task-objectviewing_run-&#39;</span> <span class="n">run</span> <span class="s1">&#39;_bold.nii&#39;</span><span class="p">])</span> <span class="o">==</span> <span class="mi">0</span>
+    <span class="n">display</span><span class="p">([</span> <span class="s1">&#39;Run &#39;</span> <span class="n">run</span> <span class="s1">&#39; has not been unzipped; unzipping now&#39;</span><span class="p">])</span>
+    <span class="n">gunzip</span><span class="p">([</span> <span class="n">pwd</span> <span class="n">filesep</span> <span class="s1">&#39;sub-&#39;</span> <span class="n">subject</span> <span class="s1">&#39;/func/sub-&#39;</span> <span class="n">subject</span> <span class="s1">&#39;_task-objectviewing_run-&#39;</span> <span class="n">run</span> <span class="s1">&#39;_bold.nii.gz&#39;</span> <span class="p">])</span>
+<span class="k">else</span>
+    <span class="n">display</span><span class="p">([</span><span class="s1">&#39;Run &#39;</span> <span class="n">run</span> <span class="s1">&#39; is already unzipped; doing nothing&#39;</span><span class="p">])</span>
+<span class="n">end</span>
+
+<span class="n">end</span>
+</pre></div>
+</div>
+<p>This will check whether the files are zipped, and if so, it will unzip them. This is necessary for them to be loaded into the SPM batch structure.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It might be easier to download a script that has already been edited, and compare it against the script you generated in the previous chapters. Click <a class="reference external" href="https://github.com/andrewjahn/MachineLearning">here</a> and download the file “Haxby_Script_allSubjs.m”. If you place it in the directory <code class="docutils literal notranslate"><span class="pre">Haxby_Data</span></code>, you should be able to run it from the terminal by typing <code class="docutils literal notranslate"><span class="pre">Haxby_Script_allSubjs</span></code> and pressing <code class="docutils literal notranslate"><span class="pre">Enter</span></code>.</p>
+</div>
+<p>When the script has finished running for subjects 2, 3, 4, and 6, the only subject remaining is number 5. Change the <code class="docutils literal notranslate"><span class="pre">subjects</span></code> array from <code class="docutils literal notranslate"><span class="pre">[2</span> <span class="pre">3</span> <span class="pre">4</span> <span class="pre">6]</span></code> to <code class="docutils literal notranslate"><span class="pre">[5]</span></code>, and remove the number <code class="docutils literal notranslate"><span class="pre">12</span></code> from the <code class="docutils literal notranslate"><span class="pre">runs</span></code> array. Then comment out the line <code class="docutils literal notranslate"><span class="pre">{[</span> <span class="pre">pwd</span> <span class="pre">filesep</span> <span class="pre">'sub-'</span> <span class="pre">subject</span> <span class="pre">'/func/sub-'</span> <span class="pre">subject</span> <span class="pre">'_task-objectviewing_run-12_bold.nii']}</span></code>, the line around 64 that begins <code class="docutils literal notranslate"><span class="pre">matlabbatch{2}.spm.spatial.realign.estwrite.data{12}(1)</span> <span class="pre">=</span> <span class="pre">cfg_dep('Named</span> <span class="pre">File</span> <span class="pre">Selector:</span> <span class="pre">Runs(12)</span> <span class="pre">-</span> <span class="pre">Files</span></code>, and any line of code that begins with <code class="docutils literal notranslate"><span class="pre">matlabbatch{4}.spm.stats.fmri_spec.sess(12)</span></code>. Run the script again, saving it as a separate file if you want to.</p>
+</section>
+<section id="editing-the-mvpa-scripts">
+<h2>Editing the MVPA Scripts<a class="headerlink" href="#editing-the-mvpa-scripts" title="Link to this heading"></a></h2>
+<p>The changes to the MVPA scripts are similar to the edits for the preprocessing. At the beginning of the <code class="docutils literal notranslate"><span class="pre">Haxby_MVPA_ROI</span></code> script we will declare our for-loop:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">subjects</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span> <span class="mi">6</span><span class="p">];</span>
+
+<span class="k">for</span> <span class="n">subject</span><span class="o">=</span><span class="n">subjects</span>
+
+<span class="n">subject</span> <span class="o">=</span> <span class="n">num2str</span><span class="p">(</span><span class="n">subject</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>And then change the code for setting the results and beta maps directories:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="n">Set</span> <span class="n">the</span> <span class="n">output</span> <span class="n">directory</span> <span class="n">where</span> <span class="n">data</span> <span class="n">will</span> <span class="n">be</span> <span class="n">saved</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">g</span><span class="o">.</span> <span class="s1">&#39;c:\exp</span><span class="se">\r</span><span class="s1">esults</span><span class="se">\b</span><span class="s1">uttonpress&#39;</span>
+<span class="n">cfg</span><span class="o">.</span><span class="n">results</span><span class="o">.</span><span class="n">dir</span> <span class="o">=</span> <span class="p">[</span><span class="n">pwd</span> <span class="s1">&#39;/SPM_Results_&#39;</span> <span class="n">subject</span><span class="p">];</span>
+
+<span class="o">%</span> <span class="n">Set</span> <span class="n">the</span> <span class="n">filepath</span> <span class="n">where</span> <span class="n">your</span> <span class="n">SPM</span><span class="o">.</span><span class="n">mat</span> <span class="ow">and</span> <span class="nb">all</span> <span class="n">related</span> <span class="n">betas</span> <span class="n">are</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">g</span><span class="o">.</span> <span class="s1">&#39;c:\exp\glm\model_button&#39;</span>
+<span class="n">beta_loc</span> <span class="o">=</span> <span class="p">[</span><span class="n">pwd</span> <span class="s1">&#39;/SPM_Results_&#39;</span> <span class="n">subject</span><span class="p">];</span>
+</pre></div>
+</div>
+<p>Also, add an <code class="docutils literal notranslate"><span class="pre">end</span></code> at the end of the file.</p>
+<p>And run the script from the terminal. As an exercise, when it has finished modify the script again to do a searchlight analysis for all of the subjects, using the methods you learned in the last chapter. A template script can be downloaded <a class="reference external" href="https://github.com/andrewjahn/MachineLearning">here</a>, under the file <code class="docutils literal notranslate"><span class="pre">Haxby_MVPA_ROI_Scripted</span></code>.</p>
+</section>
+<section id="next-steps">
+<h2>Next Steps<a class="headerlink" href="#next-steps" title="Link to this heading"></a></h2>
+<p>The ROI results may be all that you need for your analysis; with an accuracy value per condition for each subject, these can be used as values in a t-test. Keep in mind that they need to be compared to chance, as opposed to a baseline of zero. (This might be why one of the outputs you can select is accuracy minus chance; that removes the need for an additional step of subtracting chance.)</p>
+<p>If you are instead interested in the searchlight whole-brain results, on the other hand, we will need to normalize them to MNI space. To see how to do that, click the <code class="docutils literal notranslate"><span class="pre">Next</span></code> button.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="ML_05_Haxby_MVPA.html" class="btn btn-neutral float-left" title="Machine Learning Tutorial #5: MVPA Analysis with The Decoding Toolbox" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="ML_07_Haxby_GroupAnalysis.html" class="btn btn-neutral float-right" title="Machine Learning Tutorial #7: Group Analysis" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Andy Jahn.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

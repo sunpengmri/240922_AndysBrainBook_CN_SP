@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FreeSurfer Tutorial #14: Control Points and Intensity Normalization &mdash; Andy&#39;s Brain Book 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b76e3c8a" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=f2a433a1"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Appendix A: Local Gyrification Index" href="AppendixA_LGI.html" />
+    <link rel="prev" title="FreeSurfer Tutorial #13: SkullStripping and Pial Surface Errors" href="FS_13_PialSurface.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Andy's Brain Book
+          </a>
+              <div class="version">
+                1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Install</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../installation/fsl_mac_install.html">Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Unix for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_Intro.html">What is Unix?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_01_Navigation.html">Unix Tutorial #1: 目录操作 (Directories and Navigation)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_02_CopyRemove.html">Unix Tutorial #2: Copying and Removing Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_03_ReadingTextFiles.html">Unix Tutorial #3: Reading Text Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_04_ShellsVariables.html">Unix Tutorial #4: Shells and Path Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_05_ForLoops.html">Unix Tutorial #5: For-Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_06_IfElse.html">Unix Tutorial #6: Conditional Statements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_07_Scripting.html">Unix Tutorial #7: Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_08_Sed.html">Unix Tutorial #8: The Sed Command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_09_AutomatingTheAnalysis.html">Unix Tutorial #9: Automating The Analysis</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">fMRI Short Course with FSL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_Intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_01_DataDownload.html">fMRI Tutorial #1: Downloading the Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_02_ExperimentalDesign.html">fMRI Tutorial #2: Overview of The Flanker Task</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_03_LookingAtTheData.html">fMRI Tutorial #3: Looking at the Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_04_Preprocessing.html">fMRI Tutorial #4: Preprocessing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_05_1stLevelAnalysis.html">fMRI Tutorial #5: Statistics and Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_06_Scripting.html">fMRI Tutorial #6: Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_07_2ndLevelAnalysis.html">fMRI Tutorial #7: 2nd-Level Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_08_3rdLevelAnalysis.html">fMRI Tutorial #8: 3rd-Level Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_09_ROIAnalysis.html">fMRI Tutorial #9: ROI Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_10_Summary.html">fMRI Tutorial #10: Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_Appendices.html">fMRI Short Course: Appendices</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">FreeSurfer</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../FreeSurfer_Introduction.html">FreeSurfer Short Course</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../FreeSurfer_Introduction.html#overview">Overview</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="FS_01_BasicTerms.html">FreeSurfer Tutorial #1: Basic Terms</a></li>
+<li class="toctree-l3"><a class="reference internal" href="FS_02_DownloadInstall.html">FreeSurfer Tutorial #2: How to Download and Install</a></li>
+<li class="toctree-l3"><a class="reference internal" href="FS_03_ReconAll.html">FreeSurfer Tutorial #3: Recon-all</a></li>
+<li class="toctree-l3"><a class="reference internal" href="FS_04_ReconAllParallel.html">FreeSurfer Tutorial #4: Running recon-all in Parallel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="FS_05_OpenScienceGrid.html">FreeSurfer Tutorial #5: Using the Open Science Grid</a></li>
+<li class="toctree-l3"><a class="reference internal" href="FS_06_Freeview.html">FreeSurfer Tutorial #6: Freeview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="FS_07_FSGD.html">FreeSurfer Tutorial #7: The FSGD File</a></li>
+<li class="toctree-l3"><a class="reference internal" href="FS_08_GroupAnalysis.html">FreeSurfer Tutorial #8: Group Analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="FS_09_ClusterCorrection.html">FreeSurfer Tutorial #9: Cluster Correction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="FS_10_CorrelationAnalysis.html">FreeSurfer Tutorial #10: Correlation Analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="FS_11_ROIAnalysis.html">FreeSurfer Tutorial #11: Region of Interest Analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="FS_12_FailureModes.html">FreeSurfer Tutorial #12: Introduction to Failure Modes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="FS_13_PialSurface.html">FreeSurfer Tutorial #13: SkullStripping and Pial Surface Errors</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">FreeSurfer Tutorial #14: Control Points and Intensity Normalization</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#identifying-intensity-normalization-errors">Identifying Intensity Normalization Errors</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#setting-the-control-points">Setting the Control Points</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#video">Video</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="AppendixA_LGI.html">Appendix A: Local Gyrification Index</a></li>
+<li class="toctree-l3"><a class="reference internal" href="AppendixB_PETSurfer.html">Appendix B: PETSurfer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="AppendixC_Annotations.html">Appendix C: Annotating Anatomical Images with Freeview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="AppendixD_SegmentingSubfields.html">Appendix D: Segmenting Hippocampal, Amygdala, Brainstem, and Thalamus Subfields</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TRACULA_ShortCourse/TRACULA_01_Intro.html">TRACULA Tutorial #1: Overview</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">E-Prime</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../E-Prime/E-Prime_Overview.html">Overview of E-Prime</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">AFNI</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../AFNI/AFNI_Overview.html">AFNI Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">SPM</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../SPM/SPM_Overview.html">SPM Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Functional Connectivity with the CONN Toolbox</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../FunctionalConnectivity/CONN_Overview.html">Functional Connectivity and the CONN Toolbox</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Parametric Modulation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../PM/PM_Overview.html">Parametric Modulation in SPM, FSL, and AFNI</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Image Visualization with MRIcroGL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../MRIcroGL/MRIcroGL_Overview.html">Image Visualization with MRIcroGL</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Introduction to the Human Connectome Project (HCP)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../HCP/HCP_Overview.html">Introduction to the Human Connectome Project</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Finite Impulse Response (FIR) Models</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../FIR/FIR_Overview.html">Finite Impulse Response (FIR)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">fMRI Concepts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Practicals/DesignOptimization.html">Design Optimization</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Diffusion Analysis with MRtrix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../MRtrix/MRtrix_Introduction.html">Introduction to MRtrix</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ASL Analysis</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/ASL_Techniques.html">fASL Tutorial #1: Background</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/fASL_02_Download.html">fASL Tutorial #2: Downloading and Installing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/fASL_03_Task.html">fASL Tutorial #3: The N-Back Task</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/04_fASL_GUI.html">fASL Tutorial #4: The GUI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/05_fASL_Results.html">fASL Tutorial #5: Examining the Results</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/06_fASL_Quantification.html">fASL Tutorial #6: Quantification</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Frequently Asked Questions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../FrequentlyAskedQuestions/FrequentlyAskedQuestions.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Statistics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Statistics/GIMME.html">GIMME (Group Iterative Multiple Model Estimation)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Open Science</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../OpenScience/OS_Overview.html">Open Science</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced Normalization Tools (ANTs)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ANTs/ANTs_Overview.html">Advanced Normalization Tools (ANTs)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tract-Based Spatial Statistics (TBSS)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../TBSS/TBSS_Overview.html">Introduction to Tract-Based Spatial Statistics (TBSS)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Statistics for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Stats/Stats_Overview.html">Statistics for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Machine Learning for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ML/ML_Overview.html">Machine Learning for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Slicer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Slicer/Slicer_Overview.html">Slicer Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">CAT12</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../CAT12/CAT12_Overview.html">Voxel-Based Morphometry with CAT12</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Using the Supercomputer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Supercomputer/Supercomputer_Overview.html">Introduction to Supercomputing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Matlab for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Matlab/Matlab_Overview.html">Matlab for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ITK-Snap</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ITK-Snap/ITK-Snap_Overview.html">ITK-Snap_Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Python for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../PythonForNeuroimagers/PythonForNeuroimagers_Overview.html">Python for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Meta-Analysis for fMRI</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../MetaAnalysis/MetaAnalysis_Overview.html">Meta-Analysis for Neuroimagers</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Andy's Brain Book</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../FreeSurfer_Introduction.html">FreeSurfer Short Course</a></li>
+      <li class="breadcrumb-item active">FreeSurfer Tutorial #14: Control Points and Intensity Normalization</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/FreeSurfer/FS_ShortCourse/FS_14_ControlPoints.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="freesurfer-tutorial-14-control-points-and-intensity-normalization">
+<span id="fs-14-controlpoints"></span><h1>FreeSurfer Tutorial #14: Control Points and Intensity Normalization<a class="headerlink" href="#freesurfer-tutorial-14-control-points-and-intensity-normalization" title="Link to this heading"></a></h1>
+<hr class="docutils" />
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading"></a></h2>
+<p>During preprocessing, FreeSurfer will perform a step called <strong>intensity normalization</strong>. This refers to a homogenization of the signal intensity of the white and grey matter, in order to better distinguish between the tissue types and make it easier to segment the brain.</p>
+<p>Intensity normalization failures are typically indicated by an inaccurate white matter surface. In that case, we will add <strong>control points</strong> to specify which parts of cortex should be classified as white matter. These control points act like tiny lamps that illuminate their immediate surroundings; by increasing the signal intensity of nearby voxels, they increase the likelihood that the area will be classified as white matter.</p>
+</section>
+<section id="identifying-intensity-normalization-errors">
+<h2>Identifying Intensity Normalization Errors<a class="headerlink" href="#identifying-intensity-normalization-errors" title="Link to this heading"></a></h2>
+<p>Intensity normalization errors usually occur in areas that are susceptible to signal dropout - such as the ventral frontal cortex and ventral areas of the temporal lobe.</p>
+<p>In subject 128, we can see pockets of white matter that are not captured by the reconstructed surfaces:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">freeview</span> <span class="o">-</span><span class="n">v</span> <span class="n">mri</span><span class="o">/</span><span class="n">brainmask</span><span class="o">.</span><span class="n">mgz</span> <span class="n">mri</span><span class="o">/</span><span class="n">T1</span><span class="o">.</span><span class="n">mgz</span> <span class="o">-</span><span class="n">f</span> <span class="n">surf</span><span class="o">/</span><span class="n">lh</span><span class="o">.</span><span class="n">pial</span><span class="p">:</span><span class="n">edgecolor</span><span class="o">=</span><span class="n">red</span> <span class="n">surf</span><span class="o">/</span><span class="n">rh</span><span class="o">.</span><span class="n">pial</span><span class="p">:</span><span class="n">edgecolor</span><span class="o">=</span><span class="n">red</span> \
+<span class="n">surf</span><span class="o">/</span><span class="n">lh</span><span class="o">.</span><span class="n">white</span><span class="p">:</span><span class="n">edgecolor</span><span class="o">=</span><span class="n">yellow</span> <span class="n">surf</span><span class="o">/</span><span class="n">rh</span><span class="o">.</span><span class="n">white</span><span class="p">:</span><span class="n">edgecolor</span><span class="o">=</span><span class="n">yellow</span>
+</pre></div>
+</div>
+<p>In this particular case, parts of the frontal cortex have been removed. This isn’t due to an over-aggressive skull-strip, as you might think; rather, the the subject has been de-identified by having its face removed, which unfortunately has removed areas of the frontal pole as well.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/14_FaceRemoval.png"><img alt="../../_images/14_FaceRemoval.png" src="../../_images/14_FaceRemoval.png" style="width: 502.0px; height: 413.0px;" /></a>
+</figure>
+<p>Nevertheless, we will attempt to improve the surface estimates by setting control points and judge whether it is better or not.</p>
+</section>
+<section id="setting-the-control-points">
+<h2>Setting the Control Points<a class="headerlink" href="#setting-the-control-points" title="Link to this heading"></a></h2>
+<p>Switch to the coronal view and zoom in on the frontal area of the brain. The intensity normalization errors start around slice 121. From the menu, click on <code class="docutils literal notranslate"><span class="pre">File</span> <span class="pre">-&gt;</span> <span class="pre">New</span> <span class="pre">Point</span> <span class="pre">Set</span></code>, and type the name <code class="docutils literal notranslate"><span class="pre">control.dat</span></code>. Select the <code class="docutils literal notranslate"><span class="pre">brainmask.mgz</span></code> file as your template dataset.</p>
+<p>You can add a control point by clicking with the left mouse button on voxels that seem to belong to the white matter, but which aren’t encapsulated by the white matter surface. Be sparing with your placement of control points: do not place them inside the yellow line, and do not place them in voxels that are clearly grey matter. Just two or three are enough to cover a moderate-sized area. Remember that they will extend their influence to nearby voxels as well.</p>
+<figure class="align-default">
+<img alt="../../_images/14_ControlPoints.png" src="../../_images/14_ControlPoints.png" />
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you need to remove a control point, you can either undo it by pressing <code class="docutils literal notranslate"><span class="pre">cmd+z</span></code>, or by holding <code class="docutils literal notranslate"><span class="pre">Shift</span></code> and left-clicking on the control point you want to remove.</p>
+<p>Also, for other considerations of where to set control points, see the <a class="reference external" href="https://surfer.nmr.mgh.harvard.edu/fswiki/FsTutorial/ControlPointsV6.0">FreeSurfer intensity normalization tutorial</a>.</p>
+</div>
+<p>When you are done setting the control points, click on <code class="docutils literal notranslate"><span class="pre">File</span> <span class="pre">-&gt;</span> <span class="pre">Save</span> <span class="pre">Point</span> <span class="pre">Set</span></code>, and save the file as <code class="docutils literal notranslate"><span class="pre">control.dat</span></code> in the subject’s <code class="docutils literal notranslate"><span class="pre">tmp</span></code> directory. Then close freeview and type the following from the subject directory:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">recon</span><span class="o">-</span><span class="nb">all</span> <span class="o">-</span><span class="n">autorecon2</span><span class="o">-</span><span class="n">cp</span> <span class="o">-</span><span class="n">autorecon3</span> <span class="o">-</span><span class="n">subjid</span> <span class="n">sub</span><span class="o">-</span><span class="mi">128</span><span class="n">_ses</span><span class="o">-</span><span class="n">BL_T1w</span>
+</pre></div>
+</div>
+</section>
+<section id="video">
+<h2>Video<a class="headerlink" href="#video" title="Link to this heading"></a></h2>
+<p>For a video overview of how to set control points, click <a class="reference external" href="https://www.youtube.com/watch?v=TY2G8cHHzRE&amp;list=PLIQIswOrUH6_DWy5mJlSfj6AWY0y9iUce&amp;index=13">here</a>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="FS_13_PialSurface.html" class="btn btn-neutral float-left" title="FreeSurfer Tutorial #13: SkullStripping and Pial Surface Errors" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="AppendixA_LGI.html" class="btn btn-neutral float-right" title="Appendix A: Local Gyrification Index" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Andy Jahn.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

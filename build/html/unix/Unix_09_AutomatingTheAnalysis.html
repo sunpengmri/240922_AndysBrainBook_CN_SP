@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Unix Tutorial #9: Automating The Analysis &mdash; Andy&#39;s Brain Book 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=f2a433a1"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Introduction" href="../fMRI_Short_Course/fMRI_Intro.html" />
+    <link rel="prev" title="Unix Tutorial #8: The Sed Command" href="Unix_08_Sed.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Andy's Brain Book
+          </a>
+              <div class="version">
+                1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Install</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation/fsl_mac_install.html">Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Unix for Neuroimagers</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Unix_Intro.html">What is Unix?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unix_01_Navigation.html">Unix Tutorial #1: 目录操作 (Directories and Navigation)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unix_02_CopyRemove.html">Unix Tutorial #2: Copying and Removing Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unix_03_ReadingTextFiles.html">Unix Tutorial #3: Reading Text Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unix_04_ShellsVariables.html">Unix Tutorial #4: Shells and Path Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unix_05_ForLoops.html">Unix Tutorial #5: For-Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unix_06_IfElse.html">Unix Tutorial #6: Conditional Statements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unix_07_Scripting.html">Unix Tutorial #7: Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unix_08_Sed.html">Unix Tutorial #8: The Sed Command</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Unix Tutorial #9: Automating The Analysis</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#running-the-script">Running the Script</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#analyzing-the-script">Analyzing the Script</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#initializing-the-for-loop">Initializing the for-loop</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#conditionals-to-check-for-the-skull-stripped-anatomical">Conditionals to check for the skull-stripped anatomical</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#editing-and-running-the-template-file">Editing and running the template file</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#summary">Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#video">Video</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">fMRI Short Course with FSL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../fMRI_Short_Course/fMRI_Intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fMRI_Short_Course/fMRI_01_DataDownload.html">fMRI Tutorial #1: Downloading the Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fMRI_Short_Course/fMRI_02_ExperimentalDesign.html">fMRI Tutorial #2: Overview of The Flanker Task</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fMRI_Short_Course/fMRI_03_LookingAtTheData.html">fMRI Tutorial #3: Looking at the Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fMRI_Short_Course/fMRI_04_Preprocessing.html">fMRI Tutorial #4: Preprocessing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fMRI_Short_Course/fMRI_05_1stLevelAnalysis.html">fMRI Tutorial #5: Statistics and Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fMRI_Short_Course/fMRI_06_Scripting.html">fMRI Tutorial #6: Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fMRI_Short_Course/fMRI_07_2ndLevelAnalysis.html">fMRI Tutorial #7: 2nd-Level Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fMRI_Short_Course/fMRI_08_3rdLevelAnalysis.html">fMRI Tutorial #8: 3rd-Level Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fMRI_Short_Course/fMRI_09_ROIAnalysis.html">fMRI Tutorial #9: ROI Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fMRI_Short_Course/fMRI_10_Summary.html">fMRI Tutorial #10: Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fMRI_Short_Course/fMRI_Appendices.html">fMRI Short Course: Appendices</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">FreeSurfer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../FreeSurfer/FreeSurfer_Introduction.html">FreeSurfer Short Course</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">E-Prime</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../E-Prime/E-Prime_Overview.html">Overview of E-Prime</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">AFNI</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../AFNI/AFNI_Overview.html">AFNI Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">SPM</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../SPM/SPM_Overview.html">SPM Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Functional Connectivity with the CONN Toolbox</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../FunctionalConnectivity/CONN_Overview.html">Functional Connectivity and the CONN Toolbox</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Parametric Modulation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../PM/PM_Overview.html">Parametric Modulation in SPM, FSL, and AFNI</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Image Visualization with MRIcroGL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../MRIcroGL/MRIcroGL_Overview.html">Image Visualization with MRIcroGL</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Introduction to the Human Connectome Project (HCP)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../HCP/HCP_Overview.html">Introduction to the Human Connectome Project</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Finite Impulse Response (FIR) Models</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../FIR/FIR_Overview.html">Finite Impulse Response (FIR)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">fMRI Concepts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Practicals/DesignOptimization.html">Design Optimization</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Diffusion Analysis with MRtrix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../MRtrix/MRtrix_Introduction.html">Introduction to MRtrix</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ASL Analysis</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../ASL/ASL_Techniques.html">fASL Tutorial #1: Background</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ASL/fASL_02_Download.html">fASL Tutorial #2: Downloading and Installing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ASL/fASL_03_Task.html">fASL Tutorial #3: The N-Back Task</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ASL/04_fASL_GUI.html">fASL Tutorial #4: The GUI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ASL/05_fASL_Results.html">fASL Tutorial #5: Examining the Results</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ASL/06_fASL_Quantification.html">fASL Tutorial #6: Quantification</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Frequently Asked Questions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../FrequentlyAskedQuestions/FrequentlyAskedQuestions.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Statistics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Statistics/GIMME.html">GIMME (Group Iterative Multiple Model Estimation)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Open Science</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../OpenScience/OS_Overview.html">Open Science</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced Normalization Tools (ANTs)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../ANTs/ANTs_Overview.html">Advanced Normalization Tools (ANTs)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tract-Based Spatial Statistics (TBSS)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../TBSS/TBSS_Overview.html">Introduction to Tract-Based Spatial Statistics (TBSS)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Statistics for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Stats/Stats_Overview.html">Statistics for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Machine Learning for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../ML/ML_Overview.html">Machine Learning for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Slicer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Slicer/Slicer_Overview.html">Slicer Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">CAT12</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../CAT12/CAT12_Overview.html">Voxel-Based Morphometry with CAT12</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Using the Supercomputer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Supercomputer/Supercomputer_Overview.html">Introduction to Supercomputing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Matlab for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Matlab/Matlab_Overview.html">Matlab for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ITK-Snap</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../ITK-Snap/ITK-Snap_Overview.html">ITK-Snap_Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Python for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../PythonForNeuroimagers/PythonForNeuroimagers_Overview.html">Python for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Meta-Analysis for fMRI</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../MetaAnalysis/MetaAnalysis_Overview.html">Meta-Analysis for Neuroimagers</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Andy's Brain Book</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Unix Tutorial #9: Automating The Analysis</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/unix/Unix_09_AutomatingTheAnalysis.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="unix-tutorial-9-automating-the-analysis">
+<span id="unix-09-automatingtheanalysis"></span><h1>Unix Tutorial #9: Automating The Analysis<a class="headerlink" href="#unix-tutorial-9-automating-the-analysis" title="Link to this heading"></a></h1>
+<hr class="docutils" />
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading"></a></h2>
+<p>As we begin this tutorial, we have fully merged with the associated <a class="reference internal" href="../fMRI_Short_Course/fMRI_01_DataDownload.html#fmri-01-datadownload"><span class="std std-ref">fMRI course</span></a>. Most of the text here is borrowed from the fMRI chapter on <a class="reference internal" href="../fMRI_Short_Course/fMRI_06_Scripting.html#fmri-06-scripting"><span class="std std-ref">scripting</span></a>, which uses all of the commands we have learned. The following section will show you how to integrate conditionals, for-loops, and sed in order to integrate separate lines of code into a useful script.</p>
+</section>
+<section id="running-the-script">
+<h2>Running the Script<a class="headerlink" href="#running-the-script" title="Link to this heading"></a></h2>
+<p>The code below is designed to edit and run a file that analyzes each subject in the Flanker dataset. Once you have <a class="reference external" href="https://andysbrainbook.readthedocs.io/en/latest/fMRI_Short_Course/fMRI_06_Scripting.html#creating-the-template">created the template</a>, move the design_run1.fsf and design_run2.fsf files to the directory containing your subjects (i.e., <code class="docutils literal notranslate"><span class="pre">mv</span> <span class="pre">design*.fsf</span> <span class="pre">..</span></code>, and then <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">..</span></code>). Then download the script <a class="reference external" href="https://github.com/andrewjahn/FSL_Scripts/blob/master/run_1stLevel_Analysis.sh">run_1stLevel_Analysis.sh</a> and move it to the Flanker directory. The script is reprinted here:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
+
+# Generate the subject list to make modifying this script
+# to run just a subset of subjects easier.
+
+for id in `seq -w 1 26` ; do
+    subj=&quot;sub-$id&quot;
+    echo &quot;===&gt; Starting processing of $subj&quot;
+    echo
+    cd $subj
+
+        # If the brain mask doesn’t exist, create it
+        if [ ! -f anat/${subj}_T1w_brain_f02.nii.gz ]; then
+            bet2 anat/${subj}_T1w.nii.gz \
+                echo &quot;Skull-stripped brain not found, using bet with a fractional intensity threshold of 0.2&quot; \
+                anat/${subj}_T1w_brain_f02.nii.gz -f 0.2 #Note: This fractional intensity appears to work well for most of the subjects in the Flanker dataset. You may want to change it if you modify this script for your own study.
+        fi
+
+        # Copy the design files into the subject directory, and then
+        # change “sub-08” to the current subject number
+        cp ../design_run1.fsf .
+        cp ../design_run2.fsf .
+
+        # Note that we are using the | character to delimit the patterns
+        # instead of the usual / character because there are / characters
+        # in the pattern.
+        sed -i &#39;&#39; &quot;s|sub-08|${subj}|g&quot; \
+            design_run1.fsf
+        sed -i &#39;&#39; &quot;s|sub-08|${subj}|g&quot; \
+            design_run2.fsf
+
+        # Now everything is set up to run feat
+        echo &quot;===&gt; Starting feat for run 1&quot;
+        feat design_run1.fsf
+        echo &quot;===&gt; Starting feat for run 2&quot;
+        feat design_run2.fsf
+                echo
+
+    # Go back to the directory containing all of the subjects, and repeat the loop
+    cd ..
+done
+
+echo
+</pre></div>
+</div>
+</section>
+<section id="analyzing-the-script">
+<h2>Analyzing the Script<a class="headerlink" href="#analyzing-the-script" title="Link to this heading"></a></h2>
+<p>Let’s walk through each part of this script and describe what it does.</p>
+<section id="initializing-the-for-loop">
+<h3>Initializing the for-loop<a class="headerlink" href="#initializing-the-for-loop" title="Link to this heading"></a></h3>
+<p>It begins with a shebang and some comments describing what exactly the script does; and then backticks are used to expand <code class="docutils literal notranslate"><span class="pre">seq</span> <span class="pre">-w</span> <span class="pre">1</span> <span class="pre">26</span></code> in order to create a loop that will run the body of the code over all of the subjects. This will expand to <code class="docutils literal notranslate"><span class="pre">01,</span> <span class="pre">02,</span> <span class="pre">03</span> <span class="pre">...</span> <span class="pre">26</span></code> and update the number that is assigned to the variable <code class="docutils literal notranslate"><span class="pre">id</span></code> on each iteration of the loop.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
+
+# Generate the subject list to make modifying this script
+# to run just a subset of subjects easier.
+
+for id in `seq -w 1 26` ; do
+    subj=&quot;sub-$id&quot;
+    echo &quot;===&gt; Starting processing of $subj&quot;
+    echo
+    cd $subj
+</pre></div>
+</div>
+<p>For example, the first loop of this code will assign the string <code class="docutils literal notranslate"><span class="pre">sub-01</span></code> to the variable <code class="docutils literal notranslate"><span class="pre">subj</span></code>, then echo “===&gt; Starting processing of sub-01”. It will then navigate into the <code class="docutils literal notranslate"><span class="pre">sub-01</span></code> directory.</p>
+</section>
+<section id="conditionals-to-check-for-the-skull-stripped-anatomical">
+<h3>Conditionals to check for the skull-stripped anatomical<a class="headerlink" href="#conditionals-to-check-for-the-skull-stripped-anatomical" title="Link to this heading"></a></h3>
+<p>The script then uses a conditional to check whether the skull-stripped anatomical exists, and if it doesn’t, the skull-stripped image is generated.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># If the brain mask doesn’t exist, create it
+if [ ! -f anat/${subj}_T1w_brain_f02.nii.gz ]; then
+    bet2 anat/${subj}_T1w.nii.gz \
+        echo &quot;Skull-stripped brain not found, using bet with a fractional intensity threshold of 0.2&quot; \
+        anat/${subj}_T1w_brain_f02.nii.gz -f 0.2 #Note: This fractional intensity appears to work well for most of the subjects in the Flanker dataset. You may want to change it if you modify this script for your own study.
+fi
+</pre></div>
+</div>
+</section>
+<section id="editing-and-running-the-template-file">
+<h3>Editing and running the template file<a class="headerlink" href="#editing-and-running-the-template-file" title="Link to this heading"></a></h3>
+<p>Then the template design*.fsf file is edited to replace the string <code class="docutils literal notranslate"><span class="pre">sub-08</span></code> with the current subject’s name. The <a href="#id1"><span class="problematic" id="id2">*</span></a>.fsf files are run with the command <code class="docutils literal notranslate"><span class="pre">feat</span></code>, which is like running the FEAT GUI from the command line. Echo commands are used throughout the script to let the user know when a new step is being run.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Copy the design files into the subject directory, and then</span>
+<span class="c1"># change “sub-08” to the current subject number</span>
+<span class="n">cp</span> <span class="o">../</span><span class="n">design_run1</span><span class="o">.</span><span class="n">fsf</span> <span class="o">.</span>
+<span class="n">cp</span> <span class="o">../</span><span class="n">design_run2</span><span class="o">.</span><span class="n">fsf</span> <span class="o">.</span>
+
+<span class="c1"># Note that we are using the | character to delimit the patterns</span>
+<span class="c1"># instead of the usual / character because there are / characters</span>
+<span class="c1"># in the pattern.</span>
+<span class="n">sed</span> <span class="o">-</span><span class="n">i</span> <span class="s1">&#39;&#39;</span> <span class="s2">&quot;s|sub-08|$</span><span class="si">{subj}</span><span class="s2">|g&quot;</span> \
+    <span class="n">design_run1</span><span class="o">.</span><span class="n">fsf</span>
+<span class="n">sed</span> <span class="o">-</span><span class="n">i</span> <span class="s1">&#39;&#39;</span> <span class="s2">&quot;s|sub-08|$</span><span class="si">{subj}</span><span class="s2">|g&quot;</span> \
+    <span class="n">design_run2</span><span class="o">.</span><span class="n">fsf</span>
+</pre></div>
+</div>
+<p>The design.fsf files, which are located in the main Flanker directory, are copied into the current subject’s directory. Sed then replaces the string <code class="docutils literal notranslate"><span class="pre">sub-08</span></code> with the current value of <code class="docutils literal notranslate"><span class="pre">subj</span></code> that has been assigned in the loop. The last part of the code runs the .fsf files with the <code class="docutils literal notranslate"><span class="pre">feat</span></code> command, and prints to the Terminal which run is being analyzed.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Now everything is set up to run feat</span>
+<span class="n">echo</span> <span class="s2">&quot;===&gt; Starting feat for run 1&quot;</span>
+<span class="n">feat</span> <span class="n">design_run1</span><span class="o">.</span><span class="n">fsf</span>
+<span class="n">echo</span> <span class="s2">&quot;===&gt; Starting feat for run 2&quot;</span>
+<span class="n">feat</span> <span class="n">design_run2</span><span class="o">.</span><span class="n">fsf</span>
+        <span class="n">echo</span>
+</pre></div>
+</div>
+<p>You can run the script by simply typing <code class="docutils literal notranslate"><span class="pre">bash</span> <span class="pre">run_1stLevel_Analysis.sh</span></code>. The echo commands will print text to the Terminal when a new step is run, and HTML pages will track the progress of the preprocessing and statistics.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Link to this heading"></a></h2>
+<p>At this point you have learned all the necessary Unix commands and concepts to run an fMRI analysis script. If this is your first time using Unix, this may seem complicated; but with practice, you will be able to see why the script is composed the way it is, and how in relatively few lines is able to represent what can take dozens of hours of human labor.</p>
+<p>By investing the time to learn Unix now, you will be able to make your analyses quicker, more efficient, and less prone to error. You will also, I hope, have become more confident in taking the first steps toward applying your new skills to writing analysis script of your own.</p>
+</section>
+<hr class="docutils" />
+<section id="video">
+<h2>Video<a class="headerlink" href="#video" title="Link to this heading"></a></h2>
+<p>For a screencast demonstration of how to download and run the script above, click <a class="reference external" href="https://www.youtube.com/watch?v=oXSHbRlogaA">here</a>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Unix_08_Sed.html" class="btn btn-neutral float-left" title="Unix Tutorial #8: The Sed Command" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../fMRI_Short_Course/fMRI_Intro.html" class="btn btn-neutral float-right" title="Introduction" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Andy Jahn.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

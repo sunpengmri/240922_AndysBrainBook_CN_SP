@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chapter #6: Quality Assurance Checks &mdash; Andy&#39;s Brain Book 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b76e3c8a" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=f2a433a1"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Chapter #7: Denoising" href="CONN_07_Denoising.html" />
+    <link rel="prev" title="Chapter #5: Preprocessing" href="CONN_05_Preprocessing.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Andy's Brain Book
+          </a>
+              <div class="version">
+                1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Install</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../installation/fsl_mac_install.html">Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Unix for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_Intro.html">What is Unix?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_01_Navigation.html">Unix Tutorial #1: 目录操作 (Directories and Navigation)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_02_CopyRemove.html">Unix Tutorial #2: Copying and Removing Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_03_ReadingTextFiles.html">Unix Tutorial #3: Reading Text Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_04_ShellsVariables.html">Unix Tutorial #4: Shells and Path Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_05_ForLoops.html">Unix Tutorial #5: For-Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_06_IfElse.html">Unix Tutorial #6: Conditional Statements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_07_Scripting.html">Unix Tutorial #7: Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_08_Sed.html">Unix Tutorial #8: The Sed Command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_09_AutomatingTheAnalysis.html">Unix Tutorial #9: Automating The Analysis</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">fMRI Short Course with FSL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_Intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_01_DataDownload.html">fMRI Tutorial #1: Downloading the Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_02_ExperimentalDesign.html">fMRI Tutorial #2: Overview of The Flanker Task</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_03_LookingAtTheData.html">fMRI Tutorial #3: Looking at the Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_04_Preprocessing.html">fMRI Tutorial #4: Preprocessing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_05_1stLevelAnalysis.html">fMRI Tutorial #5: Statistics and Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_06_Scripting.html">fMRI Tutorial #6: Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_07_2ndLevelAnalysis.html">fMRI Tutorial #7: 2nd-Level Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_08_3rdLevelAnalysis.html">fMRI Tutorial #8: 3rd-Level Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_09_ROIAnalysis.html">fMRI Tutorial #9: ROI Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_10_Summary.html">fMRI Tutorial #10: Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_Appendices.html">fMRI Short Course: Appendices</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">FreeSurfer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../FreeSurfer/FreeSurfer_Introduction.html">FreeSurfer Short Course</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">E-Prime</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../E-Prime/E-Prime_Overview.html">Overview of E-Prime</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">AFNI</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../AFNI/AFNI_Overview.html">AFNI Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">SPM</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../SPM/SPM_Overview.html">SPM Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Functional Connectivity with the CONN Toolbox</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../CONN_Overview.html">Functional Connectivity and the CONN Toolbox</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../CONN_Overview.html#overview">Overview</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../CONN_Overview.html#recommended-tutorials">Recommended Tutorials</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="CONN_00_History.html">History of Functional Connectivity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CONN_01_FSL_Demo.html">Chapter #1: Functional Connectivity Demonstration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CONN_02_DataDownload.html">Chapter #2: Downloading the Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CONN_03_LookingAtData.html">Chapter #3: Downloading the CONN Toolbox</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CONN_04_GUI_Overview.html">Chapter #4: The CONN GUI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CONN_05_Preprocessing.html">Chapter #5: Preprocessing</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Chapter #6: Quality Assurance Checks</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#revisiting-the-structural-and-functional-tabs">Revisiting the Structural and Functional Tabs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#the-rois-tab">The ROIs Tab</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#covariates-1st-level">Covariates (1st-level)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#generating-qa-plots">Generating QA Plots</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#exercises">Exercises</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#video">Video</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#next-steps">Next Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="CONN_07_Denoising.html">Chapter #7: Denoising</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CONN_08_1stLevel_Analysis.html">Chapter #8: 1st-Level Analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CONN_09_2ndLevel_Analysis.html">Chapter #9: Group-level analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CONN_10_Viewing_Results.html">Chapter #10: Viewing the Results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CONN_11_Task_gPPI.html">Chapter #11: Task-Related Connectivity and gPPI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CONN_12_Scripting.html">Chapter #12: Scripting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CONN_AppendixA_GraphTheory.html">Appendix A: Graph Theory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CONN_AppendixB_OtherSecondLevelDesigns.html">Appendix B: Other Second-Level Analyses</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CONN_AppendixC_ImportingROIs.html">Appendix C: Importing ROIs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CONN_AppendixD_SurfaceBasedConnectivity.html">Appendix D: Surface-Based Connectivity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CONN_AppendixE_DynamicConnectivity.html">Appendix E: Dynamic Connectivity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CONN_AppendixF_OpenScienceConnToolbox.html">Appendix F: Open Science and the CONN Toolbox</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Parametric Modulation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../PM/PM_Overview.html">Parametric Modulation in SPM, FSL, and AFNI</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Image Visualization with MRIcroGL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../MRIcroGL/MRIcroGL_Overview.html">Image Visualization with MRIcroGL</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Introduction to the Human Connectome Project (HCP)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../HCP/HCP_Overview.html">Introduction to the Human Connectome Project</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Finite Impulse Response (FIR) Models</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../FIR/FIR_Overview.html">Finite Impulse Response (FIR)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">fMRI Concepts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Practicals/DesignOptimization.html">Design Optimization</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Diffusion Analysis with MRtrix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../MRtrix/MRtrix_Introduction.html">Introduction to MRtrix</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ASL Analysis</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/ASL_Techniques.html">fASL Tutorial #1: Background</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/fASL_02_Download.html">fASL Tutorial #2: Downloading and Installing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/fASL_03_Task.html">fASL Tutorial #3: The N-Back Task</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/04_fASL_GUI.html">fASL Tutorial #4: The GUI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/05_fASL_Results.html">fASL Tutorial #5: Examining the Results</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/06_fASL_Quantification.html">fASL Tutorial #6: Quantification</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Frequently Asked Questions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../FrequentlyAskedQuestions/FrequentlyAskedQuestions.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Statistics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Statistics/GIMME.html">GIMME (Group Iterative Multiple Model Estimation)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Open Science</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../OpenScience/OS_Overview.html">Open Science</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced Normalization Tools (ANTs)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ANTs/ANTs_Overview.html">Advanced Normalization Tools (ANTs)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tract-Based Spatial Statistics (TBSS)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../TBSS/TBSS_Overview.html">Introduction to Tract-Based Spatial Statistics (TBSS)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Statistics for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Stats/Stats_Overview.html">Statistics for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Machine Learning for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ML/ML_Overview.html">Machine Learning for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Slicer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Slicer/Slicer_Overview.html">Slicer Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">CAT12</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../CAT12/CAT12_Overview.html">Voxel-Based Morphometry with CAT12</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Using the Supercomputer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Supercomputer/Supercomputer_Overview.html">Introduction to Supercomputing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Matlab for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Matlab/Matlab_Overview.html">Matlab for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ITK-Snap</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ITK-Snap/ITK-Snap_Overview.html">ITK-Snap_Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Python for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../PythonForNeuroimagers/PythonForNeuroimagers_Overview.html">Python for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Meta-Analysis for fMRI</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../MetaAnalysis/MetaAnalysis_Overview.html">Meta-Analysis for Neuroimagers</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Andy's Brain Book</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../CONN_Overview.html">Functional Connectivity and the CONN Toolbox</a></li>
+      <li class="breadcrumb-item active">Chapter #6: Quality Assurance Checks</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/FunctionalConnectivity/CONN_ShortCourse/CONN_06_QA_Checks.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="chapter-6-quality-assurance-checks">
+<span id="conn-06-qa-checks"></span><h1>Chapter #6: Quality Assurance Checks<a class="headerlink" href="#chapter-6-quality-assurance-checks" title="Link to this heading"></a></h1>
+<hr class="docutils" />
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading"></a></h2>
+<p>When preprocessing the data, a good habit is to examine the images before and after each step to determine whether everything ran without error, or if instead there is something you need to double-check or redo. We will first use the buttons on the left side of the CONN GUI to examine the output of some preprocessing steps, and then use the <code class="docutils literal notranslate"><span class="pre">QA</span> <span class="pre">Plots</span></code> button in the bottom left of the CONN GUI to create a comprehensive QA report.</p>
+</section>
+<section id="revisiting-the-structural-and-functional-tabs">
+<h2>Revisiting the Structural and Functional Tabs<a class="headerlink" href="#revisiting-the-structural-and-functional-tabs" title="Link to this heading"></a></h2>
+<p>Once the preprocessing has finished, click on the Structural tab again. You will notice that the anatomical image looks different; in fact it has been skull-stripped, resampled to 1mm^3 resolution, and normalized to match the MNI template. Scroll through the different views to make sure that the brain looks as though it has been normalized properly. It may take some time to develop a feeling for what a properly normalized brain looks like, but in general the brain should now look like it has a normal size and shape; any irregularities, such as an abnormally long or small brain, for example, should be smoothed out.</p>
+<p>We can examine the image more in-depth by using some of the viewer options. If you click on the <code class="docutils literal notranslate"><span class="pre">-structural</span> <span class="pre">tools:</span></code> menu and select <code class="docutils literal notranslate"><span class="pre">Slice</span> <span class="pre">viewer</span> <span class="pre">with</span> <span class="pre">MNI</span> <span class="pre">boundaries</span> <span class="pre">(QA_NORM)</span></code>, you will see the outlines of the MNI template traced in yellow on top of the anatomical image. Observe how the yellow lines roughly outline the boundary between the white matter and the grey matter of the anatomical image. The normalization won’t be perfect, but the general outlines should match up.</p>
+<figure class="align-default">
+<img alt="../../_images/06_Anatomical_MNI.png" src="../../_images/06_Anatomical_MNI.png" />
+</figure>
+<p>Clicking on the Functional tab reveals a similar change - the functional data have now been fully preprocessed, which has included normalization and smoothing. Clicking on the <code class="docutils literal notranslate"><span class="pre">-functional</span> <span class="pre">tools:</span></code> menu and selecting the <code class="docutils literal notranslate"><span class="pre">Slice</span> <span class="pre">viewer</span> <span class="pre">with</span> <span class="pre">MNI</span> <span class="pre">boundaries</span> <span class="pre">(QA_NORM)</span></code>, as with the anatomical image, will show a yellow line dividing the white and grey matter. The general outline of the MNI template should also encompass the functional image. If both the anatomical and functional data are aligned with the MNI template, this indicates that the preprocessing was successful.</p>
+<figure class="align-default">
+<img alt="../../_images/06_Functional_MNI.png" src="../../_images/06_Functional_MNI.png" />
+</figure>
+</section>
+<section id="the-rois-tab">
+<h2>The ROIs Tab<a class="headerlink" href="#the-rois-tab" title="Link to this heading"></a></h2>
+<p>We now come to the Regions of Interest (ROIs) tab, which lists the different regions that will be used in the connectivity analysis. Since we are primarily interested in the resting-state signal from the grey matter, we will <strong>parcellate</strong> the cortex into different regions, also called <strong>nodes</strong> or <strong>regions of interest</strong>, and extract the average time-series from each of them. Groups of nodes can be combined into <strong>networks</strong> that show consistent correlation in their resting-state signal. We will learn how to examine each of these in more detail.</p>
+<section id="grey-matter-white-matter-and-csf">
+<h3>Grey Matter, White Matter, and CSF<a class="headerlink" href="#grey-matter-white-matter-and-csf" title="Link to this heading"></a></h3>
+<p>Clicking on the ROIs tab reveals that five sets of ROIs have already been generated for you: Grey Matter, White Matter, CSF, atlas, and networks. Let’s begin with the first three, which correspond to the tissue types that make up the brain. One of the preprocessing steps, <strong>Segmentation</strong>, classified each voxel in the anatomical image as belonging to one of these three tissue types (for more details on how this is done, see the SPM tutorial on <a class="reference internal" href="../../SPM/SPM_Short_Course/SPM_04_Preprocessing/04_SPM_Segmentation.html#spm-segmentation"><span class="std std-ref">Segmentation</span></a>). The anatomical image was used for segmentation because it has higher spatial resolution than the functional image; but since we are ultimately interested in data from the functional image, we then have to resample these tissue maps onto the functional data.</p>
+<p>The two side-by-side axial slices illustrate how the grey matter mask looks both before and after it has been binarized (i.e., set to 1’s where the mask is grey matter, and 0’s everywhere else), and then slightly eroded. This erosion makes the mask slightly more conservative in what it determines to be grey matter, since voxels near the boundary of the grey and white matter will be excluded. Clicking on either slice will open up a montage window that you can use to more closely examine the overlap between the grey matter mask and the grey matter of the functional image.</p>
+<figure class="align-default" id="id1">
+<img alt="../../_images/06_ROI_GM.png" src="../../_images/06_ROI_GM.png" />
+<figcaption>
+<p><span class="caption-text">Illustration of the grey matter ROI mask before (left) and after (right) thresholding. The inset shows the grey matter mask overlaid on the functional data, which you can open by clicking on either of the axial slices. Similar images are displayed for the White Matter and CSF tabs.</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Next to the <code class="docutils literal notranslate"><span class="pre">ROI</span> <span class="pre">name</span></code> field, you will see a couple of options: The first one, “Compute average timeseries,” indicates that the time-series will be averaged across the voxels within that mask, which is typically done within the Grey Matter mask. For the other tissue maps, White Matter and CSF, the option changes to <code class="docutils literal notranslate"><span class="pre">Compute</span> <span class="pre">PCA</span> <span class="pre">Decomposition</span></code>, which performs a PCA to generate a number of time-series that are representative that tissue type. Since we assume that the resting-state signal should be fundamentally different depending on which tissue type we are extracting data from, we will enter this PCA as a nuisance regressor when Denoising the data - our next step after this chapter.</p>
+<p>For both computing the average time-series and doing PCA, you can choose to do a weighted version of either one. In this case, more weight will be given to voxels determined by the Segmentation step to more likely belong to one tissue type than the others.</p>
+<p>Also note that there is another indicator, labeled <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">secondary</span> <span class="pre">dataset</span> <span class="pre">#1</span> <span class="pre">(unsmoothed)</span></code>, which will extract the time-series from the unsmoothed data. In other words, the smoothing step is performed in case you want those images, but by default the extracted data is unsmoothed - the idea being that there is less mixing of signal between different tissue types in the unsmoothed data.</p>
+</div>
+</section>
+<section id="atlases-and-networks">
+<h3>Atlases and Networks<a class="headerlink" href="#atlases-and-networks" title="Link to this heading"></a></h3>
+<p>The CONN toolbox comes with atlases, or ways to parcellate the grey matter into different nodes. By default, the grey matter is partitioned according to the <a class="reference internal" href="../../fMRI_Short_Course/fMRI_09_ROIAnalysis.html#fmri-09-roianalysis"><span class="std std-ref">Harvard-Oxford Cortical Atlas</span></a>, and the cerebellum is partitioned according to the AAL atlas. In order to see these atlases in more detail, clicking on the parcellated 3D brain will open a viewing window illustrating how the atlas has been resampled to the functional data. For example, the parcellation colored in orange indicates the anterior cingulate. Hovering your mouse around the different colors will return a string showing which ROI you are pointing to. Later on, we will use these ROIs in our 1st-level analysis to generate connectivity maps between those ROIs and all of the other voxels in the brain.</p>
+<figure class="align-default">
+<img alt="../../_images/06_ROI_Atlas.png" src="../../_images/06_ROI_Atlas.png" />
+</figure>
+<p>The same idea is illustrated in the <code class="docutils literal notranslate"><span class="pre">networks</span></code> tab, which assigns groups of nodes to a single network. The Default-Mode Network, for example, is a combination of a node in the posterior cingulate cortex and a node in the ventromedial prefrontal cortex. As with the cortical ROIs, you can open a slice-viewing window by clicking on the 3D network parcellation.</p>
+</section>
+</section>
+<section id="covariates-1st-level">
+<h2>Covariates (1st-level)<a class="headerlink" href="#covariates-1st-level" title="Link to this heading"></a></h2>
+<p>Another output from preprocessing is the creation of <strong>nuisance regressors</strong>, or covariates that represent signal that we are either uninterested in or are trying to disentangle from the signal that we are interested in. Motion is a classic example of a nuisance regressor: We are typically not interested in signal generated by the subject moving around, and we want to remove any confounding effects of movement on the signal that we are interested in, such as resting-state signal.</p>
+<p>Clicking on the <code class="docutils literal notranslate"><span class="pre">Covariates</span> <span class="pre">(1st-level)</span></code> tab reveals three covariates that have been generated by default: Realignment, QC_timeseries, and scrubbing. The realignment covariate is a set of six movement parameters representing movement in the three translational and rotational directions. (For more details about how motion correction works, see <a class="reference internal" href="../../fMRI_Short_Course/Preprocessing/Motion_Correction.html#motion-correction"><span class="std std-ref">this chapter</span></a>.) Hovering the mouse around the movement parameters will display a vector of six numbers representing the average motion in all six directions at that timepoint.</p>
+<figure class="align-default">
+<img alt="../../_images/06_realignment.png" src="../../_images/06_realignment.png" />
+</figure>
+<p>The second covariate, QC_timeseries, computes an additional measure of motion called <strong>Framewise Displacement</strong> (FD). This is a type of composite measure of all of the movement parameters, and the formula varies slightly between different research groups. The default in CONN is the FD computed by the ART toolbox; if you want to use another FD formula, click on the <code class="docutils literal notranslate"><span class="pre">-covariate</span> <span class="pre">tools:</span></code> menu and select <code class="docutils literal notranslate"><span class="pre">compute</span> <span class="pre">new/derived</span> <span class="pre">first-level</span> <span class="pre">covariates</span></code>. This will open up another window with other options to choose from.</p>
+<p>The last covariate, <code class="docutils literal notranslate"><span class="pre">scrubbing</span></code>, will display any volumes that have been modeled out of the data, or <strong>scrubbed</strong>. This subject was very still during the scanning, so no volumes have been removed.</p>
+</section>
+<section id="generating-qa-plots">
+<h2>Generating QA Plots<a class="headerlink" href="#generating-qa-plots" title="Link to this heading"></a></h2>
+<p>You can summarize all of the QA checks we did above by clicking the <code class="docutils literal notranslate"><span class="pre">QA</span> <span class="pre">plots</span></code> button in the bottom-left corner of the CONN GUI. In the window that opens up, click <code class="docutils literal notranslate"><span class="pre">Create</span> <span class="pre">new</span> <span class="pre">report</span></code>, and label it whatever you want. Then click <code class="docutils literal notranslate"><span class="pre">Create</span> <span class="pre">new</span> <span class="pre">plot</span></code>, and select any of the QA checks that you are interested in. The default ones that are highlighted will display checks such as the functional and structural data on the MNI template and the motion parameters. When you have chosen the QA plots that you want, click <code class="docutils literal notranslate"><span class="pre">Start</span></code>.</p>
+<figure class="align-default">
+<img alt="../../_images/06_QA_Plots.png" src="../../_images/06_QA_Plots.png" />
+</figure>
+<p>A series of figures will be generated, one for each QA check that you selected. You can then click on the <code class="docutils literal notranslate"><span class="pre">Export</span></code> button to generate an HTML file containing all of the QA checks.</p>
+<figure class="align-default">
+<img alt="../../_images/06_QA_HTML.png" src="../../_images/06_QA_HTML.png" />
+</figure>
+</section>
+<section id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>One helpful QA check is to view a movie of the functional volumes juxtaposed with movement covariates; that way, you can see how the volume changes as a result of motion. Click on <code class="docutils literal notranslate"><span class="pre">Covariates</span> <span class="pre">(1st-level)</span></code>, make sure that <code class="docutils literal notranslate"><span class="pre">realignment</span></code> is selected, and then click <code class="docutils literal notranslate"><span class="pre">covariate</span> <span class="pre">tools</span> <span class="pre">-&gt;</span> <span class="pre">display</span> <span class="pre">covariate</span> <span class="pre">&amp;</span> <span class="pre">single</span> <span class="pre">slice</span> <span class="pre">functional</span> <span class="pre">(movie)</span></code>. Select <code class="docutils literal notranslate"><span class="pre">primary</span> <span class="pre">dataset</span></code> for viewing. This will open a new window that displays a single axial slice of the functional data, and displays each of the movement parameters underneath it. If there are any large motions, it should be reflected in the funcitonal volume as well. Now, try the same approach, this time highlighting the <code class="docutils literal notranslate"><span class="pre">scrubbing</span></code> covariate for a subject that has at least one volume that was scrubbed. Does the movie suggest that this volume ought to have been removed? Why or why not?</p></li>
+<li><p>Within the <code class="docutils literal notranslate"><span class="pre">Covariates</span> <span class="pre">(1st-level)</span></code> section, you are able to generate many other new covariates as well. For example, you may want to use a different method to calculate thresholds that should be used to remove certain volumes. Click on <code class="docutils literal notranslate"><span class="pre">covariate</span> <span class="pre">tools</span> <span class="pre">-&gt;</span> <span class="pre">Compute</span> <span class="pre">new/derived</span> <span class="pre">first-level</span> <span class="pre">covariates</span></code>. Imagine that you’ve read the Power et al. 2012 paper, and you want to use that to calculate Framewise Displacement (FD), a kind of composite measure of motion for each volume. Select that option, and keep the defaults. (If you want to make a more informed decision about how to change these parameters, refer to the original Power et al. 2012 article.) Click <code class="docutils literal notranslate"><span class="pre">OK</span></code>. Now, do the same for creating a new covariate for <code class="docutils literal notranslate"><span class="pre">FD_conn</span></code>. Note any differences between the two, and think about which one you would prefer to use, and why.</p></li>
+<li><p>Multiple-dimension covariates, such as the realignment parameters, can be split into its individual components. Let’s say that you wanted to just include the translation parameters, for example. First, highlight the <code class="docutils literal notranslate"><span class="pre">realignment</span></code> covariate, and then click again on <code class="docutils literal notranslate"><span class="pre">covariate</span> <span class="pre">tools</span></code>, this time selecting <code class="docutils literal notranslate"><span class="pre">Split</span> <span class="pre">multiple-dimension</span> <span class="pre">covariate</span> <span class="pre">into</span> <span class="pre">multiple</span> <span class="pre">individual-dimension</span> <span class="pre">covariates</span></code>. (Note: You may have to click another Setup button, and then re-select <code class="docutils literal notranslate"><span class="pre">Covariates</span> <span class="pre">(1st-level)</span></code>, to see the changes take effect.)</p></li>
+<li><p>Create a new QA report with the following plots: 1) QA normalization: structural data + outline of MNI TPM template; 2) QA normalization: functional data + outline of MNI TPM template; and 3) QA artifacts: BOLD GS changes &amp; subject motion timeseries with functional movie. Take screenshots of the QA normalization plots that you generated. (Hint: After you’ve created the report, these can be found by clicking on the <code class="docutils literal notranslate"><span class="pre">Plots</span></code> dropdown menu.)</p></li>
+<li><p>Create your own QA report, including one plot each for the results of normalization, registration, artifacts, and denoising. Show screenshots of each one that you generated. Why did you select these ones in particular? Which ones do you think would be the most helpful for QA reports of your own experiment, and why?</p></li>
+</ol>
+</section>
+<section id="video">
+<h2>Video<a class="headerlink" href="#video" title="Link to this heading"></a></h2>
+<p>For a video demonstration of how to do QA checks in the CONN toolbox, click <a class="reference external" href="https://www.youtube.com/watch?v=eHSsUzUSwf0&amp;list=PLIQIswOrUH69DoNKYFnOc-UM_tZxwLuMX&amp;index=5">here</a>.</p>
+</section>
+<section id="next-steps">
+<h2>Next Steps<a class="headerlink" href="#next-steps" title="Link to this heading"></a></h2>
+<p>If you are satisfied with your QA checks, you are now ready to begin <strong>Denoising</strong> the data. This will further clean up the data using processing specific to resting-state data, and prepare it for statistical analysis.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="CONN_05_Preprocessing.html" class="btn btn-neutral float-left" title="Chapter #5: Preprocessing" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="CONN_07_Denoising.html" class="btn btn-neutral float-right" title="Chapter #7: Denoising" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Andy Jahn.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

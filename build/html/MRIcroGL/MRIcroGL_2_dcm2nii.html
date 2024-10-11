@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MRIcroGL Tutorial #2: Converting DICOM to NIFTI &mdash; Andy&#39;s Brain Book 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=f2a433a1"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="MRIcroGL Tutorial #3: Viewing Images" href="MRIcroGL_3_ViewingImages.html" />
+    <link rel="prev" title="MRIcroGL Tutorial #1: Download" href="MRIcroGL_1_Download.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Andy's Brain Book
+          </a>
+              <div class="version">
+                1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Install</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation/fsl_mac_install.html">Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Unix for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../unix/Unix_Intro.html">What is Unix?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unix/Unix_01_Navigation.html">Unix Tutorial #1: 目录操作 (Directories and Navigation)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unix/Unix_02_CopyRemove.html">Unix Tutorial #2: Copying and Removing Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unix/Unix_03_ReadingTextFiles.html">Unix Tutorial #3: Reading Text Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unix/Unix_04_ShellsVariables.html">Unix Tutorial #4: Shells and Path Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unix/Unix_05_ForLoops.html">Unix Tutorial #5: For-Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unix/Unix_06_IfElse.html">Unix Tutorial #6: Conditional Statements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unix/Unix_07_Scripting.html">Unix Tutorial #7: Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unix/Unix_08_Sed.html">Unix Tutorial #8: The Sed Command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unix/Unix_09_AutomatingTheAnalysis.html">Unix Tutorial #9: Automating The Analysis</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">fMRI Short Course with FSL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../fMRI_Short_Course/fMRI_Intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fMRI_Short_Course/fMRI_01_DataDownload.html">fMRI Tutorial #1: Downloading the Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fMRI_Short_Course/fMRI_02_ExperimentalDesign.html">fMRI Tutorial #2: Overview of The Flanker Task</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fMRI_Short_Course/fMRI_03_LookingAtTheData.html">fMRI Tutorial #3: Looking at the Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fMRI_Short_Course/fMRI_04_Preprocessing.html">fMRI Tutorial #4: Preprocessing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fMRI_Short_Course/fMRI_05_1stLevelAnalysis.html">fMRI Tutorial #5: Statistics and Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fMRI_Short_Course/fMRI_06_Scripting.html">fMRI Tutorial #6: Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fMRI_Short_Course/fMRI_07_2ndLevelAnalysis.html">fMRI Tutorial #7: 2nd-Level Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fMRI_Short_Course/fMRI_08_3rdLevelAnalysis.html">fMRI Tutorial #8: 3rd-Level Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fMRI_Short_Course/fMRI_09_ROIAnalysis.html">fMRI Tutorial #9: ROI Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fMRI_Short_Course/fMRI_10_Summary.html">fMRI Tutorial #10: Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fMRI_Short_Course/fMRI_Appendices.html">fMRI Short Course: Appendices</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">FreeSurfer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../FreeSurfer/FreeSurfer_Introduction.html">FreeSurfer Short Course</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">E-Prime</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../E-Prime/E-Prime_Overview.html">Overview of E-Prime</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">AFNI</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../AFNI/AFNI_Overview.html">AFNI Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">SPM</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../SPM/SPM_Overview.html">SPM Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Functional Connectivity with the CONN Toolbox</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../FunctionalConnectivity/CONN_Overview.html">Functional Connectivity and the CONN Toolbox</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Parametric Modulation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../PM/PM_Overview.html">Parametric Modulation in SPM, FSL, and AFNI</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Image Visualization with MRIcroGL</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="MRIcroGL_Overview.html">Image Visualization with MRIcroGL</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="MRIcroGL_Overview.html#overview">Overview</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="MRIcroGL_1_Download.html">MRIcroGL Tutorial #1: Download</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">MRIcroGL Tutorial #2: Converting DICOM to NIFTI</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#downloading-a-sample-dataset">Downloading a Sample Dataset</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#the-dicom-to-nifti-converter">The DICOM to NIFTI Converter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#converting-the-dicom-files">Converting the DICOM Files</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#running-dicom-to-nifti-from-the-command-line">Running DICOM to NIFTI from the Command Line</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#video">Video</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#next-steps">Next Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="MRIcroGL_3_ViewingImages.html">MRIcroGL Tutorial #3: Viewing Images</a></li>
+<li class="toctree-l3"><a class="reference internal" href="MRIcroGL_4_ViewingResults.html">MRIcroGL Tutorial #4: Viewing Results</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Introduction to the Human Connectome Project (HCP)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../HCP/HCP_Overview.html">Introduction to the Human Connectome Project</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Finite Impulse Response (FIR) Models</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../FIR/FIR_Overview.html">Finite Impulse Response (FIR)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">fMRI Concepts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Practicals/DesignOptimization.html">Design Optimization</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Diffusion Analysis with MRtrix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../MRtrix/MRtrix_Introduction.html">Introduction to MRtrix</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ASL Analysis</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../ASL/ASL_Techniques.html">fASL Tutorial #1: Background</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ASL/fASL_02_Download.html">fASL Tutorial #2: Downloading and Installing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ASL/fASL_03_Task.html">fASL Tutorial #3: The N-Back Task</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ASL/04_fASL_GUI.html">fASL Tutorial #4: The GUI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ASL/05_fASL_Results.html">fASL Tutorial #5: Examining the Results</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ASL/06_fASL_Quantification.html">fASL Tutorial #6: Quantification</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Frequently Asked Questions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../FrequentlyAskedQuestions/FrequentlyAskedQuestions.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Statistics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Statistics/GIMME.html">GIMME (Group Iterative Multiple Model Estimation)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Open Science</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../OpenScience/OS_Overview.html">Open Science</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced Normalization Tools (ANTs)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../ANTs/ANTs_Overview.html">Advanced Normalization Tools (ANTs)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tract-Based Spatial Statistics (TBSS)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../TBSS/TBSS_Overview.html">Introduction to Tract-Based Spatial Statistics (TBSS)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Statistics for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Stats/Stats_Overview.html">Statistics for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Machine Learning for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../ML/ML_Overview.html">Machine Learning for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Slicer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Slicer/Slicer_Overview.html">Slicer Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">CAT12</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../CAT12/CAT12_Overview.html">Voxel-Based Morphometry with CAT12</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Using the Supercomputer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Supercomputer/Supercomputer_Overview.html">Introduction to Supercomputing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Matlab for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Matlab/Matlab_Overview.html">Matlab for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ITK-Snap</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../ITK-Snap/ITK-Snap_Overview.html">ITK-Snap_Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Python for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../PythonForNeuroimagers/PythonForNeuroimagers_Overview.html">Python for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Meta-Analysis for fMRI</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../MetaAnalysis/MetaAnalysis_Overview.html">Meta-Analysis for Neuroimagers</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Andy's Brain Book</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="MRIcroGL_Overview.html">Image Visualization with MRIcroGL</a></li>
+      <li class="breadcrumb-item active">MRIcroGL Tutorial #2: Converting DICOM to NIFTI</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/MRIcroGL/MRIcroGL_2_dcm2nii.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="mricrogl-tutorial-2-converting-dicom-to-nifti">
+<span id="mricrogl-2-dcm2nii"></span><h1>MRIcroGL Tutorial #2: Converting DICOM to NIFTI<a class="headerlink" href="#mricrogl-tutorial-2-converting-dicom-to-nifti" title="Link to this heading"></a></h1>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading"></a></h2>
+<p>In recent years, NIFTI has become a standard format for neuroimaging data - the fMRI software packages of FSL, SPM, and AFNI can all load it and generate output in NIFTI format, and it can be read by other widely-used programs as well, such as FreeSurfer.</p>
+<p>However, the raw data collected by the scanner isn’t in NIFTI format. Each of the major scanner manufacturers - Siemens, Philips, and General Electric - has its own raw data format, which usually stores the data as individual slices. The raw data from a Siemens scanner, for example, is in Digital Imaging and Communications in Medicine (DICOM) format, with a <code class="docutils literal notranslate"><span class="pre">.dcm</span></code> extension (sometimes with a <code class="docutils literal notranslate"><span class="pre">.IMA</span></code> extension). These slices contain header information indicating which volume they belong to, and which scanning sequence they belong to, such as an anatomical, functional, or diffusion scan. When converting to NIFTI format, the slices are stacked together into individual volumes, and the volumes are concatenated together into their corresponding scan sequence. This makes the data much more compact and easier to manipulate.</p>
+</section>
+<section id="downloading-a-sample-dataset">
+<h2>Downloading a Sample Dataset<a class="headerlink" href="#downloading-a-sample-dataset" title="Link to this heading"></a></h2>
+<p>To demonstrate how to use MRIcroGL’s DICOM to NIFTI converter, we will download a sample dataset from the Nathan Kline Institute (NKI) Rockland Sample. Click on <a class="reference external" href="https://fcon_1000.projects.nitrc.org/indi/pro/eNKI_RS_TRT/FrontPage.html">this link</a>, scroll to the bottom of the page, and click on the link that says <code class="docutils literal notranslate"><span class="pre">Download</span> <span class="pre">DICOM</span> <span class="pre">Files</span></code>.</p>
+<figure class="align-default">
+<img alt="../_images/02_DownloadData.png" src="../_images/02_DownloadData.png" />
+</figure>
+<p>This will take you to a new page, listing the subject IDs for every participant in the study. Check the box next to subject 2475376, and then click <code class="docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Selected</span></code>.</p>
+<figure class="align-default">
+<img alt="../_images/02_DownloadData2.png" src="../_images/02_DownloadData2.png" />
+</figure>
+<p>This will take you to the NITRC page - the same website that hosts the MRIcroGL software package - and you will be required to sign up for an account and log in, if you haven’t already. Once you do that, the download will begin; the dataset is about two gigabytes, and will take a few minutes, depending on the speed of your Internet connection.</p>
+</section>
+<section id="the-dicom-to-nifti-converter">
+<h2>The DICOM to NIFTI Converter<a class="headerlink" href="#the-dicom-to-nifti-converter" title="Link to this heading"></a></h2>
+<p>When the dataset has been downloaded, click on it to unzip it. Once it is uncompressed, you should see something like this in your Finder:</p>
+<figure class="align-default">
+<img alt="../_images/02_DataStructure.png" src="../_images/02_DataStructure.png" />
+</figure>
+<p>This subject has several different runs of imaging data: An anatomical scan, a scan during which the subject held their breath, data collected when a visual checkerboard was shown, and so on. There are also two folders marked <code class="docutils literal notranslate"><span class="pre">session1</span></code> and <code class="docutils literal notranslate"><span class="pre">session2</span></code>, which contain diffusion and resting state scans.</p>
+<p>For now, let’s focus on the folders <code class="docutils literal notranslate"><span class="pre">anat</span></code> and <code class="docutils literal notranslate"><span class="pre">session1</span></code>. MRIcroGL’s graphical user interface makes it easy to convert all of the data in these folders by simply clicking and dragging them onto the GUI. From the MRIcroGL menu at the top of your window, click on <code class="docutils literal notranslate"><span class="pre">Import</span> <span class="pre">-&gt;</span> <span class="pre">Convert</span> <span class="pre">DICOM</span> <span class="pre">to</span> <span class="pre">NIFTI</span></code>. You will see another window opened up that looks like this:</p>
+<figure class="align-default">
+<img alt="../_images/02_DICOMtoNIFTI_GUI.png" src="../_images/02_DICOMtoNIFTI_GUI.png" />
+</figure>
+<p>There are several options here, which I encourage you to explore on your own. The sidebar on the left of the converter GUI contains options you can change; the window on the right shows the output when you run the converter. The first field, <code class="docutils literal notranslate"><span class="pre">Output</span> <span class="pre">Filename</span></code>, by default contains the string <code class="docutils literal notranslate"><span class="pre">%f_%p_%t_%s</span></code>. Each of these letters preceded by a percentage symbol is called a <strong>formatting operator</strong>, which is a shorthand for filling in different parts of the string; you can think of them as <strong>variables</strong>, which were discussed in the <a class="reference internal" href="../unix/Unix_04_ShellsVariables.html#unix-04-shellsvariables"><span class="std std-ref">Unix tutorial</span></a>. For example, if you hover your mouse over the Output Filename field, you will see a help bubble appear which lists what each of the formatting operators refer to: %f is the folder name, %p is the protocol, and so on. These are read from the DICOM header as the files are converted into NIFTI format, and if the data is not in the header, that variable is replaced with NA (i.e., Not Available).</p>
+<p>You can modify these formatting operators however you want, adding or subtracting them as you wish. The string right below the field will automatically update as you change the operators; for example, the output string might read <code class="docutils literal notranslate"><span class="pre">myFolder_MPRAGE_19770703150928_1.nii.gz</span></code>. The folder name that contains the DICOM images would be the first part of the string, and MPRAGE would indicate that the DICOMs all belonged to an MPRAGE, or anatomical, scan. The next part shows the date and time the scan was collected, and the last part is which scan the image belonged to; in this example, the first scan.</p>
+<p>I usually don’t find the timestamp of the file is useful, so in this example I will remove the <code class="docutils literal notranslate"><span class="pre">%t</span></code> formatting operator. The underscore lines are simply separators for keeping the different parts of the filename distinct from one another; you can replace it with whatever you want.</p>
+<section id="conversion-options">
+<h3>Conversion Options<a class="headerlink" href="#conversion-options" title="Link to this heading"></a></h3>
+<p>In addition to the Output Filename, you also have options for where to save the output files and for their format. The defaults work well in most cases, but we will examine some of the options you can change:</p>
+<ul class="simple">
+<li><p><strong>Output Directory</strong>: The default is to save the output files into the same folder that contains the DICOM. From the dropdown menu, you can select another directory if you wish.</p></li>
+<li><p><strong>Output Format</strong>: The default of compressed NIFTI will save space on your computer; this format can also be read by AFNI and FSL. Note that, as of 2021, SPM is not able to open compressed files - you will need to either unzip them manually, or specify the output as uncompressed NIFTI. Another option, NRRD format, can be used by programs such as <a class="reference external" href="https://www.slicer.org/">Slicer</a>.</p></li>
+<li><p><strong>Create BIDS Sidecar</strong>: This will create a Javascript Object Notation (.json) file, which contains metadata about the converted DICOM files. For example, if you converted the DICOMs for a functional dataset, the BIDS sidecar may contain information about slice-timing and slice order, the repetition time, and when the scan was collected. These sidecars are required for using a standardized preprocessing pipeline such as <a class="reference internal" href="../OpenScience/OS/fMRIPrep_Demo.html#fmriprep-demo"><span class="std std-ref">fMRIPrep</span></a>.</p></li>
+</ul>
+<p>Below these dropdown menus, you can learn more about the Advanced options by hovering your mouse over each of the boxes. The <code class="docutils literal notranslate"><span class="pre">Crop</span> <span class="pre">3D</span> <span class="pre">images</span></code> option, for example, can improve coregistration by removing most of the neck from the image.</p>
+</section>
+</section>
+<section id="converting-the-dicom-files">
+<h2>Converting the DICOM Files<a class="headerlink" href="#converting-the-dicom-files" title="Link to this heading"></a></h2>
+<p>Once you have become familiar with the DICOM to NIFTI graphical user interface, you can convert a folder of DICOM files simply by clicking and dragging the folder into the right window pane of the GUI. Alternatively, you can click on the <code class="docutils literal notranslate"><span class="pre">Select</span> <span class="pre">Folder</span> <span class="pre">to</span> <span class="pre">Convert</span></code> button, and choose the directory from your Finder window.</p>
+<p>For this example, open up a Finder window, navigate to your Downloads folder, and click on the folder <code class="docutils literal notranslate"><span class="pre">2475376</span></code>. Click and drag the <code class="docutils literal notranslate"><span class="pre">anat</span></code> folder into the DICOM to NIFTI GUI, and then wait a moment for the files to be converted. After a couple of seconds, you should see the following output in the converter window, as well as a NIFTI file and .json file in the <code class="docutils literal notranslate"><span class="pre">anat</span></code> folder:</p>
+<figure class="align-default">
+<img alt="../_images/02_ConvertedFiles.png" src="../_images/02_ConvertedFiles.png" />
+</figure>
+<p>Note that some of the folders contain sub-folders of other images; for example, the folder <code class="docutils literal notranslate"><span class="pre">session1</span></code> contains a DTI folder and three resting state fMRI folders. If you convert the <code class="docutils literal notranslate"><span class="pre">session1</span></code> folder, you will see something like this:</p>
+<figure class="align-default">
+<img alt="../_images/02_Session1_Converted.png" src="../_images/02_Session1_Converted.png" />
+</figure>
+<p>Whether you want all of the converted files in that folder, or each file in its corresponding sub-folder, is up to you. Using fMRIPrep requires that the files and .json sidecars are located within their corresponding sub-folders; you may also have to rename the files. See the <a class="reference external" href="https://reproducibility.stanford.edu/bids-tutorial-series-part-1a/">Stanford BIDS tutorial</a> for more details.</p>
+</section>
+<section id="running-dicom-to-nifti-from-the-command-line">
+<h2>Running DICOM to NIFTI from the Command Line<a class="headerlink" href="#running-dicom-to-nifti-from-the-command-line" title="Link to this heading"></a></h2>
+<p>Dragging and dropping individual folders into the converter GUI may be feasible if you have just a few subjects, but it can become tedious if you have dozens or hundreds of subjects. Once you’ve mastered the GUI, you can save time by running a command-line version of the converter, called <code class="docutils literal notranslate"><span class="pre">dcm2niix</span></code>. This is a command that comes with the MRIcroGL package that you downloaded, and is located in /Applications/MRIcroGL.</p>
+<p>You may have noticed in the output window of the converter that there is a line of text at the top, generated after you’ve converted a DICOM folder. In the example I used to convert the <code class="docutils literal notranslate"><span class="pre">anat</span></code> folder, it looks like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">Applications</span><span class="o">/</span><span class="n">MRIcroGL</span><span class="o">.</span><span class="n">app</span><span class="o">/</span><span class="n">Contents</span><span class="o">/</span><span class="n">Resources</span><span class="o">/</span><span class="n">dcm2niix</span> <span class="o">-</span><span class="n">f</span> <span class="s2">&quot;</span><span class="si">%f</span><span class="s2">_%p_</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">-</span><span class="n">p</span> <span class="n">y</span> <span class="o">-</span><span class="n">z</span> <span class="n">y</span> <span class="s2">&quot;/Users/ajahn/Downloads/2475376/anat&quot;</span>
+</pre></div>
+</div>
+<p>If you are using a Macintosh operating system, click on the Searchlight icon in the upper right corner of your screen, type <code class="docutils literal notranslate"><span class="pre">Terminal</span></code>, and press enter. This opens up a command line window. If you copy and paste the line above, it will run the same conversion as before, appending an <code class="docutils literal notranslate"><span class="pre">a</span></code> to the output file if a previous output file already exists in that directory.</p>
+<p>Note the option <code class="docutils literal notranslate"><span class="pre">-f</span></code>, which contains the formatting operators that were specified in the GUI. The other options, such as <code class="docutils literal notranslate"><span class="pre">-p</span></code> and <code class="docutils literal notranslate"><span class="pre">-z</span></code>, specify whether to use Philips Precision Scaling and whether to compress the output file, respectively. You can see the correspondence between the GUI and the command line by just typing the path to the command, <code class="docutils literal notranslate"><span class="pre">/Applications/MRIcroGL.app/Contents/Resources/dcm2niix</span></code>, and examining the help file, which is reprinted here:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="n">Options</span> <span class="p">:</span>
+<span class="o">-</span><span class="mf">1.</span><span class="o">.-</span><span class="mi">9</span> <span class="p">:</span> <span class="n">gz</span> <span class="n">compression</span> <span class="n">level</span> <span class="p">(</span><span class="mi">1</span><span class="o">=</span><span class="n">fastest</span><span class="p">,</span> <span class="mi">9</span><span class="o">=</span><span class="n">smallest</span><span class="p">)</span>
+<span class="o">-</span><span class="n">b</span> <span class="p">:</span> <span class="n">BIDS</span> <span class="n">sidecar</span> <span class="p">(</span><span class="n">y</span><span class="o">/</span><span class="n">n</span><span class="p">,</span> <span class="n">default</span> <span class="n">y</span><span class="p">)</span>
+ <span class="o">-</span><span class="n">ba</span> <span class="p">:</span> <span class="n">anonymize</span> <span class="n">BIDS</span> <span class="p">(</span><span class="n">y</span><span class="o">/</span><span class="n">n</span><span class="p">,</span> <span class="n">default</span> <span class="n">y</span><span class="p">)</span>
+<span class="o">-</span><span class="n">f</span> <span class="p">:</span> <span class="n">filename</span> <span class="p">(</span><span class="o">%</span><span class="n">a</span><span class="o">=</span><span class="n">antenna</span>  <span class="p">(</span><span class="n">coil</span><span class="p">)</span> <span class="n">number</span><span class="p">,</span> <span class="o">%</span><span class="n">c</span><span class="o">=</span><span class="n">comments</span><span class="p">,</span> <span class="o">%</span><span class="n">d</span><span class="o">=</span><span class="n">description</span><span class="p">,</span> <span class="o">%</span><span class="n">e</span> <span class="n">echo</span> <span class="n">number</span><span class="p">,</span> <span class="o">%</span><span class="n">f</span><span class="o">=</span><span class="n">folder</span> <span class="n">name</span><span class="p">,</span> <span class="o">%</span><span class="n">i</span> <span class="n">ID</span> <span class="n">of</span> <span class="n">patient</span><span class="p">,</span> <span class="o">%</span><span class="n">j</span> <span class="n">seriesInstanceUID</span><span class="p">,</span> <span class="o">%</span><span class="n">k</span> <span class="n">studyInstanceUID</span><span class="p">,</span> <span class="o">%</span><span class="n">m</span><span class="o">=</span><span class="n">manufacturer</span><span class="p">,</span> <span class="o">%</span><span class="n">n</span><span class="o">=</span><span class="n">name</span> <span class="n">of</span> <span class="n">patient</span><span class="p">,</span> <span class="o">%</span><span class="n">p</span><span class="o">=</span><span class="n">protocol</span><span class="p">,</span> <span class="o">%</span><span class="n">s</span><span class="o">=</span><span class="n">series</span> <span class="n">number</span><span class="p">,</span> <span class="o">%</span><span class="n">t</span><span class="o">=</span><span class="n">time</span><span class="p">,</span> <span class="o">%</span><span class="n">u</span><span class="o">=</span><span class="n">acquisition</span> <span class="n">number</span><span class="p">,</span> <span class="o">%</span><span class="n">v</span><span class="o">=</span><span class="n">vendor</span><span class="p">,</span> <span class="o">%</span><span class="n">x</span><span class="o">=</span><span class="n">study</span> <span class="n">ID</span><span class="p">;</span> <span class="o">%</span><span class="n">z</span> <span class="n">sequence</span> <span class="n">name</span><span class="p">;</span> <span class="n">default</span> <span class="s1">&#39;</span><span class="si">%f</span><span class="s1">_%p&#39;</span><span class="p">)</span>
+<span class="o">-</span><span class="n">h</span> <span class="p">:</span> <span class="n">show</span> <span class="n">help</span>
+<span class="o">-</span><span class="n">i</span> <span class="p">:</span> <span class="n">ignore</span> <span class="n">derived</span><span class="p">,</span> <span class="n">localizer</span> <span class="ow">and</span> <span class="mi">2</span><span class="n">D</span> <span class="n">images</span> <span class="p">(</span><span class="n">y</span><span class="o">/</span><span class="n">n</span><span class="p">,</span> <span class="n">default</span> <span class="n">n</span><span class="p">)</span>
+<span class="o">-</span><span class="n">m</span> <span class="p">:</span> <span class="n">merge</span> <span class="mi">2</span><span class="n">D</span> <span class="n">slices</span> <span class="kn">from</span> <span class="nn">same</span> <span class="n">series</span> <span class="n">regardless</span> <span class="n">of</span> <span class="n">study</span> <span class="n">time</span><span class="p">,</span> <span class="n">echo</span><span class="p">,</span> <span class="n">coil</span><span class="p">,</span> <span class="n">orientation</span><span class="p">,</span> <span class="n">etc</span><span class="o">.</span> <span class="p">(</span><span class="n">y</span><span class="o">/</span><span class="n">n</span><span class="p">,</span> <span class="n">default</span> <span class="n">n</span><span class="p">)</span>
+<span class="o">-</span><span class="n">o</span> <span class="p">:</span> <span class="n">output</span> <span class="n">directory</span> <span class="p">(</span><span class="n">omit</span> <span class="n">to</span> <span class="n">save</span> <span class="n">to</span> <span class="nb">input</span> <span class="n">folder</span><span class="p">)</span>
+<span class="o">-</span><span class="n">p</span> <span class="p">:</span> <span class="n">Philips</span> <span class="n">precise</span> <span class="nb">float</span> <span class="p">(</span><span class="ow">not</span> <span class="n">display</span><span class="p">)</span> <span class="n">scaling</span> <span class="p">(</span><span class="n">y</span><span class="o">/</span><span class="n">n</span><span class="p">,</span> <span class="n">default</span> <span class="n">y</span><span class="p">)</span>
+<span class="o">-</span><span class="n">s</span> <span class="p">:</span> <span class="n">single</span> <span class="n">file</span> <span class="n">mode</span><span class="p">,</span> <span class="n">do</span> <span class="ow">not</span> <span class="n">convert</span> <span class="n">other</span> <span class="n">images</span> <span class="ow">in</span> <span class="n">folder</span> <span class="p">(</span><span class="n">y</span><span class="o">/</span><span class="n">n</span><span class="p">,</span> <span class="n">default</span> <span class="n">n</span><span class="p">)</span>
+<span class="o">-</span><span class="n">t</span> <span class="p">:</span> <span class="n">text</span> <span class="n">notes</span> <span class="n">includes</span> <span class="n">private</span> <span class="n">patient</span> <span class="n">details</span> <span class="p">(</span><span class="n">y</span><span class="o">/</span><span class="n">n</span><span class="p">,</span> <span class="n">default</span> <span class="n">n</span><span class="p">)</span>
+<span class="o">-</span><span class="n">v</span> <span class="p">:</span> <span class="n">verbose</span> <span class="p">(</span><span class="n">n</span><span class="o">/</span><span class="n">y</span> <span class="ow">or</span> <span class="mi">0</span><span class="o">/</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span> <span class="p">[</span><span class="n">no</span><span class="p">,</span> <span class="n">yes</span><span class="p">,</span> <span class="n">logorrheic</span><span class="p">],</span> <span class="n">default</span> <span class="mi">0</span><span class="p">)</span>
+<span class="o">-</span><span class="n">x</span> <span class="p">:</span> <span class="n">crop</span> <span class="p">(</span><span class="n">y</span><span class="o">/</span><span class="n">n</span><span class="p">,</span> <span class="n">default</span> <span class="n">n</span><span class="p">)</span>
+<span class="o">-</span><span class="n">z</span> <span class="p">:</span> <span class="n">gz</span> <span class="n">compress</span> <span class="n">images</span> <span class="p">(</span><span class="n">y</span><span class="o">/</span><span class="n">i</span><span class="o">/</span><span class="n">n</span><span class="p">,</span> <span class="n">default</span> <span class="n">y</span><span class="p">)</span> <span class="p">[</span><span class="n">y</span><span class="o">=</span><span class="n">pigz</span><span class="p">,</span> <span class="n">i</span><span class="o">=</span><span class="n">internal</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="n">no</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>For example, we could modify the above command to crop the image by adding <code class="docutils literal notranslate"><span class="pre">-x</span> <span class="pre">y</span></code>, and omitting the BIDS sidecar by including <code class="docutils literal notranslate"><span class="pre">-b</span> <span class="pre">n</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">Applications</span><span class="o">/</span><span class="n">MRIcroGL</span><span class="o">.</span><span class="n">app</span><span class="o">/</span><span class="n">Contents</span><span class="o">/</span><span class="n">Resources</span><span class="o">/</span><span class="n">dcm2niix</span> <span class="o">-</span><span class="n">f</span> <span class="s2">&quot;</span><span class="si">%f</span><span class="s2">_%p_</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">-</span><span class="n">x</span> <span class="n">y</span> <span class="o">-</span><span class="n">b</span> <span class="n">n</span> <span class="o">-</span><span class="n">p</span> <span class="n">y</span> <span class="o">-</span><span class="n">z</span> <span class="n">y</span> <span class="s2">&quot;/Users/ajahn/Downloads/2475376/anat&quot;</span>
+</pre></div>
+</div>
+<p>You can also set the command as part of your <a class="reference internal" href="../unix/Unix_04_ShellsVariables.html#unix-04-shellsvariables"><span class="std std-ref">path</span></a>, in order to call upon it from any directory by just typing <code class="docutils literal notranslate"><span class="pre">dcm2niix</span></code>. You can then use the command in for-loops, which are described in more detail <a class="reference internal" href="../unix/Unix_05_ForLoops.html#unix-05-forloops"><span class="std std-ref">here</span></a>.</p>
+</section>
+<section id="video">
+<h2>Video<a class="headerlink" href="#video" title="Link to this heading"></a></h2>
+<p>For a video walkthrough of how to use MRIcroGL’s DICOM converter, click <a class="reference external" href="https://youtu.be/DMGWdi6Z73s">here</a>.</p>
+</section>
+<section id="next-steps">
+<h2>Next Steps<a class="headerlink" href="#next-steps" title="Link to this heading"></a></h2>
+<p>Having covered one of MRIcroGL’s features, we now move on to its primary feature: Displaying imaging data and results. To see how to do that, click the <code class="docutils literal notranslate"><span class="pre">Next</span></code> button.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="MRIcroGL_1_Download.html" class="btn btn-neutral float-left" title="MRIcroGL Tutorial #1: Download" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="MRIcroGL_3_ViewingImages.html" class="btn btn-neutral float-right" title="MRIcroGL Tutorial #3: Viewing Images" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Andy Jahn.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

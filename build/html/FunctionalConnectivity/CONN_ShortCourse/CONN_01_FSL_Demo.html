@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chapter #1: Functional Connectivity Demonstration &mdash; Andy&#39;s Brain Book 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b76e3c8a" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=f2a433a1"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Chapter #2: Downloading the Data" href="CONN_02_DataDownload.html" />
+    <link rel="prev" title="History of Functional Connectivity" href="CONN_00_History.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Andy's Brain Book
+          </a>
+              <div class="version">
+                1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Install</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../installation/fsl_mac_install.html">Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Unix for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_Intro.html">What is Unix?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_01_Navigation.html">Unix Tutorial #1: 目录操作 (Directories and Navigation)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_02_CopyRemove.html">Unix Tutorial #2: Copying and Removing Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_03_ReadingTextFiles.html">Unix Tutorial #3: Reading Text Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_04_ShellsVariables.html">Unix Tutorial #4: Shells and Path Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_05_ForLoops.html">Unix Tutorial #5: For-Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_06_IfElse.html">Unix Tutorial #6: Conditional Statements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_07_Scripting.html">Unix Tutorial #7: Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_08_Sed.html">Unix Tutorial #8: The Sed Command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_09_AutomatingTheAnalysis.html">Unix Tutorial #9: Automating The Analysis</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">fMRI Short Course with FSL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_Intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_01_DataDownload.html">fMRI Tutorial #1: Downloading the Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_02_ExperimentalDesign.html">fMRI Tutorial #2: Overview of The Flanker Task</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_03_LookingAtTheData.html">fMRI Tutorial #3: Looking at the Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_04_Preprocessing.html">fMRI Tutorial #4: Preprocessing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_05_1stLevelAnalysis.html">fMRI Tutorial #5: Statistics and Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_06_Scripting.html">fMRI Tutorial #6: Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_07_2ndLevelAnalysis.html">fMRI Tutorial #7: 2nd-Level Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_08_3rdLevelAnalysis.html">fMRI Tutorial #8: 3rd-Level Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_09_ROIAnalysis.html">fMRI Tutorial #9: ROI Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_10_Summary.html">fMRI Tutorial #10: Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_Appendices.html">fMRI Short Course: Appendices</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">FreeSurfer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../FreeSurfer/FreeSurfer_Introduction.html">FreeSurfer Short Course</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">E-Prime</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../E-Prime/E-Prime_Overview.html">Overview of E-Prime</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">AFNI</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../AFNI/AFNI_Overview.html">AFNI Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">SPM</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../SPM/SPM_Overview.html">SPM Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Functional Connectivity with the CONN Toolbox</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../CONN_Overview.html">Functional Connectivity and the CONN Toolbox</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../CONN_Overview.html#overview">Overview</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../CONN_Overview.html#recommended-tutorials">Recommended Tutorials</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="CONN_00_History.html">History of Functional Connectivity</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Chapter #1: Functional Connectivity Demonstration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#functional-connectivity-analysis-with-fsl">Functional Connectivity Analysis with FSL</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#functional-connectivity-analysis-with-neurosynth">Functional Connectivity Analysis with Neurosynth</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#video">Video</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#next-steps">Next Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="CONN_02_DataDownload.html">Chapter #2: Downloading the Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CONN_03_LookingAtData.html">Chapter #3: Downloading the CONN Toolbox</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CONN_04_GUI_Overview.html">Chapter #4: The CONN GUI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CONN_05_Preprocessing.html">Chapter #5: Preprocessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CONN_06_QA_Checks.html">Chapter #6: Quality Assurance Checks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CONN_07_Denoising.html">Chapter #7: Denoising</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CONN_08_1stLevel_Analysis.html">Chapter #8: 1st-Level Analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CONN_09_2ndLevel_Analysis.html">Chapter #9: Group-level analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CONN_10_Viewing_Results.html">Chapter #10: Viewing the Results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CONN_11_Task_gPPI.html">Chapter #11: Task-Related Connectivity and gPPI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CONN_12_Scripting.html">Chapter #12: Scripting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CONN_AppendixA_GraphTheory.html">Appendix A: Graph Theory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CONN_AppendixB_OtherSecondLevelDesigns.html">Appendix B: Other Second-Level Analyses</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CONN_AppendixC_ImportingROIs.html">Appendix C: Importing ROIs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CONN_AppendixD_SurfaceBasedConnectivity.html">Appendix D: Surface-Based Connectivity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CONN_AppendixE_DynamicConnectivity.html">Appendix E: Dynamic Connectivity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CONN_AppendixF_OpenScienceConnToolbox.html">Appendix F: Open Science and the CONN Toolbox</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Parametric Modulation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../PM/PM_Overview.html">Parametric Modulation in SPM, FSL, and AFNI</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Image Visualization with MRIcroGL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../MRIcroGL/MRIcroGL_Overview.html">Image Visualization with MRIcroGL</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Introduction to the Human Connectome Project (HCP)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../HCP/HCP_Overview.html">Introduction to the Human Connectome Project</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Finite Impulse Response (FIR) Models</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../FIR/FIR_Overview.html">Finite Impulse Response (FIR)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">fMRI Concepts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Practicals/DesignOptimization.html">Design Optimization</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Diffusion Analysis with MRtrix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../MRtrix/MRtrix_Introduction.html">Introduction to MRtrix</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ASL Analysis</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/ASL_Techniques.html">fASL Tutorial #1: Background</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/fASL_02_Download.html">fASL Tutorial #2: Downloading and Installing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/fASL_03_Task.html">fASL Tutorial #3: The N-Back Task</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/04_fASL_GUI.html">fASL Tutorial #4: The GUI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/05_fASL_Results.html">fASL Tutorial #5: Examining the Results</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/06_fASL_Quantification.html">fASL Tutorial #6: Quantification</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Frequently Asked Questions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../FrequentlyAskedQuestions/FrequentlyAskedQuestions.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Statistics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Statistics/GIMME.html">GIMME (Group Iterative Multiple Model Estimation)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Open Science</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../OpenScience/OS_Overview.html">Open Science</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced Normalization Tools (ANTs)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ANTs/ANTs_Overview.html">Advanced Normalization Tools (ANTs)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tract-Based Spatial Statistics (TBSS)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../TBSS/TBSS_Overview.html">Introduction to Tract-Based Spatial Statistics (TBSS)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Statistics for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Stats/Stats_Overview.html">Statistics for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Machine Learning for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ML/ML_Overview.html">Machine Learning for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Slicer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Slicer/Slicer_Overview.html">Slicer Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">CAT12</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../CAT12/CAT12_Overview.html">Voxel-Based Morphometry with CAT12</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Using the Supercomputer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Supercomputer/Supercomputer_Overview.html">Introduction to Supercomputing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Matlab for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Matlab/Matlab_Overview.html">Matlab for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ITK-Snap</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ITK-Snap/ITK-Snap_Overview.html">ITK-Snap_Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Python for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../PythonForNeuroimagers/PythonForNeuroimagers_Overview.html">Python for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Meta-Analysis for fMRI</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../MetaAnalysis/MetaAnalysis_Overview.html">Meta-Analysis for Neuroimagers</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Andy's Brain Book</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../CONN_Overview.html">Functional Connectivity and the CONN Toolbox</a></li>
+      <li class="breadcrumb-item active">Chapter #1: Functional Connectivity Demonstration</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/FunctionalConnectivity/CONN_ShortCourse/CONN_01_FSL_Demo.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="chapter-1-functional-connectivity-demonstration">
+<span id="conn-01-fsl-demo"></span><h1>Chapter #1: Functional Connectivity Demonstration<a class="headerlink" href="#chapter-1-functional-connectivity-demonstration" title="Link to this heading"></a></h1>
+<hr class="docutils" />
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading"></a></h2>
+<p>Before we begin using the CONN toolbox, a short demonstration of functional connectivity using a simpler, easy-to-understand method may help prepare you for using a more sophisticated package. I prefer to use the fMRI analysis package FSL for this kind of demonstration, although both AFNI and SPM are able to do functional connectivity analyses as well. Before going on, I recommend that you work through the <a class="reference internal" href="../../fMRI_Short_Course/fMRI_Intro.html#fmri-intro"><span class="std std-ref">FSL tutorials</span></a> to familiarize yourself with how FSL works, what a time-series is, and how to extract data from regions of interest (ROIs). If you already know how to do a functional connectivity analysis in FSL and simply want to get started with the CONN toolbox, click the <code class="docutils literal notranslate"><span class="pre">Next</span></code> button down below.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This tutorial will use a sample dataset that you can download <a class="reference external" href="https://www.andysbrainblog.com/s/TimeSeries_ExampleDatanii.gz">here</a>. The file size is about 20MB.</p>
+</div>
+</section>
+<section id="functional-connectivity-analysis-with-fsl">
+<h2>Functional Connectivity Analysis with FSL<a class="headerlink" href="#functional-connectivity-analysis-with-fsl" title="Link to this heading"></a></h2>
+<p>As you saw in the FSL tutorial, each voxel of an fMRI dataset contains a <strong>time-series</strong>, or sequence of BOLD activation measurements that are concatenated together. The sampling rate of the time-series is the <strong>Time to Repetition (TR)</strong>, which for most fMRI studies is around 2-3 seconds. For each voxel, therefore, the BOLD activation is measured at each TR, and this continues for a period of time specified by the user. This period of time when the scanner is measuring the BOLD signal is called a <strong>run</strong> (or <strong>session</strong>, in SPM), and a typical experiment is composed of several runs.</p>
+<p>To examine the time-series of the sample dataset, navigate to where you downloaded the <code class="docutils literal notranslate"><span class="pre">TimeSeries_ExampleData.nii.gz</span></code> file, and type:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fsleyes</span> <span class="n">TimeSeries_ExampleData</span><span class="o">.</span><span class="n">nii</span><span class="o">.</span><span class="n">gz</span>
+</pre></div>
+</div>
+<p>This will open the file in the fsleyes viewer. From the menu at the top of your window, click on <code class="docutils literal notranslate"><span class="pre">View</span> <span class="pre">-&gt;</span> <span class="pre">Time</span> <span class="pre">series</span></code>. This will open a time-series panel at the bottom of the fsleyes viewer. To make the numbers easier to understand, and to enable us to compare time-series from distant voxels, click on the “Plotting mode” dropdown menu and select “Normalised”. This will scale the time-series relative to a mean of 0.</p>
+<figure class="align-default" id="id1">
+<img alt="../../_images/01_FSL_Timeseries.png" src="../../_images/01_FSL_Timeseries.png" />
+<figcaption>
+<p><span class="caption-text">A sample time-series from a voxel in the dorsal anterior cingulate cortex.</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>Now, click on a random voxel, and then from the menu at the top of the screen select <code class="docutils literal notranslate"><span class="pre">Tools</span> <span class="pre">-&gt;</span> <span class="pre">Seed</span> <span class="pre">correlation</span> <span class="pre">(Pearson)</span></code>. The voxel you have currently selected will be a <strong>seed voxel</strong>; the time-series of this seed voxel will be used as a reference. This will generate a connectivity map between your seed voxel and every other voxel in the brain, with hotter colors (i.e., more intense shades of red and yellow) representing greater correlation. Cooler colors (i.e., shades of blue), by contrast, represent where there is negative correlation.</p>
+<p>You will also notice that this has created a new file in the Overlay list, <code class="docutils literal notranslate"><span class="pre">TimeSeries_ExampleData/correlation</span></code>. If you highlight this image by clicking on it, you can then set the “Min.” and “Max.” thresholds to only show those voxels that correlate with the seed region at or higher than a certain level. Set the “Min” field to <code class="docutils literal notranslate"><span class="pre">0.4</span></code>, and take a look at which voxels remain after this threshold.</p>
+<figure class="align-default" id="id2">
+<img alt="../../_images/01_FSL_dACC_Corr.png" src="../../_images/01_FSL_dACC_Corr.png" />
+<figcaption>
+<p><span class="caption-text">The functional connectivity map after thresholding at r &gt; 0.4. Note that the voxel we used as our seed region will have a perfect r=1.0 correlation with itself, and that neighboring voxels are also highly correlated with it. There are a couple of smaller clusters farther away from the dACC that correlate with the seed region, but they are relatively weak.</span><a class="headerlink" href="#id2" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you’ve read the <a class="reference internal" href="../../fMRI_Short_Course/fMRI_Appendices/Appendix_A_ClusterCorrection.html#appendix-a-clustercorrection"><span class="std std-ref">Cluster Correction appendix</span></a>, you will remember that one of the justifications for cluster correction is that a given voxel is not completely independent from its neighbors. How do you see that principle being reflected in this correlation map?</p>
+</div>
+<p>Now let’s see whether we can replicate one of the most well-known functional connectivity networks, the so-called <strong>Default Mode Network</strong>. This network is a pattern of correlated regions, primarily the ventromedial prefrontal cortex and the posterior cingulate cortex. Use the “Voxel location” fields to enter values of X=32, Y=53, and Z=16, and use this voxel as a seed for another functional connectivity analysis. What do you notice about the resulting correlation map?</p>
+<figure class="align-default" id="id3">
+<img alt="../../_images/01_FSL_DMN.png" src="../../_images/01_FSL_DMN.png" />
+<figcaption>
+<p><span class="caption-text">The Default Mode Network, showing high correlation between the ventromedial prefrontal cortex and posterior cingulate cortex nodes. This map can be saved as its own image by clicking on the disk icon next to the correlation map that has been generated. You can then convert this to a z-score using Fisher’s r-to-z transform, and use those transformed images as input into a group-level analysis. The reasons for this transform, which is done automatically in the CONN toolbox, will be discussed in a later chapter on <a class="reference internal" href="CONN_08_1stLevel_Analysis.html#conn-08-1stlevel-analysis"><span class="std std-ref">1st-level analysis</span></a>.</span><a class="headerlink" href="#id3" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="functional-connectivity-analysis-with-neurosynth">
+<h2>Functional Connectivity Analysis with Neurosynth<a class="headerlink" href="#functional-connectivity-analysis-with-neurosynth" title="Link to this heading"></a></h2>
+<p>Another useful tool for understanding functional connectivity is <a class="reference external" href="neurosynth.org">Neurosynth</a>. Neurosynth is primarily a meta-analysis tool, but it can also be used to quickly generate functional connectivity maps for seed regions in a template brain. If you click on the “Locations” tab, a new window opens that says “Functional connectivity and coactivation maps”. Click on any coordinate in the brain, and then click on “What’s here?” After a few moments, a correlation map will be generated.</p>
+<p>For example, let’s say that we wanted to generate a functional connectivity map for the default mode network (described above). If you click on the coordinates [0, 44, -14] and click the “What’s here?” button, you should see significant clusters in both the region that you clicked, and also in the posterior cingulate cortex. These maps are generated based on a sample of a thousand subjects collected by <a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3174820/">Yeo et al. (2011)</a>, and contain the typical networks you would see in any sample.</p>
+<p>As an exercise, try setting the coordinates to one of the nodes of the salience network, for example - [0 26 32], which is roughly within the anterior cingulate cortex - and see whether it correlates with the bilateral insula. Try setting the seed in other regions, such as the motor cortex or auditory cortex. What other regions would you expect would correlate with those seed regions? Why?</p>
+<figure class="align-default" id="id4">
+<img alt="../../_images/01_Neurosynth_FuncConn_Demo.gif" src="../../_images/01_Neurosynth_FuncConn_Demo.gif" />
+<figcaption>
+<p><span class="caption-text">Demonstration of how to generate functional connectivity maps with Neurosynth. Note that you can threshold the image to only show correlations above a certain value, and you can also download the correlation map to use as a mask.</span><a class="headerlink" href="#id4" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="video">
+<h2>Video<a class="headerlink" href="#video" title="Link to this heading"></a></h2>
+<p>Click <a class="reference external" href="https://www.youtube.com/watch?v=OQ3N79KG8Z8">here</a> for a brief overview of the history of functional connectivity, and how to do a simple functional connectivity analysis in FSL.</p>
+</section>
+<section id="next-steps">
+<h2>Next Steps<a class="headerlink" href="#next-steps" title="Link to this heading"></a></h2>
+<p>Now that you have an idea of what functional connectivity is and how we generate correlation maps, you are ready to begin learning about the CONN toolbox. Click <code class="docutils literal notranslate"><span class="pre">Next</span></code> to learn about how to first download the data we will be analyzing with CONN.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="CONN_00_History.html" class="btn btn-neutral float-left" title="History of Functional Connectivity" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="CONN_02_DataDownload.html" class="btn btn-neutral float-right" title="Chapter #2: Downloading the Data" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Andy Jahn.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

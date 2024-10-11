@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chapter 1: Brain Extraction (also known as “skullstripping”) &mdash; Andy&#39;s Brain Book 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b76e3c8a" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=f2a433a1"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Chapter 2: The FEAT GUI and loading the functional data" href="FEAT_GUI.html" />
+    <link rel="prev" title="fMRI Tutorial #4: Preprocessing" href="../fMRI_04_Preprocessing.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Andy's Brain Book
+          </a>
+              <div class="version">
+                1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Install</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../installation/fsl_mac_install.html">Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Unix for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_Intro.html">What is Unix?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_01_Navigation.html">Unix Tutorial #1: 目录操作 (Directories and Navigation)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_02_CopyRemove.html">Unix Tutorial #2: Copying and Removing Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_03_ReadingTextFiles.html">Unix Tutorial #3: Reading Text Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_04_ShellsVariables.html">Unix Tutorial #4: Shells and Path Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_05_ForLoops.html">Unix Tutorial #5: For-Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_06_IfElse.html">Unix Tutorial #6: Conditional Statements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_07_Scripting.html">Unix Tutorial #7: Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_08_Sed.html">Unix Tutorial #8: The Sed Command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_09_AutomatingTheAnalysis.html">Unix Tutorial #9: Automating The Analysis</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">fMRI Short Course with FSL</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../fMRI_Intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fMRI_01_DataDownload.html">fMRI Tutorial #1: Downloading the Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fMRI_02_ExperimentalDesign.html">fMRI Tutorial #2: Overview of The Flanker Task</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fMRI_03_LookingAtTheData.html">fMRI Tutorial #3: Looking at the Data</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../fMRI_04_Preprocessing.html">fMRI Tutorial #4: Preprocessing</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../fMRI_04_Preprocessing.html#overview">Overview</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Chapter 1: Brain Extraction (also known as “skullstripping”)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#looking-at-the-data">Looking at the data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#fixing-a-bad-skullstrip">Fixing a bad skullstrip</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#exercises">Exercises</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#video">Video</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="FEAT_GUI.html">Chapter 2: The FEAT GUI and loading the functional data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Motion_Correction.html">Chapter 3: Motion Correction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Slice_Timing_Correction.html">Chapter 4: Slice-Timing Correction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Smoothing.html">Chapter 5: Smoothing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Registration_Normalization.html">Chapter 6: Registration and Normalization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Checking_Preprocessing.html">Chapter 7: Checking your Preprocessed Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Checkpoint.html">Checkpoint: Preprocessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../fMRI_04_Preprocessing.html#video">Video</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../fMRI_05_1stLevelAnalysis.html">fMRI Tutorial #5: Statistics and Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fMRI_06_Scripting.html">fMRI Tutorial #6: Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fMRI_07_2ndLevelAnalysis.html">fMRI Tutorial #7: 2nd-Level Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fMRI_08_3rdLevelAnalysis.html">fMRI Tutorial #8: 3rd-Level Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fMRI_09_ROIAnalysis.html">fMRI Tutorial #9: ROI Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fMRI_10_Summary.html">fMRI Tutorial #10: Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fMRI_Appendices.html">fMRI Short Course: Appendices</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">FreeSurfer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../FreeSurfer/FreeSurfer_Introduction.html">FreeSurfer Short Course</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">E-Prime</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../E-Prime/E-Prime_Overview.html">Overview of E-Prime</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">AFNI</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../AFNI/AFNI_Overview.html">AFNI Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">SPM</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../SPM/SPM_Overview.html">SPM Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Functional Connectivity with the CONN Toolbox</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../FunctionalConnectivity/CONN_Overview.html">Functional Connectivity and the CONN Toolbox</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Parametric Modulation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../PM/PM_Overview.html">Parametric Modulation in SPM, FSL, and AFNI</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Image Visualization with MRIcroGL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../MRIcroGL/MRIcroGL_Overview.html">Image Visualization with MRIcroGL</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Introduction to the Human Connectome Project (HCP)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../HCP/HCP_Overview.html">Introduction to the Human Connectome Project</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Finite Impulse Response (FIR) Models</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../FIR/FIR_Overview.html">Finite Impulse Response (FIR)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">fMRI Concepts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Practicals/DesignOptimization.html">Design Optimization</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Diffusion Analysis with MRtrix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../MRtrix/MRtrix_Introduction.html">Introduction to MRtrix</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ASL Analysis</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/ASL_Techniques.html">fASL Tutorial #1: Background</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/fASL_02_Download.html">fASL Tutorial #2: Downloading and Installing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/fASL_03_Task.html">fASL Tutorial #3: The N-Back Task</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/04_fASL_GUI.html">fASL Tutorial #4: The GUI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/05_fASL_Results.html">fASL Tutorial #5: Examining the Results</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/06_fASL_Quantification.html">fASL Tutorial #6: Quantification</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Frequently Asked Questions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../FrequentlyAskedQuestions/FrequentlyAskedQuestions.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Statistics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Statistics/GIMME.html">GIMME (Group Iterative Multiple Model Estimation)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Open Science</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../OpenScience/OS_Overview.html">Open Science</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced Normalization Tools (ANTs)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ANTs/ANTs_Overview.html">Advanced Normalization Tools (ANTs)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tract-Based Spatial Statistics (TBSS)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../TBSS/TBSS_Overview.html">Introduction to Tract-Based Spatial Statistics (TBSS)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Statistics for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Stats/Stats_Overview.html">Statistics for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Machine Learning for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ML/ML_Overview.html">Machine Learning for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Slicer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Slicer/Slicer_Overview.html">Slicer Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">CAT12</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../CAT12/CAT12_Overview.html">Voxel-Based Morphometry with CAT12</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Using the Supercomputer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Supercomputer/Supercomputer_Overview.html">Introduction to Supercomputing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Matlab for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Matlab/Matlab_Overview.html">Matlab for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ITK-Snap</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ITK-Snap/ITK-Snap_Overview.html">ITK-Snap_Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Python for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../PythonForNeuroimagers/PythonForNeuroimagers_Overview.html">Python for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Meta-Analysis for fMRI</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../MetaAnalysis/MetaAnalysis_Overview.html">Meta-Analysis for Neuroimagers</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Andy's Brain Book</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../fMRI_04_Preprocessing.html">fMRI Tutorial #4: Preprocessing</a></li>
+      <li class="breadcrumb-item active">Chapter 1: Brain Extraction (also known as “skullstripping”)</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/fMRI_Short_Course/Preprocessing/Skull_Stripping.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="chapter-1-brain-extraction-also-known-as-skullstripping">
+<span id="skull-stripping"></span><h1>Chapter 1: Brain Extraction (also known as “skullstripping”)<a class="headerlink" href="#chapter-1-brain-extraction-also-known-as-skullstripping" title="Link to this heading"></a></h1>
+<hr class="docutils" />
+<p>Since fMRI studies focus on brain tissue, our first step is to remove the skull and non-brain areas from the image. FSL has a tool for this called <strong>bet</strong>, or the Brain Extraction Tool. It is the first button listed on the FSL GUI (indicated by “A” in the figure below). If you click on this button, another window opens that allows you to specify the Input image to skullstrip and what to label the Output image that has been skullstripped (B), and an expandable sub-window that allows you to specify advanced options (C).</p>
+<figure class="align-default">
+<img alt="../../_images/FSL_BET_GUI.png" src="../../_images/FSL_BET_GUI.png" />
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For BET and many of the other FSL tools, you are required to specify an input image and a label for the output image: Some operation is performed on the input image (skullstripping, for example) and the output image is the result of that operation. Usually the other options are set to defaults that work well for the majority of datasets, but you can override them if you want.</p>
+</div>
+<p>Open the FSL GUI from the <code class="docutils literal notranslate"><span class="pre">sub-08</span></code> directory, click on the Folder icon next to the <code class="docutils literal notranslate"><span class="pre">Input</span> <span class="pre">image</span></code> field, and navigate to the <code class="docutils literal notranslate"><span class="pre">anat</span></code> directory. Select the file <code class="docutils literal notranslate"><span class="pre">sub-08_T1w.nii.gz</span></code> and click the OK button. Notice that the <code class="docutils literal notranslate"><span class="pre">Output</span> <span class="pre">image</span></code> field is automatically filled in with the word <code class="docutils literal notranslate"><span class="pre">brain</span></code> appended to your Input image, which is FSL’s default. You can change the name if you like, but for this tutorial we will leave it as is.</p>
+<p>Now click the <code class="docutils literal notranslate"><span class="pre">Go</span></code> button at the bottom of the window. You will see some text written to your Terminal showing which commands are being used to run a command called <code class="docutils literal notranslate"><span class="pre">bet2</span></code>. Take a moment to see how the GUI corresponds to the Terminal - later on we will take advantage of this by creating a template through the GUI and then modifying it in the Terminal to automatically preprocess all of the subjects in our dataset.</p>
+<section id="looking-at-the-data">
+<h2>Looking at the data<a class="headerlink" href="#looking-at-the-data" title="Link to this heading"></a></h2>
+<p>When the Terminal says “Finished”, <code class="docutils literal notranslate"><span class="pre">bet2</span></code> is done. Since you have created a new image you should <strong>look at your data</strong>, which we will do after each preprocessing step.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Newcomers often hear the phrase “Look at your data” intoned like a mantra. Without knowing <em>how</em> to look at one’s data, the words become meaningless at best, a false comforter at worst. Each of the preprocessing steps in this chapter will be followed by recommendations of what to look for and concrete examples of what is OK and what is a problem - and what to do about it. Although we cannot cover every possible example, as you gain experience you will develop your judgment of what images are of good quality, and which ones need to be either fixed or removed.</p>
+</div>
+<p>Click on the <code class="docutils literal notranslate"><span class="pre">FSLeyes</span></code> button at the bottom of the GUI. When it opens, click on <code class="docutils literal notranslate"><span class="pre">File</span> <span class="pre">-&gt;</span> <span class="pre">Add</span> <span class="pre">from</span> <span class="pre">File</span></code> and hold shift to select both the original anatomical image and the skullstripped image you just created. As you saw in a <a class="reference internal" href="../fMRI_03_LookingAtTheData.html#fmri-03-lookingatthedata"><span class="std std-ref">previous chapter</span></a>, you will want to change the contrast to clearly distinguish the grey matter from the white matter.</p>
+<p>By loading both images you can compare the image before and after the skull was removed. In the <code class="docutils literal notranslate"><span class="pre">Overlay</span> <span class="pre">List</span></code> panel in the lower left corner of FSLeyes, click the “eye” icon to hide the corresponding image. For example, if you click on the eye icon next to <code class="docutils literal notranslate"><span class="pre">sub-08_T1w</span></code>, the original T1 anatomical image will become invisible, and you will only see the skullstripped brain. If you click on the eye again, you will see the original T1. To make the differences between the brains more apparent, highlight the skullstripped image in the Overlay List panel, then change the contrast from <code class="docutils literal notranslate"><span class="pre">Greyscale</span></code> to <code class="docutils literal notranslate"><span class="pre">Blue-Light</span> <span class="pre">blue</span></code>. The animation below shows you how to do this.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>With the November 2019 release of fsleyes, some users encounter the following error message when they try to load an image generated by any of the FSL commands: “Error loading overlay: Does not look like a BIDS file.” If you get this error message, try moving the .json files in the anat and func directories into a separate folder, and then try to load the images again.</p>
+</div>
+<p>Click around the image with your mouse and observe where there is either too much brain or too little skull that was removed. Remember that we are trying to create an image that has had the skull and face stripped clean away, with only the brain (e.g., cortex, subcortical structures, brainstem, and cerebellum) remaining.</p>
+<figure class="align-default" id="id1">
+<img alt="../../_images/BET_Demonstration.gif" src="../../_images/BET_Demonstration.gif" />
+<figcaption>
+<p><span class="caption-text">A demonstration of how to use BET to examine the anatomical image before and after skullstripping. Note that in the frontal cortex, part of the brain has been stripped away. Make sure to check all three viewing panes to see where there are problems.</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="fixing-a-bad-skullstrip">
+<h2>Fixing a bad skullstrip<a class="headerlink" href="#fixing-a-bad-skullstrip" title="Link to this heading"></a></h2>
+<p>If you’re not happy with the skullstripping, what can you do about it? Recall that the BET window contains options that we could change if we liked. One of the fields, labeled <code class="docutils literal notranslate"><span class="pre">Fractional</span> <span class="pre">intensity</span> <span class="pre">threshold</span></code>, is set to 0.5 as a default. The neighboring text explains that smaller values give larger brain outline estimates (and, conversely, larger values give smaller brain outline estimates). In other words, if we think that too much brain has been removed, we should set this to a smaller number, and vice versa if we think too little skull has been removed.</p>
+<p>Since it appears that BET has removed too much brain, try lowering the fractional intensity threshold to 0.2. Also make sure to change the output name to something that will help you remember what you did - for example, <code class="docutils literal notranslate"><span class="pre">sub-08_T1w_brain_f02</span></code>. Click the <code class="docutils literal notranslate"><span class="pre">Go</span></code> button to re-run skullstripping.</p>
+<figure class="align-default">
+<img alt="../../_images/BET_f02_GUI.png" src="../../_images/BET_f02_GUI.png" />
+</figure>
+<p>When it has finished, load the newest skullstripped image in FSLeyes. Click on the eye icon next to the original anatomical image, and also click on the eye icon next to the newest skullstripped image that we have just created. Note where more cortex has been preserved, especially in the frontal cortex and parietal cortex. You may also have noticed that more dura mater and bits of skull remain in this image. As a general rule, it is better to err on the side of leaving too much skull, as opposed to removing too much cortex - bits of skull here and there won’t cause future preprocessing steps to fail (such as normalization), but once cortex is removed, you cannot recover it.</p>
+</section>
+<hr class="docutils" />
+<section id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>Change the fractional intensity threshold to 0.1 and rerun BET, making sure to choose an appropriate output name to keep your files organized. View the result in FSLeyes. Repeat these steps with a fractional intensity threshold of 0.9. What do you notice? What seems to be a good threshold?</p></li>
+<li><p>Experiment with different contrast colors for the overlay image in FSLeyes to see which one you like the best. Use the Zoom slider (next to the magnifying glass icon) to focus on a region you think hasn’t been stripped well. Take a photo of the montage (i.e., all three viewing panes) by clicking on the Camera icon in the toolbar above the montage.</p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="video">
+<h2>Video<a class="headerlink" href="#video" title="Link to this heading"></a></h2>
+<p>To see a screencast demonstrating how to check your skullstripped image, click <a class="reference external" href="https://youtu.be/VobRXk3ccNQ">here</a>. This may help you with the exercises above.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../fMRI_04_Preprocessing.html" class="btn btn-neutral float-left" title="fMRI Tutorial #4: Preprocessing" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="FEAT_GUI.html" class="btn btn-neutral float-right" title="Chapter 2: The FEAT GUI and loading the functional data" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Andy Jahn.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

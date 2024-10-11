@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chapter 2: Slice-Timing Correction &mdash; Andy&#39;s Brain Book 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b76e3c8a" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=f2a433a1"></script>
+        <script src="../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Chapter 3: Coregistration" href="03_SPM_Coregistration.html" />
+    <link rel="prev" title="Chapter 1: Realigning and Unwarping the Data" href="01_SPM_Realign_Unwarp.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            Andy's Brain Book
+          </a>
+              <div class="version">
+                1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Install</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../installation/fsl_mac_install.html">Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Unix for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../unix/Unix_Intro.html">What is Unix?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../unix/Unix_01_Navigation.html">Unix Tutorial #1: 目录操作 (Directories and Navigation)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../unix/Unix_02_CopyRemove.html">Unix Tutorial #2: Copying and Removing Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../unix/Unix_03_ReadingTextFiles.html">Unix Tutorial #3: Reading Text Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../unix/Unix_04_ShellsVariables.html">Unix Tutorial #4: Shells and Path Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../unix/Unix_05_ForLoops.html">Unix Tutorial #5: For-Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../unix/Unix_06_IfElse.html">Unix Tutorial #6: Conditional Statements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../unix/Unix_07_Scripting.html">Unix Tutorial #7: Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../unix/Unix_08_Sed.html">Unix Tutorial #8: The Sed Command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../unix/Unix_09_AutomatingTheAnalysis.html">Unix Tutorial #9: Automating The Analysis</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">fMRI Short Course with FSL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../fMRI_Short_Course/fMRI_Intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../fMRI_Short_Course/fMRI_01_DataDownload.html">fMRI Tutorial #1: Downloading the Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../fMRI_Short_Course/fMRI_02_ExperimentalDesign.html">fMRI Tutorial #2: Overview of The Flanker Task</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../fMRI_Short_Course/fMRI_03_LookingAtTheData.html">fMRI Tutorial #3: Looking at the Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../fMRI_Short_Course/fMRI_04_Preprocessing.html">fMRI Tutorial #4: Preprocessing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../fMRI_Short_Course/fMRI_05_1stLevelAnalysis.html">fMRI Tutorial #5: Statistics and Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../fMRI_Short_Course/fMRI_06_Scripting.html">fMRI Tutorial #6: Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../fMRI_Short_Course/fMRI_07_2ndLevelAnalysis.html">fMRI Tutorial #7: 2nd-Level Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../fMRI_Short_Course/fMRI_08_3rdLevelAnalysis.html">fMRI Tutorial #8: 3rd-Level Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../fMRI_Short_Course/fMRI_09_ROIAnalysis.html">fMRI Tutorial #9: ROI Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../fMRI_Short_Course/fMRI_10_Summary.html">fMRI Tutorial #10: Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../fMRI_Short_Course/fMRI_Appendices.html">fMRI Short Course: Appendices</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">FreeSurfer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../FreeSurfer/FreeSurfer_Introduction.html">FreeSurfer Short Course</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">E-Prime</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../E-Prime/E-Prime_Overview.html">Overview of E-Prime</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">AFNI</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../AFNI/AFNI_Overview.html">AFNI Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">SPM</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../SPM_Overview.html">SPM Overview</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../SPM_Overview.html#what-is-spm">What is SPM?</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../SPM_fMRI_Intro.html">Introduction to SPM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../SPM_01_DataDownload.html">SPM Tutorial #1: Downloading the Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../SPM_02_Flanker.html">SPM Tutorial #2: The Flanker Task</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../SPM_03_LookingAtData.html">SPM Tutorial #3: Looking at the Data</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../SPM_04_Preprocessing.html">SPM Tutorial #4: Preprocessing</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="../SPM_04_Preprocessing.html#overview">Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../SPM_04_Preprocessing.html#video">Video</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../SPM_05_1stLevelAnalysis.html">SPM Tutorial #5: Statistics and Modeling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../SPM_06_Scripting.html">SPM Tutorial #6: Scripting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../SPM_07_SettingTheOrigin.html">SPM Tutorial #7: Setting the Origin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../SPM_08_GroupAnalysis.html">SPM Tutorial #8: Group Analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../SPM_Intermezzo_Toolboxes.html">SPM Intermezzo: Toolboxes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../SPM_09_ROIAnalysis.html">SPM Tutorial #9: ROI Analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../SummaryStatistics.html">Appendix A: Summary Statistics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../SPM_PPI.html">Appendix B: Psychophysiological Interactions (PPI) in SPM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../AppendixC_ParametricModulation.html">Appendix C: Parametric Modulation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../AppendixD_DesignOptimization.html">Appendix D: DesignOptimization</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Functional Connectivity with the CONN Toolbox</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../FunctionalConnectivity/CONN_Overview.html">Functional Connectivity and the CONN Toolbox</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Parametric Modulation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../PM/PM_Overview.html">Parametric Modulation in SPM, FSL, and AFNI</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Image Visualization with MRIcroGL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../MRIcroGL/MRIcroGL_Overview.html">Image Visualization with MRIcroGL</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Introduction to the Human Connectome Project (HCP)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../HCP/HCP_Overview.html">Introduction to the Human Connectome Project</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Finite Impulse Response (FIR) Models</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../FIR/FIR_Overview.html">Finite Impulse Response (FIR)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">fMRI Concepts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../Practicals/DesignOptimization.html">Design Optimization</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Diffusion Analysis with MRtrix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../MRtrix/MRtrix_Introduction.html">Introduction to MRtrix</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ASL Analysis</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../ASL/ASL_Techniques.html">fASL Tutorial #1: Background</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../ASL/fASL_02_Download.html">fASL Tutorial #2: Downloading and Installing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../ASL/fASL_03_Task.html">fASL Tutorial #3: The N-Back Task</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../ASL/04_fASL_GUI.html">fASL Tutorial #4: The GUI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../ASL/05_fASL_Results.html">fASL Tutorial #5: Examining the Results</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../ASL/06_fASL_Quantification.html">fASL Tutorial #6: Quantification</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Frequently Asked Questions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../FrequentlyAskedQuestions/FrequentlyAskedQuestions.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Statistics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../Statistics/GIMME.html">GIMME (Group Iterative Multiple Model Estimation)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Open Science</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../OpenScience/OS_Overview.html">Open Science</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced Normalization Tools (ANTs)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../ANTs/ANTs_Overview.html">Advanced Normalization Tools (ANTs)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tract-Based Spatial Statistics (TBSS)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../TBSS/TBSS_Overview.html">Introduction to Tract-Based Spatial Statistics (TBSS)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Statistics for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../Stats/Stats_Overview.html">Statistics for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Machine Learning for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../ML/ML_Overview.html">Machine Learning for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Slicer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../Slicer/Slicer_Overview.html">Slicer Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">CAT12</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../CAT12/CAT12_Overview.html">Voxel-Based Morphometry with CAT12</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Using the Supercomputer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../Supercomputer/Supercomputer_Overview.html">Introduction to Supercomputing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Matlab for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../Matlab/Matlab_Overview.html">Matlab for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ITK-Snap</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../ITK-Snap/ITK-Snap_Overview.html">ITK-Snap_Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Python for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../PythonForNeuroimagers/PythonForNeuroimagers_Overview.html">Python for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Meta-Analysis for fMRI</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../MetaAnalysis/MetaAnalysis_Overview.html">Meta-Analysis for Neuroimagers</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Andy's Brain Book</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../SPM_Overview.html">SPM Overview</a></li>
+          <li class="breadcrumb-item"><a href="../SPM_04_Preprocessing.html">SPM Tutorial #4: Preprocessing</a></li>
+      <li class="breadcrumb-item active">Chapter 2: Slice-Timing Correction</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../_sources/SPM/SPM_Short_Course/SPM_04_Preprocessing/02_SPM_SliceTiming.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="chapter-2-slice-timing-correction">
+<span id="spm-slicetiming"></span><h1>Chapter 2: Slice-Timing Correction<a class="headerlink" href="#chapter-2-slice-timing-correction" title="Link to this heading"></a></h1>
+<hr class="docutils" />
+<section id="background">
+<h2>Background<a class="headerlink" href="#background" title="Link to this heading"></a></h2>
+<p>Unlike a photograph, in which the entire picture is taken in a single moment, an fMRI volume is acquired in slices. Each of these slices takes time to acquire - from tens to hundreds of milliseconds.</p>
+<p>The two most commonly used methods for creating volumes are sequential and interleaved slice acquisition. Sequential slice acquisition acquires each adjacent slice consecutively, either bottom-to-top or top-to-bottom. Interleaved slice acquisition acquires every other slice, and then fills in the gaps on the second pass. Both of these methods are illustrated in the video below.</p>
+<figure class="align-default">
+<img alt="../../../_images/04_02_SliceTimingCorrection_Demo1.gif" src="../../../_images/04_02_SliceTimingCorrection_Demo1.gif" />
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For another illustration of how slice-timing works using <strong>linear interpolation</strong>, see <a class="reference external" href="https://matthew-brett.github.io/teaching/slice_timing.html">Matthew Brett’s page</a>.</p>
+</div>
+<p>As you’ll see later on, when we model the data at each voxel we assume that all of the slices were acquired simultaneously. To make this assumption valid, the <span class="xref std std-ref">time-series</span> for each slice needs to be shifted back in time by the duration it took to acquire that slice. <a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S1053811911007245">Sladky et al. (2011)</a> also demonstrated that slice-timing correction can lead to significant increases in statistical power for studies with longer TRs (e.g., 2s or longer), and especially in the dorsal regions of the brain.</p>
+<p>Although slice-timing correction seems reasonable, there are some objections:</p>
+<ol class="arabic simple">
+<li><p>In general, it is best to not interpolate (i.e., edit) the data unless you need to;</p></li>
+<li><p>For short TRs (e.g., around 1 second or less), slice-timing correction doesn’t appear to lead to any significant gains in statistical power; and</p></li>
+<li><p>Many of the problems addressed by slice-timing correction can be resolved by using a <strong>temporal derivative</strong> in the statistical model (discussed later in the chapter on model fitting).</p></li>
+</ol>
+<p>For now, we will do slice-timing correction, using the first slice as the reference.</p>
+</section>
+<section id="doing-slice-timing-correction-in-spm">
+<h2>Doing Slice-Timing Correction in SPM<a class="headerlink" href="#doing-slice-timing-correction-in-spm" title="Link to this heading"></a></h2>
+<p>Similar to what we did with <span class="xref std std-ref">Realignment</span>, we will first click on the <code class="docutils literal notranslate"><span class="pre">Slice</span> <span class="pre">Timing</span></code> button in the SPM GUI. Click on the <code class="docutils literal notranslate"><span class="pre">Data</span></code> field and create two new Sessions. Double-click on the first Session, and in the Filter column type <code class="docutils literal notranslate"><span class="pre">^rsub-08_task-flanker_run-1.*</span></code>. In the Frames field, enter <code class="docutils literal notranslate"><span class="pre">1:146</span></code> and press enter; select all of the frames that are displayed, and click <code class="docutils literal notranslate"><span class="pre">Done</span></code>. Do the same procedure for the run-2 files for the second session.</p>
+<p>For the <code class="docutils literal notranslate"><span class="pre">Number</span> <span class="pre">of</span> <span class="pre">Slices</span></code> field, we will need to find out how many slices there are in each of the volumes in our dataset. From the Matlab terminal navigate to the directory <code class="docutils literal notranslate"><span class="pre">sub-08/func</span></code> and type:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">V</span> <span class="o">=</span> <span class="n">spm_vol</span><span class="p">(</span><span class="s1">&#39;sub-08_task-flanker_run-1_bold.nii&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This will load the <strong>header</strong> of the image into a variable called <code class="docutils literal notranslate"><span class="pre">V</span></code>. If you now type <code class="docutils literal notranslate"><span class="pre">V</span></code> and press return, you will see that it contains the following fields:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fname</span>
+<span class="n">dim</span>
+<span class="n">dt</span>
+<span class="n">pinfo</span>
+<span class="n">mat</span>
+<span class="n">n</span>
+<span class="n">descrip</span>
+<span class="n">private</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">fname</span></code> is the name of the file, and <code class="docutils literal notranslate"><span class="pre">dim</span></code> contains the dimensions for each volume in the file. (We won’t be looking at the other fields right now; all you need to know is that they contain other header information that SPM needs to read the file.) If you type</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">V</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">dim</span>
+</pre></div>
+</div>
+<p>It will return the dimensions of the first volume in the time-series in the x-, y-, and z-directions. You should see something like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">64</span> <span class="mi">64</span> <span class="mi">40</span>
+</pre></div>
+</div>
+<p>This means that the first volume of the time-series has the dimensions of 64x64x40 voxels, with 40 being the number of <strong>slices</strong> in the z-dimensions. We will assume that the dimensions of each image and the number of slices will be the same for every volume in the subject’s functional data.</p>
+<p>Now go back to the Batch Editor window, double-click on <code class="docutils literal notranslate"><span class="pre">Number</span> <span class="pre">of</span> <span class="pre">Slices</span></code>, enter a value of <code class="docutils literal notranslate"><span class="pre">40</span></code>, and click <code class="docutils literal notranslate"><span class="pre">OK</span></code>.</p>
+<p>For the TR, enter 2; for the TA, follow the formula provided in the help window and enter <code class="docutils literal notranslate"><span class="pre">2-(2/40)</span></code>. For Slice order enter <code class="docutils literal notranslate"><span class="pre">[1:2:40</span> <span class="pre">2:2:40]</span></code>, and for the Reference Slice enter a value of <code class="docutils literal notranslate"><span class="pre">1</span></code>. Leave the filename prefix as is, which will prepend an <code class="docutils literal notranslate"><span class="pre">a</span></code> to the files that are generated. Do this same procedure for run-2 as well. When you are finished, the preprocessing window should look like this:</p>
+<figure class="align-default">
+<img alt="../../../_images/04_02_SliceTimingWindow.png" src="../../../_images/04_02_SliceTimingWindow.png" />
+</figure>
+<p>When the images have been slice-time corrected, you are ready to <strong>coregister</strong> the functional data to the anatomical data; in other words, we will align the two sets of images as best we can.</p>
+</section>
+<section id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>Sometimes the slices are acquired from the bottom to the top of the volume, without any interleaving. How would you change the code for the slice order to reflect this? Show the vector you would use in this case.</p></li>
+<li><p>Now do the same edits, but for slices that are interleaved going from the top of the volume to the bottom. Show the vector.</p></li>
+<li><p>Download another functional run from a random study on openneuro.org, and use <code class="docutils literal notranslate"><span class="pre">spm_vol</span></code> to determine how many slices there are. Repeat exercises 1 and 2 for this new dataset. Include the code and output from <code class="docutils literal notranslate"><span class="pre">spm_vol</span></code>, along with the vectors you would use.</p></li>
+</ol>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="01_SPM_Realign_Unwarp.html" class="btn btn-neutral float-left" title="Chapter 1: Realigning and Unwarping the Data" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="03_SPM_Coregistration.html" class="btn btn-neutral float-right" title="Chapter 3: Coregistration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Andy Jahn.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

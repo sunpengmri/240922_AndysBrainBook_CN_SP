@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chapter 6: Running the First-Level Analysis &mdash; Andy&#39;s Brain Book 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b76e3c8a" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=f2a433a1"></script>
+        <script src="../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="SPM Tutorial #6: Scripting" href="../SPM_06_Scripting.html" />
+    <link rel="prev" title="Chapter 5: Creating Timing Files" href="SPM_05_Creating_Timing_Files.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            Andy's Brain Book
+          </a>
+              <div class="version">
+                1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Install</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../installation/fsl_mac_install.html">Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Unix for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../unix/Unix_Intro.html">What is Unix?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../unix/Unix_01_Navigation.html">Unix Tutorial #1: 目录操作 (Directories and Navigation)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../unix/Unix_02_CopyRemove.html">Unix Tutorial #2: Copying and Removing Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../unix/Unix_03_ReadingTextFiles.html">Unix Tutorial #3: Reading Text Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../unix/Unix_04_ShellsVariables.html">Unix Tutorial #4: Shells and Path Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../unix/Unix_05_ForLoops.html">Unix Tutorial #5: For-Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../unix/Unix_06_IfElse.html">Unix Tutorial #6: Conditional Statements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../unix/Unix_07_Scripting.html">Unix Tutorial #7: Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../unix/Unix_08_Sed.html">Unix Tutorial #8: The Sed Command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../unix/Unix_09_AutomatingTheAnalysis.html">Unix Tutorial #9: Automating The Analysis</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">fMRI Short Course with FSL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../fMRI_Short_Course/fMRI_Intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../fMRI_Short_Course/fMRI_01_DataDownload.html">fMRI Tutorial #1: Downloading the Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../fMRI_Short_Course/fMRI_02_ExperimentalDesign.html">fMRI Tutorial #2: Overview of The Flanker Task</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../fMRI_Short_Course/fMRI_03_LookingAtTheData.html">fMRI Tutorial #3: Looking at the Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../fMRI_Short_Course/fMRI_04_Preprocessing.html">fMRI Tutorial #4: Preprocessing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../fMRI_Short_Course/fMRI_05_1stLevelAnalysis.html">fMRI Tutorial #5: Statistics and Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../fMRI_Short_Course/fMRI_06_Scripting.html">fMRI Tutorial #6: Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../fMRI_Short_Course/fMRI_07_2ndLevelAnalysis.html">fMRI Tutorial #7: 2nd-Level Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../fMRI_Short_Course/fMRI_08_3rdLevelAnalysis.html">fMRI Tutorial #8: 3rd-Level Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../fMRI_Short_Course/fMRI_09_ROIAnalysis.html">fMRI Tutorial #9: ROI Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../fMRI_Short_Course/fMRI_10_Summary.html">fMRI Tutorial #10: Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../fMRI_Short_Course/fMRI_Appendices.html">fMRI Short Course: Appendices</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">FreeSurfer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../FreeSurfer/FreeSurfer_Introduction.html">FreeSurfer Short Course</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">E-Prime</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../E-Prime/E-Prime_Overview.html">Overview of E-Prime</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">AFNI</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../AFNI/AFNI_Overview.html">AFNI Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">SPM</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../SPM_Overview.html">SPM Overview</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../SPM_Overview.html#what-is-spm">What is SPM?</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../SPM_fMRI_Intro.html">Introduction to SPM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../SPM_01_DataDownload.html">SPM Tutorial #1: Downloading the Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../SPM_02_Flanker.html">SPM Tutorial #2: The Flanker Task</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../SPM_03_LookingAtData.html">SPM Tutorial #3: Looking at the Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../SPM_04_Preprocessing.html">SPM Tutorial #4: Preprocessing</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../SPM_05_1stLevelAnalysis.html">SPM Tutorial #5: Statistics and Modeling</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="../SPM_05_1stLevelAnalysis.html#overview">Overview</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../SPM_06_Scripting.html">SPM Tutorial #6: Scripting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../SPM_07_SettingTheOrigin.html">SPM Tutorial #7: Setting the Origin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../SPM_08_GroupAnalysis.html">SPM Tutorial #8: Group Analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../SPM_Intermezzo_Toolboxes.html">SPM Intermezzo: Toolboxes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../SPM_09_ROIAnalysis.html">SPM Tutorial #9: ROI Analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../SummaryStatistics.html">Appendix A: Summary Statistics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../SPM_PPI.html">Appendix B: Psychophysiological Interactions (PPI) in SPM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../AppendixC_ParametricModulation.html">Appendix C: Parametric Modulation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../AppendixD_DesignOptimization.html">Appendix D: DesignOptimization</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Functional Connectivity with the CONN Toolbox</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../FunctionalConnectivity/CONN_Overview.html">Functional Connectivity and the CONN Toolbox</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Parametric Modulation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../PM/PM_Overview.html">Parametric Modulation in SPM, FSL, and AFNI</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Image Visualization with MRIcroGL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../MRIcroGL/MRIcroGL_Overview.html">Image Visualization with MRIcroGL</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Introduction to the Human Connectome Project (HCP)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../HCP/HCP_Overview.html">Introduction to the Human Connectome Project</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Finite Impulse Response (FIR) Models</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../FIR/FIR_Overview.html">Finite Impulse Response (FIR)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">fMRI Concepts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../Practicals/DesignOptimization.html">Design Optimization</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Diffusion Analysis with MRtrix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../MRtrix/MRtrix_Introduction.html">Introduction to MRtrix</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ASL Analysis</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../ASL/ASL_Techniques.html">fASL Tutorial #1: Background</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../ASL/fASL_02_Download.html">fASL Tutorial #2: Downloading and Installing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../ASL/fASL_03_Task.html">fASL Tutorial #3: The N-Back Task</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../ASL/04_fASL_GUI.html">fASL Tutorial #4: The GUI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../ASL/05_fASL_Results.html">fASL Tutorial #5: Examining the Results</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../ASL/06_fASL_Quantification.html">fASL Tutorial #6: Quantification</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Frequently Asked Questions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../FrequentlyAskedQuestions/FrequentlyAskedQuestions.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Statistics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../Statistics/GIMME.html">GIMME (Group Iterative Multiple Model Estimation)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Open Science</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../OpenScience/OS_Overview.html">Open Science</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced Normalization Tools (ANTs)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../ANTs/ANTs_Overview.html">Advanced Normalization Tools (ANTs)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tract-Based Spatial Statistics (TBSS)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../TBSS/TBSS_Overview.html">Introduction to Tract-Based Spatial Statistics (TBSS)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Statistics for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../Stats/Stats_Overview.html">Statistics for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Machine Learning for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../ML/ML_Overview.html">Machine Learning for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Slicer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../Slicer/Slicer_Overview.html">Slicer Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">CAT12</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../CAT12/CAT12_Overview.html">Voxel-Based Morphometry with CAT12</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Using the Supercomputer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../Supercomputer/Supercomputer_Overview.html">Introduction to Supercomputing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Matlab for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../Matlab/Matlab_Overview.html">Matlab for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ITK-Snap</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../ITK-Snap/ITK-Snap_Overview.html">ITK-Snap_Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Python for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../PythonForNeuroimagers/PythonForNeuroimagers_Overview.html">Python for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Meta-Analysis for fMRI</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../MetaAnalysis/MetaAnalysis_Overview.html">Meta-Analysis for Neuroimagers</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Andy's Brain Book</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../SPM_Overview.html">SPM Overview</a></li>
+          <li class="breadcrumb-item"><a href="../SPM_05_1stLevelAnalysis.html">SPM Tutorial #5: Statistics and Modeling</a></li>
+      <li class="breadcrumb-item active">Chapter 6: Running the First-Level Analysis</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../_sources/SPM/SPM_Short_Course/SPM_Statistics/SPM_06_Stats_Running_1stLevel_Analysis.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="chapter-6-running-the-first-level-analysis">
+<span id="spm-06-stats-running-1stlevel-analysis"></span><h1>Chapter 6: Running the First-Level Analysis<a class="headerlink" href="#chapter-6-running-the-first-level-analysis" title="Link to this heading"></a></h1>
+<hr class="docutils" />
+<section id="specifying-the-model">
+<h2>Specifying the Model<a class="headerlink" href="#specifying-the-model" title="Link to this heading"></a></h2>
+<p>Having created the timing files in the <a class="reference internal" href="SPM_05_Creating_Timing_Files.html#spm-05-creating-timing-files"><span class="std std-ref">previous chapter</span></a>, we can use them in conjunction with our imaging data to create statistical parametric maps. These maps indicate the strength of the correlation between our ideal time-series (which consists of our onset times convolved with the HRF) and the time-series that we collected during the experiment. The amount of modulation of the HRF is represented by a beta weight, and this in turn is converted into a t-statistic when we create contrasts using the SPM contrast manager.</p>
+<p>To begin, from the SPM GUI click on <code class="docutils literal notranslate"><span class="pre">Specify</span> <span class="pre">1st-Level</span></code>. Note that the first field that needs to be filled in is the <code class="docutils literal notranslate"><span class="pre">Directory</span></code> field. To keep our results organized, go to the Matlab terminal, navigate to the <code class="docutils literal notranslate"><span class="pre">sub-08</span></code> directory, and type <code class="docutils literal notranslate"><span class="pre">mkdir</span> <span class="pre">1stLevel</span></code>. Then double-click on <code class="docutils literal notranslate"><span class="pre">Directory</span></code> and select the <code class="docutils literal notranslate"><span class="pre">1stLevel</span></code> directory you just created. All of the output of the 1st-level analysis will go into this folder.</p>
+<p>Next, we will fill in the Timing parameters section. Under <code class="docutils literal notranslate"><span class="pre">Units</span> <span class="pre">for</span> <span class="pre">design</span></code>, select <code class="docutils literal notranslate"><span class="pre">Seconds</span></code>, and enter a value of <code class="docutils literal notranslate"><span class="pre">2</span></code> for <code class="docutils literal notranslate"><span class="pre">Interscan</span> <span class="pre">Interval</span></code>. Then click on <code class="docutils literal notranslate"><span class="pre">Data</span> <span class="pre">&amp;</span> <span class="pre">Design</span></code>, and click twice on <code class="docutils literal notranslate"><span class="pre">New:</span> <span class="pre">Subject/Session</span></code> to create two new sessions. For the <code class="docutils literal notranslate"><span class="pre">Scans</span></code> of the first session, go to the <code class="docutils literal notranslate"><span class="pre">func</span></code> directory and use the Filter and Frames fields to select all 146 volumes of the warped functional data (i.e., those files beginning with <code class="docutils literal notranslate"><span class="pre">swar</span></code>). Do the same for the volumes in the second session.</p>
+<p>Go back to the field for the first session. There are two conditions in the experiment, and both conditions occur in each run. Click on <code class="docutils literal notranslate"><span class="pre">Conditions</span></code> and then <code class="docutils literal notranslate"><span class="pre">New:</span> <span class="pre">Condition</span></code> twice to create two new Condition fields. For the first condition, double-click on <code class="docutils literal notranslate"><span class="pre">Name</span></code> and type <code class="docutils literal notranslate"><span class="pre">Inc</span></code>.</p>
+<p>We will now need the onset times for each occurrence of the Incongruent condition. From the Matlab terminal, navigate to the <code class="docutils literal notranslate"><span class="pre">func</span></code> directory and type:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">IncRun1</span> <span class="o">=</span> <span class="n">importdata</span><span class="p">(</span><span class="s1">&#39;incongruent_run1.txt&#39;</span><span class="p">);</span>
+<span class="n">IncRun1</span><span class="p">(:,</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Which will return the onset times for the Incongruent condition of run 1. Double-click on the <code class="docutils literal notranslate"><span class="pre">Onsets</span></code> field, and copy and paste the onset times into the window. Click <code class="docutils literal notranslate"><span class="pre">Done</span></code>.</p>
+<p>In this experiment each trial lasted for 2 seconds. We can therefore enter the number <code class="docutils literal notranslate"><span class="pre">2</span></code> in the <code class="docutils literal notranslate"><span class="pre">Durations</span></code> field, and SPM will assume that it is the same duration for every trial.</p>
+<p>Now do the same procedure for the Congruent condition for run 1, and the Incongruent and Congruent conditions for run 2, remembering to enter a duration value of 2 for all of them. Here is the code to display the onset times for each of the remaining onset times that you will need:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ConRun1</span> <span class="o">=</span> <span class="n">importdata</span><span class="p">(</span><span class="s1">&#39;congruent_run1.txt&#39;</span><span class="p">);</span>
+<span class="n">ConRun1</span><span class="p">(:,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">IncRun2</span> <span class="o">=</span> <span class="n">importdata</span><span class="p">(</span><span class="s1">&#39;incongruent_run2.txt&#39;</span><span class="p">);</span>
+<span class="n">IncRun2</span><span class="p">(:,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">ConRun2</span> <span class="o">=</span> <span class="n">importdata</span><span class="p">(</span><span class="s1">&#39;congruent_run2.txt&#39;</span><span class="p">);</span>
+<span class="n">ConRun2</span><span class="p">(:,</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>You can use the names “Inc” and “Con” for both runs if you want; the names will be stored in a file called <code class="docutils literal notranslate"><span class="pre">SPM.mat</span></code> which we will look at later in more detail.</p>
+<p>When you are done, click the green Go button. The model estimation should only take a few moments. When it is finished, you should see something like this:</p>
+<figure class="align-default" id="id1">
+<img alt="../../../_images/05_06_Design_Review.png" src="../../../_images/05_06_Design_Review.png" />
+<figcaption>
+<p><span class="caption-text">The General Linear Model for a single subject. The first two columns show the ideal time-series for the Incongruent and Congruent conditions for the first session, while the next two show the ideal time-series for the conditions of run 2. The last two columns are baseline regressors capturing the mean signal for each run. In this representation, time runs from top to bottom, and lighter colors represent more activity.</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="estimating-the-model">
+<h2>Estimating the Model<a class="headerlink" href="#estimating-the-model" title="Link to this heading"></a></h2>
+<p>Now that we have created our GLM, we will need to <strong>estimate</strong> the beta weights for each condition. From the SPM GUI click <code class="docutils literal notranslate"><span class="pre">Estimate</span></code>, and then double-click on the field <code class="docutils literal notranslate"><span class="pre">Select</span> <span class="pre">SPM.mat</span></code>. Change the <code class="docutils literal notranslate"><span class="pre">Write</span> <span class="pre">residuals</span></code> option to <code class="docutils literal notranslate"><span class="pre">Yes</span></code>. Navigate to the <code class="docutils literal notranslate"><span class="pre">1stLevel</span></code> directory and select the SPM.mat file, and then click the green Go button. This will take a few minutes to run.</p>
+</section>
+<section id="the-contrast-manager">
+<h2>The Contrast Manager<a class="headerlink" href="#the-contrast-manager" title="Link to this heading"></a></h2>
+<p>When you have finished estimating the model, you are ready to create <strong>contrasts</strong>. If we estimate a beta weight for the Incongruent condition and a beta weight for the Congruent condition, for example, we can take the difference between them to calculate a <strong>contrast estimate</strong> at each voxel in the brain. Doing so for each voxel will create a <strong>contrast map</strong>.</p>
+<p>To create these contrasts, click on the <code class="docutils literal notranslate"><span class="pre">Results</span></code> button of the SPM GUI, and select the SPM.mat file that was generated after estimating the model. You will see the design matrix on the right side of the panel. Click on <code class="docutils literal notranslate"><span class="pre">Define</span> <span class="pre">New</span> <span class="pre">Contrast</span></code>, and in the <code class="docutils literal notranslate"><span class="pre">Name</span></code> field type <code class="docutils literal notranslate"><span class="pre">Inc-Con</span></code>. In the contrast vector window, type <code class="docutils literal notranslate"><span class="pre">0.5</span> <span class="pre">-0.5</span> <span class="pre">0.5</span> <span class="pre">-0.5</span></code>, and then click <code class="docutils literal notranslate"><span class="pre">submit</span></code>. If the contrast is valid, you should see green text at the bottom of the window saying “name defined, contrast defined”. Make sure that your contrast manager looks like the figure below, and then click <code class="docutils literal notranslate"><span class="pre">OK</span></code> to create the contrast.</p>
+<figure class="align-default">
+<img alt="../../../_images/05_06_Contrast_Inc-Con.png" src="../../../_images/05_06_Contrast_Inc-Con.png" />
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you forgot which column corresponds to which condition, hold down the right click button while hovering over one of the columns. You should see text that specifies which condition that column belongs to.
+You may have also noted that we used <strong>contrast weights</strong> of 0.5 and -0.5. Why those numbers, instead of the traditional 1 and -1? In this case, we are accounting for the number of runs in our study - To make our results comparable to other subjects or other studies that may have different amounts of runs, we will divide our contrast weights of 1 and -1 by the number of runs that we have: e.g., 1/2 = 0.5, and -1/2 = 0.5. If we used a contrast vector of [1 -1 1 -1], the resulting t-statistic would be the same, but the contrast estimate would be inflated in proportion to the number of runs in our study.</p>
+</div>
+</section>
+<section id="examining-the-output">
+<h2>Examining the Output<a class="headerlink" href="#examining-the-output" title="Link to this heading"></a></h2>
+<p>Double-click on the contrast <code class="docutils literal notranslate"><span class="pre">Inc-Con</span></code> to open the Results window. You will first need to set a few options:</p>
+<ol class="arabic simple">
+<li><p><strong>apply masking</strong>: Set this to “none”, as we want to examine all of the voxels in the brain, and we do not want to restrict our analysis to a mask.</p></li>
+<li><p><strong>p value adjustment to control</strong>: Click on “none”, and set the uncorrected p-value to 0.01. This will test each voxel individually at a p-threshold of 0.01.</p></li>
+<li><p><strong>extent threshold {voxels}</strong>: Set this to 10 for now, which will only show clusters of 10 or more contiguous voxels. Right now we’re doing this to eliminate specks of voxels most likely found in noisy regions, such as the ventricles; later on we will learn how to do <strong>cluster correction</strong> at the group level to appropriately control for the number of individual statistical tests.</p></li>
+</ol>
+<p>When you have finished specifying the options, you will see your results displayed on a <strong>glass brain</strong>. This shows your results in standardized space in three orthogonal planes, with the dark spots representing clusters of voxels that passed our statistical threshold. In the top-right corner is a copy of your design matrix and the contrast that you are currently looking at, and at the bottom is a table listing the coordinates and statistical significance of each cluster. The first column, <strong>set-level</strong>, indicates the probability of seeing the current number of clusters, <em>c</em>. The <strong>cluster-level</strong> column shows the significance for each cluster (measured in number of voxels, or <em>kE</em>) using different correction methods. The <strong>peak-level</strong> column shows the t- and z-statistics of the peak voxel within each cluster, with the main clusters marked in bold and any sub-clusters listed below the main cluster marked in lighter font. Lastly, the MNI coordinates of the peak for each cluster and sub-cluster is listed in the rightmost column.</p>
+<p>If you left-click on the coordinates for a cluster, the coordinates will be highlighted in red and the cursor in the glass brain view will jump to those coordinates. You can click and drag the red arrow header in the glass brain if you like, and then right-click on the brain and select any of the options for jumping to the nearest suprathreshold voxel or the nearest local maximum.</p>
+<figure class="align-default">
+<img alt="../../../_images/05_06_SPM_Results_Window.png" src="../../../_images/05_06_SPM_Results_Window.png" />
+</figure>
+<p>To view the results on an image other than the glass brain, in the results window in the lower left (which contains the fields “p-values”, “Multivariate”, and “Display”), click on <code class="docutils literal notranslate"><span class="pre">overlays</span></code> and then select <code class="docutils literal notranslate"><span class="pre">sections</span></code>. Navigate to the <code class="docutils literal notranslate"><span class="pre">spm12/canonical</span></code> directory, and choose any of the T1 brains that you like. In this case, I will select the avg152 brain.</p>
+<p>You will now see the results displayed as a heatmap on the template, and you can click and drag the crosshairs as you do in the Display window. If you place the crosshairs over a particular cluster and click the “current cluster” button in the Results window, the statistical table will reappear, highlighting the coordinates of the cluster you have selected.</p>
+<figure class="align-default">
+<img alt="../../../_images/05_06_SPM_Results_Template.png" src="../../../_images/05_06_SPM_Results_Template.png" />
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you want to quickly reload the display of the results on the template brain, click on <code class="docutils literal notranslate"><span class="pre">overlays</span></code> and select <code class="docutils literal notranslate"><span class="pre">previous</span> <span class="pre">sections</span></code>.</p>
+</div>
+</section>
+<section id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>Open the contrast manager window again by clicking the <code class="docutils literal notranslate"><span class="pre">Results</span></code> button, and create contrasts of “Con-Inc” (i.e., the reverse contrast of Inc-Con), a simple effect of Incongruent (label it “Inc”), and a simple effect of Congruent (label it “Con”). Show the contrast vectors you used, and attach a screenshot of the contrast manager when you have created all of the contrasts.</p></li>
+</ol>
+<p>Estimating the beta weight for each condition individually will be important later on when we do Region of Interest analysis to determine what is driving our contrasts.</p>
+</section>
+<section id="next-steps">
+<h2>Next Steps<a class="headerlink" href="#next-steps" title="Link to this heading"></a></h2>
+<p>When you have finished running the preprocessing and first-level analyses, we will then need to run this for each subject in our study. To speed up the process, we will learn about <strong>scripting</strong>, to which we now turn.</p>
+</section>
+<section id="video">
+<h2>Video<a class="headerlink" href="#video" title="Link to this heading"></a></h2>
+<p>For a video demonstration of how to do a 1st-level analysis in SPM, click <a class="reference external" href="https://www.youtube.com/watch?v=xO0j6JMoN0M">here</a>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="SPM_05_Creating_Timing_Files.html" class="btn btn-neutral float-left" title="Chapter 5: Creating Timing Files" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../SPM_06_Scripting.html" class="btn btn-neutral float-right" title="SPM Tutorial #6: Scripting" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Andy Jahn.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

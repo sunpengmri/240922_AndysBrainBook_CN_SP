@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FreeSurfer Tutorial #2: How to Download and Install &mdash; Andy&#39;s Brain Book 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b76e3c8a" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=f2a433a1"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="FreeSurfer Tutorial #3: Recon-all" href="FS_03_ReconAll.html" />
+    <link rel="prev" title="FreeSurfer Tutorial #1: Basic Terms" href="FS_01_BasicTerms.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Andy's Brain Book
+          </a>
+              <div class="version">
+                1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Install</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../installation/fsl_mac_install.html">Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Unix for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_Intro.html">What is Unix?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_01_Navigation.html">Unix Tutorial #1: 目录操作 (Directories and Navigation)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_02_CopyRemove.html">Unix Tutorial #2: Copying and Removing Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_03_ReadingTextFiles.html">Unix Tutorial #3: Reading Text Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_04_ShellsVariables.html">Unix Tutorial #4: Shells and Path Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_05_ForLoops.html">Unix Tutorial #5: For-Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_06_IfElse.html">Unix Tutorial #6: Conditional Statements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_07_Scripting.html">Unix Tutorial #7: Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_08_Sed.html">Unix Tutorial #8: The Sed Command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_09_AutomatingTheAnalysis.html">Unix Tutorial #9: Automating The Analysis</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">fMRI Short Course with FSL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_Intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_01_DataDownload.html">fMRI Tutorial #1: Downloading the Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_02_ExperimentalDesign.html">fMRI Tutorial #2: Overview of The Flanker Task</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_03_LookingAtTheData.html">fMRI Tutorial #3: Looking at the Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_04_Preprocessing.html">fMRI Tutorial #4: Preprocessing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_05_1stLevelAnalysis.html">fMRI Tutorial #5: Statistics and Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_06_Scripting.html">fMRI Tutorial #6: Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_07_2ndLevelAnalysis.html">fMRI Tutorial #7: 2nd-Level Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_08_3rdLevelAnalysis.html">fMRI Tutorial #8: 3rd-Level Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_09_ROIAnalysis.html">fMRI Tutorial #9: ROI Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_10_Summary.html">fMRI Tutorial #10: Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_Appendices.html">fMRI Short Course: Appendices</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">FreeSurfer</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../FreeSurfer_Introduction.html">FreeSurfer Short Course</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../FreeSurfer_Introduction.html#overview">Overview</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="FS_01_BasicTerms.html">FreeSurfer Tutorial #1: Basic Terms</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">FreeSurfer Tutorial #2: How to Download and Install</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#downloading-freesurfer">Downloading FreeSurfer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#downloading-the-example-dataset">Downloading the Example Dataset</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#next-steps">Next Steps</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#video">Video</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="FS_03_ReconAll.html">FreeSurfer Tutorial #3: Recon-all</a></li>
+<li class="toctree-l3"><a class="reference internal" href="FS_04_ReconAllParallel.html">FreeSurfer Tutorial #4: Running recon-all in Parallel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="FS_05_OpenScienceGrid.html">FreeSurfer Tutorial #5: Using the Open Science Grid</a></li>
+<li class="toctree-l3"><a class="reference internal" href="FS_06_Freeview.html">FreeSurfer Tutorial #6: Freeview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="FS_07_FSGD.html">FreeSurfer Tutorial #7: The FSGD File</a></li>
+<li class="toctree-l3"><a class="reference internal" href="FS_08_GroupAnalysis.html">FreeSurfer Tutorial #8: Group Analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="FS_09_ClusterCorrection.html">FreeSurfer Tutorial #9: Cluster Correction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="FS_10_CorrelationAnalysis.html">FreeSurfer Tutorial #10: Correlation Analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="FS_11_ROIAnalysis.html">FreeSurfer Tutorial #11: Region of Interest Analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="FS_12_FailureModes.html">FreeSurfer Tutorial #12: Introduction to Failure Modes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="FS_13_PialSurface.html">FreeSurfer Tutorial #13: SkullStripping and Pial Surface Errors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="FS_14_ControlPoints.html">FreeSurfer Tutorial #14: Control Points and Intensity Normalization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="AppendixA_LGI.html">Appendix A: Local Gyrification Index</a></li>
+<li class="toctree-l3"><a class="reference internal" href="AppendixB_PETSurfer.html">Appendix B: PETSurfer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="AppendixC_Annotations.html">Appendix C: Annotating Anatomical Images with Freeview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="AppendixD_SegmentingSubfields.html">Appendix D: Segmenting Hippocampal, Amygdala, Brainstem, and Thalamus Subfields</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TRACULA_ShortCourse/TRACULA_01_Intro.html">TRACULA Tutorial #1: Overview</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">E-Prime</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../E-Prime/E-Prime_Overview.html">Overview of E-Prime</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">AFNI</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../AFNI/AFNI_Overview.html">AFNI Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">SPM</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../SPM/SPM_Overview.html">SPM Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Functional Connectivity with the CONN Toolbox</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../FunctionalConnectivity/CONN_Overview.html">Functional Connectivity and the CONN Toolbox</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Parametric Modulation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../PM/PM_Overview.html">Parametric Modulation in SPM, FSL, and AFNI</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Image Visualization with MRIcroGL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../MRIcroGL/MRIcroGL_Overview.html">Image Visualization with MRIcroGL</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Introduction to the Human Connectome Project (HCP)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../HCP/HCP_Overview.html">Introduction to the Human Connectome Project</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Finite Impulse Response (FIR) Models</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../FIR/FIR_Overview.html">Finite Impulse Response (FIR)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">fMRI Concepts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Practicals/DesignOptimization.html">Design Optimization</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Diffusion Analysis with MRtrix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../MRtrix/MRtrix_Introduction.html">Introduction to MRtrix</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ASL Analysis</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/ASL_Techniques.html">fASL Tutorial #1: Background</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/fASL_02_Download.html">fASL Tutorial #2: Downloading and Installing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/fASL_03_Task.html">fASL Tutorial #3: The N-Back Task</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/04_fASL_GUI.html">fASL Tutorial #4: The GUI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/05_fASL_Results.html">fASL Tutorial #5: Examining the Results</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/06_fASL_Quantification.html">fASL Tutorial #6: Quantification</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Frequently Asked Questions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../FrequentlyAskedQuestions/FrequentlyAskedQuestions.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Statistics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Statistics/GIMME.html">GIMME (Group Iterative Multiple Model Estimation)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Open Science</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../OpenScience/OS_Overview.html">Open Science</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced Normalization Tools (ANTs)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ANTs/ANTs_Overview.html">Advanced Normalization Tools (ANTs)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tract-Based Spatial Statistics (TBSS)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../TBSS/TBSS_Overview.html">Introduction to Tract-Based Spatial Statistics (TBSS)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Statistics for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Stats/Stats_Overview.html">Statistics for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Machine Learning for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ML/ML_Overview.html">Machine Learning for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Slicer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Slicer/Slicer_Overview.html">Slicer Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">CAT12</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../CAT12/CAT12_Overview.html">Voxel-Based Morphometry with CAT12</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Using the Supercomputer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Supercomputer/Supercomputer_Overview.html">Introduction to Supercomputing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Matlab for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Matlab/Matlab_Overview.html">Matlab for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ITK-Snap</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ITK-Snap/ITK-Snap_Overview.html">ITK-Snap_Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Python for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../PythonForNeuroimagers/PythonForNeuroimagers_Overview.html">Python for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Meta-Analysis for fMRI</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../MetaAnalysis/MetaAnalysis_Overview.html">Meta-Analysis for Neuroimagers</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Andy's Brain Book</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../FreeSurfer_Introduction.html">FreeSurfer Short Course</a></li>
+      <li class="breadcrumb-item active">FreeSurfer Tutorial #2: How to Download and Install</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/FreeSurfer/FS_ShortCourse/FS_02_DownloadInstall.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="freesurfer-tutorial-2-how-to-download-and-install">
+<span id="fs-02-downloadinstall"></span><h1>FreeSurfer Tutorial #2: How to Download and Install<a class="headerlink" href="#freesurfer-tutorial-2-how-to-download-and-install" title="Link to this heading"></a></h1>
+<hr class="docutils" />
+<section id="downloading-freesurfer">
+<h2>Downloading FreeSurfer<a class="headerlink" href="#downloading-freesurfer" title="Link to this heading"></a></h2>
+<p>FreeSurfer’s <a class="reference external" href="https://surfer.nmr.mgh.harvard.edu/fswiki/DownloadAndInstall">installation page</a> provides detailed instructions on how to download and install the FreeSurfer package. This includes registering for a license, which you will need to place in the FreeSurfer directory in order to use the software.</p>
+<p>When you have finished downloading and installing the package, you will use <a class="reference internal" href="FS_06_Freeview.html#fs-06-freeview"><span class="std std-ref">freeview</span></a> to check whether the software installed successfully. We will cover more advanced features of freeview in a later tutorial.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>FreeSurfer is designed for Unix and Macintosh operating systems. It is possible that there is a way to install FreeSurfer on Windows by using a Unix emulator, but there is no systematic documentation on the FreeSurfer website demonstrating how to do it. See <a class="reference external" href="https://surfer.nmr.mgh.harvard.edu/fswiki/WindowsSupport">here</a> for the basics of a Windows installation.</p>
+</div>
+</section>
+<section id="downloading-the-example-dataset">
+<h2>Downloading the Example Dataset<a class="headerlink" href="#downloading-the-example-dataset" title="Link to this heading"></a></h2>
+<p>For the rest of our tutorials, we will be using a <a class="reference external" href="https://openneuro.org/datasets/ds000174/versions/1.0.1">dataset from openneuro.org</a> that contains anatomical scans from cannabis users and controls. It is a longitudinal study with two timepoints - one baseline scan and one follow-up scan - and individual difference measures such as age and sex. This will enable us to do several different types of analyses, such as group comparisons, longitudinal analyses, and individual difference correlations with grey matter measurements. Download the dataset and unpack it by double-clicking on the file, and then rename the folder by typing <code class="docutils literal notranslate"><span class="pre">mv</span> <span class="pre">ds000174-1.0.1</span> <span class="pre">Cannabis</span></code>.</p>
+<p>The dataset contains one group of 20 cannabis smokers and one group of 22 controls (i.e., individuals who have never smoked cannabis). Subjects whose numerical ID begins with “1” belong to the cannabis group, and subjects whose numerical ID begins with a “2” or “3” belong to the control group. For example, sub-108 would belong to the cannabis group, and sub-320 would belong to the control group.</p>
+<p>Each subject’s directory contains two sub-directories labeled <code class="docutils literal notranslate"><span class="pre">ses-BL</span></code>, indicating the Baseline session, and <code class="docutils literal notranslate"><span class="pre">ses-FU</span></code>, indicating the Follow-Up session. Within each of these folders is another sub-directory called <code class="docutils literal notranslate"><span class="pre">anat</span></code>, which contains the anatomical scan for that session. To explore how the dataset is organized, navigate to the Cannabis directory and type the following command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ls</span> <span class="n">sub</span><span class="o">-</span><span class="mi">112</span><span class="o">/</span><span class="n">ses</span><span class="o">-</span><span class="n">BL</span><span class="o">/</span><span class="n">anat</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>When testing your installation by running the mri_convert command, you may get an error like this: <code class="docutils literal notranslate"><span class="pre">mir_convert.bin:</span> <span class="pre">error</span> <span class="pre">while</span> <span class="pre">loading</span> <span class="pre">shared</span> <span class="pre">libraries:</span> <span class="pre">libgomp.so.1:</span> <span class="pre">cannot</span> <span class="pre">open</span> <span class="pre">shared</span> <span class="pre">object</span> <span class="pre">file</span></code>. In that case, try manually installing libgomp with this command: <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">libgomp1</span></code>. Also, if you receive this error: <code class="docutils literal notranslate"><span class="pre">/home/$USERNAME/freesurfer/license.txt</span> <span class="pre">exists</span> <span class="pre">but</span> <span class="pre">you</span> <span class="pre">do</span> <span class="pre">not</span> <span class="pre">have</span> <span class="pre">read</span> <span class="pre">permission</span></code>, try typing: <code class="docutils literal notranslate"><span class="pre">chmod</span> <span class="pre">a+r</span> <span class="pre">/home/$USERNAME/freesurfer/license.txt</span></code>.</p>
+</div>
+</section>
+<section id="next-steps">
+<h2>Next Steps<a class="headerlink" href="#next-steps" title="Link to this heading"></a></h2>
+<p>Now that you have downloaded FreeSurfer and some example data, you are ready to learn about FreeSurfer’s <strong>recon-all</strong> command, which will process a dataset from start to finish. Click on the <code class="docutils literal notranslate"><span class="pre">Next</span></code> button to learn more about how it works.</p>
+</section>
+<hr class="docutils" />
+<section id="video">
+<h2>Video<a class="headerlink" href="#video" title="Link to this heading"></a></h2>
+<p>For a video walkthrough showing you how to download and install FreeSurfer, click <a class="reference external" href="https://www.youtube.com/watch?v=BSQUVktXTzo">here</a>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="FS_01_BasicTerms.html" class="btn btn-neutral float-left" title="FreeSurfer Tutorial #1: Basic Terms" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="FS_03_ReconAll.html" class="btn btn-neutral float-right" title="FreeSurfer Tutorial #3: Recon-all" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Andy Jahn.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

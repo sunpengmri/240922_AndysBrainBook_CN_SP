@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Matlab Tutorial #3: Paths and Functions &mdash; Andy&#39;s Brain Book 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=f2a433a1"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Matlab Tutorial #4: Control Structures" href="Matlab_04_ControlStructures.html" />
+    <link rel="prev" title="Matlab Tutorial #2: Variables and Structures" href="Matlab_02_VariablesStructures.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Andy's Brain Book
+          </a>
+              <div class="version">
+                1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Install</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation/fsl_mac_install.html">Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Unix for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../unix/Unix_Intro.html">What is Unix?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unix/Unix_01_Navigation.html">Unix Tutorial #1: 目录操作 (Directories and Navigation)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unix/Unix_02_CopyRemove.html">Unix Tutorial #2: Copying and Removing Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unix/Unix_03_ReadingTextFiles.html">Unix Tutorial #3: Reading Text Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unix/Unix_04_ShellsVariables.html">Unix Tutorial #4: Shells and Path Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unix/Unix_05_ForLoops.html">Unix Tutorial #5: For-Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unix/Unix_06_IfElse.html">Unix Tutorial #6: Conditional Statements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unix/Unix_07_Scripting.html">Unix Tutorial #7: Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unix/Unix_08_Sed.html">Unix Tutorial #8: The Sed Command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unix/Unix_09_AutomatingTheAnalysis.html">Unix Tutorial #9: Automating The Analysis</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">fMRI Short Course with FSL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../fMRI_Short_Course/fMRI_Intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fMRI_Short_Course/fMRI_01_DataDownload.html">fMRI Tutorial #1: Downloading the Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fMRI_Short_Course/fMRI_02_ExperimentalDesign.html">fMRI Tutorial #2: Overview of The Flanker Task</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fMRI_Short_Course/fMRI_03_LookingAtTheData.html">fMRI Tutorial #3: Looking at the Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fMRI_Short_Course/fMRI_04_Preprocessing.html">fMRI Tutorial #4: Preprocessing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fMRI_Short_Course/fMRI_05_1stLevelAnalysis.html">fMRI Tutorial #5: Statistics and Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fMRI_Short_Course/fMRI_06_Scripting.html">fMRI Tutorial #6: Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fMRI_Short_Course/fMRI_07_2ndLevelAnalysis.html">fMRI Tutorial #7: 2nd-Level Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fMRI_Short_Course/fMRI_08_3rdLevelAnalysis.html">fMRI Tutorial #8: 3rd-Level Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fMRI_Short_Course/fMRI_09_ROIAnalysis.html">fMRI Tutorial #9: ROI Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fMRI_Short_Course/fMRI_10_Summary.html">fMRI Tutorial #10: Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fMRI_Short_Course/fMRI_Appendices.html">fMRI Short Course: Appendices</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">FreeSurfer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../FreeSurfer/FreeSurfer_Introduction.html">FreeSurfer Short Course</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">E-Prime</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../E-Prime/E-Prime_Overview.html">Overview of E-Prime</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">AFNI</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../AFNI/AFNI_Overview.html">AFNI Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">SPM</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../SPM/SPM_Overview.html">SPM Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Functional Connectivity with the CONN Toolbox</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../FunctionalConnectivity/CONN_Overview.html">Functional Connectivity and the CONN Toolbox</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Parametric Modulation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../PM/PM_Overview.html">Parametric Modulation in SPM, FSL, and AFNI</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Image Visualization with MRIcroGL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../MRIcroGL/MRIcroGL_Overview.html">Image Visualization with MRIcroGL</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Introduction to the Human Connectome Project (HCP)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../HCP/HCP_Overview.html">Introduction to the Human Connectome Project</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Finite Impulse Response (FIR) Models</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../FIR/FIR_Overview.html">Finite Impulse Response (FIR)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">fMRI Concepts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Practicals/DesignOptimization.html">Design Optimization</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Diffusion Analysis with MRtrix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../MRtrix/MRtrix_Introduction.html">Introduction to MRtrix</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ASL Analysis</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../ASL/ASL_Techniques.html">fASL Tutorial #1: Background</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ASL/fASL_02_Download.html">fASL Tutorial #2: Downloading and Installing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ASL/fASL_03_Task.html">fASL Tutorial #3: The N-Back Task</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ASL/04_fASL_GUI.html">fASL Tutorial #4: The GUI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ASL/05_fASL_Results.html">fASL Tutorial #5: Examining the Results</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ASL/06_fASL_Quantification.html">fASL Tutorial #6: Quantification</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Frequently Asked Questions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../FrequentlyAskedQuestions/FrequentlyAskedQuestions.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Statistics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Statistics/GIMME.html">GIMME (Group Iterative Multiple Model Estimation)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Open Science</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../OpenScience/OS_Overview.html">Open Science</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced Normalization Tools (ANTs)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../ANTs/ANTs_Overview.html">Advanced Normalization Tools (ANTs)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tract-Based Spatial Statistics (TBSS)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../TBSS/TBSS_Overview.html">Introduction to Tract-Based Spatial Statistics (TBSS)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Statistics for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Stats/Stats_Overview.html">Statistics for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Machine Learning for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../ML/ML_Overview.html">Machine Learning for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Slicer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Slicer/Slicer_Overview.html">Slicer Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">CAT12</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../CAT12/CAT12_Overview.html">Voxel-Based Morphometry with CAT12</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Using the Supercomputer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Supercomputer/Supercomputer_Overview.html">Introduction to Supercomputing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Matlab for Neuroimagers</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="Matlab_Overview.html">Matlab for Neuroimagers</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="Matlab_Overview.html#what-is-matlab">What is Matlab?</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="Matlab_01_Navigation.html">Matlab Tutorial #1: Navigation &amp; Matrices</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Matlab_02_VariablesStructures.html">Matlab Tutorial #2: Variables and Structures</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Matlab Tutorial #3: Paths and Functions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#paths">Paths</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#functions">Functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#exercises">Exercises</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Matlab_04_ControlStructures.html">Matlab Tutorial #4: Control Structures</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ITK-Snap</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../ITK-Snap/ITK-Snap_Overview.html">ITK-Snap_Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Python for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../PythonForNeuroimagers/PythonForNeuroimagers_Overview.html">Python for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Meta-Analysis for fMRI</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../MetaAnalysis/MetaAnalysis_Overview.html">Meta-Analysis for Neuroimagers</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Andy's Brain Book</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="Matlab_Overview.html">Matlab for Neuroimagers</a></li>
+      <li class="breadcrumb-item active">Matlab Tutorial #3: Paths and Functions</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/Matlab/Matlab_03_FunctionsPaths.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="matlab-tutorial-3-paths-and-functions">
+<span id="matlab-03-functionspaths"></span><h1>Matlab Tutorial #3: Paths and Functions<a class="headerlink" href="#matlab-tutorial-3-paths-and-functions" title="Link to this heading"></a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Topics covered: paths, functions, scripts
+Commands covered: addpath</p>
+</div>
+<hr class="docutils" />
+<section id="paths">
+<h2>Paths<a class="headerlink" href="#paths" title="Link to this heading"></a></h2>
+<p>Paths allow you to use Matlab commands from anywhere in the Terminal. For example, SPM, like all the other software packages, has a <strong>library</strong>, or directory that contains all of the functions needed to run SPM - such as spm_vol, spm_get_data, spm_spm, and so on. To run those commands, we would need to either be in that directory, or we would need to specify the absolute path to the command that we want to run. To give us the flexibility to run SPM commands anywhere, we’ll set the path variable to indicate where the SPM library is.</p>
+<p>For example, if you have already <a class="reference internal" href="../SPM/SPM_Short_Course/SPM_fMRI_Intro.html#spm-fmri-intro"><span class="std std-ref">downloaded and installed SPM12</span></a>, you can set a path to the SPM12 folder a couple of different ways. Assuming that you’ve downloaded the SPM12 software package into your home directory - e.g., on my computer, <code class="docutils literal notranslate"><span class="pre">/Users/ajahn/spm12</span></code> - you can click on the “Home” tab at the top of the Matlab window, and then click the “Set Path” button. Select the <code class="docutils literal notranslate"><span class="pre">spm12</span></code> directory located in your home directory, and then click “Add Folder”. Click the “Save” button to ensure that the path is set every time Matlab is opened, and then close the window.</p>
+<figure class="align-default">
+<img alt="../_images/03_Matlab_SetPath.png" src="../_images/03_Matlab_SetPath.png" />
+</figure>
+<p>Another way to set the path is from the command line. For example, we could type the following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">addpath</span> <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">ajahn</span><span class="o">/</span><span class="n">spm12</span>
+</pre></div>
+</div>
+<p>The drawback to this approach is that it would need to be typed every time you open a new instance of Matlab. Alternatively, you could modify the file <code class="docutils literal notranslate"><span class="pre">pathdef.m</span></code>, which is located in <code class="docutils literal notranslate"><span class="pre">/Users/$USER/Documents/Matlab</span></code>, in which case you would replace <code class="docutils literal notranslate"><span class="pre">$USER</span></code> with your username. This is a more advanced technique that requires entering the path as a string in the vector <code class="docutils literal notranslate"><span class="pre">p</span></code>. Consult with a Matlab expert before attempting this option.</p>
+</section>
+<section id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Link to this heading"></a></h2>
+<p>In mathematics class, you may remember learning about <strong>functions</strong>: a mathematical operation that takes an <strong>input</strong>, or independent variable specified by the user, and generates an <strong>output</strong>, or dependent variable, based on the rules of the function. For example, a function such as:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="mi">2</span>
+</pre></div>
+</div>
+<p>Will take a given input of <code class="docutils literal notranslate"><span class="pre">x</span></code>, multiply it by <code class="docutils literal notranslate"><span class="pre">2</span></code>, and return the product of the multiplication. If we gave it an input of <code class="docutils literal notranslate"><span class="pre">x=2</span></code>, say, it would return a value of <code class="docutils literal notranslate"><span class="pre">4</span></code>.</p>
+<section id="scripts">
+<h3>Scripts<a class="headerlink" href="#scripts" title="Link to this heading"></a></h3>
+<p>Functions in Matlab are similar in that they also take inputs and generate outputs. However, a function in Matlab doesn’t necessarily have to perform any mathematical operations; variables can be assigned, directories can be navigated, and so on. If we did want to create a mathematical function, you would first have to create a <strong>script</strong>. We will talk about scripts in more detail in a later chapter, but for now, think of a script as simply a collection of commands. Instead of typing the same commands repeatedly in the command line, one at a time, you could save them as a collection inside of a script. For example, if you click on the downward-pointing arrow below the <code class="docutils literal notranslate"><span class="pre">New</span></code> button at the top of the Matlab window and select <code class="docutils literal notranslate"><span class="pre">Script</span></code>, you will generate a blank untitled script in a new window. You can type anything you want in this new window; e.g.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
+<span class="n">z</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="n">y</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>You can then save the script by clicking on the <code class="docutils literal notranslate"><span class="pre">Save</span></code> icon and giving a new name for the script. In this case, let’s call it <code class="docutils literal notranslate"><span class="pre">myScript</span></code>. It will automatically append a <code class="docutils literal notranslate"><span class="pre">.m</span></code> extension, indicating that it has been created in Matlab, and is designed to be run in Matlab. You can then run the script by clicking on the green <code class="docutils literal notranslate"><span class="pre">Run</span></code> button, or by just typing the script’s name (without the .m extension) from the command line. Note that you will need to either be in the directory that contains the script, or you will need to set a path to the script if you want to run it from another directory.</p>
+<figure class="align-default" id="id1">
+<img alt="../_images/03_Matlab_Script.png" src="../_images/03_Matlab_Script.png" />
+<figcaption>
+<p><span class="caption-text">Screenshot highlighting the New and Save buttons, the Editor window, and the Run button. Also highlighted is the command <code class="docutils literal notranslate"><span class="pre">MyScript</span></code> that is executed from the Command Window, and the new variables of x, y, and z that are listed in the Workspace window.</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="creating-a-function">
+<h3>Creating a Function<a class="headerlink" href="#creating-a-function" title="Link to this heading"></a></h3>
+<p>We will now move on to creating a function. Let’s start by using a template: Click on the downward arrow below the <code class="docutils literal notranslate"><span class="pre">New</span></code> button, and select <code class="docutils literal notranslate"><span class="pre">Function</span></code>. This will create a new untitled script that has the following code already generated for you:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">function</span> <span class="p">[</span><span class="n">outputArg1</span><span class="p">,</span><span class="n">outputArg2</span><span class="p">]</span> <span class="o">=</span> <span class="n">untitled6</span><span class="p">(</span><span class="n">inputArg1</span><span class="p">,</span><span class="n">inputArg2</span><span class="p">)</span>
+<span class="o">%</span><span class="n">UNTITLED6</span> <span class="n">Summary</span> <span class="n">of</span> <span class="n">this</span> <span class="n">function</span> <span class="n">goes</span> <span class="n">here</span>
+<span class="o">%</span>   <span class="n">Detailed</span> <span class="n">explanation</span> <span class="n">goes</span> <span class="n">here</span>
+<span class="n">outputArg1</span> <span class="o">=</span> <span class="n">inputArg1</span><span class="p">;</span>
+<span class="n">outputArg2</span> <span class="o">=</span> <span class="n">inputArg2</span><span class="p">;</span>
+<span class="n">end</span>
+</pre></div>
+</div>
+<p>Matlab functions can take some time to get used to, so let’s begin with a simple example by editing the variables that are given to us here. The first line of code is called the <strong>declaration</strong>, in which you specify the name of the function, the input to the function, and the names for the variables that will be output by the function. Note that the first word in this line is called <strong>function</strong>, indicating that everything which follows should be formatted as a function. The output, counterintuitively, comes first; both <code class="docutils literal notranslate"><span class="pre">outputArg1</span></code> and <code class="docutils literal notranslate"><span class="pre">outputArg2</span></code> are contained within a vector (indicated by the brackets), and are separated by a comma. Then, on the other side of the equals sign, is the name of the function, which for now is called <code class="docutils literal notranslate"><span class="pre">untitled6</span></code> (your default name may differ, depending on how many scripts you’ve edited in your Matlab session so far). Then, in parentheses, we specify the names of the input arguments, which are labeled here as <code class="docutils literal notranslate"><span class="pre">inputArg1</span></code> and <code class="docutils literal notranslate"><span class="pre">inputArg2</span></code>.</p>
+<p>Below the declaration line, we have two lines that begin with a percent sign (<code class="docutils literal notranslate"><span class="pre">%</span></code>). In Matlab scripts, this indicates a <strong>comment</strong>, or a line of code that is not run, but is there to tell the user what the following lines do. In a function, the commented lines just after the declaration serve as the <strong>help manual</strong> for the function - in other words, if someone types <code class="docutils literal notranslate"><span class="pre">help</span></code> followed by the name of your function, the text in the comments will be printed to the screen. The lines of code after the comments specify what operations will be performed on the input, the last line, <code class="docutils literal notranslate"><span class="pre">end</span></code>, is a keyword that needs to be written at the end of each function.</p>
+<p>Imagine that we wanted to create a function that squares the values of two inputs that are provided to the function. Let’s call this function <code class="docutils literal notranslate"><span class="pre">squareXandY</span></code>. If we wanted to give it two inputs, x and y, and call the output xSquared and ySquared, we would modify the template so that it looks like this:</p>
+<figure class="align-default">
+<img alt="../_images/03_squareXandY_Function.png" src="../_images/03_squareXandY_Function.png" />
+</figure>
+<p>Note that we have changed the name of the function in the declaration, and, importantly, we have also saved the function with the same name of <code class="docutils literal notranslate"><span class="pre">squareXandY</span></code>. The inputs are called <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code>, and the outputs are <code class="docutils literal notranslate"><span class="pre">xSquared</span></code> and <code class="docutils literal notranslate"><span class="pre">ySquared</span></code>. In the comments section of the function, we have given a brief summary in the first comment line, and a more detailed guide in the comment lines after that. The body of the function contains two lines of code, <code class="docutils literal notranslate"><span class="pre">xSquared</span> <span class="pre">=</span> <span class="pre">x^2</span></code> and <code class="docutils literal notranslate"><span class="pre">ySquared</span> <span class="pre">=</span> <span class="pre">y^2</span></code>, which are the operations performed on the input; and finally, the function is closed with the <code class="docutils literal notranslate"><span class="pre">end</span></code> keyword.</p>
+<p>Make sure your function also looks like this, and then either click the green <code class="docutils literal notranslate"><span class="pre">Go</span></code> button, or type the name of the function in the terminal, <code class="docutils literal notranslate"><span class="pre">squareXandY</span></code>, and press enter. You should see two new variables in the Workspace window labeled xSquared and ySquared, with values of 4 and 16, respectively.</p>
+</section>
+<section id="using-the-ttest-function">
+<h3>Using the ttest Function<a class="headerlink" href="#using-the-ttest-function" title="Link to this heading"></a></h3>
+<p>One of the functions that comes with Matlab’s library is called <code class="docutils literal notranslate"><span class="pre">ttest</span></code>. This is a simple function for performing either a one-sample or paired-samples t-test, and will return the p-value and confidence interval. For example, let’s create two vectors, <code class="docutils literal notranslate"><span class="pre">Cond1_Betas</span></code> and <code class="docutils literal notranslate"><span class="pre">Cond2_Betas</span></code>. Imagine that these correspond to beta estimates we extracted from a region of interest for two separate conditions in a paired-samples design:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Cond1</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.44</span><span class="p">,</span> <span class="mf">0.56</span><span class="p">,</span> <span class="mf">0.31</span><span class="p">,</span> <span class="mf">0.34</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.21</span><span class="p">,</span> <span class="mf">0.31</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.09</span><span class="p">];</span>
+<span class="n">Cond2</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.21</span><span class="p">,</span> <span class="mf">0.76</span><span class="p">,</span> <span class="mf">0.03</span><span class="p">,</span> <span class="mf">0.07</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.13</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.07</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.03</span><span class="p">,</span> <span class="mf">0.21</span><span class="p">];</span>
+</pre></div>
+</div>
+<p>Read the help file for the ttest command by typing <code class="docutils literal notranslate"><span class="pre">help</span> <span class="pre">ttest</span></code>. Note that this function can either take a single vector and perform a one-sample t-test on it, or it can take a pair of vectors, assuming that it was a within-subjects design. First, let’s run the function without specifying any of the outputs, e.g.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ttest</span><span class="p">(</span><span class="n">Cond1</span><span class="p">,</span> <span class="n">Cond2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The resulting output is simply <code class="docutils literal notranslate"><span class="pre">0</span></code>, which indicates the value for the first output that should have been specified. In this case, the full range of output is <code class="docutils literal notranslate"><span class="pre">[h,</span> <span class="pre">p,</span> <span class="pre">ci,</span> <span class="pre">stats]</span></code>, which, from the help file, we learn represent the following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">H</span> <span class="o">=</span> <span class="n">ttest</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">)</span> <span class="n">performs</span> <span class="n">a</span> <span class="n">paired</span> <span class="n">t</span><span class="o">-</span><span class="n">test</span> <span class="n">of</span> <span class="n">the</span> <span class="n">hypothesis</span> <span class="n">that</span> <span class="n">two</span>
+  <span class="n">matched</span> <span class="n">samples</span><span class="p">,</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">vectors</span> <span class="n">X</span> <span class="ow">and</span> <span class="n">Y</span><span class="p">,</span> <span class="n">come</span> <span class="kn">from</span> <span class="nn">distributions</span> <span class="k">with</span>
+  <span class="n">equal</span> <span class="n">means</span><span class="o">.</span> <span class="n">The</span> <span class="n">difference</span> <span class="n">X</span><span class="o">-</span><span class="n">Y</span> <span class="ow">is</span> <span class="n">assumed</span> <span class="n">to</span> <span class="n">come</span> <span class="kn">from</span> <span class="nn">a</span> <span class="n">normal</span>
+  <span class="n">distribution</span> <span class="k">with</span> <span class="n">unknown</span> <span class="n">variance</span><span class="o">.</span>  <span class="n">X</span> <span class="ow">and</span> <span class="n">Y</span> <span class="n">must</span> <span class="n">have</span> <span class="n">the</span> <span class="n">same</span> <span class="n">length</span><span class="o">.</span>
+  <span class="n">X</span> <span class="ow">and</span> <span class="n">Y</span> <span class="n">can</span> <span class="n">also</span> <span class="n">be</span> <span class="n">matrices</span> <span class="ow">or</span> <span class="n">N</span><span class="o">-</span><span class="n">D</span> <span class="n">arrays</span> <span class="n">of</span> <span class="n">the</span> <span class="n">same</span> <span class="n">size</span><span class="o">.</span>
+
+  <span class="p">[</span><span class="n">H</span><span class="p">,</span><span class="n">P</span><span class="p">]</span> <span class="o">=</span> <span class="n">ttest</span><span class="p">(</span><span class="o">...</span><span class="p">)</span> <span class="n">returns</span> <span class="n">the</span> <span class="n">p</span><span class="o">-</span><span class="n">value</span><span class="p">,</span> <span class="n">i</span><span class="o">.</span><span class="n">e</span><span class="o">.</span><span class="p">,</span> <span class="n">the</span> <span class="n">probability</span> <span class="n">of</span>
+  <span class="n">observing</span> <span class="n">the</span> <span class="n">given</span> <span class="n">result</span><span class="p">,</span> <span class="ow">or</span> <span class="n">one</span> <span class="n">more</span> <span class="n">extreme</span><span class="p">,</span> <span class="n">by</span> <span class="n">chance</span> <span class="k">if</span> <span class="n">the</span> <span class="n">null</span>
+  <span class="n">hypothesis</span> <span class="ow">is</span> <span class="n">true</span><span class="o">.</span>  <span class="n">Small</span> <span class="n">values</span> <span class="n">of</span> <span class="n">P</span> <span class="n">cast</span> <span class="n">doubt</span> <span class="n">on</span> <span class="n">the</span> <span class="n">validity</span> <span class="n">of</span>
+  <span class="n">the</span> <span class="n">null</span> <span class="n">hypothesis</span><span class="o">.</span>
+
+  <span class="p">[</span><span class="n">H</span><span class="p">,</span><span class="n">P</span><span class="p">,</span><span class="n">CI</span><span class="p">]</span> <span class="o">=</span> <span class="n">ttest</span><span class="p">(</span><span class="o">...</span><span class="p">)</span> <span class="n">returns</span> <span class="n">a</span> <span class="mi">100</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">ALPHA</span><span class="p">)</span><span class="o">%</span> <span class="n">confidence</span> <span class="n">interval</span> <span class="k">for</span>
+  <span class="n">the</span> <span class="n">true</span> <span class="n">mean</span> <span class="n">of</span> <span class="n">X</span><span class="p">,</span> <span class="ow">or</span> <span class="n">of</span> <span class="n">X</span><span class="o">-</span><span class="n">Y</span> <span class="k">for</span> <span class="n">a</span> <span class="n">paired</span> <span class="n">test</span><span class="o">.</span>
+
+  <span class="p">[</span><span class="n">H</span><span class="p">,</span><span class="n">P</span><span class="p">,</span><span class="n">CI</span><span class="p">,</span><span class="n">STATS</span><span class="p">]</span> <span class="o">=</span> <span class="n">ttest</span><span class="p">(</span><span class="o">...</span><span class="p">)</span> <span class="n">returns</span> <span class="n">a</span> <span class="n">structure</span> <span class="k">with</span> <span class="n">the</span> <span class="n">following</span> <span class="n">fields</span><span class="p">:</span>
+     <span class="s1">&#39;tstat&#39;</span> <span class="o">--</span> <span class="n">the</span> <span class="n">value</span> <span class="n">of</span> <span class="n">the</span> <span class="n">test</span> <span class="n">statistic</span>
+     <span class="s1">&#39;df&#39;</span>    <span class="o">--</span> <span class="n">the</span> <span class="n">degrees</span> <span class="n">of</span> <span class="n">freedom</span> <span class="n">of</span> <span class="n">the</span> <span class="n">test</span>
+     <span class="s1">&#39;sd&#39;</span>    <span class="o">--</span> <span class="n">the</span> <span class="n">estimated</span> <span class="n">population</span> <span class="n">standard</span> <span class="n">deviation</span><span class="o">.</span>  <span class="n">For</span> <span class="n">a</span>
+                <span class="n">paired</span> <span class="n">test</span><span class="p">,</span> <span class="n">this</span> <span class="ow">is</span> <span class="n">the</span> <span class="n">std</span><span class="o">.</span> <span class="n">dev</span><span class="o">.</span> <span class="n">of</span> <span class="n">X</span><span class="o">-</span><span class="n">Y</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>If we specify the function to give the full range of outputs, for example, it would look like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">h</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">ci</span><span class="p">,</span> <span class="n">stats</span><span class="p">]</span> <span class="o">=</span> <span class="n">ttest</span><span class="p">(</span><span class="n">Cond1</span><span class="p">,</span> <span class="n">Cond2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Now we get outputs not just of whether the null hypothesis was rejected or not, but statistics for the p-value, the confidence interval, and the t-statistic. Note that there are more options to use with the ttest function, which can be found in the help file. For example, we could change the alpha level with the following code:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">h</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">ci</span><span class="p">,</span> <span class="n">stats</span><span class="p">]</span> <span class="o">=</span> <span class="n">ttest</span><span class="p">(</span><span class="n">Cond1</span><span class="p">,</span> <span class="n">Cond2</span><span class="p">,</span> <span class="s1">&#39;alpha&#39;</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Is the null hypothesis now rejected? Why or why not?</p>
+<p>You could also change the test to only be left-tailed, i.e., test whether the mean is less than 0:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">h</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">ci</span><span class="p">,</span> <span class="n">stats</span><span class="p">]</span> <span class="o">=</span> <span class="n">ttest</span><span class="p">(</span><span class="n">Cond1</span><span class="p">,</span> <span class="n">Cond2</span><span class="p">,</span> <span class="s1">&#39;tail&#39;</span><span class="p">,</span> <span class="s1">&#39;left&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>We will use the ttest function, and other functions like it, when extracting data after preprocessing and modeling fMRI data with SPM. In the meantime, do the following exercises to improve your understanding of scripts and functions.</p>
+</section>
+</section>
+<section id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>Using the same Cond1 and Cond2 vectors as defined above, change the t-test to a right-tailed test (i.e., testing whether the mean is greater than 0).</p></li>
+<li><p>Create a new vector <code class="docutils literal notranslate"><span class="pre">myBetas</span></code> and populate it with whatever values you choose. Run a one-sample t-test on the vector <code class="docutils literal notranslate"><span class="pre">myBetas</span></code>. Report the p-value, confidence level, t-statistic, degrees of freedom, and standard deviation of the estimate. Show the contents of the <code class="docutils literal notranslate"><span class="pre">myBetas</span></code> vector that you used.</p></li>
+<li><p>Copy the code from the function <code class="docutils literal notranslate"><span class="pre">squareXandY</span></code> into a new function called <code class="docutils literal notranslate"><span class="pre">squareXYZ</span></code>. Edit the code in the new script by giving it a new input, <code class="docutils literal notranslate"><span class="pre">z</span></code>, and a new output, <code class="docutils literal notranslate"><span class="pre">zSquared</span></code>. Add a line of code to the body of the function to reflect this change, and update the comments to instruct the user how to use this new function. Run the function with any values for x, y, and z that you choose, and report the input and output. Show the script you used as well.</p></li>
+</ol>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Matlab_02_VariablesStructures.html" class="btn btn-neutral float-left" title="Matlab Tutorial #2: Variables and Structures" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Matlab_04_ControlStructures.html" class="btn btn-neutral float-right" title="Matlab Tutorial #4: Control Structures" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Andy Jahn.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

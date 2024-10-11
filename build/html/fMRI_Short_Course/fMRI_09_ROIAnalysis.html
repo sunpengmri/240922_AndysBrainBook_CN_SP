@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>fMRI Tutorial #9: ROI Analysis &mdash; Andy&#39;s Brain Book 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=f2a433a1"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="fMRI Tutorial #10: Summary" href="fMRI_10_Summary.html" />
+    <link rel="prev" title="fMRI Tutorial #8: 3rd-Level Analysis" href="fMRI_08_3rdLevelAnalysis.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Andy's Brain Book
+          </a>
+              <div class="version">
+                1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Install</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation/fsl_mac_install.html">Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Unix for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../unix/Unix_Intro.html">What is Unix?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unix/Unix_01_Navigation.html">Unix Tutorial #1: 目录操作 (Directories and Navigation)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unix/Unix_02_CopyRemove.html">Unix Tutorial #2: Copying and Removing Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unix/Unix_03_ReadingTextFiles.html">Unix Tutorial #3: Reading Text Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unix/Unix_04_ShellsVariables.html">Unix Tutorial #4: Shells and Path Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unix/Unix_05_ForLoops.html">Unix Tutorial #5: For-Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unix/Unix_06_IfElse.html">Unix Tutorial #6: Conditional Statements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unix/Unix_07_Scripting.html">Unix Tutorial #7: Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unix/Unix_08_Sed.html">Unix Tutorial #8: The Sed Command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unix/Unix_09_AutomatingTheAnalysis.html">Unix Tutorial #9: Automating The Analysis</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">fMRI Short Course with FSL</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="fMRI_Intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fMRI_01_DataDownload.html">fMRI Tutorial #1: Downloading the Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fMRI_02_ExperimentalDesign.html">fMRI Tutorial #2: Overview of The Flanker Task</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fMRI_03_LookingAtTheData.html">fMRI Tutorial #3: Looking at the Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fMRI_04_Preprocessing.html">fMRI Tutorial #4: Preprocessing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fMRI_05_1stLevelAnalysis.html">fMRI Tutorial #5: Statistics and Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fMRI_06_Scripting.html">fMRI Tutorial #6: Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fMRI_07_2ndLevelAnalysis.html">fMRI Tutorial #7: 2nd-Level Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fMRI_08_3rdLevelAnalysis.html">fMRI Tutorial #8: 3rd-Level Analysis</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">fMRI Tutorial #9: ROI Analysis</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#using-atlases">Using Atlases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#extracting-data-from-an-anatomical-mask">Extracting Data from an Anatomical Mask</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#extracting-data-from-an-sphere">Extracting Data from an Sphere</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#exercises">Exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#video">Video</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="fMRI_10_Summary.html">fMRI Tutorial #10: Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fMRI_Appendices.html">fMRI Short Course: Appendices</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">FreeSurfer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../FreeSurfer/FreeSurfer_Introduction.html">FreeSurfer Short Course</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">E-Prime</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../E-Prime/E-Prime_Overview.html">Overview of E-Prime</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">AFNI</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../AFNI/AFNI_Overview.html">AFNI Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">SPM</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../SPM/SPM_Overview.html">SPM Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Functional Connectivity with the CONN Toolbox</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../FunctionalConnectivity/CONN_Overview.html">Functional Connectivity and the CONN Toolbox</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Parametric Modulation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../PM/PM_Overview.html">Parametric Modulation in SPM, FSL, and AFNI</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Image Visualization with MRIcroGL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../MRIcroGL/MRIcroGL_Overview.html">Image Visualization with MRIcroGL</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Introduction to the Human Connectome Project (HCP)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../HCP/HCP_Overview.html">Introduction to the Human Connectome Project</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Finite Impulse Response (FIR) Models</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../FIR/FIR_Overview.html">Finite Impulse Response (FIR)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">fMRI Concepts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Practicals/DesignOptimization.html">Design Optimization</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Diffusion Analysis with MRtrix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../MRtrix/MRtrix_Introduction.html">Introduction to MRtrix</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ASL Analysis</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../ASL/ASL_Techniques.html">fASL Tutorial #1: Background</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ASL/fASL_02_Download.html">fASL Tutorial #2: Downloading and Installing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ASL/fASL_03_Task.html">fASL Tutorial #3: The N-Back Task</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ASL/04_fASL_GUI.html">fASL Tutorial #4: The GUI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ASL/05_fASL_Results.html">fASL Tutorial #5: Examining the Results</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ASL/06_fASL_Quantification.html">fASL Tutorial #6: Quantification</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Frequently Asked Questions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../FrequentlyAskedQuestions/FrequentlyAskedQuestions.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Statistics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Statistics/GIMME.html">GIMME (Group Iterative Multiple Model Estimation)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Open Science</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../OpenScience/OS_Overview.html">Open Science</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced Normalization Tools (ANTs)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../ANTs/ANTs_Overview.html">Advanced Normalization Tools (ANTs)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tract-Based Spatial Statistics (TBSS)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../TBSS/TBSS_Overview.html">Introduction to Tract-Based Spatial Statistics (TBSS)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Statistics for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Stats/Stats_Overview.html">Statistics for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Machine Learning for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../ML/ML_Overview.html">Machine Learning for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Slicer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Slicer/Slicer_Overview.html">Slicer Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">CAT12</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../CAT12/CAT12_Overview.html">Voxel-Based Morphometry with CAT12</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Using the Supercomputer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Supercomputer/Supercomputer_Overview.html">Introduction to Supercomputing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Matlab for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Matlab/Matlab_Overview.html">Matlab for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ITK-Snap</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../ITK-Snap/ITK-Snap_Overview.html">ITK-Snap_Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Python for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../PythonForNeuroimagers/PythonForNeuroimagers_Overview.html">Python for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Meta-Analysis for fMRI</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../MetaAnalysis/MetaAnalysis_Overview.html">Meta-Analysis for Neuroimagers</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Andy's Brain Book</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">fMRI Tutorial #9: ROI Analysis</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/fMRI_Short_Course/fMRI_09_ROIAnalysis.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="fmri-tutorial-9-roi-analysis">
+<span id="fmri-09-roianalysis"></span><h1>fMRI Tutorial #9: ROI Analysis<a class="headerlink" href="#fmri-tutorial-9-roi-analysis" title="Link to this heading"></a></h1>
+<hr class="docutils" />
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The examples in this chapter have recommended extracting the Z-statistics, but I have also heard that it may be more appropriate to extract the COPE values from each subject instead. These are located in a single image within each 3rd-level analysis directory, e.g.: <code class="docutils literal notranslate"><span class="pre">Flanker/Flanker_3rdLevel_Inc-Con.gfeat/cope1.feat/filtered_func_data.nii.gz</span></code>. Consider using that as an input instead, both for <code class="docutils literal notranslate"><span class="pre">fslmeants</span></code> and for <code class="docutils literal notranslate"><span class="pre">randomise</span></code>. Noted on 09.15.2024</p>
+</div>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading"></a></h2>
+<p>You’ve just completed a group-level analysis, and identified which regions of the brain show a significant difference between the Incongruent and Congruent conditions of the experiment. For some researchers, this may be all that they want to do.</p>
+<p>This kind of analysis is called a <strong>whole-brain</strong> or <strong>exploratory</strong> analysis. These types of analyses are useful when the experimenter doesn’t have a hypothesis about where the difference may be located; the result will be used as the basis for future research.</p>
+<p>When a large number of studies have been run about a specific topic, however, we can begin to make more specific hypotheses about where we should find our results in the brain images. For example, cognitive control has been studied for many years, and many fMRI studies have been published about it using different paradigms that compare more cognitively demanding tasks to less cognitively demanding tasks. Often, significant increases in the BOLD signal during cognitively demanding conditions are seen in a region of the brain known as the <strong>dorsal medial prefrontal cortex</strong>, or dmPFC for short. For the Flanker study, then, we could restrict our analysis to this region and only extract data from voxels within that region. This is known as a <strong>region of interest (ROI)</strong> analysis. A general name for an analysis in which you choose to analyze a region selected before you look at whole-brain results is called a <strong>confirmatory analysis</strong>.</p>
+<p>Whole-brain maps can hide important details about the effects that we’re studying. We may find a significant effect of incongruent-congruent, but the reason the effect is significant could be because incongruent is greater than congruent, or because congruent is much more negative than congruent, or some combination of the two. The only way to determine what is driving the effect is with ROI analysis, and this is especially important when dealing with interactions and more sophisticated designs.</p>
+</section>
+<section id="using-atlases">
+<h2>Using Atlases<a class="headerlink" href="#using-atlases" title="Link to this heading"></a></h2>
+<p>One way to create a region for our ROI analysis is to use an <strong>atlas</strong>, or a map that partitions the brain into anatomically distinct regions.</p>
+<p>FSL has many atlases already installed, which you can access through the FSL viewer. If you click on Settings -&gt; Ortho View 1 -&gt; Atlas Panel, it will open a new window called <code class="docutils literal notranslate"><span class="pre">Atlases</span></code>. By default, the Harvard-Oxford Cortical and Subcortical Atlases will be loaded. You can see how the atlas partitions the brain by clicking on the <code class="docutils literal notranslate"><span class="pre">Show/Hide</span></code> link next to the atlas name. The voxel at the center of the crosshairs in the viewing window will be assigned a probability of belonging to a brain structure.</p>
+<figure class="align-default" id="id1">
+<a class="reference internal image-reference" href="../_images/ROI_Analysis_Atlas_Example.png"><img alt="../_images/ROI_Analysis_Atlas_Example.png" src="../_images/ROI_Analysis_Atlas_Example.png" style="width: 340.0px; height: 353.5px;" /></a>
+<figcaption>
+<p><span class="caption-text">The Harvard-Oxford Cortical atlas, displayed on an MNI template brain. The Atlas window shows the probability that the voxel is located at a certain anatomical region.</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>To save one of these regions as a file to extract data from, also known as a <strong>mask</strong>, click on the <code class="docutils literal notranslate"><span class="pre">Show/Hide</span></code> link next to the region you want to use as a mask - in our example, let’s say that we want to use the Paracingulate Gyrus as a mask. Clicking on the link will show that region overlaid on the brain, as well as load it as an overlay in the Overlay List window. Click on the disk icon next to the image to save it as a mask. Save it to the Flanker directory and call it <code class="docutils literal notranslate"><span class="pre">PCG.nii</span></code>.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/ROI_Analysis_PCG_Mask.png"><img alt="../_images/ROI_Analysis_PCG_Mask.png" src="../_images/ROI_Analysis_PCG_Mask.png" style="width: 356.0px; height: 297.0px;" /></a>
+</figure>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Your results will have the same resolution as the template you used for normalization. The default in FSL is the MNI_152_T1_2mm_brain, which has a resolution of 2x2x2mm. When you create a mask, it will have the same resolution as the template that it is overlaid on. When we extract data from the mask, the data and the mask need to have the same resolution. To avoid any errors due to different image resolutions, use the same template to create the mask that you used to normalize your data.</p>
+</div>
+</section>
+<section id="extracting-data-from-an-anatomical-mask">
+<h2>Extracting Data from an Anatomical Mask<a class="headerlink" href="#extracting-data-from-an-anatomical-mask" title="Link to this heading"></a></h2>
+<p>Once you’ve created the mask, you can then extract each subject’s contrast estimates from it. Although you may think that we would extract the results from the 3rd-level analysis, we actually want the ones from the 2nd-level analysis; the 3rd-level analysis is a single image with a single number at each voxel, whereas in an ROI analysis our goal is to extract the contrast estimate for each subject individually.</p>
+<p>For the Incongruent-Congruent contrast estimate, for example, you can find each subjects’ data maps in the directory <code class="docutils literal notranslate"><span class="pre">Flanker_2ndLevel.gfeat/cope3.feat/stats</span></code>. The data maps have been calculated several different ways, including t-statistic maps, cope images, and variance images. My preference is to extract data from the z-statistic maps, since these data have been converted into a form that is normally distributed and, in my opinion, is easier to plot and to interpret.</p>
+<p>To make our ROI analysis easier, we will merge all of the z-statistic maps into a single dataset. To do this, we will use a combination of FSL commands and Unix commands. Navigate into the <code class="docutils literal notranslate"><span class="pre">Flanker_2ndLevel.gfeat/cope3.feat/stats</span></code> directory, and then type the following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>fslmerge -t allZstats.nii.gz `ls zstat* | sort -V`
+</pre></div>
+</div>
+<p>This will merge all of the z-statistic images into a single dataset along the time dimension (specified with the <code class="docutils literal notranslate"><span class="pre">-t</span></code> option); this simply means to daisy-chain the volumes together into a single larger dataset. The first argument is what the output dataset will be called (<code class="docutils literal notranslate"><span class="pre">allZstats.nii.gz</span></code>), and the code in backticks uses an asterisk wildcard to list each file beginning with “zstat”, and then sorts them numerically from smallest to largest with the <code class="docutils literal notranslate"><span class="pre">-V</span></code> option.</p>
+<p>Move the allZstats.nii.gz file up three levels so that it is in the main Flanker directory (i.e., type <code class="docutils literal notranslate"><span class="pre">mv</span> <span class="pre">allZstats.nii.gz</span> <span class="pre">../../..</span></code>). Then use the fslmeants command to extract the data from the PCG mask:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fslmeants</span> <span class="o">-</span><span class="n">i</span> <span class="n">allZstats</span><span class="o">.</span><span class="n">nii</span><span class="o">.</span><span class="n">gz</span> <span class="o">-</span><span class="n">m</span> <span class="n">PCG</span><span class="o">.</span><span class="n">nii</span><span class="o">.</span><span class="n">gz</span>
+</pre></div>
+</div>
+<p>This will print 26 numbers, one per subject. Each number is the contrast estimate for that subject averaged across all of the voxels in the mask.</p>
+<figure class="align-default" id="id2">
+<a class="reference internal image-reference" href="../_images/ROI_Analysis_FSLmeants_output.png"><img alt="../_images/ROI_Analysis_FSLmeants_output.png" src="../_images/ROI_Analysis_FSLmeants_output.png" style="width: 760.0px; height: 667.0px;" /></a>
+<figcaption>
+<p><span class="caption-text">Each number output from this command corresponds to the contrast estimate that went into the analysis. For example, the first number corresponds to the average contrast estimate for Incongruent-Congruent for sub-01, the second number is the average contrast estimate for sub-02, and so on. These numbers can be copied and pasted into a statistical software package of your choice (such as R), and then you can run a t-test on them.</span><a class="headerlink" href="#id2" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="extracting-data-from-an-sphere">
+<h2>Extracting Data from an Sphere<a class="headerlink" href="#extracting-data-from-an-sphere" title="Link to this heading"></a></h2>
+<p>You may have noticed that the results from the ROI analysis using the anatomical mask were not significant. This may be because the PCG mask covers a very large region; although the PCG is labeled as a single anatomical region, we may be extracting data from several distinct functional regions. Consequently, this may not be the best ROI approach to take.</p>
+<p>Another technique is called the <strong>spherical ROI</strong> approach. In this case, a sphere of a given diameter is centered at a triplet of specified x-, y-, and z-coordinates. These coordinates are often based on the peak activation of another study that uses the same or a similar experimental design to what you are using. This is considered an <strong>independent</strong> analysis, since the ROI is defined based on a separate study.</p>
+<p>The following animation shows the difference between anatomical and spherical ROIs:</p>
+<figure class="align-default">
+<img alt="../_images/ROI_Analysis_Anatomical_Spherical.gif" src="../_images/ROI_Analysis_Anatomical_Spherical.gif" />
+</figure>
+<p>To create this ROI, we will need to find peak coordinates from another study; let’s randomly pick a paper, such as Jahn et al., 2016. In the Results section, we find that there is a Conflict effect for a Stroop task - a distinct but related experimental design also intended to tap into cognitive control - with a peak t-statistic at MNI coordinates 0, 20, 40.</p>
+<figure class="align-default">
+<img alt="../_images/ROI_Analysis_Jahn_Study.png" src="../_images/ROI_Analysis_Jahn_Study.png" />
+</figure>
+<p>The next few steps are complicated, so pay close attention to each one:</p>
+<ol class="arabic simple">
+<li><p>Open fsleyes, and load an MNI template. In the fields under the label “Coordinates: MNI152” in the <code class="docutils literal notranslate"><span class="pre">Location</span></code> window, type <code class="docutils literal notranslate"><span class="pre">0</span> <span class="pre">20</span> <span class="pre">44</span></code>. Just to the right of those fields, note the corresponding change in the numbers in the fields under <code class="docutils literal notranslate"><span class="pre">Voxel</span> <span class="pre">location</span></code>. In this case, they are <code class="docutils literal notranslate"><span class="pre">45</span> <span class="pre">73</span> <span class="pre">58</span></code>. Write down these numbers.</p></li>
+<li><p>In the terminal, navigate to the Flanker directory and type the following:</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>fslmaths $FSLDIR/data/standard/MNI152_T1_2mm.nii.gz -mul 0 -add 1 -roi 45 1 73 1 58 1 0 1 Jahn_ROI_dmPFC_0_20_44.nii.gz -odt float
+</pre></div>
+</div>
+<p>This is a long, dense command, but for now just note where we have inserted the numbers 45, 73, and 58. When you create another spherical ROI based on different coordinates, these are the only numbers you will change. (When you create a new ROI you should change the label of the output file as well.) The output of this command is a single voxel marking the center of the coordinates specified above.</p>
+<ol class="arabic simple" start="3">
+<li><p>Next, type:</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fslmaths</span> <span class="n">Jahn_ROI_dmPFC_0_20_44</span><span class="o">.</span><span class="n">nii</span><span class="o">.</span><span class="n">gz</span> <span class="o">-</span><span class="n">kernel</span> <span class="n">sphere</span> <span class="mi">5</span> <span class="o">-</span><span class="n">fmean</span> <span class="n">Jahn_Sphere_dmPFC_0_20_44</span><span class="o">.</span><span class="n">nii</span><span class="o">.</span><span class="n">gz</span> <span class="o">-</span><span class="n">odt</span> <span class="nb">float</span>
+</pre></div>
+</div>
+<p>This expands the single voxel into a sphere with a radius of 5mm, and calls the output “Jahn_Sphere.nii.gz”. If you wanted to change the size of the sphere to 10mm, for example, you would change this section of code to <code class="docutils literal notranslate"><span class="pre">-kernel</span> <span class="pre">sphere</span> <span class="pre">10</span></code>.</p>
+<ol class="arabic simple" start="4">
+<li><p>Now, type:</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fslmaths</span> <span class="n">Jahn_Sphere_dmPFC_0_20_44</span><span class="o">.</span><span class="n">nii</span><span class="o">.</span><span class="n">gz</span> <span class="o">-</span><span class="nb">bin</span> <span class="n">Jahn_Sphere_bin_dmPFC_0_20_44</span><span class="o">.</span><span class="n">nii</span><span class="o">.</span><span class="n">gz</span>
+</pre></div>
+</div>
+<p>This will binarize the sphere, so that it can be read by the FSL commands.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In the steps that were just listed, notice how the output from each command is used as input to the next command. You will change this for your own ROI, if you decide to create one.</p>
+</div>
+<ol class="arabic simple" start="5">
+<li><p>Lastly, we will extract data from this ROI by typing:</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fslmeants</span> <span class="o">-</span><span class="n">i</span> <span class="n">allZstats</span><span class="o">.</span><span class="n">nii</span><span class="o">.</span><span class="n">gz</span> <span class="o">-</span><span class="n">m</span> <span class="n">Jahn_Sphere_bin_dmPFC_0_20_44</span><span class="o">.</span><span class="n">nii</span><span class="o">.</span><span class="n">gz</span>
+</pre></div>
+</div>
+<p>The numbers you get from this analysis should look much different from the ones you created using the anatomical mask. Copy and paste these commands into the statistical software package of your choice, and run a one-sample t-test on them. Are they significant? How would you describe them if you had to write up these results in a manuscript?</p>
+</section>
+<hr class="docutils" />
+<section id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>The mask used with fslmeants is <strong>binarized</strong>, meaning that any voxel containing a numerical value greater than zero will be converted to a “1”, and then data will be extracted only from those voxels labeled with a “1”. You will recall that the mask created with fsleyes is <strong>probabilistic</strong>. If you want to weight the extracted contrast estimates by the probability weight, you can do this by using the <code class="docutils literal notranslate"><span class="pre">-w</span></code> option with fslmeants. Try typing:</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fslmeants</span> <span class="o">-</span><span class="n">i</span> <span class="n">allZstats</span><span class="o">.</span><span class="n">nii</span><span class="o">.</span><span class="n">gz</span> <span class="o">-</span><span class="n">m</span> <span class="n">PCG</span><span class="o">.</span><span class="n">nii</span><span class="o">.</span><span class="n">gz</span> <span class="o">-</span><span class="n">w</span>
+</pre></div>
+</div>
+<p>And observe how the numbers are different from the previous method that used a binarized mask. Is the difference small? Large? Is it what you would expect?</p>
+<ol class="arabic simple" start="2">
+<li><p>Use the code given in the section on spherical ROI analysis to create a sphere with a 7mm radius located at MNI coordinates 36, -2, 48.</p></li>
+<li><p>Use the Harvard-Oxford subcortical atlas to create an anatomical mask of the right amygdala. Label it whatever you want. Then, extract the z-statistics from cope1 (i.e., the contrast estimates for Incongruent compared to baseline).</p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="video">
+<h2>Video<a class="headerlink" href="#video" title="Link to this heading"></a></h2>
+<p>Click <a class="reference external" href="https://www.youtube.com/watch?v=p70utwa-NkU">here</a> for a demonstration of how to use both anatomical and spherical masks for an ROI analysis.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="fMRI_08_3rdLevelAnalysis.html" class="btn btn-neutral float-left" title="fMRI Tutorial #8: 3rd-Level Analysis" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="fMRI_10_Summary.html" class="btn btn-neutral float-right" title="fMRI Tutorial #10: Summary" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Andy Jahn.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

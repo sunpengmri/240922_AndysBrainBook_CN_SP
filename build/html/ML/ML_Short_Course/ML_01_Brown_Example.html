@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Machine Learning Tutorial #1: Basic Example with Support Vector Machines &mdash; Andy&#39;s Brain Book 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b76e3c8a" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=f2a433a1"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Machine Learning Tutorial #2: The Haxby Dataset" href="ML_02_Haxby_Intro_Download.html" />
+    <link rel="prev" title="Machine Learning: Introduction to Basic Terms and Concepts" href="ML_00_Introduction.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Andy's Brain Book
+          </a>
+              <div class="version">
+                1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Install</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../installation/fsl_mac_install.html">Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Unix for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_Intro.html">What is Unix?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_01_Navigation.html">Unix Tutorial #1: 目录操作 (Directories and Navigation)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_02_CopyRemove.html">Unix Tutorial #2: Copying and Removing Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_03_ReadingTextFiles.html">Unix Tutorial #3: Reading Text Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_04_ShellsVariables.html">Unix Tutorial #4: Shells and Path Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_05_ForLoops.html">Unix Tutorial #5: For-Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_06_IfElse.html">Unix Tutorial #6: Conditional Statements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_07_Scripting.html">Unix Tutorial #7: Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_08_Sed.html">Unix Tutorial #8: The Sed Command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_09_AutomatingTheAnalysis.html">Unix Tutorial #9: Automating The Analysis</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">fMRI Short Course with FSL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_Intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_01_DataDownload.html">fMRI Tutorial #1: Downloading the Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_02_ExperimentalDesign.html">fMRI Tutorial #2: Overview of The Flanker Task</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_03_LookingAtTheData.html">fMRI Tutorial #3: Looking at the Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_04_Preprocessing.html">fMRI Tutorial #4: Preprocessing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_05_1stLevelAnalysis.html">fMRI Tutorial #5: Statistics and Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_06_Scripting.html">fMRI Tutorial #6: Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_07_2ndLevelAnalysis.html">fMRI Tutorial #7: 2nd-Level Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_08_3rdLevelAnalysis.html">fMRI Tutorial #8: 3rd-Level Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_09_ROIAnalysis.html">fMRI Tutorial #9: ROI Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_10_Summary.html">fMRI Tutorial #10: Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_Appendices.html">fMRI Short Course: Appendices</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">FreeSurfer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../FreeSurfer/FreeSurfer_Introduction.html">FreeSurfer Short Course</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">E-Prime</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../E-Prime/E-Prime_Overview.html">Overview of E-Prime</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">AFNI</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../AFNI/AFNI_Overview.html">AFNI Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">SPM</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../SPM/SPM_Overview.html">SPM Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Functional Connectivity with the CONN Toolbox</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../FunctionalConnectivity/CONN_Overview.html">Functional Connectivity and the CONN Toolbox</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Parametric Modulation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../PM/PM_Overview.html">Parametric Modulation in SPM, FSL, and AFNI</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Image Visualization with MRIcroGL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../MRIcroGL/MRIcroGL_Overview.html">Image Visualization with MRIcroGL</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Introduction to the Human Connectome Project (HCP)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../HCP/HCP_Overview.html">Introduction to the Human Connectome Project</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Finite Impulse Response (FIR) Models</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../FIR/FIR_Overview.html">Finite Impulse Response (FIR)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">fMRI Concepts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Practicals/DesignOptimization.html">Design Optimization</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Diffusion Analysis with MRtrix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../MRtrix/MRtrix_Introduction.html">Introduction to MRtrix</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ASL Analysis</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/ASL_Techniques.html">fASL Tutorial #1: Background</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/fASL_02_Download.html">fASL Tutorial #2: Downloading and Installing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/fASL_03_Task.html">fASL Tutorial #3: The N-Back Task</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/04_fASL_GUI.html">fASL Tutorial #4: The GUI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/05_fASL_Results.html">fASL Tutorial #5: Examining the Results</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/06_fASL_Quantification.html">fASL Tutorial #6: Quantification</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Frequently Asked Questions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../FrequentlyAskedQuestions/FrequentlyAskedQuestions.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Statistics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Statistics/GIMME.html">GIMME (Group Iterative Multiple Model Estimation)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Open Science</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../OpenScience/OS_Overview.html">Open Science</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced Normalization Tools (ANTs)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ANTs/ANTs_Overview.html">Advanced Normalization Tools (ANTs)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tract-Based Spatial Statistics (TBSS)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../TBSS/TBSS_Overview.html">Introduction to Tract-Based Spatial Statistics (TBSS)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Statistics for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Stats/Stats_Overview.html">Statistics for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Machine Learning for Neuroimagers</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../ML_Overview.html">Machine Learning for Neuroimagers</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../ML_Overview.html#overview">Overview</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="ML_00_Introduction.html">Machine Learning: Introduction to Basic Terms and Concepts</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Machine Learning Tutorial #1: Basic Example with Support Vector Machines</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pre-processing">Pre-processing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#regression-analysis">Regression Analysis</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#creating-the-training-set">Creating the Training Set</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#creating-the-testing-set">Creating the Testing Set</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#creating-the-mask">Creating the Mask</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#training-and-testing-the-classifier">Training and Testing the Classifier</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#why-this-mask">Why This Mask?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#video">Video</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ML_02_Haxby_Intro_Download.html">Machine Learning Tutorial #2: The Haxby Dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ML_03_Haxby_Preprocessing.html">Machine Learning Tutorial #3: Preprocessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ML_04_Haxby_Timing.html">Machine Learning Tutorial #4: Creating the Timing Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ML_05_Haxby_MVPA.html">Machine Learning Tutorial #5: MVPA Analysis with The Decoding Toolbox</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ML_06_Haxby_Scripting.html">Machine Learning Tutorial #6: Scripting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ML_07_Haxby_GroupAnalysis.html">Machine Learning Tutorial #7: Group Analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ML_08_Haxby_NonParametric.html">Machine Learning Tutorial #8: Non-Parametric Analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ML_09_RSA.html">Machine Learning Tutorial #9: Representational Similarity Analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ML_10_Hyperalignment.html">Machine Learning Tutorial #10: Hyperalignment</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Slicer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Slicer/Slicer_Overview.html">Slicer Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">CAT12</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../CAT12/CAT12_Overview.html">Voxel-Based Morphometry with CAT12</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Using the Supercomputer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Supercomputer/Supercomputer_Overview.html">Introduction to Supercomputing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Matlab for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Matlab/Matlab_Overview.html">Matlab for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ITK-Snap</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ITK-Snap/ITK-Snap_Overview.html">ITK-Snap_Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Python for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../PythonForNeuroimagers/PythonForNeuroimagers_Overview.html">Python for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Meta-Analysis for fMRI</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../MetaAnalysis/MetaAnalysis_Overview.html">Meta-Analysis for Neuroimagers</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Andy's Brain Book</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../ML_Overview.html">Machine Learning for Neuroimagers</a></li>
+      <li class="breadcrumb-item active">Machine Learning Tutorial #1: Basic Example with Support Vector Machines</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/ML/ML_Short_Course/ML_01_Brown_Example.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="machine-learning-tutorial-1-basic-example-with-support-vector-machines">
+<span id="ml-01-brown-example"></span><h1>Machine Learning Tutorial #1: Basic Example with Support Vector Machines<a class="headerlink" href="#machine-learning-tutorial-1-basic-example-with-support-vector-machines" title="Link to this heading"></a></h1>
+<hr class="docutils" />
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading"></a></h2>
+<p>This tutorial is transcribed almost verbatim from the <a class="reference external" href="https://www.brown.edu/carney/mri/researchers/analysis-pipelines/mvpa">Brown University website</a>; the only additions here will be figures to show the results from certain steps, and to provide clarification where necessary.</p>
+<p>The study design, according to the website, was as follows:</p>
+<blockquote>
+<div><p>We presented a participant with 4 different types of visual stimuli (cars, shoes, faces, houses) in a blocked design. The participant passively viewed these images (no task was performed). The study consisted of 8 runs, where each run was comprised of four blocks, one for each stimulus category. Within each block there were 10 images from a single stimulus condition. The blocks were randomized across each run, and no image was repeated across runs (80 images per category total).</p>
+</div></blockquote>
+<p>This dataset can be downloaded <a class="reference external" href="https://drive.google.com/drive/folders/0B141z-GC_3Bdbms5TGlGRU9DRlk">here</a>. By highlighting all of the items and right-clicking, you can select “Download”. This will place the files within your <code class="docutils literal notranslate"><span class="pre">Downloads</span></code> folder.</p>
+</section>
+<section id="pre-processing">
+<h2>Pre-processing<a class="headerlink" href="#pre-processing" title="Link to this heading"></a></h2>
+<p>The data for this study has already been preprocessed, which includes slice-timing correction, motion correction, and spatial smoothing. Note that some studies do not perform spatial smoothing, in order to keep the activation profiles of each voxel as separate as possible; because we are not concerned with detecting the strength of a signal that is there, we do not need to average together the signal of nearby voxels. We will cover this more in a later tutorial, in which you compare the results both with and without smoothing.</p>
+</section>
+<section id="regression-analysis">
+<h2>Regression Analysis<a class="headerlink" href="#regression-analysis" title="Link to this heading"></a></h2>
+<p>The .1D files that were included in the dataset indicate which stimulus class was presented during which run. Using <code class="docutils literal notranslate"><span class="pre">3dDeconvolve</span></code>, we use the <code class="docutils literal notranslate"><span class="pre">stim_times_IM</span></code> option which will estimate the amplitude of the BOLD response for each trial within that stimulus class. Since there were 8 trials for each stimulus class, and 4 stimulus classes, we will have 32 regressors total:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">3</span><span class="n">dDeconvolve</span> <span class="o">-</span><span class="nb">input</span> <span class="n">run1</span><span class="o">.</span><span class="n">preproc</span><span class="o">.</span><span class="n">nii</span> <span class="n">run2</span><span class="o">.</span><span class="n">preproc</span><span class="o">.</span><span class="n">nii</span> <span class="n">run3</span><span class="o">.</span><span class="n">preproc</span><span class="o">.</span><span class="n">nii</span> <span class="n">run4</span><span class="o">.</span><span class="n">preproc</span><span class="o">.</span><span class="n">nii</span> <span class="n">run5</span><span class="o">.</span><span class="n">preproc</span><span class="o">.</span><span class="n">nii</span> <span class="n">run6</span><span class="o">.</span><span class="n">preproc</span><span class="o">.</span><span class="n">nii</span> <span class="n">run7</span><span class="o">.</span><span class="n">preproc</span><span class="o">.</span><span class="n">nii</span> <span class="n">run8</span><span class="o">.</span><span class="n">preproc</span><span class="o">.</span><span class="n">nii</span> \
+<span class="o">-</span><span class="n">polort</span> <span class="mi">1</span> \
+<span class="o">-</span><span class="n">local_times</span> \
+<span class="o">-</span><span class="n">censor</span> <span class="n">allRuns</span><span class="o">.</span><span class="n">censor</span><span class="mf">.1</span><span class="n">D</span> \
+<span class="o">-</span><span class="n">num_stimts</span> <span class="mi">4</span> \
+<span class="o">-</span><span class="n">stim_times_IM</span> <span class="mi">1</span> <span class="n">cars</span><span class="o">.</span><span class="n">block</span><span class="o">.</span><span class="n">onsets</span><span class="mf">.1</span><span class="n">D</span> <span class="s1">&#39;BLOCK(9,1)&#39;</span> <span class="o">-</span><span class="n">stim_label</span> <span class="mi">1</span> <span class="n">cars</span> \
+<span class="o">-</span><span class="n">stim_times_IM</span> <span class="mi">2</span> <span class="n">faces</span><span class="o">.</span><span class="n">block</span><span class="o">.</span><span class="n">onsets</span><span class="mf">.1</span><span class="n">D</span> <span class="s1">&#39;BLOCK(9,1)&#39;</span> <span class="o">-</span><span class="n">stim_label</span> <span class="mi">2</span> <span class="n">faces</span> \
+<span class="o">-</span><span class="n">stim_times_IM</span> <span class="mi">3</span> <span class="n">houses</span><span class="o">.</span><span class="n">block</span><span class="o">.</span><span class="n">onsets</span><span class="mf">.1</span><span class="n">D</span> <span class="s1">&#39;BLOCK(9,1)&#39;</span> <span class="o">-</span><span class="n">stim_label</span> <span class="mi">3</span> <span class="n">houses</span> \
+<span class="o">-</span><span class="n">stim_times_IM</span> <span class="mi">4</span> <span class="n">shoes</span><span class="o">.</span><span class="n">block</span><span class="o">.</span><span class="n">onsets</span><span class="mf">.1</span><span class="n">D</span> <span class="s1">&#39;BLOCK(9,1)&#39;</span> <span class="o">-</span><span class="n">stim_label</span> <span class="mi">4</span> <span class="n">shoes</span> \
+<span class="o">-</span><span class="n">bucket</span> <span class="n">MVPA</span><span class="o">.</span><span class="n">BLOCK</span><span class="o">.</span><span class="n">nii</span>
+</pre></div>
+</div>
+<p>Copying and running this code in your Terminal should only take a few moments. The output file, MVPA.BLOCK.nii, contains image volumes (also known as <strong>sub-briks</strong>) for each instance of each regressor. If you type <code class="docutils literal notranslate"><span class="pre">3dinfo</span> <span class="pre">-verb</span> <span class="pre">MVPA.BLOCK.nii</span></code>, you will see which sub-briks correspond to which trial for each regressor:</p>
+<figure class="align-default" id="id5">
+<img alt="../../_images/01_MVPA_Info.png" src="../../_images/01_MVPA_Info.png" />
+<figcaption>
+<p><span class="caption-text">The contents of the file MVPA.BLOCK.nii. Remember that the first file is indexed as 0; in other words, the first sub-brik in this dataset is “#0 ‘Full_FStat’”, the first sub-brik for the Cars condition is sub-brik #1, which is labeled ‘cars#0_Coef’, and so on.</span><a class="headerlink" href="#id5" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>We will then extract the sub-briks from each class in the output of 3dDeconvolve, <a href="#id1"><span class="problematic" id="id2">``</span></a>MVPA.BLOCK.nii`, using a for-loop. For example, to extract the sub-briks for the Car condition, we can use this line of code:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>for a in $(seq 1 8); do 3dTcat -prefix cars.$a.nii MVPA.BLOCK.nii[${a}]; done
+</pre></div>
+</div>
+<p>Which will create 8 files, cars.1.nii, cars.2.nii, all the way until cars.8.nii. (The <code class="docutils literal notranslate"><span class="pre">seq</span></code> command creates a string of numbers between the two arguments that are provided; in this case, 1, 2, 3, 4, 5, 6, 7, and 8.) We will use this same command to extract the corresponding sub-briks for the Faces, Houses, and Shoes conditions:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>for a in $(seq 9 16); do (( b=`expr $a - 8` )); 3dTcat -prefix faces.$b.nii MVPA.BLOCK.nii[${a}]; done
+for a in $(seq 17 24); do (( b=`expr $a - 16` )); 3dTcat -prefix houses.$b.nii MVPA.BLOCK.nii[${a}]; done
+for a in $(seq 25 32); do (( b=`expr $a - 24` )); 3dTcat -prefix shoes.$b.nii MVPA.BLOCK.nii[${a}]; done
+</pre></div>
+</div>
+<p>In this case, we include another piece of code, <code class="docutils literal notranslate"><span class="pre">expr</span></code>. Since we want to label each sub-brik we extract as corresponding to the first through the eighth of that condition, we subtract from the sub-brik number that is specified in the <code class="docutils literal notranslate"><span class="pre">seq</span></code> command. For example, the first sub-brik of the Faces condition is the ninth one in the MVPA.BLOCK.nii file; by subtracting 8 from 9, we label the first sub-brik as <code class="docutils literal notranslate"><span class="pre">faces.1.nii</span></code>, and so on for all of the sub-briks in that condition.</p>
+<p>When you have finished running the code, you should see something like this:</p>
+<p>01_Extract_sub-brik_output.png</p>
+</section>
+<section id="creating-the-training-set">
+<h2>Creating the Training Set<a class="headerlink" href="#creating-the-training-set" title="Link to this heading"></a></h2>
+<p>Now that we have the sub-briks, we will create a <strong>training set</strong> for the classifier. The classifier will then have some experience of what the typical beta map looks like for each of the conditions in our experiment, and will be able to make an educated guess about what condition an unlabeled beta map belongs to.</p>
+<p>In order to avoid any ordering confounds, we will select at random beta maps from each condition. This can be done with a random number generator, such as the one in Excel; but for now, we will use the same beta maps that are listed on the Brown website. For example, we will select beta maps 3 through 8 for the Cars condition, leaving beta maps 1 and 2 for the training set:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">3</span><span class="n">dTcat</span> <span class="o">-</span><span class="n">prefix</span> <span class="n">cars</span><span class="o">.</span><span class="n">train</span><span class="o">.</span><span class="n">nii</span> <span class="n">cars</span><span class="mf">.3</span><span class="o">.</span><span class="n">nii</span> <span class="n">cars</span><span class="mf">.4</span><span class="o">.</span><span class="n">nii</span> <span class="n">cars</span><span class="mf">.5</span><span class="o">.</span><span class="n">nii</span> <span class="n">cars</span><span class="mf">.6</span><span class="o">.</span><span class="n">nii</span> <span class="n">cars</span><span class="mf">.7</span><span class="o">.</span><span class="n">nii</span> <span class="n">cars</span><span class="mf">.8</span><span class="o">.</span><span class="n">nii</span>
+</pre></div>
+</div>
+<p>This will create a new dataset, <a href="#id3"><span class="problematic" id="id4">``</span></a>cars.train.nii`, which contains beta maps 3 through 8. We will do a similar procedure for the other conditions, selecting different sets of beta maps:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">3</span><span class="n">dTcat</span> <span class="o">-</span><span class="n">prefix</span> <span class="n">faces</span><span class="o">.</span><span class="n">train</span><span class="o">.</span><span class="n">nii</span> <span class="n">faces</span><span class="mf">.2</span><span class="o">.</span><span class="n">nii</span> <span class="n">faces</span><span class="mf">.8</span><span class="o">.</span><span class="n">nii</span> <span class="n">faces</span><span class="mf">.1</span><span class="o">.</span><span class="n">nii</span> <span class="n">faces</span><span class="mf">.7</span><span class="o">.</span><span class="n">nii</span> <span class="n">faces</span><span class="mf">.4</span><span class="o">.</span><span class="n">nii</span> <span class="n">faces</span><span class="mf">.5</span><span class="o">.</span><span class="n">nii</span>
+<span class="mi">3</span><span class="n">dTcat</span> <span class="o">-</span><span class="n">prefix</span> <span class="n">houses</span><span class="o">.</span><span class="n">train</span><span class="o">.</span><span class="n">nii</span> <span class="n">houses</span><span class="mf">.5</span><span class="o">.</span><span class="n">nii</span> <span class="n">houses</span><span class="mf">.3</span><span class="o">.</span><span class="n">nii</span> <span class="n">houses</span><span class="mf">.4</span><span class="o">.</span><span class="n">nii</span> <span class="n">houses</span><span class="mf">.8</span><span class="o">.</span><span class="n">nii</span> <span class="n">houses</span><span class="mf">.6</span><span class="o">.</span><span class="n">nii</span> <span class="n">houses</span><span class="mf">.7</span><span class="o">.</span><span class="n">nii</span>
+<span class="mi">3</span><span class="n">dTcat</span> <span class="o">-</span><span class="n">prefix</span> <span class="n">shoes</span><span class="o">.</span><span class="n">train</span><span class="o">.</span><span class="n">nii</span> <span class="n">shoes</span><span class="mf">.8</span><span class="o">.</span><span class="n">nii</span> <span class="n">shoes</span><span class="mf">.7</span><span class="o">.</span><span class="n">nii</span> <span class="n">shoes</span><span class="mf">.4</span><span class="o">.</span><span class="n">nii</span> <span class="n">shoes</span><span class="mf">.3</span><span class="o">.</span><span class="n">nii</span> <span class="n">shoes</span><span class="mf">.6</span><span class="o">.</span><span class="n">nii</span> <span class="n">shoes</span><span class="mf">.2</span><span class="o">.</span><span class="n">nii</span>
+</pre></div>
+</div>
+<p>We will then concatenate all of those training datasets into a single dataset called <code class="docutils literal notranslate"><span class="pre">trainBlock.nii</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">3</span><span class="n">dTcat</span> <span class="o">-</span><span class="n">prefix</span> <span class="n">trainBlock</span><span class="o">.</span><span class="n">nii</span> <span class="n">cars</span><span class="o">.</span><span class="n">train</span><span class="o">.</span><span class="n">nii</span> <span class="n">faces</span><span class="o">.</span><span class="n">train</span><span class="o">.</span><span class="n">nii</span> <span class="n">houses</span><span class="o">.</span><span class="n">train</span><span class="o">.</span><span class="n">nii</span> <span class="n">shoes</span><span class="o">.</span><span class="n">train</span><span class="o">.</span><span class="n">nii</span>
+</pre></div>
+</div>
+<p>In another file that was downloaded with the dataset, <code class="docutils literal notranslate"><span class="pre">trainLabels.1D</span></code>, we find a string of numbers:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span>
+<span class="mi">1</span>
+<span class="mi">1</span>
+<span class="mi">1</span>
+<span class="mi">1</span>
+<span class="mi">1</span>
+<span class="mi">2</span>
+<span class="mi">2</span>
+<span class="mi">2</span>
+<span class="mi">2</span>
+<span class="mi">2</span>
+<span class="mi">2</span>
+<span class="mi">3</span>
+<span class="mi">3</span>
+<span class="mi">3</span>
+<span class="mi">3</span>
+<span class="mi">3</span>
+<span class="mi">3</span>
+<span class="mi">4</span>
+<span class="mi">4</span>
+<span class="mi">4</span>
+<span class="mi">4</span>
+<span class="mi">4</span>
+<span class="mi">4</span>
+</pre></div>
+</div>
+<p>Since there are 4 classes, we label each of the volumes in our training dataset <code class="docutils literal notranslate"><span class="pre">trainBlock.nii</span></code> with a number; in this case, 1’s for Cars, 2’s for Faces, 3’s for Houses, and 4’s for Shoes. The numbers are arbitrary - you can label them however you want, as long as the numbers within a category are consistent. You will need to remember these numbers when running the classifier on the testing data, which will return a number for its best guess as to the category for each condition.</p>
+</section>
+<section id="creating-the-testing-set">
+<h2>Creating the Testing Set<a class="headerlink" href="#creating-the-testing-set" title="Link to this heading"></a></h2>
+<p>With each training set containing 6 beta maps, the testing set will therefore contain the remaining 2 beta maps for each condition. These are the beta maps that the classifier will use to make a guess as to which condition they belong to:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">3</span><span class="n">dTcat</span> <span class="o">-</span><span class="n">prefix</span> <span class="n">cars</span><span class="o">.</span><span class="n">test</span><span class="o">.</span><span class="n">nii</span> <span class="n">cars</span><span class="mf">.1</span><span class="o">.</span><span class="n">nii</span> <span class="n">cars</span><span class="mf">.2</span><span class="o">.</span><span class="n">nii</span>
+<span class="mi">3</span><span class="n">dTcat</span> <span class="o">-</span><span class="n">prefix</span> <span class="n">faces</span><span class="o">.</span><span class="n">test</span><span class="o">.</span><span class="n">nii</span> <span class="n">faces</span><span class="mf">.3</span><span class="o">.</span><span class="n">nii</span> <span class="n">faces</span><span class="mf">.6</span><span class="o">.</span><span class="n">nii</span>
+<span class="mi">3</span><span class="n">dTcat</span> <span class="o">-</span><span class="n">prefix</span> <span class="n">houses</span><span class="o">.</span><span class="n">test</span><span class="o">.</span><span class="n">nii</span> <span class="n">houses</span><span class="mf">.2</span><span class="o">.</span><span class="n">nii</span> <span class="n">houses</span><span class="mf">.1</span><span class="o">.</span><span class="n">nii</span>
+<span class="mi">3</span><span class="n">dTcat</span> <span class="o">-</span><span class="n">prefix</span> <span class="n">shoes</span><span class="o">.</span><span class="n">test</span><span class="o">.</span><span class="n">nii</span> <span class="n">shoes</span><span class="mf">.5</span><span class="o">.</span><span class="n">nii</span> <span class="n">shoes</span><span class="mf">.1</span><span class="o">.</span><span class="n">nii</span>
+</pre></div>
+</div>
+<p>We then combine them into a single testing dataset, called <code class="docutils literal notranslate"><span class="pre">testBlock.nii</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">3</span><span class="n">dTcat</span> <span class="o">-</span><span class="n">prefix</span> <span class="n">testBlock</span><span class="o">.</span><span class="n">nii</span> <span class="n">cars</span><span class="o">.</span><span class="n">test</span><span class="o">.</span><span class="n">nii</span> <span class="n">faces</span><span class="o">.</span><span class="n">test</span><span class="o">.</span><span class="n">nii</span> <span class="n">houses</span><span class="o">.</span><span class="n">test</span><span class="o">.</span><span class="n">nii</span> <span class="n">shoes</span><span class="o">.</span><span class="n">test</span><span class="o">.</span><span class="n">nii</span>
+</pre></div>
+</div>
+</section>
+<section id="creating-the-mask">
+<h2>Creating the Mask<a class="headerlink" href="#creating-the-mask" title="Link to this heading"></a></h2>
+<p>Just as with ROI analyses for fMRI data, we will want to restrict our analyses to a <strong>mask</strong> indicating which voxels to include for our analysis. Since we are doing a visual recognition task, we will want to restrict our analyses to the visual and temporal lobes of the brain; and, further, to the grey matter voxels of those lobes.</p>
+<p>This mask has already been generated for you, in the file <code class="docutils literal notranslate"><span class="pre">final.mask.nii</span></code>. An axial view shows the voxels that will be used for our classification analysis:</p>
+<figure class="align-default">
+<img alt="../../_images/01_Mask.png" src="../../_images/01_Mask.png" />
+</figure>
+<p>If the mask had not already been generated for you, other options would be to either 1) Create a spherical ROI based on the results of another study examining a similar region; 2) create a mask using regions defined by an atlas; or 3) Process the anatomical image through <a class="reference internal" href="../../FreeSurfer/FreeSurfer_Introduction.html#freesurfer-introduction"><span class="std std-ref">FreeSurfer</span></a> and use the parcellations generated by recon-all. The choice is up to you.</p>
+</section>
+<section id="training-and-testing-the-classifier">
+<h2>Training and Testing the Classifier<a class="headerlink" href="#training-and-testing-the-classifier" title="Link to this heading"></a></h2>
+<p>Now that we have testing data for the classifier, we will show each beta map to it, along with the labels indicating which condition that beta belongs to - analogous to showing a person pictures of several different males and females to get a sense of what each category looks like. To do this, we will be using a <strong>support vector machine</strong> that attempts to draw a hyperplane between the pattern of voxels that best classifies each category.</p>
+<p>To train the model, we provide the training dataset, the training labels, and the mask for our analysis; these are indicated by the options <code class="docutils literal notranslate"><span class="pre">-trainvol</span></code>, <code class="docutils literal notranslate"><span class="pre">-trainlabels</span></code>, and <code class="docutils literal notranslate"><span class="pre">-mask</span></code>, respectively. To output the model generated by the support vector machine, we will use the <code class="docutils literal notranslate"><span class="pre">-model</span></code> option:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">3</span><span class="n">dsvm</span> <span class="o">-</span><span class="n">trainvol</span> <span class="n">trainBlock</span><span class="o">.</span><span class="n">nii</span> \
+<span class="o">-</span><span class="n">trainlabels</span> <span class="n">trainLabels</span><span class="mf">.1</span><span class="n">D</span> \
+<span class="o">-</span><span class="n">model</span> <span class="n">trainSet</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">nii</span> \
+<span class="o">-</span><span class="n">mask</span> <span class="n">final</span><span class="o">.</span><span class="n">mask</span><span class="o">.</span><span class="n">nii</span>
+</pre></div>
+</div>
+<p>We will then input this into <code class="docutils literal notranslate"><span class="pre">3dsvm</span></code> again, using the testBlock.nii file as our testing volume:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">3</span><span class="n">dsvm</span> <span class="o">-</span><span class="n">testvol</span> <span class="n">testBlock</span><span class="o">.</span><span class="n">nii</span> \
+<span class="o">-</span><span class="n">model</span> <span class="n">trainSet</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">nii</span> \
+<span class="o">-</span><span class="n">classout</span> \
+<span class="o">-</span><span class="n">predictions</span> <span class="n">exemplar</span>
+</pre></div>
+</div>
+<p>This command will use the training set generated in the previous command to predict which volume in the testing block belongs to which category. For example, we know that the first two volumes belong to the Cars category; since we labeled them as 1’s, the classifier - if it is accurate - should also classify them as 1’s. We then compare the classifier’s predictions to the actual labels in order to compute its accuracy. The <code class="docutils literal notranslate"><span class="pre">-classout</span></code> option will label each prediction as an integer, and <code class="docutils literal notranslate"><span class="pre">-predictions</span></code> will prepend a string to each set of predictions (in this case, “exemplar”).</p>
+<p>Since we have 4 categories, the classifier generates a separate file for each combination: 1 vs. 2, 2 vs. 3, 2 vs. 4, and so on. If we look within the file <code class="docutils literal notranslate"><span class="pre">exemplar_1_2.1D</span></code>, we find the following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span>
+<span class="mi">1</span>
+<span class="mi">2</span>
+<span class="mi">2</span>
+<span class="mi">1</span>
+<span class="mi">1</span>
+<span class="mi">1</span>
+<span class="mi">2</span>
+</pre></div>
+</div>
+<p>In which the training block attempts to judge whether each volume in the training set belongs to category 1 or category 2; that is, whether it belongs to Cars or Faces. The first two volumes, which we know are the beta maps for the Cars category, have been correctly identified, although a few other beta maps have been identified as Cars although they are not.</p>
+<p>You can look at the other combinations at your leisure. The most important file for our purposes, however, is <code class="docutils literal notranslate"><span class="pre">exemplar_overall_DAG.1D</span></code>. This file contains predictions for every combination of category that we used in our training dataset, and the output may look something like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span>
+<span class="mi">3</span>
+<span class="mi">2</span>
+<span class="mi">2</span>
+<span class="mi">3</span>
+<span class="mi">3</span>
+<span class="mi">1</span>
+<span class="mi">4</span>
+</pre></div>
+</div>
+<p>As we saw before, the first two volumes are Cars, the second two are Faces, the third pair are Houses, and the last two are Shoes. Note that both Faces and Houses have been classified correctly, whereas Cars and Shoes are less accurately classified. If we were doing a group analysis, we would run this same classification for each subject and then add up the accuracies for each category. If there is a significantly higher classification accuracy for one category or group of categories compared to other categories, and the classification accuracy is greater than chance - in this case, greater than 1 in 4, or 25% - we can conclude that the voxels in our mask are able to reliably represent one category as opposed to another.</p>
+</section>
+<section id="why-this-mask">
+<h2>Why This Mask?<a class="headerlink" href="#why-this-mask" title="Link to this heading"></a></h2>
+<p>You may be wondering why we chose the voxels that we did - specifically, the ones located in the temporal and occipital lobes. These voxels were not chosen at random, but rather were chosen based on many studies that have shown that these voxels show reliable patterns of activation in response to faces. One of the classic studies of this phenomenon was conducted by <a class="reference external" href="https://science.sciencemag.org/content/293/5539/2425.abstract">Haxby et al., 2001</a>; and it happens that we can download the data from that study and analyze it the same way. We will learn how to do that in the following chapters, in order to both consolidate what you’ve learned about MVPA, extend it to a group analysis, and replicate the results of a famous experiment.</p>
+</section>
+<section id="video">
+<h2>Video<a class="headerlink" href="#video" title="Link to this heading"></a></h2>
+<p>For a video demonstration of how to use 3dsvm, click <a class="reference external" href="https://www.youtube.com/watch?v=5j-z2ibs00U">here</a>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="ML_00_Introduction.html" class="btn btn-neutral float-left" title="Machine Learning: Introduction to Basic Terms and Concepts" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="ML_02_Haxby_Intro_Download.html" class="btn btn-neutral float-right" title="Machine Learning Tutorial #2: The Haxby Dataset" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Andy Jahn.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

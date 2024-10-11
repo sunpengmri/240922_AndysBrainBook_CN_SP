@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SUMA Tutorial #5: Region of Interest Analysis &mdash; Andy&#39;s Brain Book 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b76e3c8a" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=f2a433a1"></script>
+        <script src="../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Appendix A: Parametric Modulation in AFNI" href="../AppendixA_ParametricModulation.html" />
+    <link rel="prev" title="SUMA Tutorial #4: Group Analysis" href="SUMA_04_GroupAnalysisOnTheSurface.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            Andy's Brain Book
+          </a>
+              <div class="version">
+                1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Install</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../installation/fsl_mac_install.html">Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Unix for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../unix/Unix_Intro.html">What is Unix?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../unix/Unix_01_Navigation.html">Unix Tutorial #1: 目录操作 (Directories and Navigation)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../unix/Unix_02_CopyRemove.html">Unix Tutorial #2: Copying and Removing Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../unix/Unix_03_ReadingTextFiles.html">Unix Tutorial #3: Reading Text Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../unix/Unix_04_ShellsVariables.html">Unix Tutorial #4: Shells and Path Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../unix/Unix_05_ForLoops.html">Unix Tutorial #5: For-Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../unix/Unix_06_IfElse.html">Unix Tutorial #6: Conditional Statements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../unix/Unix_07_Scripting.html">Unix Tutorial #7: Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../unix/Unix_08_Sed.html">Unix Tutorial #8: The Sed Command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../unix/Unix_09_AutomatingTheAnalysis.html">Unix Tutorial #9: Automating The Analysis</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">fMRI Short Course with FSL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../fMRI_Short_Course/fMRI_Intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../fMRI_Short_Course/fMRI_01_DataDownload.html">fMRI Tutorial #1: Downloading the Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../fMRI_Short_Course/fMRI_02_ExperimentalDesign.html">fMRI Tutorial #2: Overview of The Flanker Task</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../fMRI_Short_Course/fMRI_03_LookingAtTheData.html">fMRI Tutorial #3: Looking at the Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../fMRI_Short_Course/fMRI_04_Preprocessing.html">fMRI Tutorial #4: Preprocessing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../fMRI_Short_Course/fMRI_05_1stLevelAnalysis.html">fMRI Tutorial #5: Statistics and Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../fMRI_Short_Course/fMRI_06_Scripting.html">fMRI Tutorial #6: Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../fMRI_Short_Course/fMRI_07_2ndLevelAnalysis.html">fMRI Tutorial #7: 2nd-Level Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../fMRI_Short_Course/fMRI_08_3rdLevelAnalysis.html">fMRI Tutorial #8: 3rd-Level Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../fMRI_Short_Course/fMRI_09_ROIAnalysis.html">fMRI Tutorial #9: ROI Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../fMRI_Short_Course/fMRI_10_Summary.html">fMRI Tutorial #10: Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../fMRI_Short_Course/fMRI_Appendices.html">fMRI Short Course: Appendices</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">FreeSurfer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../FreeSurfer/FreeSurfer_Introduction.html">FreeSurfer Short Course</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">E-Prime</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../E-Prime/E-Prime_Overview.html">Overview of E-Prime</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">AFNI</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../AFNI_Overview.html">AFNI Overview</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../AFNI_Overview.html#what-is-afni">What is AFNI?</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../AFNI_fMRI_Intro.html">Introduction to AFNI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../AFNI_01_DataDownload.html">AFNI Tutorial #1: Downloading the Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../AFNI_02_ExperimentalDesign.html">AFNI Tutorial #2: The Flanker Experiment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../AFNI_03_LookingAtTheData.html">AFNI Tutorial #3: Looking at the Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../AFNI_04_Preprocessing.html">AFNI Tutorial #4: AFNI Commands and Preprocessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../AFNI_05_1stLevelAnalysis.html">AFNI Tutorial #5: Statistics and Modeling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../AFNI_06_Scripting.html">AFNI Tutorial #6: Scripting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../AFNI_07_GroupAnalysis.html">AFNI Tutorial #7: Group Analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../AFNI_08_ROIAnalysis.html">AFNI Tutorial #8: ROI Analysis</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../AFNI_09_SurfaceAnalysis.html">AFNI Tutorial #9: Surface-Based Analysis with SUMA</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="SUMA_01_ReconSurface.html">SUMA Tutoral #1: Reconstructing the Cortical Surface</a></li>
+<li class="toctree-l4"><a class="reference internal" href="SUMA_02_MakeSpec_AlignExp.html">SUMA Tutorial #2: &#64;SUMA_Make_Spec_FS and &#64;SUMA_AlignToExperiment</a></li>
+<li class="toctree-l4"><a class="reference internal" href="SUMA_03_AnalysisOnTheSurface.html">SUMA Tutorial #3: Analysis on the Surface</a></li>
+<li class="toctree-l4"><a class="reference internal" href="SUMA_04_GroupAnalysisOnTheSurface.html">SUMA Tutorial #4: Group Analysis</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">SUMA Tutorial #5: Region of Interest Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../AppendixA_ParametricModulation.html">Appendix A: Parametric Modulation in AFNI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../AppendixB_AnimalAnalysis.html">Appendix B: Analyzing Rat Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../AppendixC_HighlightingResults.html">Appendix C: Highlighting Vs. Hiding Results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../AppendixD_EffectSizes.html">Appendix D: Reporting Effect Sizes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">SPM</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../SPM/SPM_Overview.html">SPM Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Functional Connectivity with the CONN Toolbox</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../FunctionalConnectivity/CONN_Overview.html">Functional Connectivity and the CONN Toolbox</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Parametric Modulation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../PM/PM_Overview.html">Parametric Modulation in SPM, FSL, and AFNI</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Image Visualization with MRIcroGL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../MRIcroGL/MRIcroGL_Overview.html">Image Visualization with MRIcroGL</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Introduction to the Human Connectome Project (HCP)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../HCP/HCP_Overview.html">Introduction to the Human Connectome Project</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Finite Impulse Response (FIR) Models</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../FIR/FIR_Overview.html">Finite Impulse Response (FIR)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">fMRI Concepts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../Practicals/DesignOptimization.html">Design Optimization</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Diffusion Analysis with MRtrix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../MRtrix/MRtrix_Introduction.html">Introduction to MRtrix</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ASL Analysis</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../ASL/ASL_Techniques.html">fASL Tutorial #1: Background</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../ASL/fASL_02_Download.html">fASL Tutorial #2: Downloading and Installing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../ASL/fASL_03_Task.html">fASL Tutorial #3: The N-Back Task</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../ASL/04_fASL_GUI.html">fASL Tutorial #4: The GUI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../ASL/05_fASL_Results.html">fASL Tutorial #5: Examining the Results</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../ASL/06_fASL_Quantification.html">fASL Tutorial #6: Quantification</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Frequently Asked Questions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../FrequentlyAskedQuestions/FrequentlyAskedQuestions.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Statistics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../Statistics/GIMME.html">GIMME (Group Iterative Multiple Model Estimation)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Open Science</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../OpenScience/OS_Overview.html">Open Science</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced Normalization Tools (ANTs)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../ANTs/ANTs_Overview.html">Advanced Normalization Tools (ANTs)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tract-Based Spatial Statistics (TBSS)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../TBSS/TBSS_Overview.html">Introduction to Tract-Based Spatial Statistics (TBSS)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Statistics for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../Stats/Stats_Overview.html">Statistics for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Machine Learning for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../ML/ML_Overview.html">Machine Learning for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Slicer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../Slicer/Slicer_Overview.html">Slicer Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">CAT12</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../CAT12/CAT12_Overview.html">Voxel-Based Morphometry with CAT12</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Using the Supercomputer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../Supercomputer/Supercomputer_Overview.html">Introduction to Supercomputing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Matlab for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../Matlab/Matlab_Overview.html">Matlab for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ITK-Snap</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../ITK-Snap/ITK-Snap_Overview.html">ITK-Snap_Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Python for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../PythonForNeuroimagers/PythonForNeuroimagers_Overview.html">Python for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Meta-Analysis for fMRI</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../MetaAnalysis/MetaAnalysis_Overview.html">Meta-Analysis for Neuroimagers</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Andy's Brain Book</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../AFNI_Overview.html">AFNI Overview</a></li>
+          <li class="breadcrumb-item"><a href="../AFNI_09_SurfaceAnalysis.html">AFNI Tutorial #9: Surface-Based Analysis with SUMA</a></li>
+      <li class="breadcrumb-item active">SUMA Tutorial #5: Region of Interest Analysis</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../_sources/AFNI/AFNI_Short_Course/SUMA/SUMA_05_ROIAnalysisOnTheSurface.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="suma-tutorial-5-region-of-interest-analysis">
+<span id="suma-05-roianalysisonthesurface"></span><h1>SUMA Tutorial #5: Region of Interest Analysis<a class="headerlink" href="#suma-tutorial-5-region-of-interest-analysis" title="Link to this heading"></a></h1>
+<hr class="docutils" />
+<p>Just as with our volumetric analyses, we can extract data from a region of interest (ROI) containing only those vertices that we are interested in.</p>
+<section id="converting-volumetric-data-to-the-surface">
+<h2>Converting Volumetric Data to the Surface<a class="headerlink" href="#converting-volumetric-data-to-the-surface" title="Link to this heading"></a></h2>
+<p>The SUMA viewer includes a tool for drawing ROIs on the surface; these can then we saved into .niml.dset files, and used with an ROI tool such as 3dmaskdump or 3dROIstats. Instead of doing that, however, let’s assume that we want to use the same ROI as with our volumetric data - the midACC ROI created using the atlas, and the ConflictROI sphere created from the coordinates of another study.</p>
+<p>The command <code class="docutils literal notranslate"><span class="pre">3dVol2Surf</span></code> can be used to convert a volumetric dataset to a surface dataset:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">3</span><span class="n">dVol2Surf</span> <span class="o">-</span><span class="n">spec</span> <span class="n">suma_MNI_N27</span><span class="o">/</span><span class="n">std</span><span class="mf">.141</span><span class="o">.</span><span class="n">MNI_N27_lh</span><span class="o">.</span><span class="n">spec</span> <span class="o">-</span><span class="n">sv</span> <span class="n">midACC</span><span class="o">+</span><span class="n">tlrc</span><span class="o">.</span> <span class="o">-</span><span class="n">surf_A</span> <span class="n">lh</span><span class="o">.</span><span class="n">pial</span> <span class="o">-</span><span class="n">grid_parent</span> <span class="n">midACC</span><span class="o">+</span><span class="n">tlrc</span><span class="o">.</span> <span class="o">-</span><span class="n">map_func</span> <span class="n">mask</span> <span class="o">-</span><span class="n">out_niml</span> <span class="n">midACC_ROI_lh</span><span class="o">.</span><span class="n">niml</span><span class="o">.</span><span class="n">dset</span>
+</pre></div>
+</div>
+<p>This command, run from the directory containing the subjects and the <code class="docutils literal notranslate"><span class="pre">suma_MNI_N27</span></code> directory, resamples the midACC dataset to the surface. The <code class="docutils literal notranslate"><span class="pre">-surf_A</span></code> option indicates which surface to resample to - in this case, the pial surface - and <code class="docutils literal notranslate"><span class="pre">-map_func</span></code> specifies that the output dataset should be a mask, i.e., 1’s inside the mask and 0’s everywhere else. As with the other surface commands, you should do this same procedure with the right hemisphere, if the mask bridges both hemispheres:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">3</span><span class="n">dVol2Surf</span> <span class="o">-</span><span class="n">spec</span> <span class="n">suma_MNI_N27</span><span class="o">/</span><span class="n">std</span><span class="mf">.141</span><span class="o">.</span><span class="n">MNI_N27_rh</span><span class="o">.</span><span class="n">spec</span> <span class="o">-</span><span class="n">sv</span> <span class="n">midACC</span><span class="o">+</span><span class="n">tlrc</span><span class="o">.</span> <span class="o">-</span><span class="n">surf_A</span> <span class="n">rh</span><span class="o">.</span><span class="n">pial</span> <span class="o">-</span><span class="n">grid_parent</span> <span class="n">midACC</span><span class="o">+</span><span class="n">tlrc</span><span class="o">.</span> <span class="o">-</span><span class="n">map_func</span> <span class="n">mask</span> <span class="o">-</span><span class="n">out_niml</span> <span class="n">midACC_ROI_rh</span><span class="o">.</span><span class="n">niml</span><span class="o">.</span><span class="n">dset</span>
+</pre></div>
+</div>
+<p>We can do the same thing for the Conflict ROI, e.g.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">3</span><span class="n">dVol2Surf</span> <span class="o">-</span><span class="n">spec</span> <span class="n">suma_MNI_N27</span><span class="o">/</span><span class="n">std</span><span class="mf">.141</span><span class="o">.</span><span class="n">MNI_N27_lh</span><span class="o">.</span><span class="n">spec</span> <span class="o">-</span><span class="n">sv</span> <span class="n">ConflictROI</span><span class="o">+</span><span class="n">tlrc</span><span class="o">.</span> <span class="o">-</span><span class="n">surf_A</span> <span class="n">lh</span><span class="o">.</span><span class="n">pial</span> <span class="o">-</span><span class="n">grid_parent</span> <span class="n">ConflictROI</span><span class="o">+</span><span class="n">tlrc</span><span class="o">.</span> <span class="o">-</span><span class="n">map_func</span> <span class="n">mask</span> <span class="o">-</span><span class="n">out_niml</span> <span class="n">ConflictROI_lh</span><span class="o">.</span><span class="n">niml</span><span class="o">.</span><span class="n">dset</span>
+
+<span class="mi">3</span><span class="n">dVol2Surf</span> <span class="o">-</span><span class="n">spec</span> <span class="n">suma_MNI_N27</span><span class="o">/</span><span class="n">std</span><span class="mf">.141</span><span class="o">.</span><span class="n">MNI_N27_rh</span><span class="o">.</span><span class="n">spec</span> <span class="o">-</span><span class="n">sv</span> <span class="n">ConflictROI</span><span class="o">+</span><span class="n">tlrc</span><span class="o">.</span> <span class="o">-</span><span class="n">surf_A</span> <span class="n">rh</span><span class="o">.</span><span class="n">pial</span> <span class="o">-</span><span class="n">grid_parent</span> <span class="n">ConflictROI</span><span class="o">+</span><span class="n">tlrc</span><span class="o">.</span> <span class="o">-</span><span class="n">map_func</span> <span class="n">mask</span> <span class="o">-</span><span class="n">out_niml</span> <span class="n">ConflictROI_rh</span><span class="o">.</span><span class="n">niml</span><span class="o">.</span><span class="n">dset</span>
+</pre></div>
+</div>
+<p>As before, make sure to view the ROI after you have resampled it to make sure it is where you think it should be:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">suma</span> <span class="o">-</span><span class="n">spec</span> <span class="n">suma_MNI_N27</span><span class="o">/</span><span class="n">std</span><span class="mf">.141</span><span class="o">.</span><span class="n">MNI_N27_lh</span><span class="o">.</span><span class="n">spec</span> <span class="o">-</span><span class="n">sv</span> <span class="n">suma_MNI_N27</span><span class="o">/</span><span class="n">MNI_N27_SurfVol</span><span class="o">.</span><span class="n">nii</span> <span class="o">-</span><span class="nb">input</span> <span class="n">ConflictROI_lh</span><span class="o">.</span><span class="n">niml</span><span class="o">.</span><span class="n">dset</span>
+
+<span class="n">suma</span> <span class="o">-</span><span class="n">spec</span> <span class="n">suma_MNI_N27</span><span class="o">/</span><span class="n">std</span><span class="mf">.141</span><span class="o">.</span><span class="n">MNI_N27_rh</span><span class="o">.</span><span class="n">spec</span> <span class="o">-</span><span class="n">sv</span> <span class="n">suma_MNI_N27</span><span class="o">/</span><span class="n">MNI_N27_SurfVol</span><span class="o">.</span><span class="n">nii</span> <span class="o">-</span><span class="nb">input</span> <span class="n">ConflictROI_rh</span><span class="o">.</span><span class="n">niml</span><span class="o">.</span><span class="n">dset</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../../../_images/09_05_ConflictROI_SUMA.png" src="../../../_images/09_05_ConflictROI_SUMA.png" />
+</figure>
+</section>
+<section id="extracting-the-data">
+<h2>Extracting the Data<a class="headerlink" href="#extracting-the-data" title="Link to this heading"></a></h2>
+<p>Lastly, we will need to extract the data. It is easiest to do this by concatenating all of the stats files together, and then using an ROI tool on them; however, unlike the volumetric data, 3dbucket’s <code class="docutils literal notranslate"><span class="pre">-aglueto</span></code> option doesn’t work with surface data. In this case, we will need to use 3dTcat to combine the files:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>for hemi in lh rh; do
+3dTcat -prefix ${hemi}_Congruent_Betas.niml.dset sub-01/sub-01.results_SUMA/stats.sub-01.${hemi}.niml.dset&#39;[1]&#39; \
+  sub-02/sub-02.results_SUMA/stats.sub-02.${hemi}.niml.dset&#39;[1]&#39; \
+  sub-03/sub-03.results_SUMA/stats.sub-03.${hemi}.niml.dset&#39;[1]&#39; \
+  sub-04/sub-04.results_SUMA/stats.sub-04.${hemi}.niml.dset&#39;[1]&#39; \
+  sub-05/sub-05.results_SUMA/stats.sub-05.${hemi}.niml.dset&#39;[1]&#39; \
+  sub-06/sub-06.results_SUMA/stats.sub-06.${hemi}.niml.dset&#39;[1]&#39; \
+  sub-07/sub-07.results_SUMA/stats.sub-07.${hemi}.niml.dset&#39;[1]&#39; \
+  sub-08/sub-08.results_SUMA/stats.sub-08.${hemi}.niml.dset&#39;[1]&#39; \
+  sub-09/sub-09.results_SUMA/stats.sub-09.${hemi}.niml.dset&#39;[1]&#39; \
+  sub-10/sub-10.results_SUMA/stats.sub-10.${hemi}.niml.dset&#39;[1]&#39; \
+  sub-11/sub-11.results_SUMA/stats.sub-11.${hemi}.niml.dset&#39;[1]&#39; \
+  sub-12/sub-12.results_SUMA/stats.sub-12.${hemi}.niml.dset&#39;[1]&#39; \
+  sub-13/sub-13.results_SUMA/stats.sub-13.${hemi}.niml.dset&#39;[1]&#39; \
+  sub-14/sub-14.results_SUMA/stats.sub-14.${hemi}.niml.dset&#39;[1]&#39; \
+  sub-15/sub-15.results_SUMA/stats.sub-15.${hemi}.niml.dset&#39;[1]&#39; \
+  sub-16/sub-16.results_SUMA/stats.sub-16.${hemi}.niml.dset&#39;[1]&#39; \
+  sub-17/sub-17.results_SUMA/stats.sub-17.${hemi}.niml.dset&#39;[1]&#39; \
+  sub-18/sub-18.results_SUMA/stats.sub-18.${hemi}.niml.dset&#39;[1]&#39; \
+  sub-19/sub-19.results_SUMA/stats.sub-19.${hemi}.niml.dset&#39;[1]&#39; \
+  sub-20/sub-20.results_SUMA/stats.sub-20.${hemi}.niml.dset&#39;[1]&#39; \
+  sub-21/sub-21.results_SUMA/stats.sub-21.${hemi}.niml.dset&#39;[1]&#39; \
+  sub-22/sub-22.results_SUMA/stats.sub-22.${hemi}.niml.dset&#39;[1]&#39; \
+  sub-23/sub-23.results_SUMA/stats.sub-23.${hemi}.niml.dset&#39;[1]&#39; \
+  sub-24/sub-24.results_SUMA/stats.sub-24.${hemi}.niml.dset&#39;[1]&#39; \
+  sub-25/sub-25.results_SUMA/stats.sub-25.${hemi}.niml.dset&#39;[1]&#39; \
+  sub-26/sub-26.results_SUMA/stats.sub-26.${hemi}.niml.dset&#39;[1]&#39;
+
+3dTcat -prefix ${hemi}_Incongruent_Betas.niml.dset sub-01/sub-01.results_SUMA/stats.sub-01.${hemi}.niml.dset&#39;[4]&#39; \
+  sub-02/sub-02.results_SUMA/stats.sub-02.${hemi}.niml.dset&#39;[4]&#39; \
+  sub-03/sub-03.results_SUMA/stats.sub-03.${hemi}.niml.dset&#39;[4]&#39; \
+  sub-04/sub-04.results_SUMA/stats.sub-04.${hemi}.niml.dset&#39;[4]&#39; \
+  sub-05/sub-05.results_SUMA/stats.sub-05.${hemi}.niml.dset&#39;[4]&#39; \
+  sub-06/sub-06.results_SUMA/stats.sub-06.${hemi}.niml.dset&#39;[4]&#39; \
+  sub-07/sub-07.results_SUMA/stats.sub-07.${hemi}.niml.dset&#39;[4]&#39; \
+  sub-08/sub-08.results_SUMA/stats.sub-08.${hemi}.niml.dset&#39;[4]&#39; \
+  sub-09/sub-09.results_SUMA/stats.sub-09.${hemi}.niml.dset&#39;[4]&#39; \
+  sub-10/sub-10.results_SUMA/stats.sub-10.${hemi}.niml.dset&#39;[4]&#39; \
+  sub-11/sub-11.results_SUMA/stats.sub-11.${hemi}.niml.dset&#39;[4]&#39; \
+  sub-12/sub-12.results_SUMA/stats.sub-12.${hemi}.niml.dset&#39;[4]&#39; \
+  sub-13/sub-13.results_SUMA/stats.sub-13.${hemi}.niml.dset&#39;[4]&#39; \
+  sub-14/sub-14.results_SUMA/stats.sub-14.${hemi}.niml.dset&#39;[4]&#39; \
+  sub-15/sub-15.results_SUMA/stats.sub-15.${hemi}.niml.dset&#39;[4]&#39; \
+  sub-16/sub-16.results_SUMA/stats.sub-16.${hemi}.niml.dset&#39;[4]&#39; \
+  sub-17/sub-17.results_SUMA/stats.sub-17.${hemi}.niml.dset&#39;[4]&#39; \
+  sub-18/sub-18.results_SUMA/stats.sub-18.${hemi}.niml.dset&#39;[4]&#39; \
+  sub-19/sub-19.results_SUMA/stats.sub-19.${hemi}.niml.dset&#39;[4]&#39; \
+  sub-20/sub-20.results_SUMA/stats.sub-20.${hemi}.niml.dset&#39;[4]&#39; \
+  sub-21/sub-21.results_SUMA/stats.sub-21.${hemi}.niml.dset&#39;[4]&#39; \
+  sub-22/sub-22.results_SUMA/stats.sub-22.${hemi}.niml.dset&#39;[4]&#39; \
+  sub-23/sub-23.results_SUMA/stats.sub-23.${hemi}.niml.dset&#39;[4]&#39; \
+  sub-24/sub-24.results_SUMA/stats.sub-24.${hemi}.niml.dset&#39;[4]&#39; \
+  sub-25/sub-25.results_SUMA/stats.sub-25.${hemi}.niml.dset&#39;[4]&#39; \
+  sub-26/sub-26.results_SUMA/stats.sub-26.${hemi}.niml.dset&#39;[4]&#39;
+done
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>To find the sub-briks that correspond to the Congruent and Incongruent beta weights, you can use <code class="docutils literal notranslate"><span class="pre">3dinfo</span></code>.</p>
+</div>
+<p>And then extract them with 3dROIstats:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>for hemi in lh rh; do
+  echo &quot;Extracting Congruent beta weights for ${hemi}&quot;
+  3dROIstats -quiet -mask ConflictROI_${hemi}.niml.dset ${hemi}_Congruent_Betas.niml.dset
+  echo &quot;Extracting Incongruent beta weights for ${hemi}&quot;
+  3dROIstats -quiet -mask ConflictROI_${hemi}.niml.dset ${hemi}_Incongruent_Betas.niml.dset
+done
+</pre></div>
+</div>
+<p>If this is done correctly, you should see a significant effect of Incongruent-Congruent in the right hemisphere, but <em>not</em> in the left hemisphere. This is another advantage of surface-based analyses: You are able to better discern where exactly in the brain the activation is located.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>When performing the same t-test across both hemispheres, be sure to divide the p-value by 2 to account for multiple comparisons.</p>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="SUMA_04_GroupAnalysisOnTheSurface.html" class="btn btn-neutral float-left" title="SUMA Tutorial #4: Group Analysis" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../AppendixA_ParametricModulation.html" class="btn btn-neutral float-right" title="Appendix A: Parametric Modulation in AFNI" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Andy Jahn.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

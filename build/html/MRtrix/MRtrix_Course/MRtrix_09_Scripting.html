@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MRtrix Tutorial #9: Scripting &mdash; Andy&#39;s Brain Book 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b76e3c8a" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=f2a433a1"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="MRtrix Tutorial #10: Group-Level Analysis" href="MRtrix_10_GroupAnalysis.html" />
+    <link rel="prev" title="MRtrix Tutorial #8: Creating and Viewing the Connectome" href="MRtrix_08_Connectome.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Andy's Brain Book
+          </a>
+              <div class="version">
+                1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Install</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../installation/fsl_mac_install.html">Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Unix for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_Intro.html">What is Unix?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_01_Navigation.html">Unix Tutorial #1: 目录操作 (Directories and Navigation)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_02_CopyRemove.html">Unix Tutorial #2: Copying and Removing Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_03_ReadingTextFiles.html">Unix Tutorial #3: Reading Text Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_04_ShellsVariables.html">Unix Tutorial #4: Shells and Path Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_05_ForLoops.html">Unix Tutorial #5: For-Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_06_IfElse.html">Unix Tutorial #6: Conditional Statements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_07_Scripting.html">Unix Tutorial #7: Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_08_Sed.html">Unix Tutorial #8: The Sed Command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_09_AutomatingTheAnalysis.html">Unix Tutorial #9: Automating The Analysis</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">fMRI Short Course with FSL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_Intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_01_DataDownload.html">fMRI Tutorial #1: Downloading the Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_02_ExperimentalDesign.html">fMRI Tutorial #2: Overview of The Flanker Task</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_03_LookingAtTheData.html">fMRI Tutorial #3: Looking at the Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_04_Preprocessing.html">fMRI Tutorial #4: Preprocessing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_05_1stLevelAnalysis.html">fMRI Tutorial #5: Statistics and Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_06_Scripting.html">fMRI Tutorial #6: Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_07_2ndLevelAnalysis.html">fMRI Tutorial #7: 2nd-Level Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_08_3rdLevelAnalysis.html">fMRI Tutorial #8: 3rd-Level Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_09_ROIAnalysis.html">fMRI Tutorial #9: ROI Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_10_Summary.html">fMRI Tutorial #10: Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_Appendices.html">fMRI Short Course: Appendices</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">FreeSurfer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../FreeSurfer/FreeSurfer_Introduction.html">FreeSurfer Short Course</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">E-Prime</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../E-Prime/E-Prime_Overview.html">Overview of E-Prime</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">AFNI</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../AFNI/AFNI_Overview.html">AFNI Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">SPM</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../SPM/SPM_Overview.html">SPM Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Functional Connectivity with the CONN Toolbox</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../FunctionalConnectivity/CONN_Overview.html">Functional Connectivity and the CONN Toolbox</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Parametric Modulation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../PM/PM_Overview.html">Parametric Modulation in SPM, FSL, and AFNI</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Image Visualization with MRIcroGL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../MRIcroGL/MRIcroGL_Overview.html">Image Visualization with MRIcroGL</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Introduction to the Human Connectome Project (HCP)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../HCP/HCP_Overview.html">Introduction to the Human Connectome Project</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Finite Impulse Response (FIR) Models</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../FIR/FIR_Overview.html">Finite Impulse Response (FIR)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">fMRI Concepts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Practicals/DesignOptimization.html">Design Optimization</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Diffusion Analysis with MRtrix</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../MRtrix_Introduction.html">Introduction to MRtrix</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../MRtrix_Introduction.html#what-is-mrtrix">What is MRtrix?</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../MRtrix_Introduction.html#goals-of-this-course">Goals of This Course</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="MRtrix_00_Diffusion_Overview.html">MRtrix Introduction: Overview of Diffusion Imaging</a></li>
+<li class="toctree-l3"><a class="reference internal" href="MRtrix_01_Download_Install.html">MRtrix Tutorial #1: Download and Install</a></li>
+<li class="toctree-l3"><a class="reference internal" href="MRtrix_02_DataDownload.html">MRtrix Tutorial #2: Downloading the Dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="MRtrix_03_DataFormats.html">MRtrix Tutorial #3: Looking at the Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="MRtrix_04_Preprocessing.html">MRtrix Tutorial #4: Preprocessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="MRtrix_05_BasisFunctions.html">MRtrix Tutorial #5: Constrained Spherical Deconvolution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="MRtrix_06_TissueBoundary.html">MRtrix Tutorial #6: Creating the Tissue Boundaries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="MRtrix_07_Streamlines.html">MRtrix Tutorial #7: Streamlines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="MRtrix_08_Connectome.html">MRtrix Tutorial #8: Creating and Viewing the Connectome</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">MRtrix Tutorial #9: Scripting</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#creating-the-template">Creating the Template</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#running-the-scripts">Running the Scripts</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#next-steps">Next Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="MRtrix_10_GroupAnalysis.html">MRtrix Tutorial #10: Group-Level Analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="MRtrix_11_FixelBasedAnalysis.html">MRtrix Tutorial #11: Fixel-Based Analysis</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ASL Analysis</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/ASL_Techniques.html">fASL Tutorial #1: Background</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/fASL_02_Download.html">fASL Tutorial #2: Downloading and Installing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/fASL_03_Task.html">fASL Tutorial #3: The N-Back Task</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/04_fASL_GUI.html">fASL Tutorial #4: The GUI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/05_fASL_Results.html">fASL Tutorial #5: Examining the Results</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/06_fASL_Quantification.html">fASL Tutorial #6: Quantification</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Frequently Asked Questions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../FrequentlyAskedQuestions/FrequentlyAskedQuestions.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Statistics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Statistics/GIMME.html">GIMME (Group Iterative Multiple Model Estimation)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Open Science</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../OpenScience/OS_Overview.html">Open Science</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced Normalization Tools (ANTs)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ANTs/ANTs_Overview.html">Advanced Normalization Tools (ANTs)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tract-Based Spatial Statistics (TBSS)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../TBSS/TBSS_Overview.html">Introduction to Tract-Based Spatial Statistics (TBSS)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Statistics for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Stats/Stats_Overview.html">Statistics for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Machine Learning for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ML/ML_Overview.html">Machine Learning for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Slicer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Slicer/Slicer_Overview.html">Slicer Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">CAT12</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../CAT12/CAT12_Overview.html">Voxel-Based Morphometry with CAT12</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Using the Supercomputer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Supercomputer/Supercomputer_Overview.html">Introduction to Supercomputing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Matlab for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Matlab/Matlab_Overview.html">Matlab for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ITK-Snap</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ITK-Snap/ITK-Snap_Overview.html">ITK-Snap_Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Python for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../PythonForNeuroimagers/PythonForNeuroimagers_Overview.html">Python for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Meta-Analysis for fMRI</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../MetaAnalysis/MetaAnalysis_Overview.html">Meta-Analysis for Neuroimagers</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Andy's Brain Book</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../MRtrix_Introduction.html">Introduction to MRtrix</a></li>
+      <li class="breadcrumb-item active">MRtrix Tutorial #9: Scripting</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/MRtrix/MRtrix_Course/MRtrix_09_Scripting.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="mrtrix-tutorial-9-scripting">
+<span id="mrtrix-09-scripting"></span><h1>MRtrix Tutorial #9: Scripting<a class="headerlink" href="#mrtrix-tutorial-9-scripting" title="Link to this heading"></a></h1>
+<hr class="docutils" />
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This section is still under construction; check back soon!</p>
+</div>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading"></a></h2>
+<p>After you’ve preprocessed and set up a model for a single run for a single subject, you will need to do the same steps for all of the runs for all of the subjects in your dataset. This may seem tedious but doable - we only have forty-two subjects, and one run of diffusion data per subject. You may think that it can be done over the course of a week or so; and you can always assign the task to a couple of Research Assistants.</p>
+<p>This attitude is admirable, and if you take this approach you will be able to analyze all of the data eventually. But at some point you will run into two problems:</p>
+<ol class="arabic simple">
+<li><p>You will find that manually analyzing each run is not only tedious but prone to error, and the probability of making a mistake increases significantly as the number of runs to analyze also increases; and</p></li>
+<li><p>For larger datasets - for example, eighty subjects with five runs each - this approach quickly becomes impractical.</p></li>
+</ol>
+<p>An alternative is to <strong>script</strong> your analysis. Just as an actor has a script which tells him what to say and where to stand and where to move, so can you write a script that tells your computer how to analyze your datasets. This has the double benefit of automating your analyses and being able to analyze datasets of any size - the code for analyzing two subjects or two hundred is virtually identical.</p>
+<p>First we will create a template that contains the code needed to analyze a single run, and then we will use a <a class="reference internal" href="../../unix/Unix_05_ForLoops.html#unix-05-forloops"><span class="std std-ref">for-loop</span></a> to automate the analysis for all of the runs. The idea is simple; and although the code can be difficult to understand at first, once you become more comfortable with it you will see how you can apply it to any dataset.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The following tutorial complements the Unix tutorial on <a class="reference internal" href="../../unix/Unix_09_AutomatingTheAnalysis.html#unix-09-automatingtheanalysis"><span class="std std-ref">automating the analysis</span></a>. I recommend reading through that chaper if you need to review the Unix terms for scripting.</p>
+</div>
+</section>
+<section id="creating-the-template">
+<h2>Creating the Template<a class="headerlink" href="#creating-the-template" title="Link to this heading"></a></h2>
+<p>The simplest way to script our analysis would be to copy and paste all of our commands into a text file, and run it from the command line. This is more or less what we will do; the only change will be to include arguments that the user can fill in with the required files. We can then put this in a loop and run it for all of the subjects in our dataset.</p>
+<p>For now, we will do this for a single subject. The scripts will be written in four parts:</p>
+<ol class="arabic simple">
+<li><p>The first script will perform all of the preprocessing, from denoising to <code class="docutils literal notranslate"><span class="pre">tcksift2</span></code>;</p></li>
+<li><p>The second script will perform QA checks for each of the major preprocessing outputs;</p></li>
+<li><p>The third script will preprocess the structural images using <code class="docutils literal notranslate"><span class="pre">recon-all</span></code>; and</p></li>
+<li><p>The last script will create the connectome.</p></li>
+</ol>
+<p><code class="docutils literal notranslate"><span class="pre">recon-all</span></code> isn’t part of the MRtrix pipeline <em>per se</em> - you can use any atlas you want, and you are not restricted to FreeSurfer - but we will include it as a prerequisite for creating the connectome.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Before going on, download the preprocessing script <a class="reference external" href="https://github.com/andrewjahn/MRtrix_Analysis_Scripts/blob/master/01_MRtrix_Preproc_AP_Direction.sh">here</a>. You can download it using <code class="docutils literal notranslate"><span class="pre">git</span></code>, or by clicking <code class="docutils literal notranslate"><span class="pre">Raw</span></code>, right-clicking anywhere in the resulting screen, and clicking “Save As”. Save it to the directory <code class="docutils literal notranslate"><span class="pre">sub-CON03/ses-preop/dwi</span></code>. The following sections will explain what each block of code does.</p>
+</div>
+<section id="script-1-preprocessing">
+<h3>Script 1: Preprocessing<a class="headerlink" href="#script-1-preprocessing" title="Link to this heading"></a></h3>
+<p>The first script begins with <code class="docutils literal notranslate"><span class="pre">bash</span></code> code, which generates a brief help manual if you do not supply the required number of arguments. For example, the block of code at the beginning of the script looks like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>display_usage() {
+  echo &quot;$(basename $0) [Raw Diffusion] [RevPhaseImage] [AP bvec] [AP bval] [PA bvec] [PA bval] [Anatomical]&quot;
+  echo &quot;This script uses MRtrix to analyze diffusion data. It requires 7 arguments:
+    1) The raw diffusion image;
+    2) The image acquired with the reverse phase-encoding direction;
+    3) The bvec file for the data acquired in the AP direction;
+    4) The bval file for the data acquired in the AP direction;
+    5) The bvec file for the data acquired in the PA direction;
+    6) The bval file for the data acquired in the PA direction;
+    7) The anatomical image&quot;
+  }
+
+  if [ $# -le 6 ]
+  then
+    display_usage
+    exit 1
+  fi
+
+RAW_DWI=$1
+REV_PHASE=$2
+AP_BVEC=$3
+AP_BVAL=$4
+PA_BVEC=$5
+PA_BVAL=$6
+ANAT=$7
+</pre></div>
+</div>
+<p>These last fields, marked by the numbers 1-7 preceded by a dollar sign (<code class="docutils literal notranslate"><span class="pre">$</span></code>), are the <strong>arguments</strong> that are passed to the script. You will need to input the arguments in the exact order that is listed; for example, the command we will use is this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bash</span> <span class="mi">01</span><span class="n">_MRtrix_Preproc_AP_Direction</span><span class="o">.</span><span class="n">sh</span> <span class="n">sub</span><span class="o">-</span><span class="n">CON03_ses</span><span class="o">-</span><span class="n">preop_acq</span><span class="o">-</span><span class="n">AP_dwi</span><span class="o">.</span><span class="n">nii</span><span class="o">.</span><span class="n">gz</span> <span class="n">sub</span><span class="o">-</span><span class="n">CON03_ses</span><span class="o">-</span><span class="n">preop_acq</span><span class="o">-</span><span class="n">PA_dwi</span><span class="o">.</span><span class="n">nii</span><span class="o">.</span><span class="n">gz</span> \
+<span class="n">sub</span><span class="o">-</span><span class="n">CON03_ses</span><span class="o">-</span><span class="n">preop_acq</span><span class="o">-</span><span class="n">AP_dwi</span><span class="o">.</span><span class="n">bvec</span> <span class="n">sub</span><span class="o">-</span><span class="n">CON03_ses</span><span class="o">-</span><span class="n">preop_acq</span><span class="o">-</span><span class="n">AP_dwi</span><span class="o">.</span><span class="n">bval</span> \
+<span class="n">sub</span><span class="o">-</span><span class="n">CON03_ses</span><span class="o">-</span><span class="n">preop_acq</span><span class="o">-</span><span class="n">PA_dwi</span><span class="o">.</span><span class="n">bvec</span> <span class="n">sub</span><span class="o">-</span><span class="n">CON03_ses</span><span class="o">-</span><span class="n">preop_acq</span><span class="o">-</span><span class="n">PA_dwi</span><span class="o">.</span><span class="n">bval</span> \
+<span class="o">../</span><span class="n">anat</span><span class="o">/</span><span class="n">sub</span><span class="o">-</span><span class="n">CON03_ses</span><span class="o">-</span><span class="n">preop_T1w</span><span class="o">.</span><span class="n">nii</span><span class="o">.</span><span class="n">gz</span>
+</pre></div>
+</div>
+<p>The first two arguments specify the primary and reverse phase-encoded images; the next four arguments point to the .bvec and .bval for the primary and reverse phase-encoded images, respectively; and the last argument is the anatomical image. These arguments will populate the variables in the rest of the script, which is essentially a collation of all of the commands that we used in the previous chapters. For example, the variable <code class="docutils literal notranslate"><span class="pre">$RAW_DWI</span></code> will be replaced with the first argument that we supplied, <code class="docutils literal notranslate"><span class="pre">sub-CON03_ses-preop_acq-AP_dwi.nii.gz</span></code>.</p>
+<p>Copy and paste this command into your terminal and press enter. While it is running, you can read the rest of the preprocessing script (reproduced here for completeness); review it to see how the variables are placed, and how each of the commands will be executed when we run the entire script:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>########################### STEP 1 ###################################
+#             Convert data to .mif format and denoise                        #
+######################################################################
+
+# Also consider doing Gibbs denoising (using mrdegibbs). Check your diffusion data for ringing artifacts before deciding whether to use it
+mrconvert $RAW_DWI raw_dwi.mif -fslgrad $AP_BVEC $AP_BVAL
+dwidenoise raw_dwi.mif dwi_den.mif -noise noise.mif
+
+# Extract the b0 images from the diffusion data acquired in the AP direction
+dwiextract dwi_den.mif - -bzero | mrmath - mean mean_b0_AP.mif -axis 3
+
+# Extracts the b0 images for diffusion data acquired in the PA direction
+# The term &quot;fieldmap&quot; is taken from the output from Michigan&#39;s fMRI Lab; it is not an actual fieldmap, but rather a collection of b0 images with both PA and AP phase encoding
+# For the PA_BVEC and PA_BVAL files, they should be in the follwing format (assuming you extract only one volume):
+# PA_BVEC: 0 0 0
+# PA_BVAL: 0
+mrconvert $FIELDMAP PA.mif # If the PA map contains only 1 image, you will need to add the option &quot;-coord 3 0&quot;
+mrconvert PA.mif -fslgrad $PA_BVEC $PA_BVAL - | mrmath - mean mean_b0_PA.mif -axis 3
+
+# Concatenates the b0 images from AP and PA directions to create a paired b0 image
+mrcat mean_b0_AP.mif mean_b0_PA.mif -axis 3 b0_pair.mif
+
+# Runs the dwipreproc command, which is a wrapper for eddy and topup. This step takes about 2 hours on an iMac desktop with 8 cores
+dwifslpreproc dwi_den.mif dwi_den_preproc.mif -nocleanup -pe_dir AP -rpe_pair -se_epi b0_pair.mif -eddy_options &quot; --slm=linear --data_is_shelled&quot;
+
+# Performs bias field correction. Needs ANTs to be installed in order to use the &quot;ants&quot; option (use &quot;fsl&quot; otherwise)
+dwibiascorrect ants dwi_den_preproc.mif dwi_den_preproc_unbiased.mif -bias bias.mif
+
+# Create a mask for future processing steps
+dwi2mask dwi_den_preproc_unbiased.mif mask.mif
+
+########################### STEP 2 ###################################
+#             Basis function for each tissue type                    #
+######################################################################
+
+# Create a basis function from the subject&#39;s DWI data. The &quot;dhollander&quot; function is best used for multi-shell acquisitions; it will estimate different basis functions for each tissue type. For single-shell acquisition, use the &quot;tournier&quot; function instead
+dwi2response dhollander dwi_den_preproc_unbiased.mif wm.txt gm.txt csf.txt -voxels voxels.mif
+
+# Performs multishell-multitissue constrained spherical deconvolution, using the basis functions estimated above
+dwi2fod msmt_csd dwi_den_preproc_unbiased.mif -mask mask.mif wm.txt wmfod.mif gm.txt gmfod.mif csf.txt csffod.mif
+
+# Creates an image of the fiber orientation densities overlaid onto the estimated tissues (Blue=WM; Green=GM; Red=CSF)
+# You should see FOD&#39;s mostly within the white matter. These can be viewed later with the command &quot;mrview vf.mif -odf.load_sh wmfod.mif&quot;
+mrconvert -coord 3 0 wmfod.mif - | mrcat csffod.mif gmfod.mif - vf.mif
+
+# Now normalize the FODs to enable comparison between subjects
+mtnormalise wmfod.mif wmfod_norm.mif gmfod.mif gmfod_norm.mif csffod.mif csffod_norm.mif -mask mask.mif
+
+
+########################### STEP 3 ###################################
+#            Create a GM/WM boundary for seed analysis               #
+######################################################################
+
+# Convert the anatomical image to .mif format, and then extract all five tissue catagories (1=GM; 2=Subcortical GM; 3=WM; 4=CSF; 5=Pathological tissue)
+mrconvert $ANAT anat.mif
+5ttgen fsl anat.mif 5tt_nocoreg.mif
+
+# The following series of commands will take the average of the b0 images (which have the best contrast), convert them and the 5tt image to NIFTI format, and use it for coregistration.
+dwiextract dwi_den_preproc_unbiased.mif - -bzero | mrmath - mean mean_b0_processed.mif -axis 3
+mrconvert mean_b0_processed.mif mean_b0_processed.nii.gz
+mrconvert 5tt_nocoreg.mif 5tt_nocoreg.nii.gz
+
+# Uses FSL commands fslroi and flirt to create a transformation matrix for regisitration between the tissue map and the b0 images
+fslroi 5tt_nocoreg.nii.gz 5tt_vol0.nii.gz 0 1 #Extract the first volume of the 5tt dataset (since flirt can only use 3D images, not 4D images)
+flirt -in mean_b0_processed.nii.gz -ref 5tt_vol0.nii.gz -interp nearestneighbour -dof 6 -omat diff2struct_fsl.mat
+transformconvert diff2struct_fsl.mat mean_b0_processed.nii.gz 5tt_nocoreg.nii.gz flirt_import diff2struct_mrtrix.txt
+mrtransform 5tt_nocoreg.mif -linear diff2struct_mrtrix.txt -inverse 5tt_coreg.mif
+
+#Create a seed region along the GM/WM boundary
+5tt2gmwmi 5tt_coreg.mif gmwmSeed_coreg.mif
+
+########################### STEP 4 ###################################
+#                 Run the streamline analysis                        #
+######################################################################
+
+# Create streamlines
+# Note that the &quot;right&quot; number of streamlines is still up for debate. Last I read from the MRtrix documentation,
+# They recommend about 100 million tracks. Here I use 10 million, if only to save time. Read their papers and then make a decision
+tckgen -act 5tt_coreg.mif -backtrack -seed_gmwmi gmwmSeed_coreg.mif -nthreads 8 -maxlength 250 -cutoff 0.06 -select 10000000 wmfod_norm.mif tracks_10M.tck
+
+# Extract a subset of tracks (here, 200 thousand) for ease of visualization
+tckedit tracks_10M.tck -number 200k smallerTracks_200k.tck
+
+# Reduce the number of streamlines with tcksift
+tcksift2 -act 5tt_coreg.mif -out_mu sift_mu.txt -out_coeffs sift_coeffs.txt -nthreads 8 tracks_10M.tck wmfod_norm.mif sift_1M.txt
+</pre></div>
+</div>
+</section>
+<section id="script-2-qa-checks">
+<h3>Script 2: QA Checks<a class="headerlink" href="#script-2-qa-checks" title="Link to this heading"></a></h3>
+<p>Just as with the preprocessing script, the QA script contains all of the quality checks that we did in the previous chapters. You can download it <a class="reference external" href="https://github.com/andrewjahn/MRtrix_Analysis_Scripts/blob/master/02_QC_mrview.sh">here</a>, and execute it by typing <code class="docutils literal notranslate"><span class="pre">bash</span> <span class="pre">02_QC_mrview.sh</span></code>. (Make sure it is placed in the folder <code class="docutils literal notranslate"><span class="pre">sub-CON03/ses-preop/dwi</span></code> before you run it.) It will use <code class="docutils literal notranslate"><span class="pre">mrview</span></code> and <code class="docutils literal notranslate"><span class="pre">shview</span></code> to examine the output of each preprocessing step, similar to what we did in a <a class="reference internal" href="MRtrix_05_BasisFunctions.html#mrtrix-05-basisfunctions"><span class="std std-ref">previous chapter</span></a> that examined the results of preprocessing; to proceed to the next QC check, you will need to close the window that is currently open. The contents of the script are reproduced below:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+
+<span class="c1"># These commands are for quality-checking your diffusion data</span>
+
+
+<span class="c1">### Quality checks for Step 2 ###</span>
+
+<span class="c1"># Views the voxels used for FOD estimation</span>
+<span class="n">echo</span> <span class="s2">&quot;Now viewing the voxels used for FOD estimation (Blue=WM; Green=GM; Red=CSF)&quot;</span>
+<span class="n">mrview</span> <span class="n">dwi_den_preproc_unbiased</span><span class="o">.</span><span class="n">mif</span> <span class="o">-</span><span class="n">overlay</span><span class="o">.</span><span class="n">load</span> <span class="n">voxels</span><span class="o">.</span><span class="n">mif</span>
+
+<span class="c1"># Views the response functions for each tissue type. The WM function should flatten out at higher b-values, while the other tissues should remain spherical</span>
+<span class="n">echo</span> <span class="s2">&quot;Now viewing response function for white matter (press right arrow key to view response function for different shells)&quot;</span>
+<span class="n">shview</span> <span class="n">wm</span><span class="o">.</span><span class="n">txt</span>
+<span class="n">echo</span> <span class="s2">&quot;Now viewing response function for grey matter&quot;</span>
+<span class="n">shview</span> <span class="n">gm</span><span class="o">.</span><span class="n">txt</span>
+<span class="n">echo</span> <span class="s2">&quot;Now viewing response function for CSF&quot;</span>
+<span class="n">shview</span> <span class="n">csf</span><span class="o">.</span><span class="n">txt</span>
+
+<span class="c1"># Views the FODs overlaid on the tissue types (Blue=WM; Green=GM; Red=CSF)</span>
+<span class="n">mrview</span> <span class="n">vf</span><span class="o">.</span><span class="n">mif</span> <span class="o">-</span><span class="n">odf</span><span class="o">.</span><span class="n">load_sh</span> <span class="n">wmfod</span><span class="o">.</span><span class="n">mif</span>
+
+
+<span class="c1">### Quality checks for Step 3 ###</span>
+
+<span class="c1"># Check alignment of the 5 tissue types before and after alignment (new alignment in red, old alignment in blue)</span>
+<span class="n">mrview</span> <span class="n">dwi_den_preproc_unbiased</span><span class="o">.</span><span class="n">mif</span> <span class="o">-</span><span class="n">overlay</span><span class="o">.</span><span class="n">load</span> <span class="mi">5</span><span class="n">tt_nocoreg</span><span class="o">.</span><span class="n">mif</span> <span class="o">-</span><span class="n">overlay</span><span class="o">.</span><span class="n">colourmap</span> <span class="mi">2</span> <span class="o">-</span><span class="n">overlay</span><span class="o">.</span><span class="n">load</span> <span class="mi">5</span><span class="n">tt_coreg</span><span class="o">.</span><span class="n">mif</span> <span class="o">-</span><span class="n">overlay</span><span class="o">.</span><span class="n">colourmap</span> <span class="mi">1</span>
+
+<span class="c1"># Check the seed region (should match up along the GM/WM boundary)</span>
+<span class="n">mrview</span> <span class="n">dwi_den_preproc_unbiased</span><span class="o">.</span><span class="n">mif</span> <span class="o">-</span><span class="n">overlay</span><span class="o">.</span><span class="n">load</span> <span class="n">gmwmSeed_coreg</span><span class="o">.</span><span class="n">mif</span>
+
+
+<span class="c1">### Quality checks for Step 4 ###</span>
+
+<span class="c1"># View the tracks in mrview</span>
+<span class="n">mrview</span> <span class="n">dwi_den_preproc_unbiased</span><span class="o">.</span><span class="n">mif</span> <span class="o">-</span><span class="n">tractography</span><span class="o">.</span><span class="n">load</span> <span class="n">smallerTracks_200k</span><span class="o">.</span><span class="n">tck</span>
+</pre></div>
+</div>
+</section>
+<section id="script-3-recon-all">
+<h3>Script 3: Recon-all<a class="headerlink" href="#script-3-recon-all" title="Link to this heading"></a></h3>
+<p>The FreeSurfer script isn’t a separate text file; rather, it is simply two lines of code. If you want to learn more about what these commands do, you can review in the <a class="reference internal" href="../../FreeSurfer/FS_ShortCourse/FS_03_ReconAll.html#fs-03-reconall"><span class="std std-ref">FreeSurfer tutorial</span></a>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SUBJECTS_DIR=`pwd`;
+recon-all -i ../anat/sub-CON03_ses-preop_T1w.nii.gz -s sub-CON03_recon -all
+</pre></div>
+</div>
+<p>In which <code class="docutils literal notranslate"><span class="pre">sub-CON03</span></code> can be replaced with whichever subject you want to analyze. (Later, we will learn how to replace this in a for-loop). Once recon-all finishes, which may take several hours, you are ready to run the last script.</p>
+</section>
+<section id="script-4-creating-the-connectome">
+<h3>Script 4: Creating the Connectome<a class="headerlink" href="#script-4-creating-the-connectome" title="Link to this heading"></a></h3>
+<p>Creating the connectome takes only a few lines of code. For this tutorial, as mentioned above, we will be using FreeSurfer’s <strong>Desikan-Killiany</strong> atlas:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
+
+SUBJ=$1
+
+#Convert the labels of the FreeSurfer parcellation to a format that MRtrix understands. This requires recon-all to have been run on the subject
+labelconvert ${SUBJ}_recon/mri/aparc+aseg.mgz $FREESURFER_HOME/FreeSurferColorLUT.txt /usr/local/mrtrix3/share/mrtrix3/labelconvert/fs_default.txt ${SUBJ}_parcels.mif
+
+mrtransform ${SUBJ}_parcels.mif -interp nearest -linear diff2struct_mrtrix.txt -inverse -datatype uint32 ${SUBJ}_parcels_coreg.mif
+
+#Create a whole-brain connectome, representing the streamlines between each parcellation pair in the atlas (in this case, 84x84). The &quot;symmetric&quot; option will make the lower diagonal the same as the upper diagonal, and the &quot;scale_invnodevol&quot; option will scale the connectome by the inverse of the size of the node
+tck2connectome -symmetric -zero_diagonal -scale_invnodevol -tck_weights_in sift_1M.txt tracks_10M.tck ${SUBJ}_parcels_coreg.mif ${SUBJ}_parcels_coreg.csv -out_assignment assignments_${SUBJ}_parcels_coreg.csv
+</pre></div>
+</div>
+<p>This script can be downloaded <a class="reference external" href="https://github.com/andrewjahn/MRtrix_Analysis_Scripts/blob/master/03_MRtrix_CreateConnectome.sh">here</a>. Copy it to the folder <code class="docutils literal notranslate"><span class="pre">sub-CON03/ses-preop/dwi</span></code> and run it by typing:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bash</span> <span class="mi">03</span><span class="n">_MRtrix_CreateConnectome</span><span class="o">.</span><span class="n">sh</span> <span class="n">sub</span><span class="o">-</span><span class="n">CON03</span>
+</pre></div>
+</div>
+<p>This will create a .csv file that you can then view in Matlab, just as we did in the previous chapter.</p>
+</section>
+</section>
+<section id="running-the-scripts">
+<h2>Running the Scripts<a class="headerlink" href="#running-the-scripts" title="Link to this heading"></a></h2>
+<p>I recommend running each script separately in order to check the output from each part, although you may prefer to combine everything into a single master script. In any case, when you have downloaded each of the scripts and placed them in the <code class="docutils literal notranslate"><span class="pre">BTC_preop</span></code> folder, you can run the following for-loop to run the preprocessing for subjects 04-08 of the control group and 02-08 of the patient group (NOTE: For now, omit CON05 and CON06, I already did those):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>for sub in sub-CON04 sub-CON05 sub-CON06 sub-CON07 sub-CON08 sub-PAT02 sub-PAT03 sub-PAT05 sub-PAT06 sub-PAT07 sub-PAT08; do
+  cp *.sh ${sub}/ses-preop/dwi;
+  cd ${sub}/ses-preop/dwi;
+  bash 01_MRtrix_Preproc_AP_Direction.sh ${sub}_ses-preop_acq-AP_dwi.nii.gz ${sub}_ses-preop_acq-PA_dwi.nii.gz \
+  ${sub}_ses-preop_acq-AP_dwi.bvec ${sub}_ses-preop_acq-AP_dwi.bval \
+  ${sub}_ses-preop_acq-PA_dwi.bvec ${sub}_ses-preop_acq-PA_dwi.bval \
+  ../anat/${sub}_ses-preop_T1w.nii.gz
+  cd ../../..;
+done
+</pre></div>
+</div>
+<p>When this has finished, use the same loop to run the QA checks, which were discussed in a previous chapter:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>for sub in sub-CON04 sub-CON05 sub-CON06 sub-CON07 sub-CON08 sub-PAT02 sub-PAT03 sub-PAT05 sub-PAT06 sub-PAT07 sub-PAT08; do
+  cd ${sub}/ses-preop/dwi;
+  bash 02_QC_mrview.sh;
+  cd ../../..;
+done
+</pre></div>
+</div>
+<p>Since the command <code class="docutils literal notranslate"><span class="pre">tck2connectome</span></code> requires the output from recon-all, we will execute it in a separate loop:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>for sub in sub-CON04 sub-CON05 sub-CON06 sub-CON07 sub-CON08 sub-PAT02 sub-PAT03 sub-PAT05 sub-PAT06 sub-PAT07 sub-PAT08; do
+  cd ${sub}/ses-preop/dwi;
+  SUBJECTS_DIR=`pwd`;
+  recon-all -i ../anat/${sub}_ses-preop_T1w.nii.gz -s ${sub}_recon -all
+  cd ../../..;
+done
+</pre></div>
+</div>
+<p>Lastly, we will run the <code class="docutils literal notranslate"><span class="pre">tck2connectome</span></code> command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>for sub in sub-CON04 sub-CON05 sub-CON06 sub-CON07 sub-CON08 sub-PAT02 sub-PAT03 sub-PAT05 sub-PAT06 sub-PAT07 sub-PAT08; do
+  cd ${sub}/ses-preop/dwi;
+  bash 03_MRtrix_CreateConnectome.sh $sub
+  cd ../../..;
+done
+</pre></div>
+</div>
+</section>
+<section id="next-steps">
+<h2>Next Steps<a class="headerlink" href="#next-steps" title="Link to this heading"></a></h2>
+<p>When the subjects have been preprocessed and you have run the QA checks, we can now run a <strong>group analysis</strong> to compare the streamlines between the control and the patient groups. To see how to do that, click the <code class="docutils literal notranslate"><span class="pre">Next</span></code> button.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="MRtrix_08_Connectome.html" class="btn btn-neutral float-left" title="MRtrix Tutorial #8: Creating and Viewing the Connectome" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="MRtrix_10_GroupAnalysis.html" class="btn btn-neutral float-right" title="MRtrix Tutorial #10: Group-Level Analysis" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Andy Jahn.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MRtrix Introduction: Overview of Diffusion Imaging &mdash; Andy&#39;s Brain Book 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b76e3c8a" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=f2a433a1"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="MRtrix Tutorial #1: Download and Install" href="MRtrix_01_Download_Install.html" />
+    <link rel="prev" title="Introduction to MRtrix" href="../MRtrix_Introduction.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Andy's Brain Book
+          </a>
+              <div class="version">
+                1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Install</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../installation/fsl_mac_install.html">Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Unix for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_Intro.html">What is Unix?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_01_Navigation.html">Unix Tutorial #1: 目录操作 (Directories and Navigation)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_02_CopyRemove.html">Unix Tutorial #2: Copying and Removing Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_03_ReadingTextFiles.html">Unix Tutorial #3: Reading Text Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_04_ShellsVariables.html">Unix Tutorial #4: Shells and Path Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_05_ForLoops.html">Unix Tutorial #5: For-Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_06_IfElse.html">Unix Tutorial #6: Conditional Statements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_07_Scripting.html">Unix Tutorial #7: Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_08_Sed.html">Unix Tutorial #8: The Sed Command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_09_AutomatingTheAnalysis.html">Unix Tutorial #9: Automating The Analysis</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">fMRI Short Course with FSL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_Intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_01_DataDownload.html">fMRI Tutorial #1: Downloading the Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_02_ExperimentalDesign.html">fMRI Tutorial #2: Overview of The Flanker Task</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_03_LookingAtTheData.html">fMRI Tutorial #3: Looking at the Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_04_Preprocessing.html">fMRI Tutorial #4: Preprocessing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_05_1stLevelAnalysis.html">fMRI Tutorial #5: Statistics and Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_06_Scripting.html">fMRI Tutorial #6: Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_07_2ndLevelAnalysis.html">fMRI Tutorial #7: 2nd-Level Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_08_3rdLevelAnalysis.html">fMRI Tutorial #8: 3rd-Level Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_09_ROIAnalysis.html">fMRI Tutorial #9: ROI Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_10_Summary.html">fMRI Tutorial #10: Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_Appendices.html">fMRI Short Course: Appendices</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">FreeSurfer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../FreeSurfer/FreeSurfer_Introduction.html">FreeSurfer Short Course</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">E-Prime</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../E-Prime/E-Prime_Overview.html">Overview of E-Prime</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">AFNI</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../AFNI/AFNI_Overview.html">AFNI Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">SPM</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../SPM/SPM_Overview.html">SPM Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Functional Connectivity with the CONN Toolbox</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../FunctionalConnectivity/CONN_Overview.html">Functional Connectivity and the CONN Toolbox</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Parametric Modulation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../PM/PM_Overview.html">Parametric Modulation in SPM, FSL, and AFNI</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Image Visualization with MRIcroGL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../MRIcroGL/MRIcroGL_Overview.html">Image Visualization with MRIcroGL</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Introduction to the Human Connectome Project (HCP)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../HCP/HCP_Overview.html">Introduction to the Human Connectome Project</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Finite Impulse Response (FIR) Models</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../FIR/FIR_Overview.html">Finite Impulse Response (FIR)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">fMRI Concepts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Practicals/DesignOptimization.html">Design Optimization</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Diffusion Analysis with MRtrix</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../MRtrix_Introduction.html">Introduction to MRtrix</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../MRtrix_Introduction.html#what-is-mrtrix">What is MRtrix?</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../MRtrix_Introduction.html#goals-of-this-course">Goals of This Course</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">MRtrix Introduction: Overview of Diffusion Imaging</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#the-structure-of-the-white-matter">The Structure of the White Matter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#history-of-diffusion">History of Diffusion</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#b-vectors">B-vectors</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#putting-it-all-together-modeling-the-tensor">Putting it all Together: Modeling the Tensor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#drawbacks-of-diffusion-tensor-imaging-the-crossing-fibers-problem">Drawbacks of Diffusion Tensor Imaging: The Crossing-Fibers Problem</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#diffusion-analysis-with-mrtrix">Diffusion Analysis with MRtrix</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="MRtrix_01_Download_Install.html">MRtrix Tutorial #1: Download and Install</a></li>
+<li class="toctree-l3"><a class="reference internal" href="MRtrix_02_DataDownload.html">MRtrix Tutorial #2: Downloading the Dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="MRtrix_03_DataFormats.html">MRtrix Tutorial #3: Looking at the Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="MRtrix_04_Preprocessing.html">MRtrix Tutorial #4: Preprocessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="MRtrix_05_BasisFunctions.html">MRtrix Tutorial #5: Constrained Spherical Deconvolution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="MRtrix_06_TissueBoundary.html">MRtrix Tutorial #6: Creating the Tissue Boundaries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="MRtrix_07_Streamlines.html">MRtrix Tutorial #7: Streamlines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="MRtrix_08_Connectome.html">MRtrix Tutorial #8: Creating and Viewing the Connectome</a></li>
+<li class="toctree-l3"><a class="reference internal" href="MRtrix_09_Scripting.html">MRtrix Tutorial #9: Scripting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="MRtrix_10_GroupAnalysis.html">MRtrix Tutorial #10: Group-Level Analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="MRtrix_11_FixelBasedAnalysis.html">MRtrix Tutorial #11: Fixel-Based Analysis</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ASL Analysis</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/ASL_Techniques.html">fASL Tutorial #1: Background</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/fASL_02_Download.html">fASL Tutorial #2: Downloading and Installing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/fASL_03_Task.html">fASL Tutorial #3: The N-Back Task</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/04_fASL_GUI.html">fASL Tutorial #4: The GUI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/05_fASL_Results.html">fASL Tutorial #5: Examining the Results</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/06_fASL_Quantification.html">fASL Tutorial #6: Quantification</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Frequently Asked Questions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../FrequentlyAskedQuestions/FrequentlyAskedQuestions.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Statistics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Statistics/GIMME.html">GIMME (Group Iterative Multiple Model Estimation)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Open Science</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../OpenScience/OS_Overview.html">Open Science</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced Normalization Tools (ANTs)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ANTs/ANTs_Overview.html">Advanced Normalization Tools (ANTs)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tract-Based Spatial Statistics (TBSS)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../TBSS/TBSS_Overview.html">Introduction to Tract-Based Spatial Statistics (TBSS)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Statistics for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Stats/Stats_Overview.html">Statistics for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Machine Learning for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ML/ML_Overview.html">Machine Learning for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Slicer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Slicer/Slicer_Overview.html">Slicer Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">CAT12</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../CAT12/CAT12_Overview.html">Voxel-Based Morphometry with CAT12</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Using the Supercomputer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Supercomputer/Supercomputer_Overview.html">Introduction to Supercomputing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Matlab for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Matlab/Matlab_Overview.html">Matlab for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ITK-Snap</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ITK-Snap/ITK-Snap_Overview.html">ITK-Snap_Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Python for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../PythonForNeuroimagers/PythonForNeuroimagers_Overview.html">Python for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Meta-Analysis for fMRI</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../MetaAnalysis/MetaAnalysis_Overview.html">Meta-Analysis for Neuroimagers</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Andy's Brain Book</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../MRtrix_Introduction.html">Introduction to MRtrix</a></li>
+      <li class="breadcrumb-item active">MRtrix Introduction: Overview of Diffusion Imaging</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/MRtrix/MRtrix_Course/MRtrix_00_Diffusion_Overview.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="mrtrix-introduction-overview-of-diffusion-imaging">
+<span id="mrtrix-00-diffusion-overview"></span><h1>MRtrix Introduction: Overview of Diffusion Imaging<a class="headerlink" href="#mrtrix-introduction-overview-of-diffusion-imaging" title="Link to this heading"></a></h1>
+<hr class="docutils" />
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading"></a></h2>
+<p>Until now, this book has touched on the most popular MRI technique: Functional Magnetic Resonance Imaging, or fMRI. These functional images, which measure signal generated by changes in blood flow, are often accompanied by structural images that are acquired using the same basic method: Different tissue types in the brain have different T1 and T2 <strong>relaxation rates</strong>, which are used to create images with contrast between the tissues. In T1, or anatomical scans, the white matter is lighter than the grey matter, which in turn is lighter than the cerebrospinal fluid; in T2, or functional scans, the relative intensities are flipped.</p>
+<figure class="align-default" id="id1">
+<img alt="../../_images/00_T1_T2_Intensities.png" src="../../_images/00_T1_T2_Intensities.png" />
+<figcaption>
+<p><span class="caption-text">Typical T1-weighted (anatomical) and T2-weighted (functional) images. Note how the relative intensities of the tissue types are inverted when going from T1-weighted imaging to T2-weighted imaging.</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>However, there are other types of images that can be acquired with an MRI scanner. In this module we will focus on <strong>diffusion-weighted MRI</strong>, or dMRI, which measures the relative diffusivity within different parts of the brain - in particular, within the white matter tracts.</p>
+</section>
+<section id="the-structure-of-the-white-matter">
+<h2>The Structure of the White Matter<a class="headerlink" href="#the-structure-of-the-white-matter" title="Link to this heading"></a></h2>
+<p>Why does dMRI focus on the white matter tracts? Imagine peeling apart a stick of string cheese, and then imagine peeling apart the brain - just like the string cheese, the brain has preferred tear directions. These directions correspond to underlying white matter tracts, which are thick bundles of myelinated neurons that connect both nearby and distant parts of the brain. For example, the inferior longitudinal fasciculus connects the visual and temporal regions of the brain, while the uncinate fasciculus connects the temporal and inferior frontal parts of the brain. These tracts travel along all three dimensions of the brain, and they may run parallel to each other or cross one another.</p>
+<figure class="align-default" id="id2">
+<img alt="../../_images/00_Tract_Examples.png" src="../../_images/00_Tract_Examples.png" />
+<figcaption>
+<p><span class="caption-text">Illustration of several main white matter tracts. Figure taken from Thiebaut et al., 2015.</span><a class="headerlink" href="#id2" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>The white matter of the brain gets its name from its color; these neurons are highly myelinated, meaning they have a thick lipid coating that both insulates them and helps with the transmission of electrical impulses, just like an insulated electrical cable. The grey matter neurons, in contrast, are relatively unmyelinated, which allows for a higher density of neurons to be packed into a given area.</p>
+</section>
+<section id="history-of-diffusion">
+<h2>History of Diffusion<a class="headerlink" href="#history-of-diffusion" title="Link to this heading"></a></h2>
+<p>While the composition of the brain tissues has been known for some time, imaging the diffusion of the white matter tracts is a new technique. To understand how the properties of the white matter were exploited for this purpose, we will briefly review the history of diffusion and how scientists came to apply this concept to brain imaging.</p>
+<section id="brownian-motion">
+<h3>Brownian Motion<a class="headerlink" href="#brownian-motion" title="Link to this heading"></a></h3>
+<p>The first formal description of diffusion was made in 1827 by Robert Brown, a Scottish botanist. While looking at microscopic particles through a microscope, he noticed that the particles seemed to move randomly - similar to how motes of dust, when observed moving through a shaft of light, appear to move in random patterns. Browning concluded that the movement was caused by smaller particles impinging upon the larger molecules seen through the microscope. When dye is dropped into water, for example, the random motion of the water molecules causes the dye to disperse at random until the water within the container reaches a consistent hue. A more common, everyday example can be seen by pouring milk into coffee: Observe how the milk swirls and mixes with its surroundings, and you have an excellent demonstration of Brownian Motion.</p>
+<p>The properties of the medium determine the speed of the Brownian Movement. For example, increasing the temperature of the surrounding water will cause the water molecules to move faster, and consequently make the particles move faster as well. If the viscosity of the medium is higher - for example, if we drop food dye into a bowl of honey - the molecules move slower, and the particles of the food dye will move slower. Decreasing the temperature and decreasing the viscosity, on the other hand, will have the opposite effects.</p>
+<p>Lastly, and most relevant for our future tutorials on diffusion imaging, the Brownian Movement of both the particles and the molecules is determined by the size and shape of the container. Food dye dropped into a spherical bowl of water will diffuse randomly in all directions. Food dye dropped into a cylindrical beaker, on the other hand, will quickly diffuse along the length of the beaker; the particles will soon run into the walls of the container, and be forced to move either up or down. We call this type of container <strong>anisotropic</strong>, meaning that the dimensions of the container cause the particles to diffuse along a predominant axis. (If you have experience with fMRI, think of anisotropic voxels, which have one dimension that is longer than the others.)</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For a video of Brownian Motion, click <a class="reference external" href="https://www.youtube.com/watch?v=SB7GlVlm60g">here</a>.</p>
+</div>
+<p>All of these factors - temperature, particle size, and viscosity - were combined by Albert Einstein into a single equation known as the <strong>Stokes-Einstein Equation</strong>:</p>
+<figure class="align-default">
+<img alt="../../_images/00_Stokes_Einstein_Equation.png" src="../../_images/00_Stokes_Einstein_Equation.png" />
+</figure>
+<p>The diffusion coefficient, <strong>D</strong>, increases as the temperature (<strong>T</strong>) increases, and deceases with higher viscosity (symbolized by eta) and a higher particle radius (<strong>r</strong>). <strong>k</strong> stands for Boltzmann’s constant. This diffusion coefficient will play a role in how we acquire <strong>diffusion-weighted images</strong>, which we turn to next.</p>
+</section>
+<section id="diffusion-and-mri">
+<h3>Diffusion and MRI<a class="headerlink" href="#diffusion-and-mri" title="Link to this heading"></a></h3>
+<p>In the early 1990’s, a new imaging acquisition technique called echo planar imaging (EPI) allowed researchers to collect functional images of the brain much more rapidly than before. At the same time, scientists such as Michael Moseley and Steven Warach began to explore other ways of exploiting the properties of water molecules to generate different types of contrast maps. They reasoned that just as the T1 and T2 properties of the brain tissues could be used to create intensity differences in the images that were acquired, so could the diffusion of water lead to differences in the magnitude of the signal.</p>
+<p>You may recall from an introductory MRI physics course that T1-weighted images are often used for anatomical scans, and that T2-weighted images are usually for functional scans. For T2-weighted images, the presence or absence of nearby oxygenated hemoglobin leads to an increase or decrease in the signal emitted by hydrogen protons of the water molecules in the brain. In this scenario a radiofrequency pulse is turned on in order to tilt the spin of the hydrogen atoms and is quickly shut off; the signal is then emitted by the hydrogen protons and detected by a sensor inside the magnet, and the process repeats until an entire time-series of functional data is generated.</p>
+<p>What if we instead changed the magnetic field strength across different axes of the brain? Remember that although T2-weighted scans are primarily used for functional imaging, they can also be used to create anatomical images - in this case, the cerebrospinal fluid and grey matter would appear lighter, and the white matter would appear darker. If we applied a <strong>magnetic gradient</strong> while scanning the brain, we could make the magnetic field stronger along one direction and weaker along the opposite direction. For example, let’s say that we made the magnetic field slightly weaker on the left side of the brian, and slightly stronger on the right side, with the field gradually increasing in strength as we move from left to right. Since the frequency of the spins of the hydrogen atoms is proportional to the strength of the magnetic field, we would expect the spins on the left side of the brain to be slightly slower than those on the right.</p>
+<p>At this point, the spins would be <strong>out of phase</strong> with respect to each other; that is, they would be precessing at different rates depending on which part of the magnetic field they happen to be in. Because the protons are now out of phase, we call the gradient we just applied the <strong>Dephasing Gradient</strong>. If we applied an equal and opposite <strong>Rephasing Gradient</strong> - in other words, the magnetic field would be stronger on the left, and weaker on the right - the spins of the atoms would then be realigned with each other. The following figure summarizes this process of dephasing and rephasing gradients:</p>
+<figure class="align-default" id="id3">
+<img alt="../../_images/00_Dephasing_Rephasing_Gradients.png" src="../../_images/00_Dephasing_Rephasing_Gradients.png" />
+<figcaption>
+<p><span class="caption-text">Figure from Mori, 2007. The red, green, and blue circles represent hydrogen atoms, and the arrows within the circles are the direction of the spins; imagine that they are all moving in the same direction around the circumference of the circle, and at the same rate. A Dephasing Gradient (middle row) is slightly weaker on the left, and slightly stronger on the right; as a result, when we turn off the gradient, the atoms are spinning out of phase with respect to each other. A Rephasing Gradient then applies an equal and opposite gradient, and in the end the atoms are spinning in the same direction and at the same rate.</span><a class="headerlink" href="#id3" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<section id="aside-creating-the-diffusion-gradient-and-b-values">
+<h4>Aside: Creating the Diffusion Gradient and B-Values<a class="headerlink" href="#aside-creating-the-diffusion-gradient-and-b-values" title="Link to this heading"></a></h4>
+<p>The abovementioned diffusion gradients are generated by the following parameters:</p>
+<ul class="simple">
+<li><p>The magnitude of diffusion gradient (G);</p></li>
+<li><p>The time between gradients (𝚫) ; and</p></li>
+<li><p>T duration of diffusion gradient (𝜹).</p></li>
+</ul>
+<p>These can be combined into an equation for what is called the <strong>b-value</strong>, which is shown in the figure below. Note that the b-value is proportional to the magnitude of the gradient, duration of the gradient, and time between the gradients; if any of these parameters increase, the b-value increases as well. For now, keep this equation in mind - we will return to it later when we discuss how b-values affect the contrast of the diffusion-weighted images.</p>
+<figure class="align-default">
+<img alt="../../_images/00_BValue.png" src="../../_images/00_BValue.png" />
+</figure>
+</section>
+</section>
+<section id="revisiting-the-gradients-effects-of-diffusion">
+<h3>Revisiting the Gradients: Effects of Diffusion<a class="headerlink" href="#revisiting-the-gradients-effects-of-diffusion" title="Link to this heading"></a></h3>
+<p>In the above example, we assumed that a rephasing gradient would put the hydrogen atoms back into alignment with each other. This assumption is true, but only if the hydrogen atoms don’t move in between the turning on and off of the dephasing and rephasing gradients. If, on the other hand, they do move - in other words, if they diffuse, according to the principles of Brownian movement that we discussed earlier - then the rephasing gradient will not lead to a realignment of the hydrogen atoms. Rather, they will be out of alignment in proportion to how much they have diffused in the time between the gradients.</p>
+<figure class="align-default" id="id4">
+<img alt="../../_images/00_Gradients_Diffusion.png" src="../../_images/00_Gradients_Diffusion.png" />
+<figcaption>
+<p><span class="caption-text">Figure from Mori, 2007. The period of time between the gradients, which we will refer to as the <strong>mixing phase</strong>, allows the hydrogen atoms from different locations to mix with each other. This depends on factors such as the ambient temperature and how constrained the surrounding environment is - hydrogen atoms in a relatively unrestricted space (such as the ventricles) will diffuse more than those that are in a more restricted space. When the rephasing gradient is applied, the atoms are now spinning out of phase with respect to each other.</span><a class="headerlink" href="#id4" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>The result is a contrast image that looks similar to the T2-weighted functional images you may have come across before: There is contrast between the major tissue types, such as the white matter and the gray matter. Upon closer inspection, however, we notice that the image is darker in certain parts; this is due to the water molecules diffusing during the mixing phase. When the atoms are out of phase with respect to each other, the signal is attenuated. (Think of a group of people all pushing a block in the same direction. The force that they exert will move the block along the direction in which they are pushing. If instead a few people are now pushing at the side, and others are pushing in the opposite direction, the movement of the block either slows or stops altogether.) In this case, greater signal <em>loss</em> implies more diffusion, with the amount of loss being relative to a scan that was acquired without any diffusion gradients being applied - in other words, relative to a scan that had a b-value of zero.</p>
+<figure class="align-default">
+<img alt="../../_images/00_Signal_Diffusion.png" src="../../_images/00_Signal_Diffusion.png" />
+</figure>
+<p>The following figure sums up what we have discussed so far. A diffusion-weighted image with a b-value of zero is virtually identical to a typical T2-weighted image - CSF is bright and grey matter is dark. As we increase the b-values, we see that there is greater signal loss in specific parts of the brain, primarily within the white matter. This is because the water within those white matter tracts is diffusing primarily along the direction of the tract, and the image that is generated shows correspondingly lower signal. (Higher b-values also make the image more susceptible to image artifacts such as movement and magnetic currents called eddies; we will revisit those in a later chapter on preprocessing.)</p>
+<figure class="align-default" id="id5">
+<img alt="../../_images/00_bvalues.png" src="../../_images/00_bvalues.png" />
+<figcaption>
+<p><span class="caption-text">Higher b-values will be more sensitive to detecting diffusion, but at the risk of more noise and more susceptibility to vibration artifacts.</span><a class="headerlink" href="#id5" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Diffusion images that are acquired with more than one b-value are referred to as <strong>multi-shell acquisitions</strong>. This allows finer-grained distinctions in the orientation of the diffusion, since the image will show different amounts of signal loss at each b-value depending on the amount of diffusion. We will revisit this concept in a later chapter.</p>
+</div>
+</section>
+</section>
+<section id="b-vectors">
+<h2>B-vectors<a class="headerlink" href="#b-vectors" title="Link to this heading"></a></h2>
+<p>So far, we have learned how diffusion gradients are applied, and how to interpret the resulting signal in the image. To round out our understanding of how the diffusion images are created, we also need to know the <strong>direction</strong> of the gradients that were applied. These directions are known as <strong>b-vectors</strong>, or <strong>bvecs</strong> for short. You will notice that once you have downloaded the data from a diffusion-weighted scan, you have two text files - one usually has the suffix <strong>.bval</strong>, to indicate the b-values, and another with the suffix <strong>.bvec</strong>, which stands for b-vectors.</p>
+<p>Suppose that you collected 40 diffusion-weighted images. Let’s also assume that the first volume was acquired with a b-value of zero, and the rest of the volumes were acquired with b-values of 1000. The bvals file would have 40 entries, with each bval corresponding to an individual volume in the diffusion-weighted image. The bvecs file, on the other hand, would have 40 <em>triplets</em> of numbers indicating the direction of the diffusion gradient for that volume in the x-, y-, and z-directions. If we know both the direction and the magnitude of the gradient, we can make an educated guess about the diffusion along that gradient depending on changes in the signal acquired from those voxels.</p>
+<figure class="align-default" id="id6">
+<img alt="../../_images/00_bvals_bvecs.png" src="../../_images/00_bvals_bvecs.png" />
+<figcaption>
+<p><span class="caption-text">Example content of the .bvals and .bvecs files. The structure of the bvecs file is clearer if it is imported into a spreadsheet; the file is formatted to group the numbers into triplets. Each triplet of bvecs corresponds to a single bval.</span><a class="headerlink" href="#id6" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>One parameter you have control over is the number of directions you would like to scan with the gradients. For example, you could acquire 64 or 128 images, with each image having diffusion gradients applied from a slightly different direction. More directions leads to higher <strong>angular resolution</strong>, which allows you to make finer spatial distinctions about the direction of the diffusion. The tradeoff, as with anything that increases resolution, is that more scans take more time.</p>
+</div>
+</section>
+<section id="putting-it-all-together-modeling-the-tensor">
+<h2>Putting it all Together: Modeling the Tensor<a class="headerlink" href="#putting-it-all-together-modeling-the-tensor" title="Link to this heading"></a></h2>
+<p>This combination of bvals and bvecs allows us to construct something called a <strong>tensor</strong> and fit it to each voxel of our diffusion-weighted image. For this tutorial, think of a tensor as a model of forces that push along the x-, y-, and z-dimensions. Water flowing through a garden hose, for example, pushes against the boundaries of the tube, but primarily flows along the length of the hose. We call the directions of the energy <strong>eigenvectors</strong>, and the magnitude of the energy <strong>eigenvalues</strong>.</p>
+<p>Applied to diffusion-weighted images, we use these same concepts to model the signal observed at each voxel as a combination of eigenvectors and eigenvalues. The eigenvectors indicate the direction of the diffusion, and the eigenvalues represent the magnitude of the diffusion. To bring back the garden hose example, the water’s force would have a high eigenvector and eigenvalue along the length of the tube; similarly, we can model the diffusion in each voxel of the brain as a combination of eigenvectors and eigenvalues. Once we calculate the combination of values that best represents the signal observed in the current voxel, we can use a number of different equations to calculate different properties of the diffusion at that voxel. The most popular equation for this <strong>diffusion tensor imaging</strong> is called <strong>Fractional Anisotropy</strong>, or FA for short. This can be calculated using the formula:</p>
+<figure class="align-default">
+<img alt="../../_images/00_FA_formula.png" src="../../_images/00_FA_formula.png" />
+</figure>
+<p>Fractional anisotropy is a weighted sum of the eigenvalues in each voxel. A higher FA value indicates greater diffusion along one of the directions, and a lower FA value indicates that there is either very little diffusion, or that the diffusion is unconstrained and going in each direction at random (as in, say, the ventricles of the brain). If we find that the diffusion is greater along one of the dimensions, we can color-code it according to the direction. The convention in diffusion imaging is to represent diffusion along the x-axis in red, diffusion along the y-axis in green, and diffusion along the z-axis in blue. The image below summarizes this color-coding scheme.</p>
+<figure class="align-default">
+<img alt="../../_images/00_Eigenvectors.png" src="../../_images/00_Eigenvectors.png" />
+</figure>
+<p>Fitting a tensor at each voxel allows for the generation of different types of diffusion maps, such as fractional anisotropy maps. Tract-Based Spatial Statistics (TBSS), a popular FSL diffusion analysis package, can be used to create these maps; similar to the analysis of fMRI data, these maps can be combined into a group-analysis map, and data can be extracted from regions of interest within the map.</p>
+<figure class="align-default" id="id7">
+<img alt="../../_images/00_FA_Map.png" src="../../_images/00_FA_Map.png" />
+<figcaption>
+<p><span class="caption-text">Tensors generated by FSL’s TBSS. For an overview of how to analyze a subject with this package, click <a class="reference external" href="https://andysbrainbook.readthedocs.io/en/latest/TBSS/TBSS_Overview.html">here</a>.</span><a class="headerlink" href="#id7" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<section id="other-diffusion-measures">
+<h3>Other Diffusion Measures<a class="headerlink" href="#other-diffusion-measures" title="Link to this heading"></a></h3>
+<p>Although FA is the most popular diffusion measure, there are a few others that we will briefly review:</p>
+<ul class="simple">
+<li><p>Mean Diffusivity (MD): The average of the eigenvalues, calculated by summing the eigenvalues together and dividing them by 3. Useful for identifying brain pathologies such as edemas.</p></li>
+<li><p>Axial Diffusivity (AD): The value of the largest eigenvalue.</p></li>
+<li><p>Radial Diffusivity (RD): The average of the two smallest eigenvalues. Often used to analyze large fiber bundles oriented in the same direction, such as the corpus callosum.</p></li>
+</ul>
+</section>
+</section>
+<section id="drawbacks-of-diffusion-tensor-imaging-the-crossing-fibers-problem">
+<h2>Drawbacks of Diffusion Tensor Imaging: The Crossing-Fibers Problem<a class="headerlink" href="#drawbacks-of-diffusion-tensor-imaging-the-crossing-fibers-problem" title="Link to this heading"></a></h2>
+<p>Although diffusion tensor imaging has been one of the most popular analysis methods since the beginning of diffusion-weighted imaging, it has been hindered by the <strong>Crossing-Fibers Problem</strong>. The tensor fitting method described above is useful for analyzing voxels that only contain white matter tracts that travel in a single direction. If, on the other hand, the voxel contains fibers that cross each other, the method can lead to spurious results. To take the most extreme case, imagine that we have acquired a diffusion-weighted image for a single voxel, and that this voxel contains white matter fibers that cross at right angles with respect to each other. Since the tensor is constrained to generate a single solution in order to estimate all of its eigenvectors and eigenvalues, it is unable to estimate the direction and magnitude of the diffusion for each bundle of fibers separately. Instead, it will split the difference and conclude that there is no diffusion along any direction - in other words, the diffusion of the two tracts will cancel each other out.</p>
+<figure class="align-default" id="id8">
+<img alt="../../_images/00_CrossingFibers.png" src="../../_images/00_CrossingFibers.png" />
+<figcaption>
+<p><span class="caption-text">An illustration of white matter fibers crossing each other at right angles. Image provided by John Plass.</span><a class="headerlink" href="#id8" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>To address this problem, a technique was developed known as <strong>Spherical Deconvolution</strong>. Instead of trying to find a single solution to a complex signal that is measured at each voxel, spherical deconvolution assumes that the diffusion signal is an average of the signal you would expect from multiple individual fibers crossing each other at different angles. A single fiber is therefore used as a <strong>basis function</strong> to deconvolve the more complex signal.</p>
+<figure class="align-default">
+<img alt="../../_images/00_BasisFunction.png" src="../../_images/00_BasisFunction.png" />
+</figure>
+<p>In order to understand this better, let’s revisit how basis functions are used with fMRI data. You may recall from <a class="reference internal" href="../../fMRI_Short_Course/Statistics/03_Stats_HRF_Overview.html#stats-hrf-overview"><span class="std std-ref">another part of the book</span></a> that the BOLD signal we acquire from a single voxel can be modeled as an average of several overlapping BOLD responses to events that occur closely together. In order to estimate the amount of BOLD activity for each individual event, we <strong>deconvolve</strong> the more complex signal into its individual parts. The basis function of a single Hemodynamic Response Function (HRF) allows us to estimate what combination of HRFs occurring at different times and with different magnitudes would look like, and we estimate the combination that leads to the observed signal.</p>
+<p>Similarly with diffusion-weighted data, we acquire a diffusion signal in each voxel from many different angles in order to form a picture of both the direction of the diffusion and its magnitude. The signal is then deconvolved into a set of individual fibers oriented in different directions. Instead of a single diffusion number at each voxel, spherical deconvolution is used to generate a <strong>fiber orientation density function</strong>, or FOD. The function is represented as a shape with ovoid axes; and although the lobes of the axis that loads on to the predominant direction of diffusion become longer and bigger relative to the other axes, information about the direction and strength of diffusion along the other axes is still retained.</p>
+<figure class="align-default" id="id9">
+<img alt="../../_images/00_ODF.png" src="../../_images/00_ODF.png" />
+<figcaption>
+<p><span class="caption-text">Pictured is a diffusion-weighted image with FODs overlaid on top of it. If we zoom in to a region of the anterior commissure, we see that the ODFs are primarily going from left to right (which is also represented by their being color-coded in red). Note that the ODFs on the right of the inset begin to turn more green, representing the turning of the orientation from primarily a left-right axis to an anterior-posterior axis.</span><a class="headerlink" href="#id9" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id10">
+<img alt="../../_images/00_ODF_2.png" src="../../_images/00_ODF_2.png" />
+<figcaption>
+<p><span class="caption-text">Another part of the white matter shows FODs that primarily follow an anterior-posterior orientation; however, some of the ODFs have lobes that extend in both the anterior-posterior and inferior-superior directions (with inferior-superior being color-coded as blue). In this way, FODs can represent the orientation of the fibers along multiple dimensions.</span><a class="headerlink" href="#id10" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="diffusion-analysis-with-mrtrix">
+<h2>Diffusion Analysis with MRtrix<a class="headerlink" href="#diffusion-analysis-with-mrtrix" title="Link to this heading"></a></h2>
+<p>For this tutorial, we will be using the software package <a class="reference external" href="https://www.mrtrix.org/">MRtrix</a>. It uses the spherical deconvolution approach described above, in addition to advanced techniques such as anatomically constrained tractography. The output from MRtrix can also be combined with the parcellations generated by <a class="reference internal" href="../../FreeSurfer/FreeSurfer_Introduction.html#freesurfer-introduction"><span class="std std-ref">FreeSurfer</span></a> in order to create a <strong>connectome</strong> representing the amount of connectivity for each parcellation (also known as <strong>nodes</strong> in this context) with every other node in the brain. All of that, and more, will be discussed in the following chapters.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../MRtrix_Introduction.html" class="btn btn-neutral float-left" title="Introduction to MRtrix" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="MRtrix_01_Download_Install.html" class="btn btn-neutral float-right" title="MRtrix Tutorial #1: Download and Install" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Andy Jahn.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

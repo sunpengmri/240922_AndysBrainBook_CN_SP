@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Machine Learning Tutorial #3: Preprocessing &mdash; Andy&#39;s Brain Book 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b76e3c8a" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=f2a433a1"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Machine Learning Tutorial #4: Creating the Timing Files" href="ML_04_Haxby_Timing.html" />
+    <link rel="prev" title="Machine Learning Tutorial #2: The Haxby Dataset" href="ML_02_Haxby_Intro_Download.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Andy's Brain Book
+          </a>
+              <div class="version">
+                1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Install</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../installation/fsl_mac_install.html">Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Unix for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_Intro.html">What is Unix?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_01_Navigation.html">Unix Tutorial #1: 目录操作 (Directories and Navigation)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_02_CopyRemove.html">Unix Tutorial #2: Copying and Removing Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_03_ReadingTextFiles.html">Unix Tutorial #3: Reading Text Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_04_ShellsVariables.html">Unix Tutorial #4: Shells and Path Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_05_ForLoops.html">Unix Tutorial #5: For-Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_06_IfElse.html">Unix Tutorial #6: Conditional Statements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_07_Scripting.html">Unix Tutorial #7: Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_08_Sed.html">Unix Tutorial #8: The Sed Command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_09_AutomatingTheAnalysis.html">Unix Tutorial #9: Automating The Analysis</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">fMRI Short Course with FSL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_Intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_01_DataDownload.html">fMRI Tutorial #1: Downloading the Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_02_ExperimentalDesign.html">fMRI Tutorial #2: Overview of The Flanker Task</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_03_LookingAtTheData.html">fMRI Tutorial #3: Looking at the Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_04_Preprocessing.html">fMRI Tutorial #4: Preprocessing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_05_1stLevelAnalysis.html">fMRI Tutorial #5: Statistics and Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_06_Scripting.html">fMRI Tutorial #6: Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_07_2ndLevelAnalysis.html">fMRI Tutorial #7: 2nd-Level Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_08_3rdLevelAnalysis.html">fMRI Tutorial #8: 3rd-Level Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_09_ROIAnalysis.html">fMRI Tutorial #9: ROI Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_10_Summary.html">fMRI Tutorial #10: Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_Appendices.html">fMRI Short Course: Appendices</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">FreeSurfer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../FreeSurfer/FreeSurfer_Introduction.html">FreeSurfer Short Course</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">E-Prime</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../E-Prime/E-Prime_Overview.html">Overview of E-Prime</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">AFNI</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../AFNI/AFNI_Overview.html">AFNI Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">SPM</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../SPM/SPM_Overview.html">SPM Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Functional Connectivity with the CONN Toolbox</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../FunctionalConnectivity/CONN_Overview.html">Functional Connectivity and the CONN Toolbox</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Parametric Modulation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../PM/PM_Overview.html">Parametric Modulation in SPM, FSL, and AFNI</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Image Visualization with MRIcroGL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../MRIcroGL/MRIcroGL_Overview.html">Image Visualization with MRIcroGL</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Introduction to the Human Connectome Project (HCP)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../HCP/HCP_Overview.html">Introduction to the Human Connectome Project</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Finite Impulse Response (FIR) Models</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../FIR/FIR_Overview.html">Finite Impulse Response (FIR)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">fMRI Concepts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Practicals/DesignOptimization.html">Design Optimization</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Diffusion Analysis with MRtrix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../MRtrix/MRtrix_Introduction.html">Introduction to MRtrix</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ASL Analysis</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/ASL_Techniques.html">fASL Tutorial #1: Background</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/fASL_02_Download.html">fASL Tutorial #2: Downloading and Installing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/fASL_03_Task.html">fASL Tutorial #3: The N-Back Task</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/04_fASL_GUI.html">fASL Tutorial #4: The GUI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/05_fASL_Results.html">fASL Tutorial #5: Examining the Results</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/06_fASL_Quantification.html">fASL Tutorial #6: Quantification</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Frequently Asked Questions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../FrequentlyAskedQuestions/FrequentlyAskedQuestions.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Statistics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Statistics/GIMME.html">GIMME (Group Iterative Multiple Model Estimation)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Open Science</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../OpenScience/OS_Overview.html">Open Science</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced Normalization Tools (ANTs)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ANTs/ANTs_Overview.html">Advanced Normalization Tools (ANTs)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tract-Based Spatial Statistics (TBSS)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../TBSS/TBSS_Overview.html">Introduction to Tract-Based Spatial Statistics (TBSS)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Statistics for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Stats/Stats_Overview.html">Statistics for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Machine Learning for Neuroimagers</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../ML_Overview.html">Machine Learning for Neuroimagers</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../ML_Overview.html#overview">Overview</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="ML_00_Introduction.html">Machine Learning: Introduction to Basic Terms and Concepts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ML_01_Brown_Example.html">Machine Learning Tutorial #1: Basic Example with Support Vector Machines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ML_02_Haxby_Intro_Download.html">Machine Learning Tutorial #2: The Haxby Dataset</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Machine Learning Tutorial #3: Preprocessing</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#the-preprocessing-pipeline">The Preprocessing Pipeline</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#specifying-the-glm">Specifying the GLM</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#video">Video</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#next-steps">Next Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ML_04_Haxby_Timing.html">Machine Learning Tutorial #4: Creating the Timing Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ML_05_Haxby_MVPA.html">Machine Learning Tutorial #5: MVPA Analysis with The Decoding Toolbox</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ML_06_Haxby_Scripting.html">Machine Learning Tutorial #6: Scripting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ML_07_Haxby_GroupAnalysis.html">Machine Learning Tutorial #7: Group Analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ML_08_Haxby_NonParametric.html">Machine Learning Tutorial #8: Non-Parametric Analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ML_09_RSA.html">Machine Learning Tutorial #9: Representational Similarity Analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ML_10_Hyperalignment.html">Machine Learning Tutorial #10: Hyperalignment</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Slicer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Slicer/Slicer_Overview.html">Slicer Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">CAT12</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../CAT12/CAT12_Overview.html">Voxel-Based Morphometry with CAT12</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Using the Supercomputer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Supercomputer/Supercomputer_Overview.html">Introduction to Supercomputing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Matlab for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Matlab/Matlab_Overview.html">Matlab for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ITK-Snap</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ITK-Snap/ITK-Snap_Overview.html">ITK-Snap_Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Python for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../PythonForNeuroimagers/PythonForNeuroimagers_Overview.html">Python for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Meta-Analysis for fMRI</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../MetaAnalysis/MetaAnalysis_Overview.html">Meta-Analysis for Neuroimagers</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Andy's Brain Book</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../ML_Overview.html">Machine Learning for Neuroimagers</a></li>
+      <li class="breadcrumb-item active">Machine Learning Tutorial #3: Preprocessing</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/ML/ML_Short_Course/ML_03_Haxby_Preprocessing.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="machine-learning-tutorial-3-preprocessing">
+<span id="ml-03-haxby-preprocessing"></span><h1>Machine Learning Tutorial #3: Preprocessing<a class="headerlink" href="#machine-learning-tutorial-3-preprocessing" title="Link to this heading"></a></h1>
+<hr class="docutils" />
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading"></a></h2>
+<p>The preprocessing steps are mostly the same as with analyzing a typical fMRI dataset; however, we will omit the <strong>smoothing</strong> step to avoid blurring the signal between voxels. While this is useful in univariate analyses that focus on averaging together nearby signal, in this case we want to keep the signal in each voxel as distinct as possible. This will help the classifier distinguish between the patterns elicited by different stimuli, if the patterns exist.</p>
+<p>Another step we may choose to remove is <strong>normalization</strong>. In a typical univariate study, normalization is useful for making sure that the activation is more or less in the same region across all of the subjects; we can also report our results using standardized coordinates. For MVPA analysis, however, we have the option of doing all of our analyses in <strong>native space</strong> - that is, without normalizing the data. By using subject-specific ROIs, we will generate a single classification number per condition, which can then be averaged across subjects.</p>
+</section>
+<section id="the-preprocessing-pipeline">
+<h2>The Preprocessing Pipeline<a class="headerlink" href="#the-preprocessing-pipeline" title="Link to this heading"></a></h2>
+<p>To reproduce the Haxby results, we will keep our preprocessing to a minimum, avoiding interpolation wherever we can. To that end, we will include only the following two steps:</p>
+<ol class="arabic simple">
+<li><p>Motion correction and realignment of the functional volumes; and</p></li>
+<li><p>Coregistration of the anatomical image to the functional data.</p></li>
+</ol>
+<p>Note that this pipeline excludes slice-timing correction, smoothing, and normalization.</p>
+<p>From the Haxby_Data directory, open a Matlab terminal and type <code class="docutils literal notranslate"><span class="pre">spm</span> <span class="pre">fmri</span></code> to open the GUI. Then click on <code class="docutils literal notranslate"><span class="pre">Batch</span></code> and select the following modules:</p>
+<ul class="simple">
+<li><p>BasicIO -&gt; File/Dir Operations -&gt; File Operations -&gt; Named File Selector</p></li>
+<li><p>SPM -&gt; Spatial -&gt; Realign -&gt; Realign: Estimate &amp; Reslice</p></li>
+<li><p>SPM -&gt; Spatial -&gt; Coregister -&gt; Coregister: Estimate &amp; Reslice</p></li>
+<li><p>SPM -&gt; Stats -&gt; fMRI model specification</p></li>
+<li><p>SPM -&gt; Stats -&gt; Model estimation</p></li>
+</ul>
+<p>When you are done, the batch editor window should look like this:</p>
+<figure class="align-default">
+<img alt="../../_images/03_BatchEditor.png" src="../../_images/03_BatchEditor.png" />
+</figure>
+<p>We will now review each of these modules in turn.</p>
+<section id="named-file-selector">
+<h3>Named File Selector<a class="headerlink" href="#named-file-selector" title="Link to this heading"></a></h3>
+<p>First, enter a label of your choosing in the <code class="docutils literal notranslate"><span class="pre">Input</span> <span class="pre">Name</span></code> field. For this tutorial, we will use the label <code class="docutils literal notranslate"><span class="pre">Runs</span></code>.</p>
+<p>For the File Sets, keep clicking on <code class="docutils literal notranslate"><span class="pre">New:</span> <span class="pre">File</span> <span class="pre">Set</span></code> until you have 12 sets total. Double-click on each set, selecting each run consecutively until you have loaded runs 1-12 of the dataset.</p>
+<figure class="align-default">
+<img alt="../../_images/03_NamedFileSelector.png" src="../../_images/03_NamedFileSelector.png" />
+</figure>
+</section>
+<section id="realign-estimate-reslice">
+<h3>Realign: Estimate &amp; Reslice<a class="headerlink" href="#realign-estimate-reslice" title="Link to this heading"></a></h3>
+<p>Similar to the Named File Selector module, highlight the <code class="docutils literal notranslate"><span class="pre">Data</span></code> field and select <code class="docutils literal notranslate"><span class="pre">New:</span> <span class="pre">Session</span></code> Until you have 12 sessions total. For each session that you highlight, click the <code class="docutils literal notranslate"><span class="pre">Dependency</span></code> button and select the corresponding run. For example, the first session will be <code class="docutils literal notranslate"><span class="pre">Runs(1)</span> <span class="pre">-</span> <span class="pre">Files</span></code>, the second session will be <code class="docutils literal notranslate"><span class="pre">Runs(2)</span> <span class="pre">-</span> <span class="pre">Files</span></code>, and so on.</p>
+<figure class="align-default">
+<img alt="../../_images/03_Realign.png" src="../../_images/03_Realign.png" />
+</figure>
+</section>
+<section id="coregister-estimate-reslice">
+<h3>Coregister: Estimate &amp; Reslice<a class="headerlink" href="#coregister-estimate-reslice" title="Link to this heading"></a></h3>
+<p>The last preprocessing step we will do is coregistration between the anatomical and functional data. Since we want to keep any interpolations of the functional data to a minimum, we will use the mean functional volume as a reference image (i.e., the image that will remain stationary) and the anatomical volume as the source image (i.e., the image that will be moved and interpolated to match the reference image).</p>
+<p>Click on <code class="docutils literal notranslate"><span class="pre">Reference</span> <span class="pre">Image</span></code>, and then the <code class="docutils literal notranslate"><span class="pre">Dependency</span></code> button. Select the mean image, and click <code class="docutils literal notranslate"><span class="pre">OK</span></code>.</p>
+<figure class="align-default">
+<img alt="../../_images/03_ReferenceImage.png" src="../../_images/03_ReferenceImage.png" />
+</figure>
+<p>Then click on <code class="docutils literal notranslate"><span class="pre">Source</span> <span class="pre">Image</span></code>, navigate to sub-1’s <code class="docutils literal notranslate"><span class="pre">anat</span></code> directory, and select the file <code class="docutils literal notranslate"><span class="pre">sub-1_T1w.nii</span></code>:</p>
+<figure class="align-default">
+<img alt="../../_images/03_SourceImage.png" src="../../_images/03_SourceImage.png" />
+</figure>
+</section>
+</section>
+<section id="specifying-the-glm">
+<h2>Specifying the GLM<a class="headerlink" href="#specifying-the-glm" title="Link to this heading"></a></h2>
+<p>Now that we have set up our motion correction and coregistration, we are done with preprocessing and ready to begin specifying our GLM. To prepare for this, go back to the Matlab terminal, make sure you are in the <code class="docutils literal notranslate"><span class="pre">Haxby_Data</span></code> directory, and type <code class="docutils literal notranslate"><span class="pre">mkdir</span> <span class="pre">SPM_Results_1</span></code>.</p>
+<p>This directory will be the input for the <code class="docutils literal notranslate"><span class="pre">Directory</span></code> field in the <code class="docutils literal notranslate"><span class="pre">fMRI</span> <span class="pre">model</span> <span class="pre">specification</span></code> module. Also set the Units for design to <code class="docutils literal notranslate"><span class="pre">Seconds</span></code> and the Interscan interval to <code class="docutils literal notranslate"><span class="pre">2.5</span></code>:</p>
+<figure class="align-default">
+<img alt="../../_images/03_model_part1.png" src="../../_images/03_model_part1.png" />
+</figure>
+<p>We will now use the “Replicate” feature of the GUI to construct the rest of our model. With 12 runs and 8 conditions, specifying each by hand would be tedious. Instead, click on <code class="docutils literal notranslate"><span class="pre">Data</span> <span class="pre">&amp;</span> <span class="pre">Design</span></code> and select <code class="docutils literal notranslate"><span class="pre">New:</span> <span class="pre">Subject/Session</span></code>. When you click on the <code class="docutils literal notranslate"><span class="pre">Conditions</span></code> field, select <code class="docutils literal notranslate"><span class="pre">New:</span> <span class="pre">Condition</span></code> to create empty fields for that condition. Double-click on <code class="docutils literal notranslate"><span class="pre">Durations</span></code> and enter a value of <code class="docutils literal notranslate"><span class="pre">24</span></code>, indicating that a boxcar regressor of 24 seconds will be used to model that condition.</p>
+<p>Click on <code class="docutils literal notranslate"><span class="pre">Conditions</span></code> again, and then select <code class="docutils literal notranslate"><span class="pre">Replicate:</span> <span class="pre">Condition</span> <span class="pre">(1)</span></code> until there are 8 conditions total. Then fill in the name of each condition, one each, with the corresponding condition names:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bottle</span>
+<span class="n">cat</span>
+<span class="n">chair</span>
+<span class="n">face</span>
+<span class="n">house</span>
+<span class="n">scissors</span>
+<span class="n">scrambledpix</span>
+<span class="n">shoe</span>
+</pre></div>
+</div>
+<p>The conditions should look something like this:</p>
+<figure class="align-default">
+<img alt="../../_images/03_model_part2.png" src="../../_images/03_model_part2.png" />
+</figure>
+<p>Now go back to the <code class="docutils literal notranslate"><span class="pre">Data</span> <span class="pre">&amp;</span> <span class="pre">Design</span></code> field, and select <code class="docutils literal notranslate"><span class="pre">Replicate:</span> <span class="pre">Subject/Session</span> <span class="pre">(1)</span></code> until you have 12 sessions total. For each of the Scans fields, select the corresponding resliced dependency from the Realignment step.</p>
+<p>Once you’ve finished doing this, select <code class="docutils literal notranslate"><span class="pre">Model</span> <span class="pre">estimation</span></code>, highlight the <code class="docutils literal notranslate"><span class="pre">Select</span> <span class="pre">SPM.mat</span></code> field, and select the dependency <code class="docutils literal notranslate"><span class="pre">fMRI</span> <span class="pre">model</span> <span class="pre">specification:</span> <span class="pre">SPM.mat</span> <span class="pre">File</span></code>:</p>
+<figure class="align-default">
+<img alt="../../_images/03_model_part3.png" src="../../_images/03_model_part3.png" />
+</figure>
+<p>If you wanted to finish filling in all of the fields you need to run the batch from the GUI, you could go back to the fMRI model specification module and enter by hand each of the timings for each condition in each run. This would be tedious to do for each subject, even though we only have six individuals in the current dataset; instead, we will click on <code class="docutils literal notranslate"><span class="pre">File</span> <span class="pre">-&gt;</span> <span class="pre">Save</span> <span class="pre">Batch</span> <span class="pre">and</span> <span class="pre">Script</span></code> and save the script to the <code class="docutils literal notranslate"><span class="pre">Haxby_Data</span></code> directory as <code class="docutils literal notranslate"><span class="pre">Haxby_Script.m</span></code>.</p>
+</section>
+<section id="video">
+<h2>Video<a class="headerlink" href="#video" title="Link to this heading"></a></h2>
+<p>A thorough demonstration of how to preprocess the data can be found <a class="reference external" href="https://www.youtube.com/watch?v=lCYMz6O5AAI">here</a>.</p>
+</section>
+<section id="next-steps">
+<h2>Next Steps<a class="headerlink" href="#next-steps" title="Link to this heading"></a></h2>
+<p>Now that we have a template script to work with, we will load the timings for each condition using Matlab code. To see how to do that, click the <code class="docutils literal notranslate"><span class="pre">Next</span></code> button.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="ML_02_Haxby_Intro_Download.html" class="btn btn-neutral float-left" title="Machine Learning Tutorial #2: The Haxby Dataset" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="ML_04_Haxby_Timing.html" class="btn btn-neutral float-right" title="Machine Learning Tutorial #4: Creating the Timing Files" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Andy Jahn.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

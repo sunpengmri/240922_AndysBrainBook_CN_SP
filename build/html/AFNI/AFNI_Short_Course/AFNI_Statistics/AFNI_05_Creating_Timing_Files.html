@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chapter 5: Creating Timing Files &mdash; Andy&#39;s Brain Book 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b76e3c8a" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=f2a433a1"></script>
+        <script src="../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Chapter 6: Running the First-Level Analysis" href="AFNI_06_Stats_Running_1stLevel_Analysis.html" />
+    <link rel="prev" title="Chapter 4: The General Linear Model" href="AFNI_04_Stats_General_Linear_Model.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            Andy's Brain Book
+          </a>
+              <div class="version">
+                1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Install</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../installation/fsl_mac_install.html">Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Unix for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../unix/Unix_Intro.html">What is Unix?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../unix/Unix_01_Navigation.html">Unix Tutorial #1: 目录操作 (Directories and Navigation)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../unix/Unix_02_CopyRemove.html">Unix Tutorial #2: Copying and Removing Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../unix/Unix_03_ReadingTextFiles.html">Unix Tutorial #3: Reading Text Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../unix/Unix_04_ShellsVariables.html">Unix Tutorial #4: Shells and Path Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../unix/Unix_05_ForLoops.html">Unix Tutorial #5: For-Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../unix/Unix_06_IfElse.html">Unix Tutorial #6: Conditional Statements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../unix/Unix_07_Scripting.html">Unix Tutorial #7: Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../unix/Unix_08_Sed.html">Unix Tutorial #8: The Sed Command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../unix/Unix_09_AutomatingTheAnalysis.html">Unix Tutorial #9: Automating The Analysis</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">fMRI Short Course with FSL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../fMRI_Short_Course/fMRI_Intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../fMRI_Short_Course/fMRI_01_DataDownload.html">fMRI Tutorial #1: Downloading the Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../fMRI_Short_Course/fMRI_02_ExperimentalDesign.html">fMRI Tutorial #2: Overview of The Flanker Task</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../fMRI_Short_Course/fMRI_03_LookingAtTheData.html">fMRI Tutorial #3: Looking at the Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../fMRI_Short_Course/fMRI_04_Preprocessing.html">fMRI Tutorial #4: Preprocessing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../fMRI_Short_Course/fMRI_05_1stLevelAnalysis.html">fMRI Tutorial #5: Statistics and Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../fMRI_Short_Course/fMRI_06_Scripting.html">fMRI Tutorial #6: Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../fMRI_Short_Course/fMRI_07_2ndLevelAnalysis.html">fMRI Tutorial #7: 2nd-Level Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../fMRI_Short_Course/fMRI_08_3rdLevelAnalysis.html">fMRI Tutorial #8: 3rd-Level Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../fMRI_Short_Course/fMRI_09_ROIAnalysis.html">fMRI Tutorial #9: ROI Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../fMRI_Short_Course/fMRI_10_Summary.html">fMRI Tutorial #10: Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../fMRI_Short_Course/fMRI_Appendices.html">fMRI Short Course: Appendices</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">FreeSurfer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../FreeSurfer/FreeSurfer_Introduction.html">FreeSurfer Short Course</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">E-Prime</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../E-Prime/E-Prime_Overview.html">Overview of E-Prime</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">AFNI</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../AFNI_Overview.html">AFNI Overview</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../AFNI_Overview.html#what-is-afni">What is AFNI?</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../AFNI_fMRI_Intro.html">Introduction to AFNI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../AFNI_01_DataDownload.html">AFNI Tutorial #1: Downloading the Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../AFNI_02_ExperimentalDesign.html">AFNI Tutorial #2: The Flanker Experiment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../AFNI_03_LookingAtTheData.html">AFNI Tutorial #3: Looking at the Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../AFNI_04_Preprocessing.html">AFNI Tutorial #4: AFNI Commands and Preprocessing</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../AFNI_05_1stLevelAnalysis.html">AFNI Tutorial #5: Statistics and Modeling</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="../AFNI_05_1stLevelAnalysis.html#overview">Overview</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../AFNI_06_Scripting.html">AFNI Tutorial #6: Scripting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../AFNI_07_GroupAnalysis.html">AFNI Tutorial #7: Group Analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../AFNI_08_ROIAnalysis.html">AFNI Tutorial #8: ROI Analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../AFNI_09_SurfaceAnalysis.html">AFNI Tutorial #9: Surface-Based Analysis with SUMA</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../AppendixA_ParametricModulation.html">Appendix A: Parametric Modulation in AFNI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../AppendixB_AnimalAnalysis.html">Appendix B: Analyzing Rat Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../AppendixC_HighlightingResults.html">Appendix C: Highlighting Vs. Hiding Results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../AppendixD_EffectSizes.html">Appendix D: Reporting Effect Sizes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">SPM</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../SPM/SPM_Overview.html">SPM Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Functional Connectivity with the CONN Toolbox</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../FunctionalConnectivity/CONN_Overview.html">Functional Connectivity and the CONN Toolbox</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Parametric Modulation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../PM/PM_Overview.html">Parametric Modulation in SPM, FSL, and AFNI</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Image Visualization with MRIcroGL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../MRIcroGL/MRIcroGL_Overview.html">Image Visualization with MRIcroGL</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Introduction to the Human Connectome Project (HCP)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../HCP/HCP_Overview.html">Introduction to the Human Connectome Project</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Finite Impulse Response (FIR) Models</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../FIR/FIR_Overview.html">Finite Impulse Response (FIR)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">fMRI Concepts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../Practicals/DesignOptimization.html">Design Optimization</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Diffusion Analysis with MRtrix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../MRtrix/MRtrix_Introduction.html">Introduction to MRtrix</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ASL Analysis</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../ASL/ASL_Techniques.html">fASL Tutorial #1: Background</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../ASL/fASL_02_Download.html">fASL Tutorial #2: Downloading and Installing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../ASL/fASL_03_Task.html">fASL Tutorial #3: The N-Back Task</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../ASL/04_fASL_GUI.html">fASL Tutorial #4: The GUI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../ASL/05_fASL_Results.html">fASL Tutorial #5: Examining the Results</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../ASL/06_fASL_Quantification.html">fASL Tutorial #6: Quantification</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Frequently Asked Questions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../FrequentlyAskedQuestions/FrequentlyAskedQuestions.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Statistics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../Statistics/GIMME.html">GIMME (Group Iterative Multiple Model Estimation)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Open Science</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../OpenScience/OS_Overview.html">Open Science</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced Normalization Tools (ANTs)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../ANTs/ANTs_Overview.html">Advanced Normalization Tools (ANTs)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tract-Based Spatial Statistics (TBSS)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../TBSS/TBSS_Overview.html">Introduction to Tract-Based Spatial Statistics (TBSS)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Statistics for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../Stats/Stats_Overview.html">Statistics for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Machine Learning for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../ML/ML_Overview.html">Machine Learning for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Slicer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../Slicer/Slicer_Overview.html">Slicer Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">CAT12</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../CAT12/CAT12_Overview.html">Voxel-Based Morphometry with CAT12</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Using the Supercomputer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../Supercomputer/Supercomputer_Overview.html">Introduction to Supercomputing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Matlab for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../Matlab/Matlab_Overview.html">Matlab for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ITK-Snap</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../ITK-Snap/ITK-Snap_Overview.html">ITK-Snap_Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Python for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../PythonForNeuroimagers/PythonForNeuroimagers_Overview.html">Python for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Meta-Analysis for fMRI</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../MetaAnalysis/MetaAnalysis_Overview.html">Meta-Analysis for Neuroimagers</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Andy's Brain Book</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../AFNI_Overview.html">AFNI Overview</a></li>
+          <li class="breadcrumb-item"><a href="../AFNI_05_1stLevelAnalysis.html">AFNI Tutorial #5: Statistics and Modeling</a></li>
+      <li class="breadcrumb-item active">Chapter 5: Creating Timing Files</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../_sources/AFNI/AFNI_Short_Course/AFNI_Statistics/AFNI_05_Creating_Timing_Files.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="chapter-5-creating-timing-files">
+<span id="afni-05-creating-timing-files"></span><h1>Chapter 5: Creating Timing Files<a class="headerlink" href="#chapter-5-creating-timing-files" title="Link to this heading"></a></h1>
+<hr class="docutils" />
+<section id="the-ideal-time-series-and-the-fitted-time-series">
+<h2>The Ideal Time-Series and the Fitted Time-Series<a class="headerlink" href="#the-ideal-time-series-and-the-fitted-time-series" title="Link to this heading"></a></h2>
+<p>We just saw how we can use several regressors, or independent variables, to estimate an outcome measure such as GPA. Conceptually, we’re doing the same thing when we use several regressors to estimate brain activity, which is our outcome measure with fMRI data: We estimate the average amplitude of the BOLD signal in response to each condition in our model.</p>
+<p>In the animation below, the different colors of the BOLD responses represent different conditions (such as Congruent and Incongruent), and the gray line represents the timecourse of our preprocessed data. This shows how the amplitude of each condition is being estimated to best fit the data; for the condition on the left, it is relatively high, whereas for the condition on the right, it is relatively low. You can also imagine a condition’s BOLD signal which is not significantly different from zero, or which is even negative.</p>
+<figure class="align-default">
+<img alt="../../../_images/05_05_GLM_fMRI_Data.gif" src="../../../_images/05_05_GLM_fMRI_Data.gif" />
+</figure>
+<p>The Red and Green lines representing the HRFs are called the <strong>ideal time-series</strong>. This is the time-series that we expect, given the timing of each stimulus in our experiment. When we estimate beta weights to fit this ideal time-series to the data, the result is called a <strong>fitted time-series</strong>, shown in the animation as a blue line.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Since every voxel has its own time-series, we do the procedure above for every voxel in the brain. This is known as a <strong>mass univariate</strong> analysis, since we estimate beta weights for each voxel’s time-series. As there are tens or hundreds of thousands of voxels in a typical fMRI dataset, later we will need to correct for all of the tests we have done. This will be covered in a later chapter on group analysis.</p>
+</div>
+</section>
+<section id="creating-the-ideal-time-series">
+<h2>Creating the Ideal Time-Series<a class="headerlink" href="#creating-the-ideal-time-series" title="Link to this heading"></a></h2>
+<p>Our goal is to create the fitted time-series so that we can use the estimated beta weights in a group-level analysis. But to do that, we first need to create our ideal time-series.</p>
+<p>Let’s take a look at the Flanker dataset. Within each subject’s <code class="docutils literal notranslate"><span class="pre">func</span></code> directory are files labeled <code class="docutils literal notranslate"><span class="pre">events.tsv</span></code>. These files contain three pieces of information that we need to create our <strong>timing files</strong> (also known as <strong>onset files</strong>):</p>
+<ol class="arabic simple">
+<li><p>The name of the condition;</p></li>
+<li><p>When each trial of the condition occurred, in seconds, relative to the start of the scan; and</p></li>
+<li><p>The duration of each trial.</p></li>
+</ol>
+<p>These need to be extracted from the events.tsv files and formatted in a way that the AFNI software can read. In this case, we will create a timing file for each condition, and then split that file according to which run the condition was in. In total, then, we will create four timing files:</p>
+<ol class="arabic simple">
+<li><p>Timings for the Incongruent trials that occurred during the first run (which we will call incongruent_run1.txt);</p></li>
+<li><p>Timings for the Incongruent trials that occurred during the second run (incongruent_run2.txt);</p></li>
+<li><p>Timings for the Congruent trials that occurred during the first run (congruent_run1.txt);</p></li>
+<li><p>Timings for the Congruent trials that occurred during the second run (congruent_run2.txt).</p></li>
+</ol>
+<p>Each of these timing files will have the same format consisting of three columns, in the following order:</p>
+<ol class="arabic simple">
+<li><p>Onset time, in seconds, relative to the start of the scan;</p></li>
+<li><p>Duration of the trial, in seconds;</p></li>
+<li><p>Parametric modulation.</p></li>
+</ol>
+<p>The timing files for each run will be condensed into a single timing file for each condition, which will be called <code class="docutils literal notranslate"><span class="pre">incongruent.1D</span></code> and <code class="docutils literal notranslate"><span class="pre">congruent.1D</span></code>. The <code class="docutils literal notranslate"><span class="pre">1D</span></code> extension is specific to AFNI; it indicates that the file contains text arranged in rows and columns.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We will discuss parameteric modulation in a future module. For now, all you need to know is that it is a required column, and unless you have parametrically modulated trials (which we do not have in this dataset), set it to a value of “1” for each trial.</p>
+</div>
+<figure class="align-default" id="id1">
+<img alt="../../../_images/05_05_TimingFiles_Example.png" src="../../../_images/05_05_TimingFiles_Example.png" />
+<figcaption>
+<p><span class="caption-text">The Run-1_events.tsv file on OpenNeuro.org (A). When we download it and look at it in the Terminal, it looks like the text in window (B). We then re-format the events file to create a timing file for each run with three columns: Onset time, duration, and parametric modulation (C), and use AFNI’s timing_tool.py to convert this to a timing format that AFNI understands (D).</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>To format the timing files, download <a class="reference external" href="https://github.com/andrewjahn/AFNI_Scripts/blob/master/make_Timings.sh">this script</a>. (You can download it by clicking on the <code class="docutils literal notranslate"><span class="pre">Raw</span></code> button, then right-clicking in the newly-opened window and selecting “Save As”.) We won’t go into detail about how it works, but all you need to do is place it in the experimental folder containing the subjects, and type <code class="docutils literal notranslate"><span class="pre">bash</span> <span class="pre">make_Timings.sh</span></code>. This will create timing files for each run for each subject and store them in each subject’s corresponding <code class="docutils literal notranslate"><span class="pre">func</span></code> directory. To check the output, type <code class="docutils literal notranslate"><span class="pre">cat</span> <span class="pre">sub-08/func/incongruent.1D</span></code>. You should see numbers similar to the ones in the figure above.</p>
+<p>Once you have created the timing files, you are now ready to use them to fit a model to the fMRI data. To see how to do that, click the Next button.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="AFNI_04_Stats_General_Linear_Model.html" class="btn btn-neutral float-left" title="Chapter 4: The General Linear Model" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="AFNI_06_Stats_Running_1stLevel_Analysis.html" class="btn btn-neutral float-right" title="Chapter 6: Running the First-Level Analysis" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Andy Jahn.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

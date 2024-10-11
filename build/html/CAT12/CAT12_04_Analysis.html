@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CAT12 Tutorial #4: Group-Level Analysis &mdash; Andy&#39;s Brain Book 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=f2a433a1"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="CAT12 Tutorial #5: Analysis on the Supercomputer" href="CAT12_05_Supercomputer.html" />
+    <link rel="prev" title="CAT12 Tutorial #3: Preprocessing the Data and QA Checks" href="CAT12_03_Preprocessing.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Andy's Brain Book
+          </a>
+              <div class="version">
+                1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Install</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation/fsl_mac_install.html">Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Unix for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../unix/Unix_Intro.html">What is Unix?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unix/Unix_01_Navigation.html">Unix Tutorial #1: 目录操作 (Directories and Navigation)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unix/Unix_02_CopyRemove.html">Unix Tutorial #2: Copying and Removing Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unix/Unix_03_ReadingTextFiles.html">Unix Tutorial #3: Reading Text Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unix/Unix_04_ShellsVariables.html">Unix Tutorial #4: Shells and Path Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unix/Unix_05_ForLoops.html">Unix Tutorial #5: For-Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unix/Unix_06_IfElse.html">Unix Tutorial #6: Conditional Statements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unix/Unix_07_Scripting.html">Unix Tutorial #7: Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unix/Unix_08_Sed.html">Unix Tutorial #8: The Sed Command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unix/Unix_09_AutomatingTheAnalysis.html">Unix Tutorial #9: Automating The Analysis</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">fMRI Short Course with FSL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../fMRI_Short_Course/fMRI_Intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fMRI_Short_Course/fMRI_01_DataDownload.html">fMRI Tutorial #1: Downloading the Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fMRI_Short_Course/fMRI_02_ExperimentalDesign.html">fMRI Tutorial #2: Overview of The Flanker Task</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fMRI_Short_Course/fMRI_03_LookingAtTheData.html">fMRI Tutorial #3: Looking at the Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fMRI_Short_Course/fMRI_04_Preprocessing.html">fMRI Tutorial #4: Preprocessing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fMRI_Short_Course/fMRI_05_1stLevelAnalysis.html">fMRI Tutorial #5: Statistics and Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fMRI_Short_Course/fMRI_06_Scripting.html">fMRI Tutorial #6: Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fMRI_Short_Course/fMRI_07_2ndLevelAnalysis.html">fMRI Tutorial #7: 2nd-Level Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fMRI_Short_Course/fMRI_08_3rdLevelAnalysis.html">fMRI Tutorial #8: 3rd-Level Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fMRI_Short_Course/fMRI_09_ROIAnalysis.html">fMRI Tutorial #9: ROI Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fMRI_Short_Course/fMRI_10_Summary.html">fMRI Tutorial #10: Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fMRI_Short_Course/fMRI_Appendices.html">fMRI Short Course: Appendices</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">FreeSurfer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../FreeSurfer/FreeSurfer_Introduction.html">FreeSurfer Short Course</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">E-Prime</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../E-Prime/E-Prime_Overview.html">Overview of E-Prime</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">AFNI</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../AFNI/AFNI_Overview.html">AFNI Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">SPM</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../SPM/SPM_Overview.html">SPM Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Functional Connectivity with the CONN Toolbox</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../FunctionalConnectivity/CONN_Overview.html">Functional Connectivity and the CONN Toolbox</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Parametric Modulation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../PM/PM_Overview.html">Parametric Modulation in SPM, FSL, and AFNI</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Image Visualization with MRIcroGL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../MRIcroGL/MRIcroGL_Overview.html">Image Visualization with MRIcroGL</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Introduction to the Human Connectome Project (HCP)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../HCP/HCP_Overview.html">Introduction to the Human Connectome Project</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Finite Impulse Response (FIR) Models</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../FIR/FIR_Overview.html">Finite Impulse Response (FIR)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">fMRI Concepts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Practicals/DesignOptimization.html">Design Optimization</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Diffusion Analysis with MRtrix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../MRtrix/MRtrix_Introduction.html">Introduction to MRtrix</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ASL Analysis</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../ASL/ASL_Techniques.html">fASL Tutorial #1: Background</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ASL/fASL_02_Download.html">fASL Tutorial #2: Downloading and Installing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ASL/fASL_03_Task.html">fASL Tutorial #3: The N-Back Task</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ASL/04_fASL_GUI.html">fASL Tutorial #4: The GUI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ASL/05_fASL_Results.html">fASL Tutorial #5: Examining the Results</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ASL/06_fASL_Quantification.html">fASL Tutorial #6: Quantification</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Frequently Asked Questions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../FrequentlyAskedQuestions/FrequentlyAskedQuestions.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Statistics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Statistics/GIMME.html">GIMME (Group Iterative Multiple Model Estimation)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Open Science</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../OpenScience/OS_Overview.html">Open Science</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced Normalization Tools (ANTs)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../ANTs/ANTs_Overview.html">Advanced Normalization Tools (ANTs)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tract-Based Spatial Statistics (TBSS)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../TBSS/TBSS_Overview.html">Introduction to Tract-Based Spatial Statistics (TBSS)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Statistics for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Stats/Stats_Overview.html">Statistics for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Machine Learning for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../ML/ML_Overview.html">Machine Learning for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Slicer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Slicer/Slicer_Overview.html">Slicer Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">CAT12</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="CAT12_Overview.html">Voxel-Based Morphometry with CAT12</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="CAT12_Overview.html#overview-of-the-computational-anatomy-toolbox">Overview of the Computational Anatomy Toolbox</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="CAT12_Overview.html#what-is-voxel-based-morphometry">What is Voxel-Based Morphometry?</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="CAT12_01_DownloadInstall.html">CAT12 Tutorial #1: Download and Install</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CAT12_02_DownloadingADNIData.html">CAT12 Tutorial #2: Downloading ADNI Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CAT12_03_Preprocessing.html">CAT12 Tutorial #3: Preprocessing the Data and QA Checks</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">CAT12 Tutorial #4: Group-Level Analysis</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#before-you-begin-extracting-total-intracranial-volume-tiv">Before You Begin: Extracting Total Intracranial Volume (TIV)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#doing-the-group-level-analysis">Doing the Group-Level Analysis</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#reviewing-the-orthogonality">Reviewing the Orthogonality</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#viewing-the-results">Viewing the Results</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#video">Video</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#exercises">Exercises</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="CAT12_05_Supercomputer.html">CAT12 Tutorial #5: Analysis on the Supercomputer</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Using the Supercomputer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Supercomputer/Supercomputer_Overview.html">Introduction to Supercomputing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Matlab for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Matlab/Matlab_Overview.html">Matlab for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ITK-Snap</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../ITK-Snap/ITK-Snap_Overview.html">ITK-Snap_Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Python for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../PythonForNeuroimagers/PythonForNeuroimagers_Overview.html">Python for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Meta-Analysis for fMRI</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../MetaAnalysis/MetaAnalysis_Overview.html">Meta-Analysis for Neuroimagers</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Andy's Brain Book</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="CAT12_Overview.html">Voxel-Based Morphometry with CAT12</a></li>
+      <li class="breadcrumb-item active">CAT12 Tutorial #4: Group-Level Analysis</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/CAT12/CAT12_04_Analysis.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="cat12-tutorial-4-group-level-analysis">
+<span id="cat12-04-analysis"></span><h1>CAT12 Tutorial #4: Group-Level Analysis<a class="headerlink" href="#cat12-tutorial-4-group-level-analysis" title="Link to this heading"></a></h1>
+<hr class="docutils" />
+<p>Doing a group-level analysis is similar to what you have done for functional MRI data, with one important difference: Since there is no time-series for anatomical data, there is no need to specify conditions and onset times, and therefore no need to do a first-level analysis. We can therefore go directly to a group-level analysis, in which we can compare groups, examine correlations between individual difference measures and cortical volumetrics, or run a longitudinal analysis. For this tutorial, we will be simply comparing two groups, and seeing whether there are any significant differences between them.</p>
+<section id="before-you-begin-extracting-total-intracranial-volume-tiv">
+<h2>Before You Begin: Extracting Total Intracranial Volume (TIV)<a class="headerlink" href="#before-you-begin-extracting-total-intracranial-volume-tiv" title="Link to this heading"></a></h2>
+<p>During segmentation and preprocessing, a measurement called total intracranial volume (TIV) was calculated for each subject, representing the overall volume, in cubic millimeters, of the space within the skull. Since this can be a plausible confound when examining differences in cortical volume between groups, we will use this as a nuisance covariate in our analysis.</p>
+<p>To extract these measurements into a single text file, from the CAT12 GUI click on <code class="docutils literal notranslate"><span class="pre">Get</span> <span class="pre">TIV</span></code>. Double-click on <code class="docutils literal notranslate"><span class="pre">XML</span> <span class="pre">files</span></code>, and note that the filter is already set to detect .xml files. Navigate to the <code class="docutils literal notranslate"><span class="pre">CAT12_Tutorial</span></code> directory, and then click the <code class="docutils literal notranslate"><span class="pre">Rec</span></code> button; it should populate the lower window with twelve files, one for each subject. Click <code class="docutils literal notranslate"><span class="pre">Done</span></code> and then the Green Go button.</p>
+<figure class="align-default">
+<img alt="../_images/04_GetTIV.png" src="../_images/04_GetTIV.png" />
+</figure>
+<p>This only takes a second, and you can see whether it finished by going to the Matlab terminal; you should see a new file called <code class="docutils literal notranslate"><span class="pre">TIV.txt</span></code>. Open it with the command <code class="docutils literal notranslate"><span class="pre">open</span> <span class="pre">TIV.txt</span></code>, and look at the values. These will be in the same order as the .xml files were loaded, which, if all of the other steps have used the filter field and recursive command when selecting files, should be the same as when we load them during group-level analysis.</p>
+<figure class="align-default">
+<img alt="../_images/04_TIV_Values.png" src="../_images/04_TIV_Values.png" />
+</figure>
+</section>
+<section id="doing-the-group-level-analysis">
+<h2>Doing the Group-Level Analysis<a class="headerlink" href="#doing-the-group-level-analysis" title="Link to this heading"></a></h2>
+<p>You have two options for setting up a group-level analysis: You can either click on the button <code class="docutils literal notranslate"><span class="pre">Basic</span> <span class="pre">Models</span></code> in the CAT12 GUI, or click on <code class="docutils literal notranslate"><span class="pre">Specify</span> <span class="pre">2nd-level</span></code> in the SPM GUI. Both are basically the same; the only difference is that the CAT12 GUI uses a factorial design as the default. These can be modified to do the same thing as a two-sample t-test in the SPM GUI, for example; you just have to specify the appropriate factors and levels. For this tutorial, we will use CAT12’s <code class="docutils literal notranslate"><span class="pre">Basic</span> <span class="pre">Models</span></code> button.</p>
+<p>Before we do that, however, use the Matlab terminal to navigate to the <code class="docutils literal notranslate"><span class="pre">CAT12_Tutorial</span></code> directory, and then type <code class="docutils literal notranslate"><span class="pre">mkdir</span> <span class="pre">2ndLevel_AD_CN</span></code>. Then click on <code class="docutils literal notranslate"><span class="pre">Basic</span> <span class="pre">Models</span></code> and double-click <code class="docutils literal notranslate"><span class="pre">Directory</span></code>, selecting this new directory you just created. Under <code class="docutils literal notranslate"><span class="pre">Factors</span></code>, change the <code class="docutils literal notranslate"><span class="pre">Name</span></code> to <code class="docutils literal notranslate"><span class="pre">Group</span></code>, and set the number of <code class="docutils literal notranslate"><span class="pre">Levels</span></code> to <code class="docutils literal notranslate"><span class="pre">2</span></code>. Click on <code class="docutils literal notranslate"><span class="pre">Cells</span></code>, and then <code class="docutils literal notranslate"><span class="pre">New:</span> <span class="pre">Cell</span></code>. For the first cell, click on <code class="docutils literal notranslate"><span class="pre">Levels</span></code>, and enter <code class="docutils literal notranslate"><span class="pre">1</span></code>. Double-click on <code class="docutils literal notranslate"><span class="pre">Scans</span></code>, navigate to the <code class="docutils literal notranslate"><span class="pre">AD</span></code> directory, and in the filter field type <code class="docutils literal notranslate"><span class="pre">smwp1</span></code>, to select the smoothed grey matter maps for the AD subjects, and click the <code class="docutils literal notranslate"><span class="pre">Rec</span></code> button. Click <code class="docutils literal notranslate"><span class="pre">Done</span></code>. Do the same for the next cell, entering a level of <code class="docutils literal notranslate"><span class="pre">2</span></code>, and then for the scans navigating to the <code class="docutils literal notranslate"><span class="pre">CN</span></code> directory, entering <code class="docutils literal notranslate"><span class="pre">smwp1</span></code> in the filter field, and clicking the <code class="docutils literal notranslate"><span class="pre">Rec</span></code> button and then <code class="docutils literal notranslate"><span class="pre">Done</span></code>.</p>
+<p>In the <code class="docutils literal notranslate"><span class="pre">Covariates</span></code> field, select <code class="docutils literal notranslate"><span class="pre">New:</span> <span class="pre">Covariate</span></code>, and double-click on <code class="docutils literal notranslate"><span class="pre">Name</span></code> and call the covariate <code class="docutils literal notranslate"><span class="pre">TIV</span></code>. Double-click on <code class="docutils literal notranslate"><span class="pre">Vector</span></code>, and then copy and paste the values from the TIV.txt file you generated. Leave the rest of the defaults as they are; when you are done, you should see something like this:</p>
+<figure class="align-default">
+<img alt="../_images/04_CAT12_Analysis_Setup.png" src="../_images/04_CAT12_Analysis_Setup.png" />
+</figure>
+<p>Note that, by using the CAT12 Basic Models, by default there is another module in the list called <code class="docutils literal notranslate"><span class="pre">Check</span> <span class="pre">design</span> <span class="pre">orthogonality</span> <span class="pre">and</span> <span class="pre">homogeneity</span></code>. This will load the design file you generated in the previous step, and check whether there are high correlations between your covariates and any of the other regressors in your model. Leave these defaults as they are.</p>
+<p>To save time, and to increase your proficiency with the SPM GUI, I also recommend adding two additional modules: One to estimate the model, and one to generate the contrasts. You can do this by clicking on each of the buttons, as you saw how to do in the <a class="reference internal" href="../SPM/SPM_Short_Course/SPM_08_GroupAnalysis.html#spm-08-groupanalysis"><span class="std std-ref">SPM Tutorial</span></a>, or you can add them to the current batch and run everything in one go. To do the latter, in the menu at the top of the Batch Editor, click <code class="docutils literal notranslate"><span class="pre">SPM</span> <span class="pre">-&gt;</span> <span class="pre">Stats</span> <span class="pre">-&gt;</span> <span class="pre">Model</span> <span class="pre">Estimation</span></code> to add this module to the list. Then click on <code class="docutils literal notranslate"><span class="pre">SPM</span> <span class="pre">-&gt;</span> <span class="pre">Stats</span> <span class="pre">-&gt;</span> <span class="pre">Contrast</span> <span class="pre">Manager</span></code>. Click on the new <code class="docutils literal notranslate"><span class="pre">Model</span> <span class="pre">Estimation</span></code> module, highlight the <code class="docutils literal notranslate"><span class="pre">Select</span> <span class="pre">SPM.mat</span></code> field, and click on <code class="docutils literal notranslate"><span class="pre">Dependency</span></code> in the lower right corner of the batch editor window; select the SPM.mat file dependency from the Factorial design specification module.</p>
+<p>Similarly, click on the <code class="docutils literal notranslate"><span class="pre">Contrast</span> <span class="pre">Manager</span></code> module, highlight the <code class="docutils literal notranslate"><span class="pre">Select</span> <span class="pre">SPM.mat</span></code> field, and click the <code class="docutils literal notranslate"><span class="pre">Dependency</span></code> button, selecting the SPM.mat file from the Model Estimation step. Then, click on <code class="docutils literal notranslate"><span class="pre">Contrast</span> <span class="pre">Sessions</span></code>, and create two new T-contrasts. Since the AD group is the first regressor in our model and the CN group is the second regressor, the first contrast weight in our vector will correspond to AD, and the second weight will correspond to CN. For the first T-contrast, therefore, change the <code class="docutils literal notranslate"><span class="pre">Name</span></code> to <code class="docutils literal notranslate"><span class="pre">AD-CN</span></code>, and change the <code class="docutils literal notranslate"><span class="pre">Weights</span> <span class="pre">vector</span></code> to <code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">-1</span></code>. Likewise, for the second T-contrast, change the <code class="docutils literal notranslate"><span class="pre">Name</span></code> to <code class="docutils literal notranslate"><span class="pre">CN-AD</span></code>, and give it a contrast vector of <code class="docutils literal notranslate"><span class="pre">-1</span> <span class="pre">1</span></code>. When you are done, the module list and the contrast manager should look like this:</p>
+<figure class="align-default">
+<img alt="../_images/04_ModuleList.png" src="../_images/04_ModuleList.png" />
+</figure>
+<p>Now click the green Go button, and wait for the modules to finish.</p>
+</section>
+<section id="reviewing-the-orthogonality">
+<h2>Reviewing the Orthogonality<a class="headerlink" href="#reviewing-the-orthogonality" title="Link to this heading"></a></h2>
+<p>The first output you will see from the batch are a few pop-up windows, showing the boxplot and correlation windows we examined previously during preprocessing. You can review that chapter about how to interpret these windows; however, for now we will focus on the <strong>Design Orthogonality</strong> window, which shows your design matrix on the top half, and correlations between the regressors on the bottom half. The boxes highlighted in red represent the correlation between your covariates - in this case, TIV - and the other regressors in your model. Left-click on them to see how large the correlation is; in this case, it is 0.17, which is relatively small, and we can go ahead with our analysis as usual.</p>
+<figure class="align-default">
+<img alt="../_images/04_Correlation.png" src="../_images/04_Correlation.png" />
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If the correlation was much higher - say, above 0.4 or 0.5 - you may want to consider scaling your other regressors by TIV. You can learn more about this on page 31 of the CAT12 manual, which can be found <a class="reference external" href="http://141.35.69.218/cat12/CAT12-Manual.pdf">here</a>.</p>
+</div>
+</section>
+<section id="viewing-the-results">
+<h2>Viewing the Results<a class="headerlink" href="#viewing-the-results" title="Link to this heading"></a></h2>
+<p>Now that we have estimated the model and generated the contrasts, we can look at the results just like we would the results from an fMRI experiment. From the SPM12 GUI, click on <code class="docutils literal notranslate"><span class="pre">Results</span></code>, and select the SPM.mat file in the directory <code class="docutils literal notranslate"><span class="pre">2ndLevel_AD_CN</span></code>. When the contrast manager appears, select the contrast <code class="docutils literal notranslate"><span class="pre">CN-AD</span></code>, and click <code class="docutils literal notranslate"><span class="pre">Done</span></code>. For the viewing options, selecting the following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">apply</span> <span class="n">masking</span> <span class="o">-&gt;</span> <span class="n">none</span>
+<span class="n">p</span> <span class="n">value</span> <span class="n">adjustment</span> <span class="n">to</span> <span class="n">control</span> <span class="o">-&gt;</span> <span class="n">none</span> <span class="o">-&gt;</span> <span class="mf">0.01</span>
+<span class="n">extent</span> <span class="n">threshold</span> <span class="p">(</span><span class="n">voxels</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="mi">50</span>
+</pre></div>
+</div>
+<p>These numbers are arbitrary, selected in part because we only have six subjects per group, and therefore have relatively low power. You will see that none of the results pass correction (although there is one cluster that has a cluster-level correction level of p=0.12). However, we still see some results that may indicate trends; click on the <code class="docutils literal notranslate"><span class="pre">overlays</span></code> dropdown menu in the Display window, and click <code class="docutils literal notranslate"><span class="pre">sections</span></code>. Navigate to your SPM12/canonical directory (for me, /Users/ajahn/spm12/canonical), and select the template <code class="docutils literal notranslate"><span class="pre">single_subj_T1.nii</span></code>. Click <code class="docutils literal notranslate"><span class="pre">Done</span></code>, and then use the crosshairs in the viewing pane to click and scroll around the image, looking at where there is significantly larger grey matter volume for the CN group compared to the AD group. There are small clusters in the hippocampal and frontal areas, not enough to reach statistical significance for now, but still in line with what is reported in most studies. It is reasonable to assume that if we increased our sample size by a factor of ten or a hundred, we would find significant differences; and that is what we will be doing when we begin analyzing a much larger sample on the supercomputing cluster.</p>
+<figure class="align-default">
+<img alt="../_images/04_CAT12_Results.png" src="../_images/04_CAT12_Results.png" />
+</figure>
+</section>
+<section id="video">
+<h2>Video<a class="headerlink" href="#video" title="Link to this heading"></a></h2>
+<p>For a video overview of how to run a group-level analysis, click <a class="reference external" href="https://youtu.be/fwNwBupw2RM">here</a>.</p>
+</section>
+<section id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>Try examining the reverse contrast of AD-CN, using the same thresholds as above. Where do you see differences at this threshold? Do you think they would hold at a larger sample size, or do you think they are false positives?</p></li>
+<li><p>In addition to TIV, another plausible confound is Age, which in this type of analysis we should probably also control for. In the ADNI webpage that you downloaded the data from, go back to your Collections tab, and click on the <code class="docutils literal notranslate"><span class="pre">Downloaded</span></code> images for this analysis. There is a button to download a .csv file for these subjects, or you can just copy the Age values that you see in the Downloads page for these subjects. Create another analysis through the CAT12 GUI, adding in this additional covariate, and making sure they correspond to the correct subject. Rerun the analysis and observe if any of the effects change.</p></li>
+</ol>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="CAT12_03_Preprocessing.html" class="btn btn-neutral float-left" title="CAT12 Tutorial #3: Preprocessing the Data and QA Checks" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="CAT12_05_Supercomputer.html" class="btn btn-neutral float-right" title="CAT12 Tutorial #5: Analysis on the Supercomputer" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Andy Jahn.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Appendix B: Analyzing Rat Data &mdash; Andy&#39;s Brain Book 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b76e3c8a" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=f2a433a1"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Appendix C: Highlighting Vs. Hiding Results" href="AppendixC_HighlightingResults.html" />
+    <link rel="prev" title="Appendix A: Parametric Modulation in AFNI" href="AppendixA_ParametricModulation.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Andy's Brain Book
+          </a>
+              <div class="version">
+                1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Install</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../installation/fsl_mac_install.html">Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Unix for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_Intro.html">What is Unix?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_01_Navigation.html">Unix Tutorial #1: 目录操作 (Directories and Navigation)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_02_CopyRemove.html">Unix Tutorial #2: Copying and Removing Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_03_ReadingTextFiles.html">Unix Tutorial #3: Reading Text Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_04_ShellsVariables.html">Unix Tutorial #4: Shells and Path Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_05_ForLoops.html">Unix Tutorial #5: For-Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_06_IfElse.html">Unix Tutorial #6: Conditional Statements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_07_Scripting.html">Unix Tutorial #7: Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_08_Sed.html">Unix Tutorial #8: The Sed Command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_09_AutomatingTheAnalysis.html">Unix Tutorial #9: Automating The Analysis</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">fMRI Short Course with FSL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_Intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_01_DataDownload.html">fMRI Tutorial #1: Downloading the Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_02_ExperimentalDesign.html">fMRI Tutorial #2: Overview of The Flanker Task</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_03_LookingAtTheData.html">fMRI Tutorial #3: Looking at the Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_04_Preprocessing.html">fMRI Tutorial #4: Preprocessing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_05_1stLevelAnalysis.html">fMRI Tutorial #5: Statistics and Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_06_Scripting.html">fMRI Tutorial #6: Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_07_2ndLevelAnalysis.html">fMRI Tutorial #7: 2nd-Level Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_08_3rdLevelAnalysis.html">fMRI Tutorial #8: 3rd-Level Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_09_ROIAnalysis.html">fMRI Tutorial #9: ROI Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_10_Summary.html">fMRI Tutorial #10: Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_Appendices.html">fMRI Short Course: Appendices</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">FreeSurfer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../FreeSurfer/FreeSurfer_Introduction.html">FreeSurfer Short Course</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">E-Prime</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../E-Prime/E-Prime_Overview.html">Overview of E-Prime</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">AFNI</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../AFNI_Overview.html">AFNI Overview</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../AFNI_Overview.html#what-is-afni">What is AFNI?</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="AFNI_fMRI_Intro.html">Introduction to AFNI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="AFNI_01_DataDownload.html">AFNI Tutorial #1: Downloading the Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="AFNI_02_ExperimentalDesign.html">AFNI Tutorial #2: The Flanker Experiment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="AFNI_03_LookingAtTheData.html">AFNI Tutorial #3: Looking at the Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="AFNI_04_Preprocessing.html">AFNI Tutorial #4: AFNI Commands and Preprocessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="AFNI_05_1stLevelAnalysis.html">AFNI Tutorial #5: Statistics and Modeling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="AFNI_06_Scripting.html">AFNI Tutorial #6: Scripting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="AFNI_07_GroupAnalysis.html">AFNI Tutorial #7: Group Analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="AFNI_08_ROIAnalysis.html">AFNI Tutorial #8: ROI Analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="AFNI_09_SurfaceAnalysis.html">AFNI Tutorial #9: Surface-Based Analysis with SUMA</a></li>
+<li class="toctree-l3"><a class="reference internal" href="AppendixA_ParametricModulation.html">Appendix A: Parametric Modulation in AFNI</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Appendix B: Analyzing Rat Data</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#overview">Overview</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="AppendixC_HighlightingResults.html">Appendix C: Highlighting Vs. Hiding Results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="AppendixD_EffectSizes.html">Appendix D: Reporting Effect Sizes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">SPM</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../SPM/SPM_Overview.html">SPM Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Functional Connectivity with the CONN Toolbox</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../FunctionalConnectivity/CONN_Overview.html">Functional Connectivity and the CONN Toolbox</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Parametric Modulation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../PM/PM_Overview.html">Parametric Modulation in SPM, FSL, and AFNI</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Image Visualization with MRIcroGL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../MRIcroGL/MRIcroGL_Overview.html">Image Visualization with MRIcroGL</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Introduction to the Human Connectome Project (HCP)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../HCP/HCP_Overview.html">Introduction to the Human Connectome Project</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Finite Impulse Response (FIR) Models</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../FIR/FIR_Overview.html">Finite Impulse Response (FIR)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">fMRI Concepts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Practicals/DesignOptimization.html">Design Optimization</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Diffusion Analysis with MRtrix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../MRtrix/MRtrix_Introduction.html">Introduction to MRtrix</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ASL Analysis</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/ASL_Techniques.html">fASL Tutorial #1: Background</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/fASL_02_Download.html">fASL Tutorial #2: Downloading and Installing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/fASL_03_Task.html">fASL Tutorial #3: The N-Back Task</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/04_fASL_GUI.html">fASL Tutorial #4: The GUI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/05_fASL_Results.html">fASL Tutorial #5: Examining the Results</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/06_fASL_Quantification.html">fASL Tutorial #6: Quantification</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Frequently Asked Questions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../FrequentlyAskedQuestions/FrequentlyAskedQuestions.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Statistics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Statistics/GIMME.html">GIMME (Group Iterative Multiple Model Estimation)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Open Science</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../OpenScience/OS_Overview.html">Open Science</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced Normalization Tools (ANTs)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ANTs/ANTs_Overview.html">Advanced Normalization Tools (ANTs)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tract-Based Spatial Statistics (TBSS)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../TBSS/TBSS_Overview.html">Introduction to Tract-Based Spatial Statistics (TBSS)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Statistics for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Stats/Stats_Overview.html">Statistics for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Machine Learning for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ML/ML_Overview.html">Machine Learning for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Slicer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Slicer/Slicer_Overview.html">Slicer Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">CAT12</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../CAT12/CAT12_Overview.html">Voxel-Based Morphometry with CAT12</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Using the Supercomputer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Supercomputer/Supercomputer_Overview.html">Introduction to Supercomputing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Matlab for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Matlab/Matlab_Overview.html">Matlab for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ITK-Snap</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ITK-Snap/ITK-Snap_Overview.html">ITK-Snap_Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Python for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../PythonForNeuroimagers/PythonForNeuroimagers_Overview.html">Python for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Meta-Analysis for fMRI</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../MetaAnalysis/MetaAnalysis_Overview.html">Meta-Analysis for Neuroimagers</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Andy's Brain Book</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../AFNI_Overview.html">AFNI Overview</a></li>
+      <li class="breadcrumb-item active">Appendix B: Analyzing Rat Data</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/AFNI/AFNI_Short_Course/AppendixB_AnimalAnalysis.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="appendix-b-analyzing-rat-data">
+<span id="appendixb-animalanalysis"></span><h1>Appendix B: Analyzing Rat Data<a class="headerlink" href="#appendix-b-analyzing-rat-data" title="Link to this heading"></a></h1>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading"></a></h2>
+<p>In addition to analyzing human brains, AFNI can be used to analyze animal brains as well. In this tutorial, we will replicate the results of a recent <em>Nature</em> paper published by Sirmpilatze, Baudewig, &amp; Boretius (2019); a link to the paper can be found <a class="reference external" href="https://www.nature.com/articles/s41598-019-53144-y#data-availability">here</a>, and a link to the data on OpenNeuro can be found <a class="reference external" href="https://openneuro.org/datasets/ds001981/versions/1.0.3">here</a>.</p>
+<p>The aim of the study was to examine how fMRI measures from task-based and resting-state analysis change over time when rats are anesthetized with Medetomidine. For our purposes, we will simply replicate the task-based effects of electrical forepaw stimulation (or EFS), as well as the resting-state results. The advanced user may choose to replicate their temporal variability analyses, but that is beyond the scoope of the current tutorial.</p>
+<section id="preprocessing-the-data">
+<h3>Preprocessing the Data<a class="headerlink" href="#preprocessing-the-data" title="Link to this heading"></a></h3>
+<p>The Methods section of the paper states that the data were analyzed using Python tools, which called upon a combination of FSL and AFNI commands; nevertheless, we will use mostly AFNI commands here, as well as an advanced registration tool called ANTs. In particular, we will replicate the following preprocessing steps were done:</p>
+<ol class="arabic simple">
+<li><p>Slice-timing correction;</p></li>
+<li><p>Band-pass filtering of less than 0.01Hz and greater than 0.15Hz;</p></li>
+<li><p>Spatial smoothing of 0.5mm.</p></li>
+<li><p>Coregistration between the functional and structural images;</p></li>
+</ol>
+<p>Note that in this study motion correction was not performed, since the rats were anesthetized and did not move much. Consequently, motion regressors were not used in the model.</p>
+<p>Let’s begin with slice-timing correction. Using <code class="docutils literal notranslate"><span class="pre">3dinfo</span></code> on the first EFS run, we can see the following the in the header:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Dataset</span> <span class="n">File</span><span class="p">:</span>    <span class="n">sub</span><span class="o">-</span><span class="mi">01</span><span class="n">_task</span><span class="o">-</span><span class="n">efs_run</span><span class="o">-</span><span class="mi">01</span><span class="n">_bold</span><span class="o">.</span><span class="n">nii</span><span class="o">.</span><span class="n">gz</span>
+<span class="n">Identifier</span> <span class="n">Code</span><span class="p">:</span> <span class="n">NII_GMnEUUfC2G6z4SOYguib2A</span>  <span class="n">Creation</span> <span class="n">Date</span><span class="p">:</span> <span class="n">Tue</span> <span class="n">Apr</span> <span class="mi">18</span> <span class="mi">12</span><span class="p">:</span><span class="mi">27</span><span class="p">:</span><span class="mi">02</span> <span class="mi">2023</span>
+<span class="n">Template</span> <span class="n">Space</span><span class="p">:</span>  <span class="n">ORIG</span>
+<span class="n">Dataset</span> <span class="n">Type</span><span class="p">:</span>    <span class="n">Echo</span> <span class="n">Planar</span> <span class="p">(</span><span class="o">-</span><span class="n">epan</span><span class="p">)</span>
+<span class="n">Byte</span> <span class="n">Order</span><span class="p">:</span>      <span class="n">LSB_FIRST</span> <span class="p">{</span><span class="n">assumed</span><span class="p">}</span> <span class="p">[</span><span class="n">this</span> <span class="n">CPU</span> <span class="n">native</span> <span class="o">=</span> <span class="n">LSB_FIRST</span><span class="p">]</span>
+<span class="n">Storage</span> <span class="n">Mode</span><span class="p">:</span>    <span class="n">NIFTI</span>
+<span class="n">Storage</span> <span class="n">Space</span><span class="p">:</span>   <span class="mi">324</span><span class="p">,</span><span class="mi">403</span><span class="p">,</span><span class="mi">200</span> <span class="p">(</span><span class="mi">324</span> <span class="n">million</span><span class="p">)</span> <span class="nb">bytes</span>
+<span class="n">Geometry</span> <span class="n">String</span><span class="p">:</span> <span class="s2">&quot;MATRIX(0.2,0,0,-12.8,0,-0.2,0,9.4,0,0,0.5,-5.94792):128,96,30&quot;</span>
+<span class="n">Data</span> <span class="n">Axes</span> <span class="n">Tilt</span><span class="p">:</span>  <span class="n">Plumb</span>
+<span class="n">Data</span> <span class="n">Axes</span> <span class="n">Orientation</span><span class="p">:</span>
+  <span class="n">first</span>  <span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">=</span> <span class="n">Right</span><span class="o">-</span><span class="n">to</span><span class="o">-</span><span class="n">Left</span>
+  <span class="n">second</span> <span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="o">=</span> <span class="n">Posterior</span><span class="o">-</span><span class="n">to</span><span class="o">-</span><span class="n">Anterior</span>
+  <span class="n">third</span>  <span class="p">(</span><span class="n">z</span><span class="p">)</span> <span class="o">=</span> <span class="n">Inferior</span><span class="o">-</span><span class="n">to</span><span class="o">-</span><span class="n">Superior</span>   <span class="p">[</span><span class="o">-</span><span class="n">orient</span> <span class="n">RPI</span><span class="p">]</span>
+<span class="n">R</span><span class="o">-</span><span class="n">to</span><span class="o">-</span><span class="n">L</span> <span class="n">extent</span><span class="p">:</span>   <span class="o">-</span><span class="mf">12.800</span> <span class="p">[</span><span class="n">R</span><span class="p">]</span> <span class="o">-</span><span class="n">to</span><span class="o">-</span>    <span class="mf">12.600</span> <span class="p">[</span><span class="n">L</span><span class="p">]</span> <span class="o">-</span><span class="n">step</span><span class="o">-</span>     <span class="mf">0.200</span> <span class="n">mm</span> <span class="p">[</span><span class="mi">128</span> <span class="n">voxels</span><span class="p">]</span>
+<span class="n">A</span><span class="o">-</span><span class="n">to</span><span class="o">-</span><span class="n">P</span> <span class="n">extent</span><span class="p">:</span>    <span class="o">-</span><span class="mf">9.600</span> <span class="p">[</span><span class="n">A</span><span class="p">]</span> <span class="o">-</span><span class="n">to</span><span class="o">-</span>     <span class="mf">9.400</span> <span class="p">[</span><span class="n">P</span><span class="p">]</span> <span class="o">-</span><span class="n">step</span><span class="o">-</span>     <span class="mf">0.200</span> <span class="n">mm</span> <span class="p">[</span> <span class="mi">96</span> <span class="n">voxels</span><span class="p">]</span>
+<span class="n">I</span><span class="o">-</span><span class="n">to</span><span class="o">-</span><span class="n">S</span> <span class="n">extent</span><span class="p">:</span>    <span class="o">-</span><span class="mf">5.948</span> <span class="p">[</span><span class="n">I</span><span class="p">]</span> <span class="o">-</span><span class="n">to</span><span class="o">-</span>     <span class="mf">8.552</span> <span class="p">[</span><span class="n">S</span><span class="p">]</span> <span class="o">-</span><span class="n">step</span><span class="o">-</span>     <span class="mf">0.500</span> <span class="n">mm</span> <span class="p">[</span> <span class="mi">30</span> <span class="n">voxels</span><span class="p">]</span>
+<span class="n">Number</span> <span class="n">of</span> <span class="n">time</span> <span class="n">steps</span> <span class="o">=</span> <span class="mi">220</span>  <span class="n">Time</span> <span class="n">step</span> <span class="o">=</span> <span class="mf">1.50000</span><span class="n">s</span>  <span class="n">Origin</span> <span class="o">=</span> <span class="mf">0.00000</span><span class="n">s</span>
+  <span class="o">--</span> <span class="n">At</span> <span class="n">sub</span><span class="o">-</span><span class="n">brick</span> <span class="c1">#0 &#39;?&#39; datum type is float</span>
+  <span class="o">--</span> <span class="n">At</span> <span class="n">sub</span><span class="o">-</span><span class="n">brick</span> <span class="c1">#1 &#39;?&#39; datum type is float</span>
+  <span class="o">--</span> <span class="n">At</span> <span class="n">sub</span><span class="o">-</span><span class="n">brick</span> <span class="c1">#2 &#39;?&#39; datum type is float</span>
+<span class="o">**</span> <span class="n">For</span> <span class="n">info</span> <span class="n">on</span> <span class="nb">all</span> <span class="mi">220</span> <span class="n">sub</span><span class="o">-</span><span class="n">bricks</span><span class="p">,</span> <span class="n">use</span> <span class="s1">&#39;3dinfo -verb&#39;</span> <span class="o">**</span>
+</pre></div>
+</div>
+<p>The TR is 1.5s, there are 220 volumes in this run, and the voxel resolution is 0.2x0.2x0.5mm, which explains why the resolution in the sagittal and coronal planes looks lower than in the axial plane.</p>
+<p>To slice-time correct this data, type:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">3</span><span class="n">dTshift</span> <span class="o">-</span><span class="n">tzero</span> <span class="mi">0</span> <span class="o">-</span><span class="n">quintic</span> <span class="o">-</span><span class="n">prefix</span> <span class="n">sub</span><span class="o">-</span><span class="mi">01</span><span class="n">_run</span><span class="o">-</span><span class="mi">01</span><span class="n">_STC</span><span class="o">.</span><span class="n">nii</span> <span class="n">sub</span><span class="o">-</span><span class="mi">01</span><span class="n">_task</span><span class="o">-</span><span class="n">efs_run</span><span class="o">-</span><span class="mi">01</span><span class="n">_bold</span><span class="o">.</span><span class="n">nii</span><span class="o">.</span><span class="n">gz</span>
+</pre></div>
+</div>
+<p>Next, we bandpass the data using 3dBandPass:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">3</span><span class="n">dBandpass</span> <span class="o">-</span><span class="n">prefix</span> <span class="n">sub</span><span class="o">-</span><span class="mi">01</span><span class="n">_run</span><span class="o">-</span><span class="mi">01</span><span class="n">_STC_BP</span><span class="o">.</span><span class="n">nii</span> <span class="mf">0.01</span> <span class="mf">0.15</span> <span class="n">sub</span><span class="o">-</span><span class="mi">01</span><span class="n">_run</span><span class="o">-</span><span class="mi">01</span><span class="n">_STC</span><span class="o">.</span><span class="n">nii</span>
+</pre></div>
+</div>
+<p>And then smooth the data with a 0.5mm kernel:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">3</span><span class="n">dmerge</span> <span class="o">-</span><span class="mi">1</span><span class="n">blur_fwhm</span> <span class="mf">0.5</span> <span class="o">-</span><span class="n">doall</span> <span class="o">-</span><span class="n">prefix</span> <span class="n">sub</span><span class="o">-</span><span class="mi">01</span><span class="n">_run</span><span class="o">-</span><span class="mi">01</span><span class="n">_STC_BP_Smoothed</span><span class="o">.</span><span class="n">nii</span> <span class="n">sub</span><span class="o">-</span><span class="mi">01</span><span class="n">_run</span><span class="o">-</span><span class="mi">01</span><span class="n">_STC_BP</span><span class="o">.</span><span class="n">nii</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>On my machine, 3dBandpass appears to generate noisy output, regardless of the parameters used. For the rest of this tutorial, we will skip bandpassing by typing <code class="docutils literal notranslate"><span class="pre">3dmerge</span> <span class="pre">-1blur_fwhm</span> <span class="pre">0.5</span> <span class="pre">-doall</span> <span class="pre">-prefix</span> <span class="pre">sub-01_run-01_STC_Smoothed.nii</span> <span class="pre">sub-01_run-01_STC.nii</span></code>.</p>
+</div>
+</section>
+<section id="first-level-analysis">
+<h3>First-Level Analysis<a class="headerlink" href="#first-level-analysis" title="Link to this heading"></a></h3>
+<p>Looking within the task-efs_events.tsv file, we find that the onsets were:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">onset</span>   <span class="n">duration</span>
+<span class="mi">60</span>      <span class="mi">30</span>
+<span class="mi">150</span>     <span class="mi">30</span>
+<span class="mi">240</span>     <span class="mi">30</span>
+</pre></div>
+</div>
+<p>This is the same for all of the subjects in the study, except for subject sub-07 (see note on the OpenNeuro repository). Accordingly, we can make an onset times file called <code class="docutils literal notranslate"><span class="pre">Timings.txt</span></code>, which contains this line of code:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">60</span> <span class="mi">150</span> <span class="mi">240</span>
+</pre></div>
+</div>
+<p>Additional lines identical to the one above can be added for however many runs you are analyzing from this particular rat. However, since electrical forepaw stimulation should elicit a strong BOLD response, we should see a significant effect in just one run.</p>
+<p>Once we have the timing file, we can insert it into a <code class="docutils literal notranslate"><span class="pre">3dDeconvolve</span></code> command, such as the one below:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">3</span><span class="n">dDeconvolve</span> <span class="o">-</span><span class="nb">input</span> <span class="n">sub</span><span class="o">-</span><span class="mi">01</span><span class="n">_run</span><span class="o">-</span><span class="mi">01</span><span class="n">_STC_Smoothed</span><span class="o">.</span><span class="n">nii</span> \
+      <span class="o">-</span><span class="n">polort</span> <span class="mi">3</span> \
+      <span class="o">-</span><span class="n">num_stimts</span> <span class="mi">1</span> \
+      <span class="o">-</span><span class="n">stim_times</span> <span class="mi">1</span> <span class="n">Timings</span><span class="o">.</span><span class="n">txt</span>  <span class="s1">&#39;BLOCK(30,1)&#39;</span> \
+      <span class="o">-</span><span class="n">stim_label</span> <span class="mi">1</span> <span class="n">EFS</span> \
+      <span class="o">-</span><span class="n">gltsym</span> <span class="s1">&#39;SYM: EFS&#39;</span> \
+      <span class="o">-</span><span class="n">glt_label</span> <span class="mi">1</span> <span class="n">EFS</span> \
+      <span class="o">-</span><span class="n">tout</span> <span class="o">-</span><span class="n">x1D</span> <span class="n">X</span><span class="o">.</span><span class="n">xmat</span><span class="mf">.1</span><span class="n">D</span> <span class="o">-</span><span class="n">xjpeg</span> <span class="n">X</span><span class="o">.</span><span class="n">jpg</span> \
+      <span class="o">-</span><span class="n">bucket</span> <span class="n">stats</span><span class="o">.</span><span class="n">sub</span><span class="o">-</span><span class="mf">01.</span><span class="n">nii</span>
+</pre></div>
+</div>
+<p>This will apply a 3rd-order polynomial (recommended for runs of 300s or more, which applies to this run), and convolves a 30-second boxcar basis function with each onset time specified in the Timings.txt file. The lines of code beginning with <code class="docutils literal notranslate"><span class="pre">stim</span></code> and <code class="docutils literal notranslate"><span class="pre">glt</span></code> specify the label for the output statistic dataset, and any contrasts. In this case, since there is only one condition, we are just doing a simple effect of electrical forepaw stimulation. Since the right forepaw was stimulated, the result should localize to the left somatosensory cortex. Once we run <code class="docutils literal notranslate"><span class="pre">3dDeconvolve</span></code> and generate the dataset <code class="docutils literal notranslate"><span class="pre">stats.sub-01.nii</span></code>, we can load it into the AFNI viewer and overlay it on the T2-weighted anatomical image:</p>
+<figure class="align-default" id="id1">
+<img alt="../../_images/AppendixB_EFS_Result.png" src="../../_images/AppendixB_EFS_Result.png" />
+<figcaption>
+<p><span class="caption-text">Single-rat results for a simple effect of electrical forepaw stimulation, thresholded at p=0.001, cluster threshold of k=40 voxels. Note that on these images, left is located on the left side of the panel, and the top of the brain is at the bottom of the image. We will later see how to reorient these images so that they match better with the figures reported in Sirmpilatze et al., 2019.</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>We can script this for all of the rats by navigating to the main directory containing the subjects and then typing:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>echo &quot;60 150 240&quot; &gt; Timings.txt
+for i in sub-01 sub-02 sub-03; do
+cp Timings.txt ${i}/func;
+cd ${i}/func;
+3dTshift -tzero 0 -quintic -prefix ${i}_run-01_STC.nii ${i}_task-efs_run-01_bold.nii.gz;
+3dmerge -1blur_fwhm 0.5 -doall -prefix ${i}_run-01_STC_Smoothed.nii ${i}_run-01_STC.nii;
+3dDeconvolve -input ${i}_run-01_STC_Smoothed.nii \
+      -polort 3 \
+      -num_stimts 1 \
+      -stim_times 1 Timings.txt  &#39;BLOCK(30,1)&#39; \
+      -stim_label 1 EFS \
+      -gltsym &#39;SYM: EFS&#39; \
+      -glt_label 1 EFS \
+      -tout -x1D X.xmat.1D -xjpeg X.jpg \
+      -bucket stats.${i}.nii
+ cd ../..
+ done
+</pre></div>
+</div>
+</section>
+<section id="normalizing-the-brains">
+<h3>Normalizing the Brains<a class="headerlink" href="#normalizing-the-brains" title="Link to this heading"></a></h3>
+<p>Although there are rat templates available (such as the SIGMA template, available <a class="reference external" href="https://www.nitrc.org/projects/sigma_template">here</a>, or the <a class="reference external" href="http://afni.nimh.nih.gov/pub/dist/atlases/waxrat/waxratbrainv2.tgz">Waxholm Rat Atlas, available from the AFNI site</a>), you may instead decide to use a study-specific template generated from the subjects included in your sample. For example, if we have six rats, we can choose one of them to be a fixed template image, and register all of the other rat brains to that image.</p>
+<p>This was the approach used by the authors of the study, and they used a suite of normalization tools called Advanced Normalization Tools, or <a class="reference external" href="http://stnava.github.io/ANTs/">ANTs</a>. Instructions for how to download and install the package can be found on the e-book <a class="reference internal" href="../../ANTs/ANTs_Overview.html#ants-overview"><span class="std std-ref">here</span></a>.</p>
+<p>Once you have installed the package, let’s use the first six rat brains in the dataset. Using the first rat as the template, or fixed image, we can register the others to it by using teh <code class="docutils literal notranslate"><span class="pre">antsRegistrationSynQuick.sh</span></code> command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+
+<span class="n">antsRegistrationSyNQuick</span><span class="o">.</span><span class="n">sh</span> <span class="o">-</span><span class="n">d</span> <span class="mi">3</span> <span class="o">-</span><span class="n">f</span> <span class="n">sub</span><span class="o">-</span><span class="mi">01</span><span class="o">/</span><span class="n">anat</span><span class="o">/</span><span class="n">sub</span><span class="o">-</span><span class="mi">01</span><span class="n">_T2w</span><span class="o">.</span><span class="n">nii</span><span class="o">.</span><span class="n">gz</span> <span class="o">-</span><span class="n">m</span> <span class="n">sub</span><span class="o">-</span><span class="mi">02</span><span class="o">/</span><span class="n">anat</span><span class="o">/</span><span class="n">sub</span><span class="o">-</span><span class="mi">02</span><span class="n">_T2w</span><span class="o">.</span><span class="n">nii</span><span class="o">.</span><span class="n">gz</span> <span class="o">-</span><span class="n">o</span> <span class="n">sub</span><span class="o">-</span><span class="mi">02</span><span class="o">/</span><span class="n">anat</span><span class="o">/</span><span class="n">sub</span><span class="o">-</span><span class="mi">02</span><span class="n">_to_sub</span><span class="o">-</span><span class="mi">01</span>
+<span class="n">antsRegistrationSyNQuick</span><span class="o">.</span><span class="n">sh</span> <span class="o">-</span><span class="n">d</span> <span class="mi">3</span> <span class="o">-</span><span class="n">f</span> <span class="n">sub</span><span class="o">-</span><span class="mi">01</span><span class="o">/</span><span class="n">anat</span><span class="o">/</span><span class="n">sub</span><span class="o">-</span><span class="mi">01</span><span class="n">_T2w</span><span class="o">.</span><span class="n">nii</span><span class="o">.</span><span class="n">gz</span> <span class="o">-</span><span class="n">m</span> <span class="n">sub</span><span class="o">-</span><span class="mi">03</span><span class="o">/</span><span class="n">anat</span><span class="o">/</span><span class="n">sub</span><span class="o">-</span><span class="mi">03</span><span class="n">_T2w</span><span class="o">.</span><span class="n">nii</span><span class="o">.</span><span class="n">gz</span> <span class="o">-</span><span class="n">o</span> <span class="n">sub</span><span class="o">-</span><span class="mi">03</span><span class="o">/</span><span class="n">anat</span><span class="o">/</span><span class="n">sub</span><span class="o">-</span><span class="mi">03</span><span class="n">_to_sub</span><span class="o">-</span><span class="mi">01</span>
+<span class="n">antsRegistrationSyNQuick</span><span class="o">.</span><span class="n">sh</span> <span class="o">-</span><span class="n">d</span> <span class="mi">3</span> <span class="o">-</span><span class="n">f</span> <span class="n">sub</span><span class="o">-</span><span class="mi">01</span><span class="o">/</span><span class="n">anat</span><span class="o">/</span><span class="n">sub</span><span class="o">-</span><span class="mi">01</span><span class="n">_T2w</span><span class="o">.</span><span class="n">nii</span><span class="o">.</span><span class="n">gz</span> <span class="o">-</span><span class="n">m</span> <span class="n">sub</span><span class="o">-</span><span class="mi">04</span><span class="o">/</span><span class="n">anat</span><span class="o">/</span><span class="n">sub</span><span class="o">-</span><span class="mi">04</span><span class="n">_T2w</span><span class="o">.</span><span class="n">nii</span><span class="o">.</span><span class="n">gz</span> <span class="o">-</span><span class="n">o</span> <span class="n">sub</span><span class="o">-</span><span class="mi">04</span><span class="o">/</span><span class="n">anat</span><span class="o">/</span><span class="n">sub</span><span class="o">-</span><span class="mi">04</span><span class="n">_to_sub</span><span class="o">-</span><span class="mi">01</span>
+<span class="n">antsRegistrationSyNQuick</span><span class="o">.</span><span class="n">sh</span> <span class="o">-</span><span class="n">d</span> <span class="mi">3</span> <span class="o">-</span><span class="n">f</span> <span class="n">sub</span><span class="o">-</span><span class="mi">01</span><span class="o">/</span><span class="n">anat</span><span class="o">/</span><span class="n">sub</span><span class="o">-</span><span class="mi">01</span><span class="n">_T2w</span><span class="o">.</span><span class="n">nii</span><span class="o">.</span><span class="n">gz</span> <span class="o">-</span><span class="n">m</span> <span class="n">sub</span><span class="o">-</span><span class="mi">05</span><span class="o">/</span><span class="n">anat</span><span class="o">/</span><span class="n">sub</span><span class="o">-</span><span class="mi">05</span><span class="n">_T2w</span><span class="o">.</span><span class="n">nii</span><span class="o">.</span><span class="n">gz</span> <span class="o">-</span><span class="n">o</span> <span class="n">sub</span><span class="o">-</span><span class="mi">05</span><span class="o">/</span><span class="n">anat</span><span class="o">/</span><span class="n">sub</span><span class="o">-</span><span class="mi">05</span><span class="n">_to_sub</span><span class="o">-</span><span class="mi">01</span>
+<span class="n">antsRegistrationSyNQuick</span><span class="o">.</span><span class="n">sh</span> <span class="o">-</span><span class="n">d</span> <span class="mi">3</span> <span class="o">-</span><span class="n">f</span> <span class="n">sub</span><span class="o">-</span><span class="mi">01</span><span class="o">/</span><span class="n">anat</span><span class="o">/</span><span class="n">sub</span><span class="o">-</span><span class="mi">01</span><span class="n">_T2w</span><span class="o">.</span><span class="n">nii</span><span class="o">.</span><span class="n">gz</span> <span class="o">-</span><span class="n">m</span> <span class="n">sub</span><span class="o">-</span><span class="mi">06</span><span class="o">/</span><span class="n">anat</span><span class="o">/</span><span class="n">sub</span><span class="o">-</span><span class="mi">06</span><span class="n">_T2w</span><span class="o">.</span><span class="n">nii</span><span class="o">.</span><span class="n">gz</span> <span class="o">-</span><span class="n">o</span> <span class="n">sub</span><span class="o">-</span><span class="mi">06</span><span class="o">/</span><span class="n">anat</span><span class="o">/</span><span class="n">sub</span><span class="o">-</span><span class="mi">06</span><span class="n">_to_sub</span><span class="o">-</span><span class="mi">01</span>
+</pre></div>
+</div>
+<p>This will create one warped image for each of the other subjects, normalized to have the same size and dimensions as sub-01’s anatomical image. We then average them together using <code class="docutils literal notranslate"><span class="pre">3dcalc</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">3</span><span class="n">dcalc</span> <span class="o">-</span><span class="n">a</span> <span class="n">sub</span><span class="o">-</span><span class="mi">01</span><span class="n">_T2w</span><span class="o">.</span><span class="n">nii</span><span class="o">.</span><span class="n">gz</span> <span class="o">-</span><span class="n">b</span> <span class="n">sub</span><span class="o">-</span><span class="mi">02</span><span class="n">_to_sub</span><span class="o">-</span><span class="mi">01</span><span class="n">Warped</span><span class="o">.</span><span class="n">nii</span><span class="o">.</span><span class="n">gz</span> <span class="o">-</span><span class="n">c</span> <span class="n">sub</span><span class="o">-</span><span class="mi">03</span><span class="n">_to_sub</span><span class="o">-</span><span class="mi">01</span><span class="n">Warped</span><span class="o">.</span><span class="n">nii</span><span class="o">.</span><span class="n">gz</span> <span class="o">-</span><span class="n">d</span> <span class="n">sub</span><span class="o">-</span><span class="mi">04</span><span class="n">_to_sub</span><span class="o">-</span><span class="mi">01</span><span class="n">Warped</span><span class="o">.</span><span class="n">nii</span><span class="o">.</span><span class="n">gz</span> <span class="o">-</span><span class="n">e</span> <span class="n">sub</span><span class="o">-</span><span class="mi">05</span><span class="n">_to_sub</span><span class="o">-</span><span class="mi">01</span><span class="n">Warped</span><span class="o">.</span><span class="n">nii</span><span class="o">.</span><span class="n">gz</span> <span class="o">-</span><span class="n">f</span> <span class="n">sub</span><span class="o">-</span><span class="mi">06</span><span class="n">_to_sub</span><span class="o">-</span><span class="mi">01</span><span class="n">Warped</span><span class="o">.</span><span class="n">nii</span><span class="o">.</span><span class="n">gz</span> <span class="o">-</span><span class="n">expr</span> <span class="s1">&#39;(a+b+c+d+e+f)/6&#39;</span> <span class="o">-</span><span class="n">prefix</span> <span class="n">anat_average</span><span class="o">.</span><span class="n">nii</span>
+</pre></div>
+</div>
+<p>Which will generate an average image, <code class="docutils literal notranslate"><span class="pre">anat_average.nii</span></code>, which will look smoother than the other images:</p>
+<p>We then down-sample this image to match the resolution of the functional images (0.2 x 0.2 x 0.5mm^3):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">3</span><span class="n">dresample</span> <span class="o">-</span><span class="n">master</span> <span class="n">sub</span><span class="o">-</span><span class="mi">01</span><span class="o">/</span><span class="n">func</span><span class="o">/</span><span class="n">sub</span><span class="o">-</span><span class="mi">01</span><span class="n">_task</span><span class="o">-</span><span class="n">efs_run</span><span class="o">-</span><span class="mi">01</span><span class="n">_bold</span><span class="o">.</span><span class="n">nii</span><span class="o">.</span><span class="n">gz</span> <span class="o">-</span><span class="nb">input</span> <span class="n">anat_average</span><span class="o">.</span><span class="n">nii</span> <span class="o">-</span><span class="n">prefix</span> <span class="n">anat_average_rs</span><span class="o">.</span><span class="n">nii</span>
+</pre></div>
+</div>
+<p>Which should result in a slightly lower-resolution anatomial image:</p>
+<p>You can skull-strip the image using AFNI’s <code class="docutils literal notranslate"><span class="pre">3dSkullStrip</span></code> command with the <code class="docutils literal notranslate"><span class="pre">-rat</span></code> option:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">3</span><span class="n">dSkullStrip</span> <span class="o">-</span><span class="n">prefix</span> <span class="n">anat_stripped</span><span class="o">.</span><span class="n">nii</span> <span class="o">-</span><span class="n">rat</span> <span class="o">-</span><span class="nb">input</span> <span class="n">anat_average_rs</span><span class="o">.</span><span class="n">nii</span>
+</pre></div>
+</div>
+</section>
+<section id="warping-the-individual-subjects-to-sub-01">
+<h3>Warping the Individual Subjects to Sub-01<a class="headerlink" href="#warping-the-individual-subjects-to-sub-01" title="Link to this heading"></a></h3>
+<p>Since we used <code class="docutils literal notranslate"><span class="pre">sub-01</span></code>’s anatomical image as a template, and given that each subject’s functional and anatomical images are already well aligned, we can normalize each subject’s functional data to the <code class="docutils literal notranslate"><span class="pre">sub-01</span></code> template by using the command <code class="docutils literal notranslate"><span class="pre">antsApplyTransforms</span></code>. In this case, we will need to warp the functional images in two stages: Once to coregister the functional data to its corresponding structural image, and then apply the structural-to-template normalization warps to the individual functional images.</p>
+<p>First, place all of the relevant anatomical and functional files in a new folder called <code class="docutils literal notranslate"><span class="pre">Registration</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>mkdir Registration
+for i in sub-01 sub-02 sub-03; do
+cp $i/anat/*.nii.gz Registration;
+cp $i/func/${i}_task-efs_run-01_bold.nii.gz Registration;
+cp $i/func/*stats* Registration
+done
+</pre></div>
+</div>
+<p>We begin by taking the mean of the time-series for each subject:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>cd Registration
+for i in sub-01 sub-02 sub-03; do
+3dTstat -prefix meanFunc_${i}.nii ${i}_task-efs_run-01_bold.nii.gz;
+done
+</pre></div>
+</div>
+<p>We then resample the template image to the functional image’s size and resolution (in this case, using the mean image for sub-02’s functional data, but any mean image will do):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">3</span><span class="n">dresample</span> <span class="o">-</span><span class="n">master</span> <span class="n">meanFunc_sub</span><span class="o">-</span><span class="mf">02.</span><span class="n">nii</span> <span class="o">-</span><span class="nb">input</span> <span class="n">sub</span><span class="o">-</span><span class="mi">01</span><span class="n">_T2w</span><span class="o">.</span><span class="n">nii</span><span class="o">.</span><span class="n">gz</span> <span class="o">-</span><span class="n">prefix</span> <span class="n">template_rs</span><span class="o">.</span><span class="n">nii</span>
+</pre></div>
+</div>
+<p>We now follow the template code provided <a class="reference external" href="https://github.com/ANTsX/ANTs/wiki/Forward-and-inverse-warps-for-warping-images,-pointsets-and-Jacobians#warping-multiple-modalities-to-a-common-template">here</a>, from the ANTs website:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>for i in sub-02 sub-03; do
+antsRegistrationSyNQuick.sh  -d 3 -f ${i}_T2w.nii.gz -m meanFunc_${i}.nii -o t2ToT1_ -t r;
+antsRegistrationSyNQuick.sh -d 3 -f template_rs.nii -m ${i}_T2w.nii.gz -o ${i}_anat_ToTemplate_ -t sr;
+antsApplyTransforms -d 3 -e 5 -i stats.${i}.nii -o stats_${i}_DeformedToTemplate.nii.gz -r template_rs.nii -t ${i}_anat_ToTemplate_1Warp.nii.gz -t ${i}_anat_ToTemplate_0GenericAffine.mat -t t2ToT1_0GenericAffine.mat;
+done
+</pre></div>
+</div>
+<p>And then we can run a group analysis with the following code:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/tcsh -xef
+
+# created by uber_ttest.py: version 2.0 (December 28, 2017)
+# creation date: Wed Feb 19 11:33:21 2020
+
+# ---------------------- set process variables ----------------------
+
+
+# specify and possibly create results directory
+set results_dir = test.results
+if ( ! -d $results_dir ) mkdir $results_dir
+
+# ------------------------- process the data -------------------------
+
+3dttest++ -prefix $results_dir/ForePawStimulation                     \
+          -setA ForePawStimulation                                            \
+             01 &quot;stats.sub-01.nii[1]&quot; \
+             02 &quot;stats_sub-02_DeformedToTemplate.nii.gz[1]&quot; \
+             03 &quot;stats_sub-03_DeformedToTemplate.nii.gz[1]&quot;
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="AppendixA_ParametricModulation.html" class="btn btn-neutral float-left" title="Appendix A: Parametric Modulation in AFNI" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="AppendixC_HighlightingResults.html" class="btn btn-neutral float-right" title="Appendix C: Highlighting Vs. Hiding Results" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Andy Jahn.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

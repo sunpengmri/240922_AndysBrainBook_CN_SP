@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TBSS #4: topup and eddy &mdash; Andy&#39;s Brain Book 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b76e3c8a" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=f2a433a1"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="TBSS #5: Fitting the Tensors" href="TBSS_05_FittingTensors.html" />
+    <link rel="prev" title="TBSS #3: Looking at the Data" href="TBSS_03_LookingAtData.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Andy's Brain Book
+          </a>
+              <div class="version">
+                1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Install</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../installation/fsl_mac_install.html">Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Unix for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_Intro.html">What is Unix?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_01_Navigation.html">Unix Tutorial #1: 目录操作 (Directories and Navigation)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_02_CopyRemove.html">Unix Tutorial #2: Copying and Removing Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_03_ReadingTextFiles.html">Unix Tutorial #3: Reading Text Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_04_ShellsVariables.html">Unix Tutorial #4: Shells and Path Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_05_ForLoops.html">Unix Tutorial #5: For-Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_06_IfElse.html">Unix Tutorial #6: Conditional Statements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_07_Scripting.html">Unix Tutorial #7: Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_08_Sed.html">Unix Tutorial #8: The Sed Command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_09_AutomatingTheAnalysis.html">Unix Tutorial #9: Automating The Analysis</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">fMRI Short Course with FSL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_Intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_01_DataDownload.html">fMRI Tutorial #1: Downloading the Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_02_ExperimentalDesign.html">fMRI Tutorial #2: Overview of The Flanker Task</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_03_LookingAtTheData.html">fMRI Tutorial #3: Looking at the Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_04_Preprocessing.html">fMRI Tutorial #4: Preprocessing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_05_1stLevelAnalysis.html">fMRI Tutorial #5: Statistics and Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_06_Scripting.html">fMRI Tutorial #6: Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_07_2ndLevelAnalysis.html">fMRI Tutorial #7: 2nd-Level Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_08_3rdLevelAnalysis.html">fMRI Tutorial #8: 3rd-Level Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_09_ROIAnalysis.html">fMRI Tutorial #9: ROI Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_10_Summary.html">fMRI Tutorial #10: Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_Appendices.html">fMRI Short Course: Appendices</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">FreeSurfer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../FreeSurfer/FreeSurfer_Introduction.html">FreeSurfer Short Course</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">E-Prime</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../E-Prime/E-Prime_Overview.html">Overview of E-Prime</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">AFNI</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../AFNI/AFNI_Overview.html">AFNI Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">SPM</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../SPM/SPM_Overview.html">SPM Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Functional Connectivity with the CONN Toolbox</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../FunctionalConnectivity/CONN_Overview.html">Functional Connectivity and the CONN Toolbox</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Parametric Modulation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../PM/PM_Overview.html">Parametric Modulation in SPM, FSL, and AFNI</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Image Visualization with MRIcroGL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../MRIcroGL/MRIcroGL_Overview.html">Image Visualization with MRIcroGL</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Introduction to the Human Connectome Project (HCP)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../HCP/HCP_Overview.html">Introduction to the Human Connectome Project</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Finite Impulse Response (FIR) Models</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../FIR/FIR_Overview.html">Finite Impulse Response (FIR)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">fMRI Concepts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Practicals/DesignOptimization.html">Design Optimization</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Diffusion Analysis with MRtrix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../MRtrix/MRtrix_Introduction.html">Introduction to MRtrix</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ASL Analysis</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/ASL_Techniques.html">fASL Tutorial #1: Background</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/fASL_02_Download.html">fASL Tutorial #2: Downloading and Installing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/fASL_03_Task.html">fASL Tutorial #3: The N-Back Task</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/04_fASL_GUI.html">fASL Tutorial #4: The GUI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/05_fASL_Results.html">fASL Tutorial #5: Examining the Results</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/06_fASL_Quantification.html">fASL Tutorial #6: Quantification</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Frequently Asked Questions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../FrequentlyAskedQuestions/FrequentlyAskedQuestions.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Statistics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Statistics/GIMME.html">GIMME (Group Iterative Multiple Model Estimation)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Open Science</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../OpenScience/OS_Overview.html">Open Science</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced Normalization Tools (ANTs)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ANTs/ANTs_Overview.html">Advanced Normalization Tools (ANTs)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tract-Based Spatial Statistics (TBSS)</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../TBSS_Overview.html">Introduction to Tract-Based Spatial Statistics (TBSS)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../TBSS_Overview.html#what-is-tbss">What is TBSS?</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../TBSS_Overview.html#goals-of-this-course">Goals of This Course</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="TBSS_01_Download_Install.html">TBSS #1: Download and Install</a></li>
+<li class="toctree-l3"><a class="reference internal" href="TBSS_02_DataDownload.html">TBSS #2: Downloading the Dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="TBSS_03_LookingAtData.html">TBSS #3: Looking at the Data</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">TBSS #4: topup and eddy</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#topup">topup</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#eddy">eddy</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#next-steps">Next Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="TBSS_05_FittingTensors.html">TBSS #5: Fitting the Tensors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="TBSS_06_Preprocessing.html">TBSS #6: Preprocessing</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Statistics for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Stats/Stats_Overview.html">Statistics for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Machine Learning for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ML/ML_Overview.html">Machine Learning for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Slicer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Slicer/Slicer_Overview.html">Slicer Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">CAT12</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../CAT12/CAT12_Overview.html">Voxel-Based Morphometry with CAT12</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Using the Supercomputer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Supercomputer/Supercomputer_Overview.html">Introduction to Supercomputing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Matlab for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Matlab/Matlab_Overview.html">Matlab for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ITK-Snap</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ITK-Snap/ITK-Snap_Overview.html">ITK-Snap_Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Python for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../PythonForNeuroimagers/PythonForNeuroimagers_Overview.html">Python for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Meta-Analysis for fMRI</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../MetaAnalysis/MetaAnalysis_Overview.html">Meta-Analysis for Neuroimagers</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Andy's Brain Book</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../TBSS_Overview.html">Introduction to Tract-Based Spatial Statistics (TBSS)</a></li>
+      <li class="breadcrumb-item active">TBSS #4: topup and eddy</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/TBSS/TBSS_Course/TBSS_04_TopUpEddy.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="tbss-4-topup-and-eddy">
+<span id="tbss-04-topupeddy"></span><h1>TBSS #4: topup and eddy<a class="headerlink" href="#tbss-4-topup-and-eddy" title="Link to this heading"></a></h1>
+<hr class="docutils" />
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading"></a></h2>
+<p>Just like other neuroimaging data, diffusion data should be <strong>preprocessed</strong> before it is analyzed. Preprocessing removes sources of noise from the image, such as movement artifacts and other distortions. Diffusion data in particular is susceptible to <strong>warping artifacts</strong> as a result of the phase-encoding direction: In general, the predominant encoding direction - such as Anterior to Posterior, or AP - will make the anterior part of the brain look more “squished”, as though a strong headwind is blowing from the Anterior direction. The opposite is true of the Posterior to Anterior, or PA, phase-encoding direction. Sometimes these distortions are very subtle, but other times they are conspicuous:</p>
+<figure class="align-default">
+<img alt="../../_images/04_AP_PA_Comparisons1.png" src="../../_images/04_AP_PA_Comparisons1.png" />
+</figure>
+<p>The following commands listed below are common preprocessing steps done with TBSS.</p>
+</section>
+<section id="topup">
+<h2>topup<a class="headerlink" href="#topup" title="Link to this heading"></a></h2>
+<p>The first preprocessing step we will do is <code class="docutils literal notranslate"><span class="pre">topup</span></code>, which is designed to correct distortions caused by magnetic field inhomogeneities. These inhomogeneities are particularly noticeable near the sinuses and around the edges of the brain, especially along the axis of the phase-encoding direction. For example, if we collect our images using an anterior-to-posterior phase-encoding direction, the inhomogeneities will be most noticeable at the front and back of the head, as you can see in the image above.</p>
+<p>These inhomogeneities are easiest to detect in the images that do not have any diffusion-weighting applied; in other words, the images with a b-value of 0. In this dataset, we have seen that the first volume of the AP and PA datasets both have a b-value of 0. Consequently, we will extract these volumes using the command <cite>fslroi</cite>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fslroi</span> <span class="n">sub</span><span class="o">-</span><span class="n">CON08_ses</span><span class="o">-</span><span class="n">preop_acq</span><span class="o">-</span><span class="n">AP_dwi</span><span class="o">.</span><span class="n">nii</span><span class="o">.</span><span class="n">gz</span> <span class="n">AP</span> <span class="mi">0</span> <span class="mi">1</span>
+<span class="n">fslroi</span> <span class="n">sub</span><span class="o">-</span><span class="n">CON08_ses</span><span class="o">-</span><span class="n">preop_acq</span><span class="o">-</span><span class="n">PA_dwi</span><span class="o">.</span><span class="n">nii</span><span class="o">.</span><span class="n">gz</span> <span class="n">PA</span> <span class="mi">0</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>This creates two new files, “AP.nii.gz” and “PA.nii.gz”. We then combine them using <code class="docutils literal notranslate"><span class="pre">fslmerge</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fslmerge</span> <span class="o">-</span><span class="n">t</span> <span class="n">AP_PA</span> <span class="n">AP</span><span class="o">.</span><span class="n">nii</span><span class="o">.</span><span class="n">gz</span> <span class="n">PA</span><span class="o">.</span><span class="n">nii</span><span class="o">.</span><span class="n">gz</span>
+</pre></div>
+</div>
+<p>To create the file “AP_PA.nii.gz”. Try opening this file in fsleyes and toggling back and forth between the two volumes to see how they have been combined into a single dataset.</p>
+<p>We will also need to create a file that indicates the phase-encoding direction and the read-out time. Using a text editor of your choice (I recommend TextWrangler for Macs), enter these numbers:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">0</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mf">0.0266003</span>
+<span class="mi">0</span> <span class="o">-</span><span class="mi">1</span> <span class="mi">0</span> <span class="mf">0.0266003</span>
+</pre></div>
+</div>
+<p>And save the file as <code class="docutils literal notranslate"><span class="pre">acq_param.txt</span></code>.</p>
+<p>The first three numbers in the first row represent the phase-encoding along the x-, y-, and z-dimensions. Since the first volume was acquired in the A-P direction, we place a “1” in the second column. In the next row, since the second image in this dataset was acquired in the opposite direction, we use a value of “-1”. The last column is the read-out time, in milliseconds; if it’s the same for both images, you can set it to “1”. Otherwise, replace it with the exact read-out time for each volume separately. For the current dataset, this number can be found in the “TotalReadOutTime” field of the “.json” file in the <code class="docutils literal notranslate"><span class="pre">dwi</span></code> directory.</p>
+<p>Once you have all of these ingredients, you are ready to run <code class="docutils literal notranslate"><span class="pre">topup</span></code> to estimate the field inhomogeneity:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">topup</span> <span class="o">--</span><span class="n">imain</span><span class="o">=</span><span class="n">AP_PA</span><span class="o">.</span><span class="n">nii</span><span class="o">.</span><span class="n">gz</span> <span class="o">--</span><span class="n">datain</span><span class="o">=</span><span class="n">acq_param</span><span class="o">.</span><span class="n">txt</span> <span class="o">--</span><span class="n">config</span><span class="o">=</span><span class="n">b02b0</span><span class="o">.</span><span class="n">cnf</span> <span class="o">--</span><span class="n">out</span><span class="o">=</span><span class="n">AP_PA_topup</span>
+</pre></div>
+</div>
+<p>The option <code class="docutils literal notranslate"><span class="pre">--config=b02b0.cnf</span></code> may look out of place, since we didn’t create a file with that name; do not worry, however, since this is a default file that is included in FSL’s libraries and will be automatically detected if you include it. The configuration parameters specified in the file are designed to work with most diffusion imaging data, so don’t change it unless you have a custom configuration file you created yourself.</p>
+<p>After a few minutes, you will see a few new files, including one called <code class="docutils literal notranslate"><span class="pre">AP_PA_topup_fieldcoef.nii.gz</span></code>. These are the inhomogeneity estimations, which you can view in fsleyes if you like. We can now apply them to the original A-P phase-encoded data, which we will be using for our diffusion analysis:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">applytopup</span> <span class="o">--</span><span class="n">imain</span><span class="o">=</span><span class="n">sub</span><span class="o">-</span><span class="n">CON08_ses</span><span class="o">-</span><span class="n">preop_acq</span><span class="o">-</span><span class="n">AP_dwi</span><span class="o">.</span><span class="n">nii</span><span class="o">.</span><span class="n">gz</span> <span class="o">--</span><span class="n">inindex</span><span class="o">=</span><span class="mi">1</span> <span class="o">--</span><span class="n">datain</span><span class="o">=</span><span class="n">acq_param</span><span class="o">.</span><span class="n">txt</span> <span class="o">--</span><span class="n">topup</span><span class="o">=</span><span class="n">AP_PA_topup</span> <span class="o">--</span><span class="n">method</span><span class="o">=</span><span class="n">jac</span> <span class="o">--</span><span class="n">out</span><span class="o">=</span><span class="n">AP_Cor</span>
+</pre></div>
+</div>
+<p>This uses the fieldmap estimated above, as specified by the <code class="docutils literal notranslate"><span class="pre">--topup</span></code> option, to unwarp the A-P data. The <code class="docutils literal notranslate"><span class="pre">inindex</span></code> option, which we have set to 1, indicates that we are applying the unwarping to the phase-encoded image represented in the first line of the “acq_param.txt” file. <code class="docutils literal notranslate"><span class="pre">--method=jac</span></code> uses jacobin modulation, and <code class="docutils literal notranslate"><span class="pre">--out</span></code> is used to specify a label for the output image.</p>
+<p>When it is finished, you can open the image “AP_Cor.nii.gz” in fsleyes. Load the raw “sub-CON08_ses-preop_acq-AP_dwi.nii.gz” image as well and toggle between the two using the eye icon in the GUI in order to see the image before and after unwarping. If you are satisfied with the results, we can move on to the next preprocessing step of eddy correction.</p>
+</section>
+<section id="eddy">
+<h2>eddy<a class="headerlink" href="#eddy" title="Link to this heading"></a></h2>
+<p>Diffusion-weighted images, in addition to suffering from field inhomogeneities, have another type of distortion particular to their modality: <strong>eddy currents</strong>, which are distortions that look like ripples in a pond.</p>
+<p>To run the command <code class="docutils literal notranslate"><span class="pre">eddy</span></code>, we will need to create two more files, in addition to what we have already generated. The first is a mask of the image that we will use with eddy, which should be based on the corrected dataset that we generated using topup in the previous section. We will begin by extracting the first volume of that dataset using <code class="docutils literal notranslate"><span class="pre">fslroi</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fslroi</span> <span class="n">AP_Cor</span><span class="o">.</span><span class="n">nii</span><span class="o">.</span><span class="n">gz</span> <span class="n">AP_1stVol</span> <span class="mi">0</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>And then use <code class="docutils literal notranslate"><span class="pre">bet</span></code> to create a mask from that image:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bet</span> <span class="n">AP_1stVol</span><span class="o">.</span><span class="n">nii</span><span class="o">.</span><span class="n">gz</span> <span class="n">AP_brain</span> <span class="o">-</span><span class="n">m</span> <span class="o">-</span><span class="n">f</span> <span class="mf">0.2</span>
+</pre></div>
+</div>
+<p>You can view the resulting image, AP_brain_mask.nii.gz, in fsleyes:</p>
+<figure class="align-default">
+<img alt="../../_images/04_AP_brain_mask.png" src="../../_images/04_AP_brain_mask.png" />
+</figure>
+<p>We will also have to create a file called <code class="docutils literal notranslate"><span class="pre">index.txt</span></code>, which contains a 1 for each volume that has the parameters indicated by the first line of the <code class="docutils literal notranslate"><span class="pre">acq_params.txt</span></code> file. Since we have 102 volumes, we can quickly create and fill a new file called index.txt with that many 1’s by using a for-loop:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">{</span><span class="mf">1..102</span><span class="p">};</span> <span class="n">do</span> <span class="n">echo</span> <span class="s2">&quot;1&quot;</span> <span class="o">&gt;&gt;</span> <span class="n">index</span><span class="o">.</span><span class="n">txt</span><span class="p">;</span> <span class="n">done</span>
+</pre></div>
+</div>
+<p>We can then run eddy with the following code:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">eddy</span> <span class="o">--</span><span class="n">imain</span><span class="o">=</span><span class="n">sub</span><span class="o">-</span><span class="n">CON08_ses</span><span class="o">-</span><span class="n">preop_acq</span><span class="o">-</span><span class="n">AP_dwi</span><span class="o">.</span><span class="n">nii</span><span class="o">.</span><span class="n">gz</span> <span class="o">--</span><span class="n">mask</span><span class="o">=</span><span class="n">AP_brain_mask</span><span class="o">.</span><span class="n">nii</span><span class="o">.</span><span class="n">gz</span> <span class="o">--</span><span class="n">index</span><span class="o">=</span><span class="n">index</span><span class="o">.</span><span class="n">txt</span> <span class="o">--</span><span class="n">acqp</span><span class="o">=</span><span class="n">acq_param</span><span class="o">.</span><span class="n">txt</span> <span class="o">--</span><span class="n">bvecs</span><span class="o">=</span><span class="n">sub</span><span class="o">-</span><span class="n">CON08_ses</span><span class="o">-</span><span class="n">preop_acq</span><span class="o">-</span><span class="n">AP_dwi</span><span class="o">.</span><span class="n">bvec</span> <span class="o">--</span><span class="n">bvals</span><span class="o">=</span><span class="n">sub</span><span class="o">-</span><span class="n">CON08_ses</span><span class="o">-</span><span class="n">preop_acq</span><span class="o">-</span><span class="n">AP_dwi</span><span class="o">.</span><span class="n">bval</span> <span class="o">--</span><span class="n">fwhm</span><span class="o">=</span><span class="mi">0</span> <span class="o">--</span><span class="n">topup</span><span class="o">=</span><span class="n">AP_PA_topup</span> <span class="o">--</span><span class="n">flm</span><span class="o">=</span><span class="n">quadratic</span> <span class="o">--</span><span class="n">out</span><span class="o">=</span><span class="n">AP_eddy_unwarped</span> <span class="o">--</span><span class="n">data_is_shelled</span>
+</pre></div>
+</div>
+<section id="video">
+<h3>Video<a class="headerlink" href="#video" title="Link to this heading"></a></h3>
+<p>A demonstration of how to apply topup and eddy to your data can be found <a class="reference external" href="https://www.youtube.com/watch?v=zp0EOuKO3O0">here</a>.</p>
+</section>
+</section>
+<section id="next-steps">
+<h2>Next Steps<a class="headerlink" href="#next-steps" title="Link to this heading"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="TBSS_03_LookingAtData.html" class="btn btn-neutral float-left" title="TBSS #3: Looking at the Data" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="TBSS_05_FittingTensors.html" class="btn btn-neutral float-right" title="TBSS #5: Fitting the Tensors" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Andy Jahn.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

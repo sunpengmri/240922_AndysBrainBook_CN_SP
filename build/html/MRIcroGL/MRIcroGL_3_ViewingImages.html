@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MRIcroGL Tutorial #3: Viewing Images &mdash; Andy&#39;s Brain Book 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=f2a433a1"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="MRIcroGL Tutorial #4: Viewing Results" href="MRIcroGL_4_ViewingResults.html" />
+    <link rel="prev" title="MRIcroGL Tutorial #2: Converting DICOM to NIFTI" href="MRIcroGL_2_dcm2nii.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Andy's Brain Book
+          </a>
+              <div class="version">
+                1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Install</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation/fsl_mac_install.html">Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Unix for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../unix/Unix_Intro.html">What is Unix?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unix/Unix_01_Navigation.html">Unix Tutorial #1: 目录操作 (Directories and Navigation)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unix/Unix_02_CopyRemove.html">Unix Tutorial #2: Copying and Removing Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unix/Unix_03_ReadingTextFiles.html">Unix Tutorial #3: Reading Text Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unix/Unix_04_ShellsVariables.html">Unix Tutorial #4: Shells and Path Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unix/Unix_05_ForLoops.html">Unix Tutorial #5: For-Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unix/Unix_06_IfElse.html">Unix Tutorial #6: Conditional Statements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unix/Unix_07_Scripting.html">Unix Tutorial #7: Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unix/Unix_08_Sed.html">Unix Tutorial #8: The Sed Command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unix/Unix_09_AutomatingTheAnalysis.html">Unix Tutorial #9: Automating The Analysis</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">fMRI Short Course with FSL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../fMRI_Short_Course/fMRI_Intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fMRI_Short_Course/fMRI_01_DataDownload.html">fMRI Tutorial #1: Downloading the Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fMRI_Short_Course/fMRI_02_ExperimentalDesign.html">fMRI Tutorial #2: Overview of The Flanker Task</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fMRI_Short_Course/fMRI_03_LookingAtTheData.html">fMRI Tutorial #3: Looking at the Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fMRI_Short_Course/fMRI_04_Preprocessing.html">fMRI Tutorial #4: Preprocessing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fMRI_Short_Course/fMRI_05_1stLevelAnalysis.html">fMRI Tutorial #5: Statistics and Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fMRI_Short_Course/fMRI_06_Scripting.html">fMRI Tutorial #6: Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fMRI_Short_Course/fMRI_07_2ndLevelAnalysis.html">fMRI Tutorial #7: 2nd-Level Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fMRI_Short_Course/fMRI_08_3rdLevelAnalysis.html">fMRI Tutorial #8: 3rd-Level Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fMRI_Short_Course/fMRI_09_ROIAnalysis.html">fMRI Tutorial #9: ROI Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fMRI_Short_Course/fMRI_10_Summary.html">fMRI Tutorial #10: Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fMRI_Short_Course/fMRI_Appendices.html">fMRI Short Course: Appendices</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">FreeSurfer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../FreeSurfer/FreeSurfer_Introduction.html">FreeSurfer Short Course</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">E-Prime</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../E-Prime/E-Prime_Overview.html">Overview of E-Prime</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">AFNI</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../AFNI/AFNI_Overview.html">AFNI Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">SPM</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../SPM/SPM_Overview.html">SPM Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Functional Connectivity with the CONN Toolbox</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../FunctionalConnectivity/CONN_Overview.html">Functional Connectivity and the CONN Toolbox</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Parametric Modulation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../PM/PM_Overview.html">Parametric Modulation in SPM, FSL, and AFNI</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Image Visualization with MRIcroGL</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="MRIcroGL_Overview.html">Image Visualization with MRIcroGL</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="MRIcroGL_Overview.html#overview">Overview</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="MRIcroGL_1_Download.html">MRIcroGL Tutorial #1: Download</a></li>
+<li class="toctree-l3"><a class="reference internal" href="MRIcroGL_2_dcm2nii.html">MRIcroGL Tutorial #2: Converting DICOM to NIFTI</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">MRIcroGL Tutorial #3: Viewing Images</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#loading-a-functional-image">Loading a Functional Image</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#loading-an-anatomical-image">Loading an Anatomical Image</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#loading-multiple-images">Loading Multiple Images</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#video">Video</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#next-steps">Next Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="MRIcroGL_4_ViewingResults.html">MRIcroGL Tutorial #4: Viewing Results</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Introduction to the Human Connectome Project (HCP)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../HCP/HCP_Overview.html">Introduction to the Human Connectome Project</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Finite Impulse Response (FIR) Models</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../FIR/FIR_Overview.html">Finite Impulse Response (FIR)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">fMRI Concepts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Practicals/DesignOptimization.html">Design Optimization</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Diffusion Analysis with MRtrix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../MRtrix/MRtrix_Introduction.html">Introduction to MRtrix</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ASL Analysis</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../ASL/ASL_Techniques.html">fASL Tutorial #1: Background</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ASL/fASL_02_Download.html">fASL Tutorial #2: Downloading and Installing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ASL/fASL_03_Task.html">fASL Tutorial #3: The N-Back Task</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ASL/04_fASL_GUI.html">fASL Tutorial #4: The GUI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ASL/05_fASL_Results.html">fASL Tutorial #5: Examining the Results</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ASL/06_fASL_Quantification.html">fASL Tutorial #6: Quantification</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Frequently Asked Questions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../FrequentlyAskedQuestions/FrequentlyAskedQuestions.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Statistics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Statistics/GIMME.html">GIMME (Group Iterative Multiple Model Estimation)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Open Science</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../OpenScience/OS_Overview.html">Open Science</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced Normalization Tools (ANTs)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../ANTs/ANTs_Overview.html">Advanced Normalization Tools (ANTs)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tract-Based Spatial Statistics (TBSS)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../TBSS/TBSS_Overview.html">Introduction to Tract-Based Spatial Statistics (TBSS)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Statistics for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Stats/Stats_Overview.html">Statistics for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Machine Learning for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../ML/ML_Overview.html">Machine Learning for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Slicer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Slicer/Slicer_Overview.html">Slicer Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">CAT12</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../CAT12/CAT12_Overview.html">Voxel-Based Morphometry with CAT12</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Using the Supercomputer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Supercomputer/Supercomputer_Overview.html">Introduction to Supercomputing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Matlab for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Matlab/Matlab_Overview.html">Matlab for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ITK-Snap</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../ITK-Snap/ITK-Snap_Overview.html">ITK-Snap_Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Python for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../PythonForNeuroimagers/PythonForNeuroimagers_Overview.html">Python for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Meta-Analysis for fMRI</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../MetaAnalysis/MetaAnalysis_Overview.html">Meta-Analysis for Neuroimagers</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Andy's Brain Book</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="MRIcroGL_Overview.html">Image Visualization with MRIcroGL</a></li>
+      <li class="breadcrumb-item active">MRIcroGL Tutorial #3: Viewing Images</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/MRIcroGL/MRIcroGL_3_ViewingImages.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="mricrogl-tutorial-3-viewing-images">
+<span id="mricrogl-3-viewingimages"></span><h1>MRIcroGL Tutorial #3: Viewing Images<a class="headerlink" href="#mricrogl-tutorial-3-viewing-images" title="Link to this heading"></a></h1>
+<hr class="docutils" />
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading"></a></h2>
+<p>The main feature of MRIcroGL is the ability to view medical images - especially magnetic resonance imaging (MRI) data. For this tutorial, we will focus on MRI and fMRI, although many other forms of imaging data can be loaded as well.</p>
+<p>In the first chapter of this walkthrough, you experimented with the basic operations of the viewer, such as the Opacity slider, the crosshairs, and the Brightness settings. We will examine these in more detail, and begin to use multiple images at once, in order to explore the abilities of the software package.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Many of the steps and examples in this tutorial are taken from Chris Rorden’s MRIcroGL video, which can be found <a class="reference external" href="https://www.youtube.com/watch?v=J7uSSbTJ-iw&amp;t=315s">here</a>. He covers many different types of images that can be loaded, including animal brains, spinal cords, and lungs. Here we will be focusing on MRI and fMRI data, but I encourage you to look at the other images in your own time.</p>
+<p>This tutorial also assumes that you have completed the analysis of the Flanker dataset in any of the major fMRI analysis software packages - SPM, FSL, and AFNI. Here we will be using the fully preprocessed and statistically analyzed data using <a class="reference internal" href="../fMRI_Short_Course/fMRI_Intro.html#fmri-intro"><span class="std std-ref">FSL</span></a>, but the parallels with the outputs of any of the other packages should be clear.</p>
+</div>
+</section>
+<section id="loading-a-functional-image">
+<h2>Loading a Functional Image<a class="headerlink" href="#loading-a-functional-image" title="Link to this heading"></a></h2>
+<p>We will begin by loading a functional image - in this case, the T2*-weighted <code class="docutils literal notranslate"><span class="pre">sub-10_T1w</span></code> image from <code class="docutils literal notranslate"><span class="pre">sub-10/func</span></code>  folder in the Flanker directory. You will see something like this:</p>
+<figure class="align-default">
+<img alt="../_images/03_LoadFunctional.png" src="../_images/03_LoadFunctional.png" />
+</figure>
+<p>As you saw in an earlier chapter, left-clicking and dragging in any of the window panes will move the crosshairs, which in turn updates the view in the other two panes. You can keep the crosshair where it is and scroll through the slices in the current pane by scrolling the mouse wheel either up or down; holding the <code class="docutils literal notranslate"><span class="pre">ctrl</span></code> key while scrolling allows you to zoom in and out of the image. Scrolling one image at a time can be done manually by clicking on the L, R, A, P, S, and I buttons in the <code class="docutils literal notranslate"><span class="pre">2D</span> <span class="pre">Slice</span> <span class="pre">Selection</span></code> subwindow. If you prefer a different color for the crosshair, click the <code class="docutils literal notranslate"><span class="pre">Color</span></code> button and select any color that you like. The width of the crosshairs can also be modified by increasing or decreasing the value in the <code class="docutils literal notranslate"><span class="pre">Width</span></code> field.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A full list of the combination of mouse clicks and button presses can be found by clicking on <code class="docutils literal notranslate"><span class="pre">Help</span> <span class="pre">-&gt;</span> <span class="pre">Mouse</span> <span class="pre">Gestures</span></code>.</p>
+</div>
+<p>You will also see a time-series displayed at the bottom of the viewing window, representing the signal intensity for the voxel at the center of the crosshair. Clicking at a different part of the time-series will jump to that volume, and the volume index will be updated in the <code class="docutils literal notranslate"><span class="pre">Layers</span></code> window. For example, <code class="docutils literal notranslate"><span class="pre">55/146</span></code> means that you are currently viewing the 55th volume in the time-series, out of 146 volumes total. You can flip through the volumes by either pressing <code class="docutils literal notranslate"><span class="pre">option+N</span></code> to advance one volume or <code class="docutils literal notranslate"><span class="pre">option+V</span></code> to go back one volume, or flip through the volumes automatically at a steady rate by clicking <code class="docutils literal notranslate"><span class="pre">Display</span> <span class="pre">-&gt;</span> <span class="pre">Animate</span> <span class="pre">Volumes</span></code>. Similar to FSLeyes, you can also generate a seed-based correlation map by selecting <code class="docutils literal notranslate"><span class="pre">Display</span> <span class="pre">-&gt;</span> <span class="pre">Seed</span> <span class="pre">Correlation</span> <span class="pre">(Pearson)</span></code>. This will create a correlation map displaying the connectivity between the time-series centered at your crosshairs, and every other voxel in the brain.</p>
+</section>
+<section id="loading-an-anatomical-image">
+<h2>Loading an Anatomical Image<a class="headerlink" href="#loading-an-anatomical-image" title="Link to this heading"></a></h2>
+<p>Next, we will load an anatomical image - in this case, the T1-weighted <code class="docutils literal notranslate"><span class="pre">sub-10_T1w</span></code> image from <code class="docutils literal notranslate"><span class="pre">sub-10/anat</span></code>  folder in the Flanker directory. You will see something like this:</p>
+<figure class="align-default" id="id1">
+<img alt="../_images/03_LoadAnatomical.png" src="../_images/03_LoadAnatomical.png" />
+<figcaption>
+<p><span class="caption-text">An anatomical image. Note that this image has had the face removed, in order to deidentify it.</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>Modifying the values in the <code class="docutils literal notranslate"><span class="pre">Darkest</span></code> and <code class="docutils literal notranslate"><span class="pre">Brightest</span></code> fields are useful for setting the thresholds for which voxels will be shown. For example, you may not want to see any voxels below an intensity of 30, for example, or anything brighter than an intensity of 300. By setting the <code class="docutils literal notranslate"><span class="pre">Darkest</span></code> threshold to 30 and the <code class="docutils literal notranslate"><span class="pre">Brightest</span></code> threshold of 300, the darkest color - in this case, black - will be set to those voxels with an intensity of 30, and white will be assigned to those voxels with an intensity of 300.</p>
+<section id="viewing-the-intensity-over-slices">
+<h3>Viewing the Intensity over Slices<a class="headerlink" href="#viewing-the-intensity-over-slices" title="Link to this heading"></a></h3>
+<p>One of the new features in MRIcroGL is the ability to visualize the changes in intensity over multiple slices. First, you will need to find the top of a “hidden” window pane at the bottom of the MRIcroGL viewer; click and drag it up to see another window. Then, find an axial slice that clearly shows both lateral ventricle, click somewhere in the left-hand side of the brain, hold down the <code class="docutils literal notranslate"><span class="pre">option</span></code> key, and drag the mouse to the right-hand side of the brain. You will see an intensity profile generated in the bottom window, depicting how the intensity changes over the slices that you selected. Note that in this case there are two dips in intensity, indicating where the line you drew crossed over the lower-intensity ventricles.</p>
+<figure class="align-default">
+<img alt="../_images/03_IntensityProfile.png" src="../_images/03_IntensityProfile.png" />
+</figure>
+</section>
+</section>
+<section id="loading-multiple-images">
+<h2>Loading Multiple Images<a class="headerlink" href="#loading-multiple-images" title="Link to this heading"></a></h2>
+<p>Leaving the anatomical image loaded, click on <code class="docutils literal notranslate"><span class="pre">File</span> <span class="pre">-&gt;</span> <span class="pre">Add</span> <span class="pre">Overlay</span></code>, and select one of the functional images from the <code class="docutils literal notranslate"><span class="pre">sub-10/func</span></code> directory. Recall that viewing both the anatomical and functional images can be useful for seeing how far apart the images are, before any preprocessing has been done; images that start farther away from each other may need a larger search area during coregistration in order to find a good fit, or the origins may need to be manually centered before doing any further preprocessing. In this case, the images are quite far away from each other, with the functional image highlighted in red:</p>
+<figure class="align-default">
+<img alt="../_images/03_OverlayImages.png" src="../_images/03_OverlayImages.png" />
+</figure>
+<p>After you’ve run coregistration and normalization, you can also use MRIcroGL to evaluate how well the functional and anatomical images are aligned, and how those images in turn are aligned to standardized space. If you’ve run your analyses through FSL, for example, you can find the output from these steps in the <code class="docutils literal notranslate"><span class="pre">reg</span></code> directory from your <code class="docutils literal notranslate"><span class="pre">feat</span></code> folder. Open the <code class="docutils literal notranslate"><span class="pre">highres.nii.gz</span></code> image from subject <code class="docutils literal notranslate"><span class="pre">sub-10</span></code>’s <code class="docutils literal notranslate"><span class="pre">run1.feat</span></code> directory, and lower the value of the <code class="docutils literal notranslate"><span class="pre">Brightest</span></code> field to 800. Then click on <code class="docutils literal notranslate"><span class="pre">File</span> <span class="pre">-&gt;</span> <span class="pre">Add</span> <span class="pre">Overlay</span></code>, and select the image <code class="docutils literal notranslate"><span class="pre">example_func2highres.nii.gz</span></code>. You should see something like this:</p>
+<figure class="align-default">
+<img alt="../_images/03_HighResFunc.png" src="../_images/03_HighResFunc.png" />
+</figure>
+<p>Now there is nearly complete overlap of the functional image on top of the anatomical image, which is what we would expect if the coregistration was successful. However, it is difficult to tell how well some of the internal structures are aligned, such as the ventricles and basal ganglia. (You could toggle the opacity of the overlay, but that would only show whether the outlines of the brains match up.) To see the edges of features such as the sulci, highlight the <code class="docutils literal notranslate"><span class="pre">example_func2highres</span></code> image, click on <code class="docutils literal notranslate"><span class="pre">Options</span></code>, and select <code class="docutils literal notranslate"><span class="pre">Find</span> <span class="pre">Edges</span></code>. This will create a new overlay called <code class="docutils literal notranslate"><span class="pre">edge_example_func2highres</span></code>, and you can see this image more clearly by unchecking the box next to <code class="docutils literal notranslate"><span class="pre">example_func2highres</span></code>. Now we can see more clearly where the edges of the brains are aligned, and how well the interior structures match up:</p>
+<figure class="align-default" id="id2">
+<img alt="../_images/03_AddEdges.png" src="../_images/03_AddEdges.png" />
+<figcaption>
+<p><span class="caption-text">Example of the “Find Edges” feature of MRIcroGL. Note the outline of the ventricles and the basal ganglia in the axial view, and the how the outlines of the sulci are traced.</span><a class="headerlink" href="#id2" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="video">
+<h2>Video<a class="headerlink" href="#video" title="Link to this heading"></a></h2>
+<p>A video overview of how to view the data can be found <a class="reference external" href="https://youtu.be/eD87us76jN0">here</a>.</p>
+</section>
+<section id="next-steps">
+<h2>Next Steps<a class="headerlink" href="#next-steps" title="Link to this heading"></a></h2>
+<p>Once you have familiarized yourself with how to load anatomical and functional data, you can begin to use the software to overlay statistical maps on a template image; this will be the first step towards creating a publication-quality image of your results. To see how to do that, click the <code class="docutils literal notranslate"><span class="pre">Next</span></code> button.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="MRIcroGL_2_dcm2nii.html" class="btn btn-neutral float-left" title="MRIcroGL Tutorial #2: Converting DICOM to NIFTI" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="MRIcroGL_4_ViewingResults.html" class="btn btn-neutral float-right" title="MRIcroGL Tutorial #4: Viewing Results" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Andy Jahn.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

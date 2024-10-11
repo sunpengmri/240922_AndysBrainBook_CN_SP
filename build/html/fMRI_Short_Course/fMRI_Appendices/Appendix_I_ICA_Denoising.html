@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Appendix I: Independent Components Analysis (ICA) with FSL and FIX &mdash; Andy&#39;s Brain Book 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b76e3c8a" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=f2a433a1"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="FreeSurfer Short Course" href="../../FreeSurfer/FreeSurfer_Introduction.html" />
+    <link rel="prev" title="Appendix H: Double Dissociations" href="Appendix_H_DoubleDissociations.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Andy's Brain Book
+          </a>
+              <div class="version">
+                1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Install</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../installation/fsl_mac_install.html">Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Unix for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_Intro.html">What is Unix?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_01_Navigation.html">Unix Tutorial #1: 目录操作 (Directories and Navigation)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_02_CopyRemove.html">Unix Tutorial #2: Copying and Removing Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_03_ReadingTextFiles.html">Unix Tutorial #3: Reading Text Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_04_ShellsVariables.html">Unix Tutorial #4: Shells and Path Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_05_ForLoops.html">Unix Tutorial #5: For-Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_06_IfElse.html">Unix Tutorial #6: Conditional Statements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_07_Scripting.html">Unix Tutorial #7: Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_08_Sed.html">Unix Tutorial #8: The Sed Command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_09_AutomatingTheAnalysis.html">Unix Tutorial #9: Automating The Analysis</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">fMRI Short Course with FSL</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../fMRI_Intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fMRI_01_DataDownload.html">fMRI Tutorial #1: Downloading the Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fMRI_02_ExperimentalDesign.html">fMRI Tutorial #2: Overview of The Flanker Task</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fMRI_03_LookingAtTheData.html">fMRI Tutorial #3: Looking at the Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fMRI_04_Preprocessing.html">fMRI Tutorial #4: Preprocessing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fMRI_05_1stLevelAnalysis.html">fMRI Tutorial #5: Statistics and Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fMRI_06_Scripting.html">fMRI Tutorial #6: Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fMRI_07_2ndLevelAnalysis.html">fMRI Tutorial #7: 2nd-Level Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fMRI_08_3rdLevelAnalysis.html">fMRI Tutorial #8: 3rd-Level Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fMRI_09_ROIAnalysis.html">fMRI Tutorial #9: ROI Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fMRI_10_Summary.html">fMRI Tutorial #10: Summary</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../fMRI_Appendices.html">fMRI Short Course: Appendices</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../fMRI_Appendices.html#introduction">Introduction</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="Appendix_A_ClusterCorrection.html">Appendix A: Cluster Correction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Appendix_B_BiasedAnalysis.html">Appendix B: Biased Analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Appendix_C_Figures.html">Appendix C: Figures</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Appendix_D_OtherStats.html">Appendix D: Other Statistical Scenarios</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Appendix_E_Meta_Analysis.html">Appendix E: Meta-Analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Appendix_F_ParametricModulation.html">Appendix F: Parametric Modulation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Appendix_G_ReverseInference.html">Appendix G: Reverse Inference</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Appendix_H_DoubleDissociations.html">Appendix H: Double Dissociations</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Appendix I: Independent Components Analysis (ICA) with FSL and FIX</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#overview-what-is-independent-components-analysis">Overview: What is Independent Components Analysis?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#analyzing-the-data-with-ica">Analyzing the Data with ICA</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#labeling-the-components">Labeling the Components</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#training-fix-on-your-data">Training FIX on Your Data</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">FreeSurfer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../FreeSurfer/FreeSurfer_Introduction.html">FreeSurfer Short Course</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">E-Prime</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../E-Prime/E-Prime_Overview.html">Overview of E-Prime</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">AFNI</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../AFNI/AFNI_Overview.html">AFNI Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">SPM</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../SPM/SPM_Overview.html">SPM Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Functional Connectivity with the CONN Toolbox</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../FunctionalConnectivity/CONN_Overview.html">Functional Connectivity and the CONN Toolbox</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Parametric Modulation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../PM/PM_Overview.html">Parametric Modulation in SPM, FSL, and AFNI</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Image Visualization with MRIcroGL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../MRIcroGL/MRIcroGL_Overview.html">Image Visualization with MRIcroGL</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Introduction to the Human Connectome Project (HCP)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../HCP/HCP_Overview.html">Introduction to the Human Connectome Project</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Finite Impulse Response (FIR) Models</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../FIR/FIR_Overview.html">Finite Impulse Response (FIR)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">fMRI Concepts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Practicals/DesignOptimization.html">Design Optimization</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Diffusion Analysis with MRtrix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../MRtrix/MRtrix_Introduction.html">Introduction to MRtrix</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ASL Analysis</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/ASL_Techniques.html">fASL Tutorial #1: Background</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/fASL_02_Download.html">fASL Tutorial #2: Downloading and Installing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/fASL_03_Task.html">fASL Tutorial #3: The N-Back Task</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/04_fASL_GUI.html">fASL Tutorial #4: The GUI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/05_fASL_Results.html">fASL Tutorial #5: Examining the Results</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/06_fASL_Quantification.html">fASL Tutorial #6: Quantification</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Frequently Asked Questions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../FrequentlyAskedQuestions/FrequentlyAskedQuestions.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Statistics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Statistics/GIMME.html">GIMME (Group Iterative Multiple Model Estimation)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Open Science</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../OpenScience/OS_Overview.html">Open Science</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced Normalization Tools (ANTs)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ANTs/ANTs_Overview.html">Advanced Normalization Tools (ANTs)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tract-Based Spatial Statistics (TBSS)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../TBSS/TBSS_Overview.html">Introduction to Tract-Based Spatial Statistics (TBSS)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Statistics for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Stats/Stats_Overview.html">Statistics for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Machine Learning for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ML/ML_Overview.html">Machine Learning for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Slicer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Slicer/Slicer_Overview.html">Slicer Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">CAT12</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../CAT12/CAT12_Overview.html">Voxel-Based Morphometry with CAT12</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Using the Supercomputer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Supercomputer/Supercomputer_Overview.html">Introduction to Supercomputing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Matlab for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Matlab/Matlab_Overview.html">Matlab for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ITK-Snap</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ITK-Snap/ITK-Snap_Overview.html">ITK-Snap_Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Python for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../PythonForNeuroimagers/PythonForNeuroimagers_Overview.html">Python for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Meta-Analysis for fMRI</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../MetaAnalysis/MetaAnalysis_Overview.html">Meta-Analysis for Neuroimagers</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Andy's Brain Book</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../fMRI_Appendices.html">fMRI Short Course: Appendices</a></li>
+      <li class="breadcrumb-item active">Appendix I: Independent Components Analysis (ICA) with FSL and FIX</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/fMRI_Short_Course/fMRI_Appendices/Appendix_I_ICA_Denoising.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="appendix-i-independent-components-analysis-ica-with-fsl-and-fix">
+<span id="appendix-i-ica-denoising"></span><h1>Appendix I: Independent Components Analysis (ICA) with FSL and FIX<a class="headerlink" href="#appendix-i-independent-components-analysis-ica-with-fsl-and-fix" title="Link to this heading"></a></h1>
+<hr class="docutils" />
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The methods in this tutorial are drawn from the FSL ICA website, which can be found <a class="reference external" href="https://fsl.fmrib.ox.ac.uk/fslcourse/graduate/lectures/practicals/ica/">here</a>. I have also benefitted from the examples provided by Carline Nettekoven on <a class="reference external" href="https://www.caroline-nettekoven.com/post/ica-cleaning/">her blog</a>.</p>
+</div>
+<section id="overview-what-is-independent-components-analysis">
+<h2>Overview: What is Independent Components Analysis?<a class="headerlink" href="#overview-what-is-independent-components-analysis" title="Link to this heading"></a></h2>
+<p>Independent Components Analysis, or ICA, is a method for decomposing a complex signal into simpler parts. For example, a convoluted time-course signal can be broken down into a series of sine waves which, if combined, would re-create the original signal.</p>
+<p>Another example of ICA is using auditory software to tease apart different sources of noise. When recording an interview in the middle of a crowded room, for example, the software can identify different individual sources of noise from the original recording, such as other people’s voices, background noise, and any noise induced by the recording equipment. These sources can then be filtered out of the original signal, resulting in a cleaner signal focusing on one source.</p>
+<p>Conceptually, this is the same approach used when applying ICA to fMRI data. These datasets have both temporal and spatial components, and each of them can be extracted from the original data. Given that fMRI data also contain noise from a multitude of sources, such as physiological noise, movement artifacts, and scanner artifacts, ICA can be used to separate them from the BOLD signal we are interested in.</p>
+<p>This tutorial will focus on analyzing a dataset with ICA, and then filtering out the noise components using FIX, another FSL tool. This can be particularly useful for cleaning data from high-moving populations, such as children and certain patient populations. For a good example of how FIX can be combined with nuisance regression, such as FD, see <a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S1878929322001219#fig0045">this paper</a> by Jolinda Smith et al. (2022).</p>
+</section>
+<section id="analyzing-the-data-with-ica">
+<h2>Analyzing the Data with ICA<a class="headerlink" href="#analyzing-the-data-with-ica" title="Link to this heading"></a></h2>
+<p>To illustrate how to use ICA, we will be using <a class="reference external" href="https://openneuro.org/datasets/ds003871/versions/1.0.2">this dataset</a> which contains resting-state data from younger and older adults. For the training data, I will be focusing on subjects sub-1015 through sub-1024, if you want to download only those particular subjects.</p>
+<p>If you would like to combine both preprocessing and ICA, you can navigate to the dataset main directory (containing all of the subjects) and type <code class="docutils literal notranslate"><span class="pre">Melodic_gui</span></code>. This opens the MELODIC GUI, which contains the same tabs as a typical FEAT pipeline: Data, Pre-Stats, Stats, and Post-Stats. In this case, however, the Stats tab has options for different types of ICA.</p>
+<p>We can analyze all of our subjects in one go, instead of running a separate instance of the GUI as we did with FEAT for each run of functional data. Gather all of your subjects’ functional data by typing:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>ls $PWD/sub-*/func/*.nii.gz
+</pre></div>
+</div>
+<p>And then paste these into the Data tab by changing the <code class="docutils literal notranslate"><span class="pre">Number</span> <span class="pre">of</span> <span class="pre">inputs</span></code> to 10, and clicking on <code class="docutils literal notranslate"><span class="pre">Select</span> <span class="pre">4D</span> <span class="pre">data</span></code> and <code class="docutils literal notranslate"><span class="pre">Paste</span></code>. Then click OK.</p>
+<p>At this point you can specify an output directory. If you leave it blank, it will create a directory labeled with the subject’s name and a <code class="docutils literal notranslate"><span class="pre">.ica</span></code> appended to it. We will leave it blank for now, and move to the Registration tab, keeping the defaults in the Pre-Stats tab.</p>
+<p>Skull-strip your images using any method you choose. Assuming the skull-stripped brains have a <code class="docutils literal notranslate"><span class="pre">_brain.nii.gz</span></code> extension, you can obtain them from your command line by typing:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>ls $PWD/sub-*/anat/*_brain.nii.gz
+</pre></div>
+</div>
+<p>And then paste these into the <code class="docutils literal notranslate"><span class="pre">Select</span> <span class="pre">main</span> <span class="pre">structural</span> <span class="pre">images</span></code> field. Click OK, and change the registration settings if you want - for example, <code class="docutils literal notranslate"><span class="pre">Full</span> <span class="pre">search</span></code> and <code class="docutils literal notranslate"><span class="pre">12</span> <span class="pre">DOF</span></code>.</p>
+<p>In the Stats tab, leave the drop-down menu option as <code class="docutils literal notranslate"><span class="pre">Single-session</span> <span class="pre">ICA</span></code>. If you want, you can leave <code class="docutils literal notranslate"><span class="pre">Automatic</span> <span class="pre">dimensionality</span> <span class="pre">estimation</span></code> checked, which will attempt to estimate an exhaustive number of components. In our case, let’s uncheck the box, and change the number of <code class="docutils literal notranslate"><span class="pre">Output</span> <span class="pre">components</span></code> to 60. Then click <code class="docutils literal notranslate"><span class="pre">Go</span></code>.</p>
+<p>It will take some time for preprocessing and ICA estimation - maybe around an hour or so for all of the subjects. When it finishes, within each subject’s <code class="docutils literal notranslate"><span class="pre">.ica</span></code> directory, there is another directory called <code class="docutils literal notranslate"><span class="pre">filtered_func_data.ica</span></code>. This contains the ICA components that we can now label as either noise or signal.</p>
+</section>
+<section id="labeling-the-components">
+<h2>Labeling the Components<a class="headerlink" href="#labeling-the-components" title="Link to this heading"></a></h2>
+<p>To view these components, navigate to the <code class="docutils literal notranslate"><span class="pre">.ica</span></code> directory that contains the filtered_func_data.ica directory and type:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fsleyes</span> <span class="o">--</span><span class="n">scene</span> <span class="n">melodic</span> <span class="o">-</span><span class="n">ad</span> <span class="n">filtered_func_data</span><span class="o">.</span><span class="n">ica</span>
+</pre></div>
+</div>
+<p>This will open a new fsleyes window with multiple axial slices and one of the components overlaid on it. The bottom left window displays a time-course for that component, and the bottom right window displays a power spectrum for different frequencies.</p>
+<p>Label each component as either <code class="docutils literal notranslate"><span class="pre">Unknown</span> <span class="pre">Noise</span></code> or <code class="docutils literal notranslate"><span class="pre">Signal</span></code>. If you are unsure, write <code class="docutils literal notranslate"><span class="pre">Unknown</span></code>. Here are some features you can use to distinguish between Signal and Noise:</p>
+<blockquote>
+<div><p>Signal is usually:</p>
+<p>-Lower frequency
+-Has a smoother time-course
+-Has component loadings that are smooth, continuous, within the grey matter, and often bilateral</p>
+<p>Noise is usually:</p>
+<p>-Higher frequency
+-Has a more jagged, discontinuous time-course
+-Has component loadings within the white matter, CSF, or regions such as the eyeballs or Circle of Willis. Loadings that ring the edge of the brain are also indicative of motion artifacts.</p>
+</div></blockquote>
+<p>Once you have labeled all of the components, save them into a file called “hand_labels_noise.txt”, placing this file within the <code class="docutils literal notranslate"><span class="pre">.ica</span></code> directory that conatins the filtered_func_data.ica folder (<em>not</em> the filtered_func_data.ica folder itself).</p>
+</section>
+<section id="training-fix-on-your-data">
+<h2>Training FIX on Your Data<a class="headerlink" href="#training-fix-on-your-data" title="Link to this heading"></a></h2>
+<p>Our next step is to a train a classifier on the components that we have labeled. First we will need to use the <code class="docutils literal notranslate"><span class="pre">fix</span></code> command to extract the features from our ICA datasets. For example, you could run this code from your experiment directory:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>for i in sub-10{15..24}; do cd $i/func; fix -f *.ica; cd ../..; done
+</pre></div>
+</div>
+<p>Once this finishes, you can then train your model by typing:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>fix -t mymodel -l `ls -d $PWD/sub-10{15..24}/func/*.ica`
+</pre></div>
+</div>
+<p>This will create a new model, mymodel.pyfix_model, which can then be used to clean any of the subjects in your dataset:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fix</span> <span class="n">sub</span><span class="o">-</span><span class="mi">1015</span><span class="o">/</span><span class="n">func</span><span class="o">/</span><span class="n">sub</span><span class="o">-</span><span class="mi">1015</span><span class="n">_task</span><span class="o">-</span><span class="n">rest_dir</span><span class="o">-</span><span class="n">AP_run</span><span class="o">-</span><span class="mi">01</span><span class="n">_bold</span><span class="o">.</span><span class="n">ica</span> <span class="n">mymodel</span><span class="o">.</span><span class="n">pyfix_model</span> <span class="mi">20</span>
+</pre></div>
+</div>
+<p>In which the last parameter is the classification threshold. In general, thresholds of around 5-20 are moderate, while less than 5 is more liberal (i.e., allow more components, even if they are noise), and greater than 20 is more conservative.</p>
+<p>Once this command runs, you will have a new file in your <code class="docutils literal notranslate"><span class="pre">.ica</span></code> folder called <code class="docutils literal notranslate"><span class="pre">filtered_func_data_clean.nii.gz</span></code>. Compare this to the original filtered_func_data.nii.gz file, and see whether it cleans up different artifacts; it may also be useful to run a seed-based correlation analysis through the FSLeyes GUI in a robust network region to see how it compares before and after cleaning.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Appendix_H_DoubleDissociations.html" class="btn btn-neutral float-left" title="Appendix H: Double Dissociations" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../FreeSurfer/FreeSurfer_Introduction.html" class="btn btn-neutral float-right" title="FreeSurfer Short Course" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Andy Jahn.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

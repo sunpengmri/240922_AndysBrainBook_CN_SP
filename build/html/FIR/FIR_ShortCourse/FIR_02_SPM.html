@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chapter #2: FIR Analysis in SPM &mdash; Andy&#39;s Brain Book 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b76e3c8a" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=f2a433a1"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Chapter #3: FIR Analysis in FSL" href="FIR_03_FSL.html" />
+    <link rel="prev" title="Chapter #1: FIR Analysis in AFNI" href="FIR_01_AFNI.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Andy's Brain Book
+          </a>
+              <div class="version">
+                1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Install</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../installation/fsl_mac_install.html">Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Unix for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_Intro.html">What is Unix?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_01_Navigation.html">Unix Tutorial #1: 目录操作 (Directories and Navigation)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_02_CopyRemove.html">Unix Tutorial #2: Copying and Removing Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_03_ReadingTextFiles.html">Unix Tutorial #3: Reading Text Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_04_ShellsVariables.html">Unix Tutorial #4: Shells and Path Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_05_ForLoops.html">Unix Tutorial #5: For-Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_06_IfElse.html">Unix Tutorial #6: Conditional Statements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_07_Scripting.html">Unix Tutorial #7: Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_08_Sed.html">Unix Tutorial #8: The Sed Command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_09_AutomatingTheAnalysis.html">Unix Tutorial #9: Automating The Analysis</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">fMRI Short Course with FSL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_Intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_01_DataDownload.html">fMRI Tutorial #1: Downloading the Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_02_ExperimentalDesign.html">fMRI Tutorial #2: Overview of The Flanker Task</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_03_LookingAtTheData.html">fMRI Tutorial #3: Looking at the Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_04_Preprocessing.html">fMRI Tutorial #4: Preprocessing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_05_1stLevelAnalysis.html">fMRI Tutorial #5: Statistics and Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_06_Scripting.html">fMRI Tutorial #6: Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_07_2ndLevelAnalysis.html">fMRI Tutorial #7: 2nd-Level Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_08_3rdLevelAnalysis.html">fMRI Tutorial #8: 3rd-Level Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_09_ROIAnalysis.html">fMRI Tutorial #9: ROI Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_10_Summary.html">fMRI Tutorial #10: Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_Appendices.html">fMRI Short Course: Appendices</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">FreeSurfer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../FreeSurfer/FreeSurfer_Introduction.html">FreeSurfer Short Course</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">E-Prime</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../E-Prime/E-Prime_Overview.html">Overview of E-Prime</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">AFNI</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../AFNI/AFNI_Overview.html">AFNI Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">SPM</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../SPM/SPM_Overview.html">SPM Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Functional Connectivity with the CONN Toolbox</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../FunctionalConnectivity/CONN_Overview.html">Functional Connectivity and the CONN Toolbox</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Parametric Modulation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../PM/PM_Overview.html">Parametric Modulation in SPM, FSL, and AFNI</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Image Visualization with MRIcroGL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../MRIcroGL/MRIcroGL_Overview.html">Image Visualization with MRIcroGL</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Introduction to the Human Connectome Project (HCP)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../HCP/HCP_Overview.html">Introduction to the Human Connectome Project</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Finite Impulse Response (FIR) Models</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../FIR_Overview.html">Finite Impulse Response (FIR)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../FIR_Overview.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../FIR_Overview.html#next-steps">Next Steps</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../FIR_Overview.html#video">Video</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="FIR_01_AFNI.html">Chapter #1: FIR Analysis in AFNI</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Chapter #2: FIR Analysis in SPM</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#setting-up-the-first-level-model">Setting Up the First-Level Model</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#scripting-the-analysis">Scripting The Analysis</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#viewing-the-results">Viewing the Results</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#video">Video</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#next-steps">Next Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="FIR_03_FSL.html">Chapter #3: FIR Analysis in FSL</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">fMRI Concepts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Practicals/DesignOptimization.html">Design Optimization</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Diffusion Analysis with MRtrix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../MRtrix/MRtrix_Introduction.html">Introduction to MRtrix</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ASL Analysis</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/ASL_Techniques.html">fASL Tutorial #1: Background</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/fASL_02_Download.html">fASL Tutorial #2: Downloading and Installing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/fASL_03_Task.html">fASL Tutorial #3: The N-Back Task</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/04_fASL_GUI.html">fASL Tutorial #4: The GUI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/05_fASL_Results.html">fASL Tutorial #5: Examining the Results</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/06_fASL_Quantification.html">fASL Tutorial #6: Quantification</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Frequently Asked Questions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../FrequentlyAskedQuestions/FrequentlyAskedQuestions.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Statistics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Statistics/GIMME.html">GIMME (Group Iterative Multiple Model Estimation)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Open Science</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../OpenScience/OS_Overview.html">Open Science</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced Normalization Tools (ANTs)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ANTs/ANTs_Overview.html">Advanced Normalization Tools (ANTs)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tract-Based Spatial Statistics (TBSS)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../TBSS/TBSS_Overview.html">Introduction to Tract-Based Spatial Statistics (TBSS)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Statistics for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Stats/Stats_Overview.html">Statistics for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Machine Learning for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ML/ML_Overview.html">Machine Learning for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Slicer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Slicer/Slicer_Overview.html">Slicer Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">CAT12</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../CAT12/CAT12_Overview.html">Voxel-Based Morphometry with CAT12</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Using the Supercomputer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Supercomputer/Supercomputer_Overview.html">Introduction to Supercomputing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Matlab for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Matlab/Matlab_Overview.html">Matlab for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ITK-Snap</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ITK-Snap/ITK-Snap_Overview.html">ITK-Snap_Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Python for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../PythonForNeuroimagers/PythonForNeuroimagers_Overview.html">Python for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Meta-Analysis for fMRI</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../MetaAnalysis/MetaAnalysis_Overview.html">Meta-Analysis for Neuroimagers</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Andy's Brain Book</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../FIR_Overview.html">Finite Impulse Response (FIR)</a></li>
+      <li class="breadcrumb-item active">Chapter #2: FIR Analysis in SPM</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/FIR/FIR_ShortCourse/FIR_02_SPM.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="chapter-2-fir-analysis-in-spm">
+<span id="fir-02-spm"></span><h1>Chapter #2: FIR Analysis in SPM<a class="headerlink" href="#chapter-2-fir-analysis-in-spm" title="Link to this heading"></a></h1>
+<hr class="docutils" />
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading"></a></h2>
+<p>Compared to FIR analysis in AFNI, the implementation in SPM is quite easy. The preprocessing is the same as in the previous SPM tutorial on analyzing event-related data from the Flanker task; the only difference is in how the first-level model is specified for each subject.</p>
+</section>
+<section id="setting-up-the-first-level-model">
+<h2>Setting Up the First-Level Model<a class="headerlink" href="#setting-up-the-first-level-model" title="Link to this heading"></a></h2>
+<p>Once you have finished preprocessing, go to the SPM GUI and click the button <code class="docutils literal notranslate"><span class="pre">Specify</span> <span class="pre">1st-level</span></code>. Use the Terminal to create a new directory <code class="docutils literal notranslate"><span class="pre">1stLevel</span></code> within the directory <code class="docutils literal notranslate"><span class="pre">sub-01</span></code>, and select that in the <code class="docutils literal notranslate"><span class="pre">Directory</span></code> field for the output. Set the <code class="docutils literal notranslate"><span class="pre">Units</span> <span class="pre">for</span> <span class="pre">design</span></code> to <code class="docutils literal notranslate"><span class="pre">Seconds</span></code>, the <code class="docutils literal notranslate"><span class="pre">Interscan</span> <span class="pre">interval</span></code> to <code class="docutils literal notranslate"><span class="pre">2</span></code>, and leave the rest of the defaults as they are.</p>
+<p>Add a new Subject/Session from the <code class="docutils literal notranslate"><span class="pre">Data</span> <span class="pre">&amp;</span> <span class="pre">Design</span></code> field, and use the file navigator to select all of the functional data that begin with the prefix <code class="docutils literal notranslate"><span class="pre">swr</span></code> (i.e., those files that have been smoothed, warped, and realigned). Use a frame selector range of 1:104 to select all of the volumes within the dataset.</p>
+<p>Create two Conditions, <code class="docutils literal notranslate"><span class="pre">ToneCounting</span></code> and <code class="docutils literal notranslate"><span class="pre">ToneProbe</span></code>. The onsets and durations for each condition can be found in the first and second columns of the file <code class="docutils literal notranslate"><span class="pre">sub-01_task-tonecounting_events.tsv</span></code>; to make the files easier to read, and to split them into separate timings for both the probe and tone counting conditions, run the following script from the directory containing all of the subjects:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
+
+#Check whether the file subjList.txt exists; if not, create it
+if [ ! -f subjList.txt ]; then
+        ls -d sub-?? &gt; subjList.txt
+fi
+
+#Loop over all subjects and format timing files into FSL format
+for subj in `cat subjList.txt` ; do
+        cd $subj/func #Navigate to the subject&#39;s func directory, which contains the timing files
+
+        #Extract the onset times for the incongruent and congruent trials for each run. NOTE: This script only extracts the trials in which the subject made a correct response. Accuracy is nearly 100% for all subjects, but as an exercise the student can modify this to extract the incorrect trials as well.
+        cat ${subj}_task-tonecounting_events.tsv | awk &#39;{if (NR!=1 &amp;&amp; $5==&quot;&quot;) {print $1, $2, &quot;1&quot;}}&#39; &gt; toneCount_run1.txt
+        cat ${subj}_task-tonecounting_events.tsv | awk &#39;{if ($5==&quot;probe&quot;) {print $1, $2, &quot;1&quot;}}&#39; &gt; toneProbe_run1.txt
+
+        cd ../..
+done
+</pre></div>
+</div>
+<p>This will create new onset files, toneCount_run1.txt and toneProbe_run1.txt. Now, copy and paste the onset times and durations into their respective conditions. (Note that the duration for the ToneCounting conditions is always 4 seconds, so you can just enter a value of 4 in this field.) Lastly, under <code class="docutils literal notranslate"><span class="pre">Basis</span> <span class="pre">Functions</span></code>, change the function from <code class="docutils literal notranslate"><span class="pre">Canonical</span> <span class="pre">HRF</span></code> to <code class="docutils literal notranslate"><span class="pre">Finite</span> <span class="pre">Impulse</span> <span class="pre">Response</span></code>. This generates two fields, <code class="docutils literal notranslate"><span class="pre">Window</span> <span class="pre">Length</span></code> and <code class="docutils literal notranslate"><span class="pre">Order</span></code>; enter values of <code class="docutils literal notranslate"><span class="pre">20</span></code> and <code class="docutils literal notranslate"><span class="pre">10</span></code>, respectively, to create an FIR model that estimates 10 time-points over a window of 20 seconds.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Unlike AFNI’s TENT function, SPM doesn’t generate an estimate of the activity of the time-point at time zero - i.e., the onset of the stimulus. This is assumed to be zero, and all of the time-points afterwards are estimated relative to that.</p>
+</div>
+<p>At this point, you can click the Green <code class="docutils literal notranslate"><span class="pre">Go</span></code> button. You will also need to estimate the model by clicking the <code class="docutils literal notranslate"><span class="pre">Estimate</span></code> button and selecting the SPM.mat file you just created. If you need to review the model, click on the <code class="docutils literal notranslate"><span class="pre">Review</span></code> button in the SPM GUI and select the SPM.mat file. Further, you can click on <code class="docutils literal notranslate"><span class="pre">Design</span> <span class="pre">-&gt;</span> <span class="pre">Design</span> <span class="pre">Orthogonality</span></code> to see the correlation between the regressors. Note that there are 10 regressors per condition, with one column per regressor.</p>
+<figure class="align-default">
+<img alt="../../_images/02_SPM_FIR_DesignMatrix.png" src="../../_images/02_SPM_FIR_DesignMatrix.png" />
+</figure>
+</section>
+<section id="scripting-the-analysis">
+<h2>Scripting The Analysis<a class="headerlink" href="#scripting-the-analysis" title="Link to this heading"></a></h2>
+<p>Just like with analyzing the Flanker task, we can create a script that will automate the preprocessing and model setup for this dataset. You can download the script by clicking <code class="docutils literal notranslate"><span class="pre">here</span> <span class="pre">&lt;https://github.com/andrewjahn/SPM_Scripts/blob/master/ToneCount_AnalysisScript_job.m&gt;`__,</span> <span class="pre">clicking</span> <span class="pre">on</span> <span class="pre">``Raw</span></code>, and then right-clicking anywhere in the screen and selecting <code class="docutils literal notranslate"><span class="pre">Save</span> <span class="pre">As</span></code>, removing the <code class="docutils literal notranslate"><span class="pre">.txt</span></code> extension, and saving it to the directory containing all of your subjects. Assuming that you have already run the onset time conversion code above, open a Matlab terminal, navigate to the directory containing your subject, and type:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ToneCount_AnalysisScript_job</span>
+</pre></div>
+</div>
+<p>This will run the preprocessing and model analysis for all of your subjects, and should take a couple of hours.</p>
+</section>
+<section id="viewing-the-results">
+<h2>Viewing the Results<a class="headerlink" href="#viewing-the-results" title="Link to this heading"></a></h2>
+<p>To view the results, click on the <code class="docutils literal notranslate"><span class="pre">Results</span></code> button and select the SPM.mat file within the directory <code class="docutils literal notranslate"><span class="pre">sub-01/1stLevel</span></code>. This will show the design matrix, with ten finite impulse response regressors per subject. If we wanted to see where there was any event-related response to any of the time-points that we estimated, we could calculate an F-test - in other words, conduct multiple t-tests, one per regressor, and see whether any one of them is significant. Click on the <code class="docutils literal notranslate"><span class="pre">F-contrasts</span></code> radio button, and click on <code class="docutils literal notranslate"><span class="pre">Define</span> <span class="pre">new</span> <span class="pre">contrast</span></code>. Give it the name <code class="docutils literal notranslate"><span class="pre">ToneCounting_Ftest</span></code>, and in the contrast field, type <code class="docutils literal notranslate"><span class="pre">eye(10)</span></code>. This will create a diagonal of ones, with one per time-point for the ToneCounting condition.</p>
+<figure class="align-default">
+<img alt="../../_images/02_SPM_FIR_Ftest.png" src="../../_images/02_SPM_FIR_Ftest.png" />
+</figure>
+<p>Click <code class="docutils literal notranslate"><span class="pre">OK</span></code>, and then <code class="docutils literal notranslate"><span class="pre">Done</span></code>. Similar to the Flanker analysis, set <code class="docutils literal notranslate"><span class="pre">apply</span> <span class="pre">masking</span></code> to <code class="docutils literal notranslate"><span class="pre">none</span></code>, the <code class="docutils literal notranslate"><span class="pre">p-value</span> <span class="pre">adjustment</span></code> to <code class="docutils literal notranslate"><span class="pre">0.001</span></code>, and the <code class="docutils literal notranslate"><span class="pre">extent</span> <span class="pre">threshold</span></code> to <code class="docutils literal notranslate"><span class="pre">20</span></code>. In the results maximum intensity projection (MIP) window, click on <code class="docutils literal notranslate"><span class="pre">plot</span> <span class="pre">-&gt;</span> <span class="pre">Contrast</span> <span class="pre">estimates</span> <span class="pre">and</span> <span class="pre">90%</span> <span class="pre">CI</span> <span class="pre">-&gt;</span> <span class="pre">Which</span> <span class="pre">Contrast?</span> <span class="pre">-&gt;</span> <span class="pre">ToneCounting_Ftest</span></code>. This will display a plot of the estimated activity at each time-point in the time window you specified during the 1st-level analysis setup; if you click and drag the red arrowhead in the glass brain window, you will see the plot update with new estimates at that particular voxel. For example, at the coordinates <code class="docutils literal notranslate"><span class="pre">0,</span> <span class="pre">35,</span> <span class="pre">41</span></code>, the plot looks like this:</p>
+<figure class="align-default">
+<img alt="../../_images/02_SPM_FIR_Plot.png" src="../../_images/02_SPM_FIR_Plot.png" />
+</figure>
+<p>Note how the overall pattern looks similar to the canonical HRF - there is a rise and a distinct peak around 3-4 TRs, corresponding to approximately 6-8 seconds after the onset of the stimulus, followed by a gradual decrease and undershoot. This pattern is not the same everywhere, however; navigate around the brain and see the variety of profiles that have been estimated in this time window.</p>
+<section id="other-contrasts">
+<h3>Other Contrasts<a class="headerlink" href="#other-contrasts" title="Link to this heading"></a></h3>
+<p>Aside from an F-test, you may want to compare specific time-points or combinations of time-points against each other. Let’s say we were interested in the average of TRs 3-4 compared to TR 1, and where this difference was significant. Click on <code class="docutils literal notranslate"><span class="pre">Results</span></code> again, select the same SPM.mat file, and define this contrast:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="mi">1</span> <span class="mi">0</span> <span class="mf">0.5</span> <span class="mf">0.5</span>
+</pre></div>
+</div>
+<p>Note that since we are comparing two regressors against one, we will need to control for this number by weighting them by 0.5 each. This will create a series of contrast weights that looks like this:</p>
+<figure class="align-default">
+<img alt="../../_images/02_SPM_FIR_Ttest.png" src="../../_images/02_SPM_FIR_Ttest.png" />
+</figure>
+<p>Click <code class="docutils literal notranslate"><span class="pre">OK</span> <span class="pre">-&gt;</span> <span class="pre">Done</span></code>, and use the same correction settings as for the F-test. The resulting map will show where the average of TRs 3 and 4 are greater than TR 1.</p>
+</section>
+</section>
+<section id="video">
+<h2>Video<a class="headerlink" href="#video" title="Link to this heading"></a></h2>
+<p>For a video demonstration of how to perform a Finite Impulse Response analysis in SPM, click <a class="reference external" href="https://youtu.be/JVMcfFaKgfw">here</a>.</p>
+</section>
+<section id="next-steps">
+<h2>Next Steps<a class="headerlink" href="#next-steps" title="Link to this heading"></a></h2>
+<p>Now that you have learned how to set up a Finite Impulse Response analysis and create contrasts, the group-level analysis and ROI analysis will be the same as in the Flanker dataset. The interpretation will be different and slightly more complicated, but you will be able to make more nuanced claims about what is happening at specific points after the onset of the stimulus. Once you are satisfied with this analysis, you can now learn how to do it in FSL, the last of the major software packages we will be covering.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="FIR_01_AFNI.html" class="btn btn-neutral float-left" title="Chapter #1: FIR Analysis in AFNI" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="FIR_03_FSL.html" class="btn btn-neutral float-right" title="Chapter #3: FIR Analysis in FSL" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Andy Jahn.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

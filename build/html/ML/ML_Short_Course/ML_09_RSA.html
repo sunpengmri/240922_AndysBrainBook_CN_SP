@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Machine Learning Tutorial #9: Representational Similarity Analysis &mdash; Andy&#39;s Brain Book 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b76e3c8a" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=f2a433a1"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Machine Learning Tutorial #10: Hyperalignment" href="ML_10_Hyperalignment.html" />
+    <link rel="prev" title="Machine Learning Tutorial #8: Non-Parametric Analysis" href="ML_08_Haxby_NonParametric.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Andy's Brain Book
+          </a>
+              <div class="version">
+                1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Install</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../installation/fsl_mac_install.html">Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Unix for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_Intro.html">What is Unix?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_01_Navigation.html">Unix Tutorial #1: 目录操作 (Directories and Navigation)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_02_CopyRemove.html">Unix Tutorial #2: Copying and Removing Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_03_ReadingTextFiles.html">Unix Tutorial #3: Reading Text Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_04_ShellsVariables.html">Unix Tutorial #4: Shells and Path Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_05_ForLoops.html">Unix Tutorial #5: For-Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_06_IfElse.html">Unix Tutorial #6: Conditional Statements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_07_Scripting.html">Unix Tutorial #7: Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_08_Sed.html">Unix Tutorial #8: The Sed Command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_09_AutomatingTheAnalysis.html">Unix Tutorial #9: Automating The Analysis</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">fMRI Short Course with FSL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_Intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_01_DataDownload.html">fMRI Tutorial #1: Downloading the Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_02_ExperimentalDesign.html">fMRI Tutorial #2: Overview of The Flanker Task</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_03_LookingAtTheData.html">fMRI Tutorial #3: Looking at the Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_04_Preprocessing.html">fMRI Tutorial #4: Preprocessing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_05_1stLevelAnalysis.html">fMRI Tutorial #5: Statistics and Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_06_Scripting.html">fMRI Tutorial #6: Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_07_2ndLevelAnalysis.html">fMRI Tutorial #7: 2nd-Level Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_08_3rdLevelAnalysis.html">fMRI Tutorial #8: 3rd-Level Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_09_ROIAnalysis.html">fMRI Tutorial #9: ROI Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_10_Summary.html">fMRI Tutorial #10: Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_Appendices.html">fMRI Short Course: Appendices</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">FreeSurfer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../FreeSurfer/FreeSurfer_Introduction.html">FreeSurfer Short Course</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">E-Prime</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../E-Prime/E-Prime_Overview.html">Overview of E-Prime</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">AFNI</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../AFNI/AFNI_Overview.html">AFNI Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">SPM</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../SPM/SPM_Overview.html">SPM Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Functional Connectivity with the CONN Toolbox</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../FunctionalConnectivity/CONN_Overview.html">Functional Connectivity and the CONN Toolbox</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Parametric Modulation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../PM/PM_Overview.html">Parametric Modulation in SPM, FSL, and AFNI</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Image Visualization with MRIcroGL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../MRIcroGL/MRIcroGL_Overview.html">Image Visualization with MRIcroGL</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Introduction to the Human Connectome Project (HCP)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../HCP/HCP_Overview.html">Introduction to the Human Connectome Project</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Finite Impulse Response (FIR) Models</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../FIR/FIR_Overview.html">Finite Impulse Response (FIR)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">fMRI Concepts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Practicals/DesignOptimization.html">Design Optimization</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Diffusion Analysis with MRtrix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../MRtrix/MRtrix_Introduction.html">Introduction to MRtrix</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ASL Analysis</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/ASL_Techniques.html">fASL Tutorial #1: Background</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/fASL_02_Download.html">fASL Tutorial #2: Downloading and Installing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/fASL_03_Task.html">fASL Tutorial #3: The N-Back Task</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/04_fASL_GUI.html">fASL Tutorial #4: The GUI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/05_fASL_Results.html">fASL Tutorial #5: Examining the Results</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/06_fASL_Quantification.html">fASL Tutorial #6: Quantification</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Frequently Asked Questions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../FrequentlyAskedQuestions/FrequentlyAskedQuestions.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Statistics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Statistics/GIMME.html">GIMME (Group Iterative Multiple Model Estimation)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Open Science</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../OpenScience/OS_Overview.html">Open Science</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced Normalization Tools (ANTs)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ANTs/ANTs_Overview.html">Advanced Normalization Tools (ANTs)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tract-Based Spatial Statistics (TBSS)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../TBSS/TBSS_Overview.html">Introduction to Tract-Based Spatial Statistics (TBSS)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Statistics for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Stats/Stats_Overview.html">Statistics for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Machine Learning for Neuroimagers</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../ML_Overview.html">Machine Learning for Neuroimagers</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../ML_Overview.html#overview">Overview</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="ML_00_Introduction.html">Machine Learning: Introduction to Basic Terms and Concepts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ML_01_Brown_Example.html">Machine Learning Tutorial #1: Basic Example with Support Vector Machines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ML_02_Haxby_Intro_Download.html">Machine Learning Tutorial #2: The Haxby Dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ML_03_Haxby_Preprocessing.html">Machine Learning Tutorial #3: Preprocessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ML_04_Haxby_Timing.html">Machine Learning Tutorial #4: Creating the Timing Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ML_05_Haxby_MVPA.html">Machine Learning Tutorial #5: MVPA Analysis with The Decoding Toolbox</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ML_06_Haxby_Scripting.html">Machine Learning Tutorial #6: Scripting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ML_07_Haxby_GroupAnalysis.html">Machine Learning Tutorial #7: Group Analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ML_08_Haxby_NonParametric.html">Machine Learning Tutorial #8: Non-Parametric Analysis</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Machine Learning Tutorial #9: Representational Similarity Analysis</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#downloading-the-data">Downloading the Data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#creating-the-script">Creating the Script</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#running-the-script-and-viewing-the-output">Running the Script and Viewing the Output</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#creating-dissimilarity-matrices-and-using-other-similarity-metrics">Creating Dissimilarity Matrices and Using Other Similarity Metrics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#comparing-dissimilarity-across-rois">Comparing Dissimilarity across ROIs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#averaging-across-runs">Averaging Across Runs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#exercises">Exercises</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ML_10_Hyperalignment.html">Machine Learning Tutorial #10: Hyperalignment</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Slicer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Slicer/Slicer_Overview.html">Slicer Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">CAT12</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../CAT12/CAT12_Overview.html">Voxel-Based Morphometry with CAT12</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Using the Supercomputer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Supercomputer/Supercomputer_Overview.html">Introduction to Supercomputing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Matlab for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Matlab/Matlab_Overview.html">Matlab for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ITK-Snap</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ITK-Snap/ITK-Snap_Overview.html">ITK-Snap_Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Python for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../PythonForNeuroimagers/PythonForNeuroimagers_Overview.html">Python for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Meta-Analysis for fMRI</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../MetaAnalysis/MetaAnalysis_Overview.html">Meta-Analysis for Neuroimagers</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Andy's Brain Book</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../ML_Overview.html">Machine Learning for Neuroimagers</a></li>
+      <li class="breadcrumb-item active">Machine Learning Tutorial #9: Representational Similarity Analysis</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/ML/ML_Short_Course/ML_09_RSA.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="machine-learning-tutorial-9-representational-similarity-analysis">
+<span id="ml-09-rsa"></span><h1>Machine Learning Tutorial #9: Representational Similarity Analysis<a class="headerlink" href="#machine-learning-tutorial-9-representational-similarity-analysis" title="Link to this heading"></a></h1>
+<hr class="docutils" />
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading"></a></h2>
+<p>Representational Similarity Analysis (RSA)</p>
+</section>
+<section id="downloading-the-data">
+<h2>Downloading the Data<a class="headerlink" href="#downloading-the-data" title="Link to this heading"></a></h2>
+<p>The dataset for this analysis can be found <a class="reference external" href="http://www.bccn-berlin.de/tdt/downloads/sub01_firstlevel.zip">here</a>, on The Decoding Toolbox’s website. This folder contains the fully preprocessed and analyzed data for a single subject, with betas generated for each trial of each condition. After you have downloaded the dataset, move it to your Desktop directory, and look inside:</p>
+<figure class="align-default">
+<img alt="../../_images/09_sub01_Directory.png" src="../../_images/09_sub01_Directory.png" />
+</figure>
+<p>The folder <code class="docutils literal notranslate"><span class="pre">sub01_GLM</span></code> contains the betas estimated from the GLM; the folder <code class="docutils literal notranslate"><span class="pre">sub01_ROI</span></code> contains different ROIs that can be used for the classifications analysis, such as the left primary motor cortex and primary visual cortex; and <code class="docutils literal notranslate"><span class="pre">sub01_struct</span></code> contains the anatomical image. For this tutorial, we will be using the data in the GLM and ROI folders.</p>
+<p>In this experiment, subjects were given instructions to respond to either the color of the stimuli, or the direction of the stimuli. After seeing either red or green dots move up or down, the subjects then responded with a left or right button press, mapped on to either the direction or the color of the stimuli.</p>
+<figure class="align-default">
+<img alt="../../_images/09_Experiment_Design.png" src="../../_images/09_Experiment_Design.png" />
+</figure>
+<p>As a result, there were eight regressors entered into the model, in the following order (regressor name is in parentheses to the right of each one, as returned by the command <code class="docutils literal notranslate"><span class="pre">display_regressor_names</span></code> run in the directory <code class="docutils literal notranslate"><span class="pre">sub01_GLM</span></code>):</p>
+<ol class="arabic simple">
+<li><p>Instruction cue to respond to the color of the stimulus (color);</p></li>
+<li><p>Instruction cue to respond to the direction of the stimulus (direction);</p></li>
+<li><p>Stimuli moving in the “up” direction after the direction cue (up);</p></li>
+<li><p>Stimuli moving in the “down” direction after the direction cue (down);</p></li>
+<li><p>Red stimuli after the color cue (red);</p></li>
+<li><p>Green stimuli after the color cue (green);</p></li>
+<li><p>Left button presses (button left);</p></li>
+<li><p>Right button presses (button right).</p></li>
+</ol>
+<p>There are also constant, or baseline, regressors included at the end of each run to model the intercept, which we will ignore for our similarity analysis.</p>
+<p>These can be verified in SPM by opening SPM12, clicking <code class="docutils literal notranslate"><span class="pre">Review</span></code>, and selecting the <code class="docutils literal notranslate"><span class="pre">SPM.mat</span></code> file in the <code class="docutils literal notranslate"><span class="pre">sub01_GLM</span></code> directory.</p>
+<figure class="align-default">
+<img alt="../../_images/09_GLM.png" src="../../_images/09_GLM.png" />
+</figure>
+</section>
+<section id="creating-the-script">
+<h2>Creating the Script<a class="headerlink" href="#creating-the-script" title="Link to this heading"></a></h2>
+<p>The Decoding Toolbox has a template RSA script lcoated within <code class="docutils literal notranslate"><span class="pre">tdt_3.999F/decoding_toolbox/templates</span></code>; if your path already points to this folder, you can navigate to the folder <code class="docutils literal notranslate"><span class="pre">sub01_firstlevel</span></code>, and then type <code class="docutils literal notranslate"><span class="pre">open</span> <span class="pre">decoding_template_similarity.m</span></code>. Save a copy of it to the <code class="docutils literal notranslate"><span class="pre">sub01_firstlevel</span></code> folder, and call it <code class="docutils literal notranslate"><span class="pre">RSA_SampleScript.m</span></code>. Open this new file in your Matlab terminal by typing <code class="docutils literal notranslate"><span class="pre">RSA_SampleScript.m</span></code>, and close the original template script.</p>
+<p>First, change the <code class="docutils literal notranslate"><span class="pre">cfg.analysis</span></code> on line 14 to from <code class="docutils literal notranslate"><span class="pre">searchlight</span></code> to <code class="docutils literal notranslate"><span class="pre">ROI</span></code>, since we will be using ROIs for our similarity analysis. The code on lines 17 and 20 specify where to write the results and where the betas are located, respectively; change them to <code class="docutils literal notranslate"><span class="pre">cfg.results.dir</span> <span class="pre">=</span> <span class="pre">``[pwd</span> <span class="pre">'/sub01_Results'];</span></code> and <code class="docutils literal notranslate"><span class="pre">beta_loc</span> <span class="pre">=</span> <span class="pre">[pwd</span> <span class="pre">'/sub01_GLM'];</span></code>. Lastly, if we are interested in RSA in the left motor cortex, for example, we would change line 27 to be <code class="docutils literal notranslate"><span class="pre">cfg.files.mask</span> <span class="pre">=</span> <span class="pre">[pwd</span> <span class="pre">'/sub01_ROI/m1_left.img'];</span></code>.</p>
+<figure class="align-default">
+<img alt="../../_images/09_Script_Edits.png" src="../../_images/09_Script_Edits.png" />
+</figure>
+<p>For now, leave the rest of the defaults as they are, noting on line 45 that the classification parameter output is set to <code class="docutils literal notranslate"><span class="pre">pearson</span></code>, i.e., correlation values. We will experiment with different options later, which can be found in the file <code class="docutils literal notranslate"><span class="pre">pattern_similarity.m</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you want to save disk space and overwrite the results each time you run the script, add the line <code class="docutils literal notranslate"><span class="pre">cfg.results.overwrite</span> <span class="pre">=</span> <span class="pre">1;</span></code> anywhere in your script before the last line (i.e., <code class="docutils literal notranslate"><span class="pre">results</span> <span class="pre">=</span> <span class="pre">decoding(cfg)</span></code>) I recommend doing this for the remainder of the tutorial.</p>
+</div>
+</section>
+<section id="running-the-script-and-viewing-the-output">
+<h2>Running the Script and Viewing the Output<a class="headerlink" href="#running-the-script-and-viewing-the-output" title="Link to this heading"></a></h2>
+<p>You can now run the script by typing <code class="docutils literal notranslate"><span class="pre">RSA_SampleScript</span></code>. After a few seconds, you should see a new variable in your workspace called <code class="docutils literal notranslate"><span class="pre">results</span></code>. Within this structure is a field called <code class="docutils literal notranslate"><span class="pre">other</span></code>, which in turn has a sub-field called <code class="docutils literal notranslate"><span class="pre">output</span></code>. You can display all of the data in this matrix - in other words, all of the correlation values calculated for each condition - by typing <code class="docutils literal notranslate"><span class="pre">reuslts.other.output{1}</span></code>.</p>
+<p>However, the output is quite large, and it is probably easier to view and understand the output if we plot it as a correlation matrix. To do that, type:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">figure</span><span class="p">;</span> <span class="n">heatmap</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">other</span><span class="o">.</span><span class="n">output</span><span class="p">{</span><span class="mi">1</span><span class="p">},</span> <span class="s1">&#39;Colormap&#39;</span><span class="p">,</span> <span class="n">jet</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This will generate a plot that looks like this:</p>
+<figure class="align-default">
+<img alt="../../_images/09_CorrelationMatrix.png" src="../../_images/09_CorrelationMatrix.png" />
+</figure>
+<p>Note that there are 64 rows, and 64 columns, since there are 8 conditions and 8 runs. For example, the first column and second row (i.e., cell(1,2)) represents the correlation between the instructions for color and the instructions for direction, which in this case is <code class="docutils literal notranslate"><span class="pre">0.8059</span></code>; you can verify this by hovering your cursor over that cell. (Also note that the matrix is symmetrical around the diagonal, and that the upper triangle is identical to the lower triangle.) You can see a clear pattern in the matrix, which appears to have eight separate 8x8 matrices running along the diagonal, representing within each run the correlation of the conditions with each another. There are correlations off the diagonal as well, which represent the correlation of a condition in one run with the condition in another run; for example, cell (1,9) represents the correlation between the instructions for color for run 1 with the instructions for color for run 2.</p>
+<p>To simplify the matrix, let’s focus in on the first 8x8 matrix by typing:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">figure</span><span class="p">;</span> <span class="n">heatmap</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">other</span><span class="o">.</span><span class="n">output</span><span class="p">{</span><span class="mi">1</span><span class="p">}(</span><span class="mi">1</span><span class="p">:</span><span class="mi">8</span><span class="p">,</span><span class="mi">1</span><span class="p">:</span><span class="mi">8</span><span class="p">),</span> <span class="s1">&#39;Colormap&#39;</span><span class="p">,</span> <span class="n">jet</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Which will return a figure like this:</p>
+<figure class="align-default">
+<img alt="../../_images/09_Run1_Correlation.png" src="../../_images/09_Run1_Correlation.png" />
+</figure>
+<p>And if you want just the lower diagonal, you can type:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">figure</span><span class="p">;</span> <span class="n">heatmap</span><span class="p">(</span><span class="n">tril</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">other</span><span class="o">.</span><span class="n">output</span><span class="p">{</span><span class="mi">1</span><span class="p">}(</span><span class="mi">1</span><span class="p">:</span><span class="mi">8</span><span class="p">,</span><span class="mi">1</span><span class="p">:</span><span class="mi">8</span><span class="p">)),</span> <span class="s1">&#39;Colormap&#39;</span><span class="p">,</span> <span class="n">jet</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Along with a title to describe what we are looking at:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Correlations between conditions for run1, left M1 ROI&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>And annotations along the x-axis:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;1=color instructions; 2=direction instructions; 3=up; 4=down; 5=red; 6=green; 7=left button press; 8=right button press&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../../_images/09_Run1_Correlations_LowerDiagonal.png" src="../../_images/09_Run1_Correlations_LowerDiagonal.png" />
+</figure>
+<p>The same procedure can be done for the other runs; for example, run 2 can be visualized with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">figure</span><span class="p">;</span> <span class="n">heatmap</span><span class="p">(</span><span class="n">tril</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">other</span><span class="o">.</span><span class="n">output</span><span class="p">{</span><span class="mi">1</span><span class="p">}(</span><span class="mi">9</span><span class="p">:</span><span class="mi">17</span><span class="p">,</span><span class="mi">9</span><span class="p">:</span><span class="mi">17</span><span class="p">)),</span> <span class="s1">&#39;Colormap&#39;</span><span class="p">,</span> <span class="n">jet</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>And so forth.</p>
+</section>
+<section id="creating-dissimilarity-matrices-and-using-other-similarity-metrics">
+<h2>Creating Dissimilarity Matrices and Using Other Similarity Metrics<a class="headerlink" href="#creating-dissimilarity-matrices-and-using-other-similarity-metrics" title="Link to this heading"></a></h2>
+<p>We have now generated similarity matrices. Remember, however, that we are interested in <a href="#id1"><span class="problematic" id="id2">*</span></a>dis*similarity matrices; a measure of how far apart two categories are, which can be measured from an absolute zero point. To that end, we will need to subtract these correlation values from 1, which can be done with a simple edit to a previous line of code:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">figure</span><span class="p">;</span> <span class="n">heatmap</span><span class="p">(</span><span class="n">tril</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">results</span><span class="o">.</span><span class="n">other</span><span class="o">.</span><span class="n">output</span><span class="p">{</span><span class="mi">1</span><span class="p">}(</span><span class="mi">1</span><span class="p">:</span><span class="mi">8</span><span class="p">,</span><span class="mi">1</span><span class="p">:</span><span class="mi">8</span><span class="p">)),</span> <span class="s1">&#39;Colormap&#39;</span><span class="p">,</span> <span class="n">jet</span><span class="p">);</span> <span class="n">title</span><span class="p">(</span><span class="s1">&#39;Correlations between conditions for run1, left M1 ROI&#39;</span><span class="p">);</span> <span class="o">...</span>
+<span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;1=color instructions; 2=direction instructions; 3=up; 4=down; 5=red; 6=green; 7=left button press; 8=right button press&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../../_images/09_DissimilarityMatrix.png" src="../../_images/09_DissimilarityMatrix.png" />
+</figure>
+<p>Note that the dissimilarity is relatively low for left and right button presses, which, given that we are looking at activity in the left motor cortex, should make sense. The highest dissimilarity is between left and right button presses, and the instruction cue for both color and direction.</p>
+<p>If we wanted to run statistics on these values, it would probably be easier to use transformed r-to-z values, which are more normally distributed. In fact, there are many other similarity metrics you can use, which can be found in the documentation for the function <code class="docutils literal notranslate"><span class="pre">pattern_similarity.m</span></code>, located in The Decoding Toolbox libraries. The options have been reprinted below:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="s1">&#39;gmatrix&#39;</span> <span class="ow">or</span> <span class="s1">&#39;gma&#39;</span><span class="p">:</span> <span class="n">X</span><span class="s1">&#39;*Y, commonly used in pattern component</span>
+    <span class="n">modeling</span><span class="p">,</span> <span class="n">can</span> <span class="n">be</span> <span class="n">used</span> <span class="n">to</span> <span class="n">construct</span> <span class="n">Euclidean</span> <span class="n">distance</span>
+<span class="o">-</span> <span class="s1">&#39;cveuclidean2&#39;</span> <span class="ow">or</span> <span class="s1">&#39;cve&#39;</span><span class="p">:</span> <span class="n">will</span> <span class="n">calculate</span> <span class="n">the</span> <span class="n">cross</span><span class="o">-</span><span class="n">validated</span>
+    <span class="n">version</span> <span class="n">of</span> <span class="n">the</span> <span class="n">squared</span> <span class="n">Euclidean</span> <span class="n">distance</span> <span class="n">between</span> <span class="n">X</span> <span class="ow">and</span> <span class="n">Y</span>
+<span class="o">-</span> <span class="s1">&#39;euclidean&#39;</span> <span class="ow">or</span> <span class="s1">&#39;euc&#39;</span><span class="p">:</span>  <span class="n">Euclidean</span> <span class="n">distance</span>
+<span class="o">-</span> <span class="s1">&#39;Pearson&#39;</span><span class="p">,</span> <span class="s1">&#39;pea&#39;</span> <span class="ow">or</span> <span class="s1">&#39;cor&#39;</span><span class="p">:</span> <span class="n">Pearson</span> <span class="n">correlation</span> <span class="n">similarity</span>
+<span class="o">-</span> <span class="s1">&#39;zcorr&#39;</span> <span class="ow">or</span> <span class="s1">&#39;zco&#39;</span><span class="p">:</span> <span class="n">Fisher</span><span class="o">-</span><span class="n">z</span><span class="o">-</span><span class="n">transformed</span> <span class="n">correlation</span> <span class="n">similarity</span>
+<span class="o">-</span> <span class="s1">&#39;Kendall&#39;</span> <span class="ow">or</span> <span class="s1">&#39;ken&#39;</span><span class="p">:</span> <span class="n">Kendall</span><span class="s1">&#39;s tau rank correlation similarity</span>
+<span class="o">-</span> <span class="s1">&#39;Spearman&#39;</span> <span class="ow">or</span> <span class="s1">&#39;spe&#39;</span><span class="p">:</span> <span class="n">Spearman</span><span class="s1">&#39;s rho rank correlation similarity</span>
+<span class="o">-</span> <span class="s1">&#39;covariance&#39;</span> <span class="ow">or</span> <span class="s1">&#39;cov&#39;</span><span class="p">:</span> <span class="n">Sample</span> <span class="n">covariance</span> <span class="p">(</span><span class="n">divides</span> <span class="n">by</span> <span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>We have used <code class="docutils literal notranslate"><span class="pre">Pearson</span></code> in the example above; let’s now change it to a z-transformed metric, by going back to our <code class="docutils literal notranslate"><span class="pre">RSA_SampleScript.m</span></code> and editing line 45:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cfg</span><span class="o">.</span><span class="n">decoding</span><span class="o">.</span><span class="n">train</span><span class="o">.</span><span class="n">classification</span><span class="o">.</span><span class="n">model_parameters</span> <span class="o">=</span> <span class="s1">&#39;zcorr&#39;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Rerun the script, and use the same code above to plot the z-transformed values, which should generate something like this:</p>
+<figure class="align-default">
+<img alt="../../_images/09_Run1_ZScores_LowerDiagonal.png" src="../../_images/09_Run1_ZScores_LowerDiagonal.png" />
+</figure>
+<p>These values can then be used to compute averages across runs, and then across subjects, and then between groups, as desired.</p>
+</section>
+<section id="comparing-dissimilarity-across-rois">
+<h2>Comparing Dissimilarity across ROIs<a class="headerlink" href="#comparing-dissimilarity-across-rois" title="Link to this heading"></a></h2>
+<p>So far, we have used the voxels within the left M1 for creating similarity matrices. To take this analysis a step further, we might be interested in comparing these dissimilarity matrices across ROIs. For example, how are the dissimilarity matrices different across the motor and visual cortices? We can use these differences to see how they provide evidence for or against certain computational models.</p>
+<p>Continuing with this example, let’s add the visual cortex ROI to our analysis. We will edit line 27 of the RSA_SampleScript.m file to read:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cfg</span><span class="o">.</span><span class="n">files</span><span class="o">.</span><span class="n">mask</span> <span class="o">=</span> <span class="p">{[</span><span class="n">pwd</span> <span class="s1">&#39;/sub01_ROI/m1_left.img&#39;</span><span class="p">],</span> <span class="p">[</span><span class="n">pwd</span> <span class="s1">&#39;/sub01_ROI/v1.img&#39;</span><span class="p">]};</span>
+</pre></div>
+</div>
+<p>Keep all the other parts of the script the same, and run it from the command line by typing <code class="docutils literal notranslate"><span class="pre">RSA_SampleScript</span></code>. You will now have two sub-fields in the <code class="docutils literal notranslate"><span class="pre">output</span></code> field of the <code class="docutils literal notranslate"><span class="pre">results</span></code> structure; you can plot the Fisher-to-z transformed scores for the V1 ROI by typing:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">figure</span><span class="p">;</span> <span class="n">heatmap</span><span class="p">(</span><span class="n">tril</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">results</span><span class="o">.</span><span class="n">other</span><span class="o">.</span><span class="n">output</span><span class="p">{</span><span class="mi">2</span><span class="p">}(</span><span class="mi">1</span><span class="p">:</span><span class="mi">8</span><span class="p">,</span><span class="mi">1</span><span class="p">:</span><span class="mi">8</span><span class="p">)),</span> <span class="s1">&#39;Colormap&#39;</span><span class="p">,</span> <span class="n">jet</span><span class="p">);</span> <span class="o">...</span>
+<span class="n">title</span><span class="p">(</span><span class="s1">&#39;Correlations between conditions for run1, V1 ROI&#39;</span><span class="p">);</span> <span class="o">...</span>
+<span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;1=color instructions; 2=direction instructions; 3=up; 4=down; 5=red; 6=green; 7=left button press; 8=right button press&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<figure class="align-default">
+<img alt="../../_images/09_Run1_ZScores_LowerDiagonal_V1.png" src="../../_images/09_Run1_ZScores_LowerDiagonal_V1.png" />
+</figure>
+<p>Note how the dissimilarity z-values between the conditions Red, Green, Up, and Down, are roughly similar to what they were in the motor cortex ROI. However, the dissimilarity of the Instruction cues with the other conditions, and of the button presses with the other conditions, are much higher. This could be because motor activity is represented very differently in the visual cortex than in the motor cortex, and because reading instructions elicits a different pattern of visual activity than simply viewing colored objects move up or down. How to interpret these differences is up to you.</p>
+</section>
+<section id="averaging-across-runs">
+<h2>Averaging Across Runs<a class="headerlink" href="#averaging-across-runs" title="Link to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The following section should be equivalent to changing line 54 of RSA_SampleScript.m to <code class="docutils literal notranslate"><span class="pre">cfg.results.output</span> <span class="pre">=</span> <span class="pre">'other_average';</span></code>; however, as of this time, it seems to give identical output to the code above.</p>
+</div>
+<p>To prepare the data for a group-level analysis, we will first need to average the similarity metrics across runs. In this case, since each run is an 8x8 matrix, we can extract the values with the following code:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ColorInstructions_ColorInstructions</span> <span class="o">=</span> <span class="n">mean</span><span class="p">(</span><span class="n">diag</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">results</span><span class="o">.</span><span class="n">other</span><span class="o">.</span><span class="n">output</span><span class="p">{</span><span class="mi">1</span><span class="p">}(</span><span class="mi">1</span><span class="p">:</span><span class="mi">8</span><span class="p">:</span><span class="n">end</span><span class="p">,</span><span class="mi">1</span><span class="p">:</span><span class="mi">8</span><span class="p">:</span><span class="n">end</span><span class="p">)))</span>
+<span class="n">ColorInstructions_DirectionInstructions</span> <span class="o">=</span> <span class="n">mean</span><span class="p">(</span><span class="n">diag</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">results</span><span class="o">.</span><span class="n">other</span><span class="o">.</span><span class="n">output</span><span class="p">{</span><span class="mi">1</span><span class="p">}(</span><span class="mi">2</span><span class="p">:</span><span class="mi">8</span><span class="p">:</span><span class="n">end</span><span class="p">,</span><span class="mi">1</span><span class="p">:</span><span class="mi">8</span><span class="p">:</span><span class="n">end</span><span class="p">)))</span>
+<span class="n">ColorInstructions_Up</span> <span class="o">=</span> <span class="n">mean</span><span class="p">(</span><span class="n">diag</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">results</span><span class="o">.</span><span class="n">other</span><span class="o">.</span><span class="n">output</span><span class="p">{</span><span class="mi">1</span><span class="p">}(</span><span class="mi">3</span><span class="p">:</span><span class="mi">8</span><span class="p">:</span><span class="n">end</span><span class="p">,</span><span class="mi">1</span><span class="p">:</span><span class="mi">8</span><span class="p">:</span><span class="n">end</span><span class="p">)))</span>
+<span class="n">ColorInstructions_Down</span> <span class="o">=</span> <span class="n">mean</span><span class="p">(</span><span class="n">diag</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">results</span><span class="o">.</span><span class="n">other</span><span class="o">.</span><span class="n">output</span><span class="p">{</span><span class="mi">1</span><span class="p">}(</span><span class="mi">4</span><span class="p">:</span><span class="mi">8</span><span class="p">:</span><span class="n">end</span><span class="p">,</span><span class="mi">1</span><span class="p">:</span><span class="mi">8</span><span class="p">:</span><span class="n">end</span><span class="p">)))</span>
+<span class="n">ColorInstructions_Red</span> <span class="o">=</span> <span class="n">mean</span><span class="p">(</span><span class="n">diag</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">results</span><span class="o">.</span><span class="n">other</span><span class="o">.</span><span class="n">output</span><span class="p">{</span><span class="mi">1</span><span class="p">}(</span><span class="mi">5</span><span class="p">:</span><span class="mi">8</span><span class="p">:</span><span class="n">end</span><span class="p">,</span><span class="mi">1</span><span class="p">:</span><span class="mi">8</span><span class="p">:</span><span class="n">end</span><span class="p">)))</span>
+<span class="n">ColorInstructions_Green</span> <span class="o">=</span> <span class="n">mean</span><span class="p">(</span><span class="n">diag</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">results</span><span class="o">.</span><span class="n">other</span><span class="o">.</span><span class="n">output</span><span class="p">{</span><span class="mi">1</span><span class="p">}(</span><span class="mi">6</span><span class="p">:</span><span class="mi">8</span><span class="p">:</span><span class="n">end</span><span class="p">,</span><span class="mi">1</span><span class="p">:</span><span class="mi">8</span><span class="p">:</span><span class="n">end</span><span class="p">)))</span>
+<span class="n">ColorInstructions_LeftButtonPress</span> <span class="o">=</span> <span class="n">mean</span><span class="p">(</span><span class="n">diag</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">results</span><span class="o">.</span><span class="n">other</span><span class="o">.</span><span class="n">output</span><span class="p">{</span><span class="mi">1</span><span class="p">}(</span><span class="mi">7</span><span class="p">:</span><span class="mi">8</span><span class="p">:</span><span class="n">end</span><span class="p">,</span><span class="mi">1</span><span class="p">:</span><span class="mi">8</span><span class="p">:</span><span class="n">end</span><span class="p">)))</span>
+<span class="n">ColorInstructions_RightButtonPress</span> <span class="o">=</span> <span class="n">mean</span><span class="p">(</span><span class="n">diag</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">results</span><span class="o">.</span><span class="n">other</span><span class="o">.</span><span class="n">output</span><span class="p">{</span><span class="mi">1</span><span class="p">}(</span><span class="mi">8</span><span class="p">:</span><span class="mi">8</span><span class="p">:</span><span class="n">end</span><span class="p">,</span><span class="mi">1</span><span class="p">:</span><span class="mi">8</span><span class="p">:</span><span class="n">end</span><span class="p">)))</span>
+
+<span class="n">DirectionInstructions_ColorInstructions</span> <span class="o">=</span> <span class="n">mean</span><span class="p">(</span><span class="n">diag</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">results</span><span class="o">.</span><span class="n">other</span><span class="o">.</span><span class="n">output</span><span class="p">{</span><span class="mi">1</span><span class="p">}(</span><span class="mi">1</span><span class="p">:</span><span class="mi">8</span><span class="p">:</span><span class="n">end</span><span class="p">,</span><span class="mi">2</span><span class="p">:</span><span class="mi">8</span><span class="p">:</span><span class="n">end</span><span class="p">)))</span>
+<span class="n">DirectionInstructions_DirectionInstructions</span> <span class="o">=</span> <span class="n">mean</span><span class="p">(</span><span class="n">diag</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">results</span><span class="o">.</span><span class="n">other</span><span class="o">.</span><span class="n">output</span><span class="p">{</span><span class="mi">1</span><span class="p">}(</span><span class="mi">2</span><span class="p">:</span><span class="mi">8</span><span class="p">:</span><span class="n">end</span><span class="p">,</span><span class="mi">2</span><span class="p">:</span><span class="mi">8</span><span class="p">:</span><span class="n">end</span><span class="p">)))</span>
+<span class="n">DirectionInstructions_Up</span> <span class="o">=</span> <span class="n">mean</span><span class="p">(</span><span class="n">diag</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">results</span><span class="o">.</span><span class="n">other</span><span class="o">.</span><span class="n">output</span><span class="p">{</span><span class="mi">1</span><span class="p">}(</span><span class="mi">3</span><span class="p">:</span><span class="mi">8</span><span class="p">:</span><span class="n">end</span><span class="p">,</span><span class="mi">2</span><span class="p">:</span><span class="mi">8</span><span class="p">:</span><span class="n">end</span><span class="p">)))</span>
+<span class="n">DirectionInstructions_Down</span> <span class="o">=</span> <span class="n">mean</span><span class="p">(</span><span class="n">diag</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">results</span><span class="o">.</span><span class="n">other</span><span class="o">.</span><span class="n">output</span><span class="p">{</span><span class="mi">1</span><span class="p">}(</span><span class="mi">4</span><span class="p">:</span><span class="mi">8</span><span class="p">:</span><span class="n">end</span><span class="p">,</span><span class="mi">2</span><span class="p">:</span><span class="mi">8</span><span class="p">:</span><span class="n">end</span><span class="p">)))</span>
+<span class="n">DirectionInstructions_Red</span> <span class="o">=</span> <span class="n">mean</span><span class="p">(</span><span class="n">diag</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">results</span><span class="o">.</span><span class="n">other</span><span class="o">.</span><span class="n">output</span><span class="p">{</span><span class="mi">1</span><span class="p">}(</span><span class="mi">5</span><span class="p">:</span><span class="mi">8</span><span class="p">:</span><span class="n">end</span><span class="p">,</span><span class="mi">2</span><span class="p">:</span><span class="mi">8</span><span class="p">:</span><span class="n">end</span><span class="p">)))</span>
+<span class="n">DirectionInstructions_Green</span> <span class="o">=</span> <span class="n">mean</span><span class="p">(</span><span class="n">diag</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">results</span><span class="o">.</span><span class="n">other</span><span class="o">.</span><span class="n">output</span><span class="p">{</span><span class="mi">1</span><span class="p">}(</span><span class="mi">6</span><span class="p">:</span><span class="mi">8</span><span class="p">:</span><span class="n">end</span><span class="p">,</span><span class="mi">2</span><span class="p">:</span><span class="mi">8</span><span class="p">:</span><span class="n">end</span><span class="p">)))</span>
+<span class="n">DirectionInstructions_LeftButtonPress</span> <span class="o">=</span> <span class="n">mean</span><span class="p">(</span><span class="n">diag</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">results</span><span class="o">.</span><span class="n">other</span><span class="o">.</span><span class="n">output</span><span class="p">{</span><span class="mi">1</span><span class="p">}(</span><span class="mi">7</span><span class="p">:</span><span class="mi">8</span><span class="p">:</span><span class="n">end</span><span class="p">,</span><span class="mi">2</span><span class="p">:</span><span class="mi">8</span><span class="p">:</span><span class="n">end</span><span class="p">)))</span>
+<span class="n">DirectionInstructions_RightButtonPress</span> <span class="o">=</span> <span class="n">mean</span><span class="p">(</span><span class="n">diag</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">results</span><span class="o">.</span><span class="n">other</span><span class="o">.</span><span class="n">output</span><span class="p">{</span><span class="mi">1</span><span class="p">}(</span><span class="mi">8</span><span class="p">:</span><span class="mi">8</span><span class="p">:</span><span class="n">end</span><span class="p">,</span><span class="mi">2</span><span class="p">:</span><span class="mi">8</span><span class="p">:</span><span class="n">end</span><span class="p">)))</span>
+</pre></div>
+</div>
+<p>And so on, for every other combination of conditions. These can then be concatenated together, and visualized as an 8x8 matrix.</p>
+</section>
+<section id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>When you compute a dissimilarity matrix by subtracting the correlation values from 1, you may see that some values are greater than 1. Why is this? What does this mean about the similarity of that condition to another condition?</p></li>
+<li><p>Run the same RSA analysis, this time with <code class="docutils literal notranslate"><span class="pre">v4_both.img</span></code>. (Remember that you can run multiple ROI analyses by using brace notation, e.g., cfg.files.mask = {[pwd ‘/sub01_ROI/m1_left.img’], [pwd ‘/sub01_ROI/v1.img’], [pwd ‘/sub01_ROI/v4_both.img’]}.) How are the similarity matrices different? How are they similar? Why do you see these differences or similarities? Show the output from each dissimilarity matrix for each analysis.</p></li>
+</ol>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="ML_08_Haxby_NonParametric.html" class="btn btn-neutral float-left" title="Machine Learning Tutorial #8: Non-Parametric Analysis" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="ML_10_Hyperalignment.html" class="btn btn-neutral float-right" title="Machine Learning Tutorial #10: Hyperalignment" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Andy Jahn.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

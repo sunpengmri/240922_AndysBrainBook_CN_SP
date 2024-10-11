@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>E-Prime Tutorial #3: Slides and Advanced Properties &mdash; Andy&#39;s Brain Book 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b76e3c8a" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=f2a433a1"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="E-Prime Tutorial #4: Lists, Procedures, and Attributes" href="EP_04_Lists_Procedures_Attributes.html" />
+    <link rel="prev" title="Intermezzo: The Stroop Task" href="EP_Intermezzo_Stroop.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Andy's Brain Book
+          </a>
+              <div class="version">
+                1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Install</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../installation/fsl_mac_install.html">Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Unix for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_Intro.html">What is Unix?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_01_Navigation.html">Unix Tutorial #1: 目录操作 (Directories and Navigation)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_02_CopyRemove.html">Unix Tutorial #2: Copying and Removing Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_03_ReadingTextFiles.html">Unix Tutorial #3: Reading Text Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_04_ShellsVariables.html">Unix Tutorial #4: Shells and Path Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_05_ForLoops.html">Unix Tutorial #5: For-Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_06_IfElse.html">Unix Tutorial #6: Conditional Statements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_07_Scripting.html">Unix Tutorial #7: Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_08_Sed.html">Unix Tutorial #8: The Sed Command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_09_AutomatingTheAnalysis.html">Unix Tutorial #9: Automating The Analysis</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">fMRI Short Course with FSL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_Intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_01_DataDownload.html">fMRI Tutorial #1: Downloading the Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_02_ExperimentalDesign.html">fMRI Tutorial #2: Overview of The Flanker Task</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_03_LookingAtTheData.html">fMRI Tutorial #3: Looking at the Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_04_Preprocessing.html">fMRI Tutorial #4: Preprocessing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_05_1stLevelAnalysis.html">fMRI Tutorial #5: Statistics and Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_06_Scripting.html">fMRI Tutorial #6: Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_07_2ndLevelAnalysis.html">fMRI Tutorial #7: 2nd-Level Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_08_3rdLevelAnalysis.html">fMRI Tutorial #8: 3rd-Level Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_09_ROIAnalysis.html">fMRI Tutorial #9: ROI Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_10_Summary.html">fMRI Tutorial #10: Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_Appendices.html">fMRI Short Course: Appendices</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">FreeSurfer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../FreeSurfer/FreeSurfer_Introduction.html">FreeSurfer Short Course</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">E-Prime</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../E-Prime_Overview.html">Overview of E-Prime</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="EP_01_Introduction.html">E-Prime Tutorial #1: Introduction to E-Prime</a></li>
+<li class="toctree-l2"><a class="reference internal" href="EP_02_Objects.html">E-Prime Tutorial #2: Objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="EP_Intermezzo_Stroop.html">Intermezzo: The Stroop Task</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">E-Prime Tutorial #3: Slides and Advanced Properties</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#advanced-properties">Advanced Properties</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#duration-and-input-masks">Duration and Input Masks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#timing-mode">Timing Mode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pre-release">Pre-Release</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#the-slide-object">The Slide Object</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#summary">Summary</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#exercises">Exercises</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#video">Video</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="EP_04_Lists_Procedures_Attributes.html">E-Prime Tutorial #4: Lists, Procedures, and Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="EP_05_Counterbalancing.html">E-Prime Tutorial #5: Counterbalancing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="EP_06_FeedbackDisplay.html">E-Prime Tutorial #6: The FeedbackDisplay Object and an Introduction to Slide States</a></li>
+<li class="toctree-l2"><a class="reference internal" href="EP_07_SlideStates.html">E-Prime Tutorial #7: Slide States</a></li>
+<li class="toctree-l2"><a class="reference internal" href="EP_08_InlineObjects.html">E-Prime Tutorial #8: Inline Objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="EP_09_StartupInfo.html">E-Prime Tutorial #9: The Startup Info Tab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="EP_10_EMergeEDataAid.html">E-Prime Tutorial #10: E-Merge and E-Data Aid</a></li>
+<li class="toctree-l2"><a class="reference internal" href="EP_11_fMRI_Experiment.html">E-Prime Tutorial #11: Making an fMRI Experiment</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">AFNI</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../AFNI/AFNI_Overview.html">AFNI Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">SPM</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../SPM/SPM_Overview.html">SPM Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Functional Connectivity with the CONN Toolbox</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../FunctionalConnectivity/CONN_Overview.html">Functional Connectivity and the CONN Toolbox</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Parametric Modulation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../PM/PM_Overview.html">Parametric Modulation in SPM, FSL, and AFNI</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Image Visualization with MRIcroGL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../MRIcroGL/MRIcroGL_Overview.html">Image Visualization with MRIcroGL</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Introduction to the Human Connectome Project (HCP)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../HCP/HCP_Overview.html">Introduction to the Human Connectome Project</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Finite Impulse Response (FIR) Models</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../FIR/FIR_Overview.html">Finite Impulse Response (FIR)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">fMRI Concepts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Practicals/DesignOptimization.html">Design Optimization</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Diffusion Analysis with MRtrix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../MRtrix/MRtrix_Introduction.html">Introduction to MRtrix</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ASL Analysis</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/ASL_Techniques.html">fASL Tutorial #1: Background</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/fASL_02_Download.html">fASL Tutorial #2: Downloading and Installing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/fASL_03_Task.html">fASL Tutorial #3: The N-Back Task</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/04_fASL_GUI.html">fASL Tutorial #4: The GUI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/05_fASL_Results.html">fASL Tutorial #5: Examining the Results</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/06_fASL_Quantification.html">fASL Tutorial #6: Quantification</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Frequently Asked Questions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../FrequentlyAskedQuestions/FrequentlyAskedQuestions.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Statistics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Statistics/GIMME.html">GIMME (Group Iterative Multiple Model Estimation)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Open Science</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../OpenScience/OS_Overview.html">Open Science</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced Normalization Tools (ANTs)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ANTs/ANTs_Overview.html">Advanced Normalization Tools (ANTs)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tract-Based Spatial Statistics (TBSS)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../TBSS/TBSS_Overview.html">Introduction to Tract-Based Spatial Statistics (TBSS)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Statistics for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Stats/Stats_Overview.html">Statistics for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Machine Learning for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ML/ML_Overview.html">Machine Learning for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Slicer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Slicer/Slicer_Overview.html">Slicer Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">CAT12</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../CAT12/CAT12_Overview.html">Voxel-Based Morphometry with CAT12</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Using the Supercomputer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Supercomputer/Supercomputer_Overview.html">Introduction to Supercomputing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Matlab for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Matlab/Matlab_Overview.html">Matlab for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ITK-Snap</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ITK-Snap/ITK-Snap_Overview.html">ITK-Snap_Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Python for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../PythonForNeuroimagers/PythonForNeuroimagers_Overview.html">Python for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Meta-Analysis for fMRI</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../MetaAnalysis/MetaAnalysis_Overview.html">Meta-Analysis for Neuroimagers</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Andy's Brain Book</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../E-Prime_Overview.html">Overview of E-Prime</a></li>
+      <li class="breadcrumb-item active">E-Prime Tutorial #3: Slides and Advanced Properties</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/E-Prime/E-Prime_ShortCourse/EP_03_Duration_Termination_Pre-Release.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="e-prime-tutorial-3-slides-and-advanced-properties">
+<span id="ep-03-duration-termination-pre-release"></span><h1>E-Prime Tutorial #3: Slides and Advanced Properties<a class="headerlink" href="#e-prime-tutorial-3-slides-and-advanced-properties" title="Link to this heading"></a></h1>
+<hr class="docutils" />
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading"></a></h2>
+<p>This tutorial will show you how to make a basic Stroop experiment by using <strong>Slides</strong> - objects that can contain several sub-objects, or objects within the object, such as multiple images and text boxes. The Slide object’s properties are controlled by the property pages tab, while the sub-objects are controlled by the sub-object property pages tab.</p>
+<p>Before we learn about Slides, we will revisit our TextDisplay objects and examine more advanced properties: Duration, Timing Mode, and Pre-release. To begin, click and drag a TextDisplay object to the experimental timeline, rename it to “Welcome”, and type the following text in the textbox: “Welcome to the experiment! Press the SPACEBAR to continue.” To make the text easier to read, change the background color to Black, the font size to 24, and the font color to White. (These can be found in the General tab - ForeColor corresponding to the font color, and BackColor to the background color - and the Font tab.) You should see the changes in the TextDisplay object occur as you make them.</p>
+<p>At this point you could run the experiment by clicking the <strong>Run</strong> icon - a tiny purple man running through a door. When you are prompted to enter a Subject and Session number, use the defaults. You should then see the TextDisplay object briefly appear on the screeen and then disappear. This goes by too quickly to be of any use; how can we keep the text on the screen for a longer period of time, or only proceed when the subject makes a response?</p>
+</section>
+<section id="advanced-properties">
+<h2>Advanced Properties<a class="headerlink" href="#advanced-properties" title="Link to this heading"></a></h2>
+<hr class="docutils" />
+<section id="duration-and-input-masks">
+<h3>Duration and Input Masks<a class="headerlink" href="#duration-and-input-masks" title="Link to this heading"></a></h3>
+<p>By default, the TextDisplay object will be presented on the screen for 1000 milliseconds; in other words, one of its properties is a <strong>duration</strong> of 1000 milliseconds. This is probably too short for most purposes, and in any case you will want more flexbility for your own experiment. Within the TextDisplay object’s properties, the <code class="docutils literal notranslate"><span class="pre">Duration/Input</span></code> tab allows you control these details about the timing of the object. The <strong>Duration</strong> field, for example, specifies how long, in milliseconds, the object will be presented on the screen. You can enter any number you want - or, you can set it to <code class="docutils literal notranslate"><span class="pre">Infinite</span></code>, which will leave the object on the screen until a button is pressed or some kind of input is received.</p>
+<p>This requires you to add an <strong>Input Mask</strong>, which is a device that records a response. If you click on the <code class="docutils literal notranslate"><span class="pre">Add</span></code> button underneath the Devices box, you will see two default options: the Keyboard and the Mouse. Since the participant usually responds by pushing one of several different keys, the Keyboard is the best input to use. Selecting the Keyboard as in input mask enables you to fill in the <strong>Response Options</strong> fields, such as Allowable and Correct responses.</p>
+<p>In this case there is no Correct response, only an Allowable one: pressing the spacebar. To specify this we will have to use one of E-Prime’s reserved keywords - in other words, a string of letters and symbols that indicates a specific key. To indicate the spacebar in this example, we will have to write the word “SPACE” in all capital letters, bookended by curly braces.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Other reserved keywords are “{ENTER}” and “{TAB}” (typed in the Allowable field without quotation marks). You may have noticed that the default in the Allowable field was “{ANY}”. What do you think this means?</p>
+</div>
+<p>The <strong>End Action</strong>, set by default to “Terminate”, indicates what to do once the subject makes a response. In this case, if he presses the spacebar, the TextObject will be removed from the display and the experiment will go on to the next object in the timeline. If there are no more objects in the timeline, E-Prime will exit the experiment. (The other options in the End Action menu - “None” and “Jump to” - will be covered later.) These options are summarized in the figure below.</p>
+<figure class="align-default" id="id1">
+<img alt="../../_images/03_Duration_Inputs.png" src="../../_images/03_Duration_Inputs.png" />
+<figcaption>
+<p><span class="caption-text">Selecting a Duration of Infinite (A) requires you to select an input device. Clicking on the Add button (B) allows you to choose from different inputs, such as a Keyboard or Mouse. Providing an Allowable response (C) enables the participant to make a response and to terminate the current object and move on to the next object (D).</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>Before moving on, drag another TextDisplay object onto the experimental timeline, placing it after the “Welcome” object. Rename the new object “Instructions”, change the font to white and the background to black, and enter the following text:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Press</span> <span class="n">the</span> <span class="s1">&#39;f&#39;</span> <span class="n">key</span> <span class="k">if</span> <span class="n">the</span> <span class="n">color</span> <span class="n">of</span> <span class="n">the</span> <span class="n">word</span> <span class="ow">is</span> <span class="n">blue</span><span class="o">.</span>
+
+<span class="n">Press</span> <span class="n">the</span> <span class="s1">&#39;j&#39;</span> <span class="n">key</span> <span class="k">if</span> <span class="n">the</span> <span class="n">color</span> <span class="n">of</span> <span class="n">the</span> <span class="n">word</span> <span class="ow">is</span> <span class="n">red</span><span class="o">.</span>
+
+<span class="n">Remember</span> <span class="n">to</span> <span class="n">respond</span> <span class="n">to</span> <span class="n">the</span> <span class="n">color</span> <span class="n">of</span> <span class="n">the</span> <span class="n">word</span><span class="p">,</span> <span class="ow">not</span> <span class="n">the</span> <span class="n">word</span> <span class="n">itself</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>As with the “Welcome” object, set the duration to <code class="docutils literal notranslate"><span class="pre">Infinite</span></code>, selecting the Keyboard as an input and {SPACE} as an allowable response.</p>
+</section>
+<section id="timing-mode">
+<h3>Timing Mode<a class="headerlink" href="#timing-mode" title="Link to this heading"></a></h3>
+<p>Sometimes you want an object to be displayed until the subject makes a response; but other times, you want the object displayed for a specific amount of time - for example, fixation crosses that are displayed for a couple of seconds to signalize that the last trial is over, and a new trial is coming up. If the experiment is part of an fMRI scan, then accurate timing is especially important - you want the experiment to end at the same time as the scanner stops collecting images.</p>
+<p>However, your computer is always running several processes simultaneously: Refreshing the screen, checking for viruses, and keeping applications open in the background, to name a few. Each of these processes requires memory, and sometimes a process can temporarily require enough memory to put the other processes on hold. These processes are running even when an E-Prime experiment is being displayed on the screen, and these processes can introduce small delays into the experiment.</p>
+<p><strong>Timing Mode</strong> specifies how E-Prime will incorporate these delays. To illustrate how to use different timing modes, drag another TextDisplay object onto the timeline after the “Instructions” object. Rename it to “Fixation”, type a plus sign (“+”) in the text box, and change the object to white font on a black background. Then open the Properties page and select the <code class="docutils literal notranslate"><span class="pre">Duration/Input</span></code> tab. Selecting the “Event” option makes the object stay on the screen for as long as the Duration, no matter what delays there are before presenting the object. For example, if the Duration is 2000ms and there was a delay of 10ms when presenting the object, the object stays on the screen for 2000ms, but the additional 10ms is added on to the duration of the experiment.</p>
+<p>In case you do not want these delays adding up over time - in other words, you want the entire experiment to be the same duration for every subject - selecting the “Cumulative” option will subtract these delays from the Duration of the object. For example, if the Duration is 2000ms and there was a delay of 10ms, then the duration of the object will be 2000ms-10ms = 1990ms. Including the delay, the entire duration of the entire trial will be 2000ms: 1990ms (object duration) + 10ms (delay) = 2000ms. This minimizes any cumulative timing errors, which may be important for experiments which need to end at an exact time for all the trials to be collected.</p>
+</section>
+<section id="pre-release">
+<h3>Pre-Release<a class="headerlink" href="#pre-release" title="Link to this heading"></a></h3>
+<p>Another way to mitigate timing errors and delays is through the <strong>Pre-release</strong> option. Once an object is displayed on the screen, E-Prime is able to load another object in the background which is ready to display as soon as the current object terminates. Pre-release indicates when E-Prime can begin loading the next object. For example, if you specify a pre-release time of 200, then the last 200ms of the current object are used to load the next object into memory. Leaving this as the default of <code class="docutils literal notranslate"><span class="pre">(same</span> <span class="pre">as</span> <span class="pre">duration)</span></code> is fine for most experiments; there are exceptions to this, which we will talk about in a later tutorial on <a class="reference internal" href="EP_08_InlineObjects.html#ep-08-inlineobjects"><span class="std std-ref">Inline objects</span></a>.</p>
+</section>
+</section>
+<section id="the-slide-object">
+<h2>The Slide Object<a class="headerlink" href="#the-slide-object" title="Link to this heading"></a></h2>
+<p>Let’s now take an in-depth look at the <strong>Slide object</strong>. Click and drag a Slide object onto the experimental timeline after the Fixation object, rename the Slide to “Stroop”, and double-click on it to open up the Slide workspace. Notice how this is different from the TextDisplay object - there are dots representing a grid, and there are several <strong>sub-objects</strong> on the menu bar that you can click and drag onto the workspace. For example, within this Slide object you can display Text, Images and Videos. The Properties tab with the white card, as with the Properties tab of the TextDisplay object, allows you to specify properties such as the color of the background and the Duration of the Slide. The icon with the green card allows you to specify properties of the currently selected sub-object, such as the font size and color of a Text object.</p>
+<figure class="align-default">
+<img alt="../../_images/03_Object_SubObject.png" src="../../_images/03_Object_SubObject.png" />
+</figure>
+<p>Let’s begin creating our Stroop stimulus by clicking and dragging a Text object onto the Slide workspace. Click on the Slide Object Properties tab and set the background color to “Black”; then click on the Text Sub-Object Properties tab and type the text “blue”. Set the font color to “Red” and set the background color to “Black”. In the Frame tab of the Sub-Object Properties, center the sub-object by setting both the X and Y positions to 50%. Observe how this moves the location of the sub-object to the center of the Slide workspace.</p>
+<p>Go back to the Slide Object Properties tab and navigate to the Duration/Input tab. Leave the Duration at 1000ms, and add a Keyboard device as an Input Mask. In the Response Options Allowable field, type <code class="docutils literal notranslate"><span class="pre">fj</span></code>. This indicates that either ‘f’ or ‘’j’ are allowable responses; recall our instructions which prompt the subject to press ‘j’ if the <em>color</em> of the word is blue, and ‘f’ if the color of the word is red. Because this particular stimulus is in red font, we will type <code class="docutils literal notranslate"><span class="pre">f</span></code> in the Correct field.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The “Time Limit” menu specifies how long the participant has in order to have his response recorded.</p>
+</div>
+<p>Once you set a correct response, a pop-up window will ask you whether you want to set the Data Logging to standard. Data Logging records several different outputs from the current object, such as the reaction time, accuracy, and which response was made; other outputs to record can be seen under the “Logging” tab. Unless you don’t need the information from the slide, it’s a good idea to always set the data logging to Standard.</p>
+<p>In order to standardize the duration of the experiment, we will also set the End Action to “(none)”. This means that although a response will be recorded if it is made during the presentation of the Slide object, the object will stay on the screen until the full Duration has elapsed.</p>
+</section>
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Link to this heading"></a></h2>
+<p>By expanding your tools to include Slide objects and more advanced options, you can create an entire Stroop experiment. In order to make this process more efficient, however, we next turn to Procedures and Lists to create larger-scale, more flexible experiments.</p>
+</section>
+<section id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>Add a new device to the TextDisplay Welcome object, and select “Mouse”. Note the Allowable responses that are selected by default. Now run the experiment, and see if you can advance the slide by simply left-clicking on the screen.</p></li>
+<li><p>Note that the Data Logging for the Stroop slide will ask you whether it shoudl be set to default. When you select the default settings, what do you see in the “Logging” tab? We will revisit this in a later tutorial, but for now, look at some of the attributes that can be written, and think about which ones might be useful for your experiment.</p></li>
+<li><p>Create two new Stroop objects, each one separated by a Fixation object. (Remember that you can copy and paste objects by right clicking on them, selecting Copy, and then right-clicking and selecting Paste.) Make each Stroop object a different combination of a word and color, either congruent or incongruent, and then run the experiment.</p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="video">
+<h2>Video<a class="headerlink" href="#video" title="Link to this heading"></a></h2>
+<p>To see how all of the above steps are implemented in E-Prime, see <a class="reference external" href="https://www.youtube.com/watch?v=S8zO8T_0DiA&amp;list=PLIQIswOrUH68zDYePgAy9_6pdErSbsegM&amp;index=3">this video</a>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="EP_Intermezzo_Stroop.html" class="btn btn-neutral float-left" title="Intermezzo: The Stroop Task" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="EP_04_Lists_Procedures_Attributes.html" class="btn btn-neutral float-right" title="E-Prime Tutorial #4: Lists, Procedures, and Attributes" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Andy Jahn.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

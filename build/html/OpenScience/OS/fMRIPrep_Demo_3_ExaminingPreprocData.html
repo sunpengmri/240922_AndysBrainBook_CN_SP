@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>fMRIPrep Tutorial #3: Examining the Preprocessed Data &mdash; Andy&#39;s Brain Book 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b76e3c8a" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=f2a433a1"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="fMRIPrep Tutorial #4: Additional Preprocessing Steps" href="fMRIPrep_Demo_4_AdditionalPreproc.html" />
+    <link rel="prev" title="fMRIPrep Tutorial #2: Running the Analysis" href="fMRIPrep_Demo_2_RunningAnalysis.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Andy's Brain Book
+          </a>
+              <div class="version">
+                1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Install</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../installation/fsl_mac_install.html">Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Unix for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_Intro.html">What is Unix?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_01_Navigation.html">Unix Tutorial #1: 目录操作 (Directories and Navigation)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_02_CopyRemove.html">Unix Tutorial #2: Copying and Removing Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_03_ReadingTextFiles.html">Unix Tutorial #3: Reading Text Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_04_ShellsVariables.html">Unix Tutorial #4: Shells and Path Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_05_ForLoops.html">Unix Tutorial #5: For-Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_06_IfElse.html">Unix Tutorial #6: Conditional Statements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_07_Scripting.html">Unix Tutorial #7: Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_08_Sed.html">Unix Tutorial #8: The Sed Command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_09_AutomatingTheAnalysis.html">Unix Tutorial #9: Automating The Analysis</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">fMRI Short Course with FSL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_Intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_01_DataDownload.html">fMRI Tutorial #1: Downloading the Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_02_ExperimentalDesign.html">fMRI Tutorial #2: Overview of The Flanker Task</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_03_LookingAtTheData.html">fMRI Tutorial #3: Looking at the Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_04_Preprocessing.html">fMRI Tutorial #4: Preprocessing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_05_1stLevelAnalysis.html">fMRI Tutorial #5: Statistics and Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_06_Scripting.html">fMRI Tutorial #6: Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_07_2ndLevelAnalysis.html">fMRI Tutorial #7: 2nd-Level Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_08_3rdLevelAnalysis.html">fMRI Tutorial #8: 3rd-Level Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_09_ROIAnalysis.html">fMRI Tutorial #9: ROI Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_10_Summary.html">fMRI Tutorial #10: Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_Appendices.html">fMRI Short Course: Appendices</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">FreeSurfer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../FreeSurfer/FreeSurfer_Introduction.html">FreeSurfer Short Course</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">E-Prime</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../E-Prime/E-Prime_Overview.html">Overview of E-Prime</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">AFNI</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../AFNI/AFNI_Overview.html">AFNI Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">SPM</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../SPM/SPM_Overview.html">SPM Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Functional Connectivity with the CONN Toolbox</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../FunctionalConnectivity/CONN_Overview.html">Functional Connectivity and the CONN Toolbox</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Parametric Modulation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../PM/PM_Overview.html">Parametric Modulation in SPM, FSL, and AFNI</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Image Visualization with MRIcroGL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../MRIcroGL/MRIcroGL_Overview.html">Image Visualization with MRIcroGL</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Introduction to the Human Connectome Project (HCP)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../HCP/HCP_Overview.html">Introduction to the Human Connectome Project</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Finite Impulse Response (FIR) Models</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../FIR/FIR_Overview.html">Finite Impulse Response (FIR)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">fMRI Concepts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Practicals/DesignOptimization.html">Design Optimization</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Diffusion Analysis with MRtrix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../MRtrix/MRtrix_Introduction.html">Introduction to MRtrix</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ASL Analysis</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/ASL_Techniques.html">fASL Tutorial #1: Background</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/fASL_02_Download.html">fASL Tutorial #2: Downloading and Installing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/fASL_03_Task.html">fASL Tutorial #3: The N-Back Task</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/04_fASL_GUI.html">fASL Tutorial #4: The GUI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/05_fASL_Results.html">fASL Tutorial #5: Examining the Results</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/06_fASL_Quantification.html">fASL Tutorial #6: Quantification</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Frequently Asked Questions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../FrequentlyAskedQuestions/FrequentlyAskedQuestions.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Statistics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Statistics/GIMME.html">GIMME (Group Iterative Multiple Model Estimation)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Open Science</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../OS_Overview.html">Open Science</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="BIDS_Overview.html">BIDS Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="MRIQC.html">BIDS App Tutorial #1: MRIQC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fMRIPrep.html">BIDS App Tutorial #2: fMRIPrep</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="fMRIPrep_Demo.html">fMRIPrep Demonstration</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="fMRIPrep_Demo_1_Download.html">fMRIPrep Tutorial #1: Downloading the Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fMRIPrep_Demo_2_RunningAnalysis.html">fMRIPrep Tutorial #2: Running the Analysis</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">fMRIPrep Tutorial #3: Examining the Preprocessed Data</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#the-html-output">The HTML Output</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#next-steps">Next Steps</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#video">Video</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="fMRIPrep_Demo_4_AdditionalPreproc.html">fMRIPrep Tutorial #4: Additional Preprocessing Steps</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fMRIPrep_Demo_5_1stLevelAnalysis.html">fMRIPrep Tutorial #5: Running the 1st-level Analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fMRIPrep_Demo_6_GroupAnalysis.html">fMRIPrep Tutorial #6: Group Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Github_Overview.html">Overview of Github</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced Normalization Tools (ANTs)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ANTs/ANTs_Overview.html">Advanced Normalization Tools (ANTs)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tract-Based Spatial Statistics (TBSS)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../TBSS/TBSS_Overview.html">Introduction to Tract-Based Spatial Statistics (TBSS)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Statistics for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Stats/Stats_Overview.html">Statistics for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Machine Learning for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ML/ML_Overview.html">Machine Learning for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Slicer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Slicer/Slicer_Overview.html">Slicer Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">CAT12</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../CAT12/CAT12_Overview.html">Voxel-Based Morphometry with CAT12</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Using the Supercomputer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Supercomputer/Supercomputer_Overview.html">Introduction to Supercomputing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Matlab for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Matlab/Matlab_Overview.html">Matlab for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ITK-Snap</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ITK-Snap/ITK-Snap_Overview.html">ITK-Snap_Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Python for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../PythonForNeuroimagers/PythonForNeuroimagers_Overview.html">Python for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Meta-Analysis for fMRI</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../MetaAnalysis/MetaAnalysis_Overview.html">Meta-Analysis for Neuroimagers</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Andy's Brain Book</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../OS_Overview.html">Open Science</a></li>
+          <li class="breadcrumb-item"><a href="fMRIPrep_Demo.html">fMRIPrep Demonstration</a></li>
+      <li class="breadcrumb-item active">fMRIPrep Tutorial #3: Examining the Preprocessed Data</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/OpenScience/OS/fMRIPrep_Demo_3_ExaminingPreprocData.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="fmriprep-tutorial-3-examining-the-preprocessed-data">
+<span id="fmriprep-demo-3-examiningpreprocdata"></span><h1>fMRIPrep Tutorial #3: Examining the Preprocessed Data<a class="headerlink" href="#fmriprep-tutorial-3-examining-the-preprocessed-data" title="Link to this heading"></a></h1>
+<hr class="docutils" />
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading"></a></h2>
+<p>When fMRIPrep has finished, the output will be located in the sub-directory <code class="docutils literal notranslate"><span class="pre">derivatives/fmriprep</span></code>. Within that directory, we see the folder <code class="docutils literal notranslate"><span class="pre">sub-08</span></code>; this contains all of the preprocessed functional and anatomical data, including intermediate files that were created in order to generate the final product, as well as “.json” files that contain header information for each of their corresponding images.</p>
+<p>Within the <code class="docutils literal notranslate"><span class="pre">anat</span></code> directory, for example, we find the following files:</p>
+<figure class="align-default">
+<img alt="../../_images/03_fMRIPrep_Output_Anat.png" src="../../_images/03_fMRIPrep_Output_Anat.png" />
+</figure>
+<p>The files that contain the string <code class="docutils literal notranslate"><span class="pre">MNI152NLin2009cAsym</span></code> are anatomical images that have been normalized to that template, while those files without that string are in native space (i.e., they are not normalized). For example, the file <code class="docutils literal notranslate"><span class="pre">sub-08_space-MNI152NLin2009cAsym_label-CSF_probseg.nii.gz</span></code> is the CSF probabilistic segmentation in normalized space, while the anatomical image that has been preprocessed and normalized is the file <code class="docutils literal notranslate"><span class="pre">sub-08_space-MNI152NLin2009cAsym_desc-preproc_T1w.nii.gz</span></code>. Many of these files are intermediate images used to improve the normalization process, as well as for extracting the time-courses of tissue types as confound regressors.</p>
+<p>Moving on to the <code class="docutils literal notranslate"><span class="pre">func</span></code> directory, we have the following:</p>
+<figure class="align-default">
+<img alt="../../_images/03_fMRIPrep_Output_Func.png" src="../../_images/03_fMRIPrep_Output_Func.png" />
+</figure>
+<p>You will see two distinct blocks of files, one for each run. The first block contains a list of confound regressors, such as time-courses from the white matter and cerebrospinal fluid, and the motion parameters and their derivatives in the x-, y-, and z-directions. (For a review of motion parameters, see <a class="reference internal" href="../../AFNI/AFNI_Short_Course/AFNI_Preprocessing/04_AFNI_Alignment.html#afni-alignment"><span class="std std-ref">this chapter</span></a>.) The file <code class="docutils literal notranslate"><span class="pre">sub-08_task-flanker_run-1_space-MNI152NLin2009cAsym_res-2_boldref.nii.gz</span></code> is the reference image used for registration and normalization, while the file <code class="docutils literal notranslate"><span class="pre">sub-08_task-flanker_run-1_space-MNI152NLin2009cAsym_res-2_desc-brain_mask.nii.gz</span></code> is the estimated brain mask for that run, and the file <code class="docutils literal notranslate"><span class="pre">sub-08_task-flanker_run-1_space-MNI152NLin2009cAsym_res-2_desc-preproc_bold.nii.gz</span></code> is the preprocessed functional data, up through normalization. Similar files are generated for the other runs in your dataset.</p>
+<p>All of these output files will be used in the HTML summary, which we now turn to.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Much of the QA analysis can be found <a class="reference external" href="https://fmriprep.org/en/stable/outputs.html">here</a> on the fMRIPrep ReadTheDocs webpage. The following recapitulates most of what is on that site, applied to the current dataset.</p>
+</div>
+</section>
+<section id="the-html-output">
+<h2>The HTML Output<a class="headerlink" href="#the-html-output" title="Link to this heading"></a></h2>
+<p>fMRIPrep summarizes all of the preprocessing output in a single HTML file called <code class="docutils literal notranslate"><span class="pre">sub-08.html</span></code>. You can open this by using finder and double-clicking on the file, or navigating to the directory with your terminal and typing <code class="docutils literal notranslate"><span class="pre">open</span> <span class="pre">sub-08.html</span></code>.</p>
+<p>The layout of the webpage is organized into the following sections: Summary, Anatomical, Functional, About, Methods, and Errors, with corresponding links at the top of the page. The first section, “Summary”, contains details about the number of structural and functional images, the template that was used for normalization, and whether FreeSurfer was run. These should match the options you specified in the fmriprep.sh script that we ran in the previous chapter</p>
+<figure class="align-default">
+<img alt="../../_images/03_HTML_Ribbon.png" src="../../_images/03_HTML_Ribbon.png" />
+</figure>
+<p>Although the output of fMRIPrep in the terminal should note whether there were any errors during preprocessing, it’s worth checking the Error tab first to see whether there is anything that you need to address.</p>
+<section id="anatomical-qa">
+<h3>Anatomical QA<a class="headerlink" href="#anatomical-qa" title="Link to this heading"></a></h3>
+<p>The next section contains anatomical QA checks, with the first figure showing the anatomical image in sagittal, axial, and coronal views. The estimated brain mask is outlined in red, the grey matter boundary is outlined in magenta, and the white matter boundary is outlined in blue. These boundaries will be used for component extraction, which is discussed in more detail below.</p>
+<figure class="align-default">
+<img alt="../../_images/03_Anatomical_QA.png" src="../../_images/03_Anatomical_QA.png" />
+</figure>
+<p>Normalization of the anatomical image to the template - in this case, the MNI152NLin2009cAsym template - is shown in a back-and-forth GIF. Make sure to check the alignment not only between the outlines of the brain, but also the internal structures such as the ventricles:</p>
+<figure class="align-default">
+<img alt="../../_images/03_AnatomicalQA.gif" src="../../_images/03_AnatomicalQA.gif" />
+</figure>
+</section>
+<section id="functional-qa">
+<h3>Functional QA<a class="headerlink" href="#functional-qa" title="Link to this heading"></a></h3>
+<p>We now move on to the functional QA, which uses a GIF to show the alignment between the functional and anatomical images. As with the normalization QA check, make sure that the internal structures are well aligned, remembering that lighter voxels in the functional images represent fluid, and vice versa in the anatomical image:</p>
+<figure class="align-default">
+<img alt="../../_images/03_Alignment_GIF.gif" src="../../_images/03_Alignment_GIF.gif" />
+</figure>
+<p>The next figure shows an outline of the masks used for anatomical component correction (anatCompCor), with magenta showing the white matter and CSF voxels used to estimate signal that is representative of that area. The voxels outlined in blue show the most variable voxels, which will be used for functional component correction (funcCompCor):</p>
+<figure class="align-default">
+<img alt="../../_images/03_CompCor_Mask.png" src="../../_images/03_CompCor_Mask.png" />
+</figure>
+<p>These voxels are then used to generate compCor curves for the white matter, CSF, combined white matter and CSF, and temporal standard deviation, which show the amount of variance explained by different amounts of components. The first 27 components of the white matter mask, for example, explain half of the variance within those voxels; you will have to make a judgment about the tradeoff between removing nuisance variance, and spending more degrees of freedom and statistical power on modeling those sources of variance.</p>
+<figure class="align-default">
+<img alt="../../_images/03_CompCorCurves.png" src="../../_images/03_CompCorCurves.png" />
+</figure>
+<p>Time-series plots are also generated for global signal (GS), global signal of the cerebrospinal fluid (GSCSF), global signal of the white matter (GSWM), and two measures of motion: DVARS and Framewise Displacement (FD). Changes in motion tend to be correlated with changes in global signal, and it is up to you whether to include any of these regressors in your model. In general, DVARS and FD are good ways to account for signal caused by motion artifacts.</p>
+<figure class="align-default">
+<img alt="../../_images/03_time-series_plots.png" src="../../_images/03_time-series_plots.png" />
+</figure>
+<p>The next figure is a carpet plot, showing the time-series of each major tissue type. Voxels are grouped into cortical (dark/light blue), and subcortical (orange) gray matter, cerebellum (green) and white matter and CSF (red). Any sudden changes in motion may be reflected in uniform changes across the entire column for that timepoint.</p>
+<figure class="align-default">
+<img alt="../../_images/03_CarpetPlot.png" src="../../_images/03_CarpetPlot.png" />
+</figure>
+<p>Lastly, a matrix shows correlations between the different nuisance regressors. High correlation between the CSF regressor and the trans_z and rot_z motion regressors, for example, may be explained by motion causing signal changes in the CSF that encases the skull. The bar chart on the right shows the correlation of different regressors with respect to global signal; those components that show a high degree of correlation may be candidates for nuisance regression.</p>
+<figure class="align-default">
+<img alt="../../_images/03_CorrelationPlots.png" src="../../_images/03_CorrelationPlots.png" />
+</figure>
+</section>
+</section>
+<section id="next-steps">
+<h2>Next Steps<a class="headerlink" href="#next-steps" title="Link to this heading"></a></h2>
+<p>Now that we have run quality checks on our data and have some idea of what regressors to include, we are prepared to begin creating our general linear model. Before we can do that, however, we have the option of running a couple more preprocessing steps. To see what those are and how to do them, click the <code class="docutils literal notranslate"><span class="pre">Next</span></code> button.</p>
+</section>
+<section id="video">
+<h2>Video<a class="headerlink" href="#video" title="Link to this heading"></a></h2>
+<p>For a video demonstration of QA checks with fMRIPrep, click <a class="reference external" href="https://www.youtube.com/watch?v=fQHEKSzFKDc">here</a>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="fMRIPrep_Demo_2_RunningAnalysis.html" class="btn btn-neutral float-left" title="fMRIPrep Tutorial #2: Running the Analysis" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="fMRIPrep_Demo_4_AdditionalPreproc.html" class="btn btn-neutral float-right" title="fMRIPrep Tutorial #4: Additional Preprocessing Steps" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Andy Jahn.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

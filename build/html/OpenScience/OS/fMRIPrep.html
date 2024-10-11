@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BIDS App Tutorial #2: fMRIPrep &mdash; Andy&#39;s Brain Book 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b76e3c8a" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=f2a433a1"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="fMRIPrep Demonstration" href="fMRIPrep_Demo.html" />
+    <link rel="prev" title="BIDS App Tutorial #1: MRIQC" href="MRIQC.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Andy's Brain Book
+          </a>
+              <div class="version">
+                1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Install</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../installation/fsl_mac_install.html">Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Unix for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_Intro.html">What is Unix?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_01_Navigation.html">Unix Tutorial #1: 目录操作 (Directories and Navigation)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_02_CopyRemove.html">Unix Tutorial #2: Copying and Removing Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_03_ReadingTextFiles.html">Unix Tutorial #3: Reading Text Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_04_ShellsVariables.html">Unix Tutorial #4: Shells and Path Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_05_ForLoops.html">Unix Tutorial #5: For-Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_06_IfElse.html">Unix Tutorial #6: Conditional Statements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_07_Scripting.html">Unix Tutorial #7: Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_08_Sed.html">Unix Tutorial #8: The Sed Command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_09_AutomatingTheAnalysis.html">Unix Tutorial #9: Automating The Analysis</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">fMRI Short Course with FSL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_Intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_01_DataDownload.html">fMRI Tutorial #1: Downloading the Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_02_ExperimentalDesign.html">fMRI Tutorial #2: Overview of The Flanker Task</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_03_LookingAtTheData.html">fMRI Tutorial #3: Looking at the Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_04_Preprocessing.html">fMRI Tutorial #4: Preprocessing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_05_1stLevelAnalysis.html">fMRI Tutorial #5: Statistics and Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_06_Scripting.html">fMRI Tutorial #6: Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_07_2ndLevelAnalysis.html">fMRI Tutorial #7: 2nd-Level Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_08_3rdLevelAnalysis.html">fMRI Tutorial #8: 3rd-Level Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_09_ROIAnalysis.html">fMRI Tutorial #9: ROI Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_10_Summary.html">fMRI Tutorial #10: Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_Appendices.html">fMRI Short Course: Appendices</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">FreeSurfer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../FreeSurfer/FreeSurfer_Introduction.html">FreeSurfer Short Course</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">E-Prime</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../E-Prime/E-Prime_Overview.html">Overview of E-Prime</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">AFNI</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../AFNI/AFNI_Overview.html">AFNI Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">SPM</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../SPM/SPM_Overview.html">SPM Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Functional Connectivity with the CONN Toolbox</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../FunctionalConnectivity/CONN_Overview.html">Functional Connectivity and the CONN Toolbox</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Parametric Modulation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../PM/PM_Overview.html">Parametric Modulation in SPM, FSL, and AFNI</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Image Visualization with MRIcroGL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../MRIcroGL/MRIcroGL_Overview.html">Image Visualization with MRIcroGL</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Introduction to the Human Connectome Project (HCP)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../HCP/HCP_Overview.html">Introduction to the Human Connectome Project</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Finite Impulse Response (FIR) Models</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../FIR/FIR_Overview.html">Finite Impulse Response (FIR)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">fMRI Concepts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Practicals/DesignOptimization.html">Design Optimization</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Diffusion Analysis with MRtrix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../MRtrix/MRtrix_Introduction.html">Introduction to MRtrix</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ASL Analysis</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/ASL_Techniques.html">fASL Tutorial #1: Background</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/fASL_02_Download.html">fASL Tutorial #2: Downloading and Installing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/fASL_03_Task.html">fASL Tutorial #3: The N-Back Task</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/04_fASL_GUI.html">fASL Tutorial #4: The GUI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/05_fASL_Results.html">fASL Tutorial #5: Examining the Results</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/06_fASL_Quantification.html">fASL Tutorial #6: Quantification</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Frequently Asked Questions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../FrequentlyAskedQuestions/FrequentlyAskedQuestions.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Statistics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Statistics/GIMME.html">GIMME (Group Iterative Multiple Model Estimation)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Open Science</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../OS_Overview.html">Open Science</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="BIDS_Overview.html">BIDS Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="MRIQC.html">BIDS App Tutorial #1: MRIQC</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">BIDS App Tutorial #2: fMRIPrep</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#what-is-fmriprep">What is fMRIPrep?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fmriprep-tutorial">fMRIPrep Tutorial</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fmriprep-installation-option-1-singularity">fMRIPrep Installation Option #1: Singularity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fmriprep-installation-option-2-docker">fMRIPrep Installation Option #2: Docker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#installing-templateflow">Installing TemplateFlow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#installing-freesurfer-license">Installing FreeSurfer license</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#making-a-script-to-run-fmriprep">Making a script to run fMRIPrep</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#understanding-fmriprep-output">Understanding fMRIPrep output</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#final-thoughts">Final Thoughts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#additional-fmriprep-resources">Additional fMRIPrep Resources</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="fMRIPrep_Demo.html">fMRIPrep Demonstration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Github_Overview.html">Overview of Github</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced Normalization Tools (ANTs)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ANTs/ANTs_Overview.html">Advanced Normalization Tools (ANTs)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tract-Based Spatial Statistics (TBSS)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../TBSS/TBSS_Overview.html">Introduction to Tract-Based Spatial Statistics (TBSS)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Statistics for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Stats/Stats_Overview.html">Statistics for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Machine Learning for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ML/ML_Overview.html">Machine Learning for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Slicer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Slicer/Slicer_Overview.html">Slicer Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">CAT12</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../CAT12/CAT12_Overview.html">Voxel-Based Morphometry with CAT12</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Using the Supercomputer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Supercomputer/Supercomputer_Overview.html">Introduction to Supercomputing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Matlab for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Matlab/Matlab_Overview.html">Matlab for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ITK-Snap</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ITK-Snap/ITK-Snap_Overview.html">ITK-Snap_Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Python for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../PythonForNeuroimagers/PythonForNeuroimagers_Overview.html">Python for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Meta-Analysis for fMRI</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../MetaAnalysis/MetaAnalysis_Overview.html">Meta-Analysis for Neuroimagers</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Andy's Brain Book</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../OS_Overview.html">Open Science</a></li>
+      <li class="breadcrumb-item active">BIDS App Tutorial #2: fMRIPrep</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/OpenScience/OS/fMRIPrep.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="bids-app-tutorial-2-fmriprep">
+<span id="fmriprep"></span><h1>BIDS App Tutorial #2: fMRIPrep<a class="headerlink" href="#bids-app-tutorial-2-fmriprep" title="Link to this heading"></a></h1>
+<hr class="docutils" />
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This article was contributed by <a class="reference external" href="https://perceptionandneuroimaging.psych.indiana.edu/people/daniellevitas.html">Daniel Levitas</a> of the Perception and Neuroimaging Lab at Indiana University.</p>
+</div>
+<section id="what-is-fmriprep">
+<h2>What is fMRIPrep?<a class="headerlink" href="#what-is-fmriprep" title="Link to this heading"></a></h2>
+<p>fMRIPrep is a BIDS App that employs a standardized pre-processing pipeline on BIDS-compliant fMRI data. This pipeline utilizes the leading tools from different fMRI software packages (AFNI, FSL, ANTs, Freesurfer, nipype) to perform specific steps during the pre-processing. Rather than being limited to an individual package, fMRIPrep will leverage the best software tool for each pre-processing step, such as ANTs for normalization, FreeSurfer for surface reconstruction, and so on. In addition, users can easily access the workflows to determine how their data is pre-processed, thus providing better transparency and reproducibility.</p>
+</section>
+<section id="fmriprep-tutorial">
+<h2>fMRIPrep Tutorial<a class="headerlink" href="#fmriprep-tutorial" title="Link to this heading"></a></h2>
+<p>This tutorial will demonstrate how to install fMRIPrep and run it on a dataset. The data that we’ll be using is the BIDS-ified output from the <a class="reference external" href="https://andysbrainbook.readthedocs.io/en/latest/OpenScience/OS/BIDS_Overview.html">BIDS Overview and Tutorial</a>.</p>
+<p>If you haven’t looked through and completed the previous tutorials in this OpenScience section then I’d recommend doing so first. If however you wish to get started with this tutorial instead, you can download the BIDS output data <a class="reference external" href="https://drive.google.com/drive/folders/11qNNVmD-T8OoZy9NFqHjcleWIcso6ZDI?usp=sharing">here</a>. Be sure to download the entire folder and not just the subfolders or files. If the download appears to have stalled, cancel the current download and retry. Once downloaded, extract/unzip the files if they haven’t been already (presumably to your Downloads folder), and type the following into the terminal, line by line:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>mkdir $HOME/BIDS_tutorial
+mv ~/Downloads/BIDS_data/* $HOME/BIDS_tutorial
+rm -rf ~/Downloads/BIDS_data*
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>fMRIPrep is computationally expensive, therefore it is recommended that this tutorial be completed on your university/institution’s HPC or a personal computer with greater processing power and memory. While you may use a computer with standard processing power, doing so will increase the time needed for fMRIPrep to run to completion.</p>
+</div>
+</section>
+<section id="fmriprep-installation-option-1-singularity">
+<h2>fMRIPrep Installation Option #1: Singularity<a class="headerlink" href="#fmriprep-installation-option-1-singularity" title="Link to this heading"></a></h2>
+<p>fMRIPrep can be run as a Docker or Singularity container, so we’ll first need to build the container. If you’re on a High Performance Computing (HPC) cluster then you’ll want to build a Singularity container, as Docker containers are not permitted on HPC systems due to required root access permissions that no HPC admin is going to allow (don’t they trust us?). If you’re using MacOS or Windows, skip this and review the Docker installation section instead. If you are working on a university HPC, you may already have the Singularity software available (just make sure you have version &gt;= 2.5). Assuming this, type the following into the terminal to build the container:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>singularity build $HOME/fmriprep.simg docker://poldracklab/fmriprep:latest
+</pre></div>
+</div>
+</section>
+<section id="fmriprep-installation-option-2-docker">
+<h2>fMRIPrep Installation Option #2: Docker<a class="headerlink" href="#fmriprep-installation-option-2-docker" title="Link to this heading"></a></h2>
+<p>Assuming that you do not have Docker installed, go to the Docker <a class="reference external" href="https://docs.docker.com/install/">installation page</a> and select the download for your operating system. Once downloaded, click on the Docker.dmg installer and drag the Docker icon into your Applications (you may need your computer’s admin password for this). <strong>Be sure to click the Docker icon to open it</strong>.</p>
+<p>Click on the Docker icon and select <em>Preferences</em>, then <em>Resources</em>, and then <em>Advanced</em>. You will want to increase the CPUs and Memory, since fMRIPrep is quite computationally expensive. Once selected, click on the <em>Apply &amp; Restart</em> button.</p>
+<figure class="align-default" id="id1">
+<img alt="../../_images/OS_Docker_Memory.png" src="../../_images/OS_Docker_Memory.png" />
+<figcaption>
+<p><span class="caption-text">The Docker Preferences tab. The total number of CPUs and Memory may be different for your machine; increasing the number of CPUs and Memory will speed up fMRIPrep.</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>The next step is to use <strong>pip</strong>, a command for downloading and installing packages. If you do not have pip installed (or in your $PATH), refer back to the <a class="reference external" href="https://andysbrainbook.readthedocs.io/en/latest/OpenScience/OS/BIDS_Overview.html">BIDS Overview and Tutorial</a> for guidance.</p>
+<p>At this point the docker command should now be in your $PATH, and you can type the following into the terminal to get things set up:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">pip</span> <span class="n">install</span> <span class="o">--</span><span class="n">user</span> <span class="o">--</span><span class="n">upgrade</span> <span class="n">fmriprep</span><span class="o">-</span><span class="n">docker</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Once the fmriprep-docker command is installed, you may need to set your path to point to where the command is, in order to run it. To do this, from the terminal type: <code class="docutils literal notranslate"><span class="pre">echo</span> <span class="pre">'export</span> <span class="pre">PATH=$PATH:/Users/ajahn/Library/Python/2.7/bin'</span> <span class="pre">&gt;&gt;</span> <span class="pre">~/.bash_profile</span></code>, and then type <code class="docutils literal notranslate"><span class="pre">source</span> <span class="pre">~/.bash_profile</span></code> to set the path automatically whenever you open a new terminal.</p>
+</div>
+<p>What we’ve just installed is a wrapper that will create a Docker command to download the latest fMRIPrep container. Unlike MRIQC, fMRIPrep goes through more releases, typically for bug fixes and feature additions/modifications. Oftentimes, the changes from version to version are minor and do not require upgrading to the latest version, unless the changes in the newest version are pertinent to you. Regardless, <strong>you should preprocess your entire dataset using the same fMRIPrep version</strong>.</p>
+</section>
+<section id="installing-templateflow">
+<h2>Installing TemplateFlow<a class="headerlink" href="#installing-templateflow" title="Link to this heading"></a></h2>
+<p><a class="reference external" href="https://github.com/templateflow">TemplateFlow</a> is a repository containing various standardized templates to normalize your data to in fMRIPrep. If for example you have a pediatric dataset, there is a pediatric template in TemplateFlow at your disposal.</p>
+<p>To install TemplateFlow, type the following into the terminal, line by line:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>pip install templateflow --target $HOME/.cache
+unzip $HOME/.cache/templateflow/conf/templateflow-skel.zip -d $HOME/.cache/templateflow
+</pre></div>
+</div>
+<p>Once finished, you should see multiple template options in your $HOME/.cache/templateflow folder.</p>
+</section>
+<section id="installing-freesurfer-license">
+<h2>Installing FreeSurfer license<a class="headerlink" href="#installing-freesurfer-license" title="Link to this heading"></a></h2>
+<p>fMRIprep leans heavily on FreeSurfer for certain parts of the pre-processing. Although the entire FreeSurfer package is not required in order to use fMRIPrep, you will need FreeSurfer’s license file, which is free. If you are on your university/institution’s HPC then FreeSurfer (and the license) is likely already available for you, and you can skip this step. If you need to get the license, the assumption here is that you are working on a personal computer, and by extension, also using Docker.</p>
+<p>To get the license, go to the <a class="reference external" href="https://surfer.nmr.mgh.harvard.edu/registration.html">registration page</a> and complete the form. <strong>Be sure to select the correct operating system that you’re using</strong>. Once complete, an email will be sent that contains the license.txt. Download the file to Downloads, and then move it into the BIDS_tutorial folder using the following command in the terminal:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>mv ~/Downloads/license.txt $HOME/BIDS_tutorial/derivatives
+</pre></div>
+</div>
+</section>
+<section id="making-a-script-to-run-fmriprep">
+<h2>Making a script to run fMRIPrep<a class="headerlink" href="#making-a-script-to-run-fmriprep" title="Link to this heading"></a></h2>
+<p>Running fMRIPrep entails specifying different command line options in order to properly run. Rather than doing this directly through the terminal, we will create a script to run it. Firstly, type the following into the terminal:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>touch $HOME/BIDS_tutorial/code/fmriprep.sh
+</pre></div>
+</div>
+<p>This generates a blank bash script file to run fMRIPrep. Below, a mock script is provided that can be copied and pasted into the fmriprep.sh file. To do this, first copy the mock script below and then open the fmriprep.sh file, by typing the following into the terminal:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>vim $HOME/BIDS_tutorial/code/fmriprep.sh
+</pre></div>
+</div>
+<p>Press the “i” key, and paste the contents below into the file. To save and close the file, press the Escape button, and type the following: :wq</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
+
+#User inputs:
+bids_root_dir=$HOME/BIDS_tutorial
+subj=01
+nthreads=4
+mem=20 #gb
+container=docker #docker or singularity
+
+#Begin:
+
+#Convert virtual memory from gb to mb
+mem=`echo &quot;${mem//[!0-9]/}&quot;` #remove gb at end
+mem_mb=`echo $(((mem*1000)-5000))` #reduce some memory for buffer space during pre-processing
+
+export TEMPLATEFLOW_HOME=$HOME/.cache/templateflow
+export FS_LICENSE=$HOME/BIDS_tutorial/derivatives/license.txt
+
+#Run fmriprep
+if [ $container == singularity ]; then
+  unset PYTHONPATH; singularity run -B $HOME/.cache/templateflow:/opt/templateflow $HOME/fmriprep.simg \
+    $bids_root_dir $bids_root_dir/derivatives \
+    participant \
+    --participant-label $subj \
+    --skip-bids-validation \
+    --md-only-boilerplate \
+    --fs-license-file $FREESURFER_HOME/license.txt \
+    --fs-no-reconall \
+    --output-spaces MNI152NLin2009cAsym:res-2 \
+    --nthreads $nthreads \
+    --stop-on-first-crash \
+    --mem_mb $mem_mb \
+    -w $HOME
+else
+  fmriprep-docker $bids_root_dir $bids_root_dir/derivatives \
+    participant \
+    --participant-label $subj \
+    --skip-bids-validation \
+    --md-only-boilerplate \
+    --fs-license-file $HOME/BIDS_tutorial/derivatives/license.txt \
+    --fs-no-reconall \
+    --output-spaces MNI152NLin2009cAsym:res-2 \
+    --nthreads $nthreads \
+    --stop-on-first-crash \
+    --mem_mb $mem_mb \
+    -w $HOME
+fi
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Thomas Ernst has made the following comment that is particularly important for Ubuntu users: “[In this script,] the temporary eval dir is set to be the $HOME dir. That is bad for two reasons: Firstly, at least on Ubunbtu, fmriprep will not clean up the temp dir, easily leading to a overfull home dir/main disk and stoping eval after a few subjects. Secondly, if you select the –clean-workdir option this will delete the entire content of the $HOME dir before crashing.”</p>
+<p>Furthermore, if you are using a supercomputer cluster, you may want to use the /tmp/scratch directory to store the output. Bennet Fauber of the University of Michigan recommends setting the following variables for the directories:</p>
+<p>BIDS_DIR=/tmp/workflow_${SUB}/BIDS
+OUTPUT_DIR=/tmp/workflow_${SUB}/derivatives
+WORK_DIR=/tmp/workflow_${SUB}/work</p>
+<p>Bennet: “It’s almost certainly not a good idea to make WORK_DIR the home on a cluster, as home is likely to have a small quota, be NFS, and be slow. There’s almost always some kind of /scratch for that, or, as we do, /tmp.  If using /tmp, it’s a good idea to have code to remove work directories after the job finishes, unless debugging.”</p>
+</div>
+<p>To ensure that the information was added and saved to the script, you can type the following into the terminal:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>cat $HOME/BIDS_tutorial/code/fmriprep.sh
+</pre></div>
+</div>
+<p><strong>Before running, change the container variable in the script to either *docker* or *singularity*, depending on which container you installed.</strong> You may also want to increase the <em>mem</em> and <em>nthreads</em> variables if your computer/system has greater computing power, which will decrease the time needed for fMRIPrep to complete. You can make these edits using vim.</p>
+<p>Once you’re set, run the script by typing the following into the terminal, line by line:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>bash
+source $HOME/BIDS_tutorial/code/fmriprep.sh
+</pre></div>
+</div>
+<p>fMRIPrep make take up to several hours to run on this data, depending on how much processing power and memory you allocated. Do note that the fMRIPrep command we are running is relatively bare-bones; there are many additional flag options that can (and should) be used, so it’s recommended that you read the documentation for them <a class="reference external" href="https://fmriprep.readthedocs.io/en/stable/usage.html">here</a>. Be aware that if in the future you run fMRIPrep with additional options, it will likely increase the time needed to run to completition.</p>
+</section>
+<section id="understanding-fmriprep-output">
+<h2>Understanding fMRIPrep output<a class="headerlink" href="#understanding-fmriprep-output" title="Link to this heading"></a></h2>
+<p>Once complete, there are two main things that fMRIPrep generates that will be of interest: the pre-processed data itself, and an HTML report. Regarding the data itself, the fMRIPrep developers &amp; contributors have already provided excellent documentation on where files are and what the mean; that documentation can be found <a class="reference external" href="https://fmriprep.readthedocs.io/en/stable/outputs.html">here</a>.</p>
+<p>This tutorial will instead focus more on the HTML report itself, which provides handy visualizations to better determine how well the pre-processing went. If you have a built-in browser, you can open the report by typing the following into the terminal (firefox example):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>firefox $HOME/BIDS_tutorial/derivatives/fmriprep/sub-01.html
+</pre></div>
+</div>
+<p>If this option isn’t available to you, open a browser and type <em>Command O</em> and then select the sub-01.html file. Once opened, you should see several tabs listed at the top:
+1). Summary
+2). Anatomical
+3). Function
+4). About
+5). Methods
+6). Errors</p>
+<p>You can click on these tabs to jump to that specific section in the report.</p>
+<p>The first you should check is the Errors tab. Make sure that it says “No errors to report!”; otherwise, it will list an error that will require further examination. So long as this section reads “No errors to report!”, the pre-processing ran to completion without issue.</p>
+<p>The Summary tab will direct you to the section that provides some brief information on the anatomical and functional acquisitions.</p>
+<p>The Anatomical tab will direct you to the anatomical section of the report (shocking, I know). The first image you should see is <em>Brain mask and brain tissue segmentation of the T1w</em>, where the red line encompasses the entire brain, the blue line encompasses white matter, and magenta encompasses the cerebral spinal fluid (CSF). This will give you an idea of the quality of the skull extraction. The second image you should see is <em>Spatial normalization of the anatomical T1w reference</em>; if you hover your mouse over the image, it will display the back and forth between the anatomical and standard template. This allows you to assess the quality of the normalization step.</p>
+<p>The Functional tab can be divided into the individual runs. Each run section will begin with a quick summary. The first image is <em>Susceptibility distortion correction</em>, which demonstrates how well the field maps were applied to the functional run. Hover the mouse over the image to see the <em>before</em> SDC and <em>after</em> SDC. The second image is <em>Alignment of functional and anatomical MRI data (surface driven)</em> and shows the quality of the co-registration step. The third image is <em>Brain mask and (temporal/anatomical) CompCor ROIs</em>, which shows the brain tissue ROIs used to generate the CompCor confounds. The fourth image is <em>Variance explained by t/aCompCor components</em>, which can be used to determine the number of CompCor confounds to include in your design matrix for analysis. The fifth image is <em>BOLD Summary</em>, the Power plot that provides information regarding the level of motion present in the run. <strong>The BOLD Summary visualization is only generated if one of the standard output spaces is the MNI152NLin2009cAsym template.</strong> The sixth image is <em>Correlations among nuisance regressors</em>, which can be used to choose confounds for the design matrix that don’t exhibit high levels of correlations. Note that for the seconds runs of the bart and rest tasks, there is another image called <em>Estimated fieldmap and alignment to the corresponding EPI reference</em>. This is because those runs had the magnitude/phasediff field maps applied to them, as opposed to spin echo field maps.</p>
+<p>The About tab specifies the fMRIPrep version and command used for this subject’s pre-processing.</p>
+<p>The Methods tab details the pre-processing steps taken in greater detail.</p>
+</section>
+<section id="final-thoughts">
+<h2>Final Thoughts<a class="headerlink" href="#final-thoughts" title="Link to this heading"></a></h2>
+<p>In this tutorial we went over how to set up and run fMRIPrep on a BIDS dataset containing one subject. The purpose was to become familiar with how to set up and run fMRIPrep and understand the output. If you found this useful and would like to use fMRIPrep on your own data, you will likely want to include additional features in the script or make your own. Since this tutorial was an extremely simplified implentation of fMRIPrep, you may encounter issues when running it on your own data. Fear not, you can post your questions/issues on <a class="reference external" href="https://neurostars.org">NeuroStars</a> or fMRIPrep’s <a class="reference external" href="https://github.com/poldracklab/fmriprep">github page</a>.</p>
+</section>
+<section id="additional-fmriprep-resources">
+<h2>Additional fMRIPrep Resources<a class="headerlink" href="#additional-fmriprep-resources" title="Link to this heading"></a></h2>
+<p>Here are some additional fMRIPrep resources/links that you may find helpful</p>
+<p><a class="reference external" href="http://reproducibility.stanford.edu/fmriprep-tutorial-running-the-docker-image/">Stanford tutorial by Franklin Feingold</a></p>
+<p><a class="reference external" href="https://medium.com/&#64;gelana/using-fmriprep-for-fmri-data-preprocessing-90ce4a9b85bd">Tutorial by Gelana Tostaeva</a></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="MRIQC.html" class="btn btn-neutral float-left" title="BIDS App Tutorial #1: MRIQC" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="fMRIPrep_Demo.html" class="btn btn-neutral float-right" title="fMRIPrep Demonstration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Andy Jahn.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SPM Tutorial #7: Setting the Origin &mdash; Andy&#39;s Brain Book 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b76e3c8a" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=f2a433a1"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="SPM Tutorial #8: Group Analysis" href="SPM_08_GroupAnalysis.html" />
+    <link rel="prev" title="SPM Tutorial #6: Scripting" href="SPM_06_Scripting.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Andy's Brain Book
+          </a>
+              <div class="version">
+                1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Install</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../installation/fsl_mac_install.html">Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Unix for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_Intro.html">What is Unix?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_01_Navigation.html">Unix Tutorial #1: 目录操作 (Directories and Navigation)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_02_CopyRemove.html">Unix Tutorial #2: Copying and Removing Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_03_ReadingTextFiles.html">Unix Tutorial #3: Reading Text Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_04_ShellsVariables.html">Unix Tutorial #4: Shells and Path Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_05_ForLoops.html">Unix Tutorial #5: For-Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_06_IfElse.html">Unix Tutorial #6: Conditional Statements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_07_Scripting.html">Unix Tutorial #7: Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_08_Sed.html">Unix Tutorial #8: The Sed Command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_09_AutomatingTheAnalysis.html">Unix Tutorial #9: Automating The Analysis</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">fMRI Short Course with FSL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_Intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_01_DataDownload.html">fMRI Tutorial #1: Downloading the Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_02_ExperimentalDesign.html">fMRI Tutorial #2: Overview of The Flanker Task</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_03_LookingAtTheData.html">fMRI Tutorial #3: Looking at the Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_04_Preprocessing.html">fMRI Tutorial #4: Preprocessing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_05_1stLevelAnalysis.html">fMRI Tutorial #5: Statistics and Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_06_Scripting.html">fMRI Tutorial #6: Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_07_2ndLevelAnalysis.html">fMRI Tutorial #7: 2nd-Level Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_08_3rdLevelAnalysis.html">fMRI Tutorial #8: 3rd-Level Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_09_ROIAnalysis.html">fMRI Tutorial #9: ROI Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_10_Summary.html">fMRI Tutorial #10: Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_Appendices.html">fMRI Short Course: Appendices</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">FreeSurfer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../FreeSurfer/FreeSurfer_Introduction.html">FreeSurfer Short Course</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">E-Prime</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../E-Prime/E-Prime_Overview.html">Overview of E-Prime</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">AFNI</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../AFNI/AFNI_Overview.html">AFNI Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">SPM</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../SPM_Overview.html">SPM Overview</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../SPM_Overview.html#what-is-spm">What is SPM?</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="SPM_fMRI_Intro.html">Introduction to SPM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPM_01_DataDownload.html">SPM Tutorial #1: Downloading the Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPM_02_Flanker.html">SPM Tutorial #2: The Flanker Task</a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPM_03_LookingAtData.html">SPM Tutorial #3: Looking at the Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPM_04_Preprocessing.html">SPM Tutorial #4: Preprocessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPM_05_1stLevelAnalysis.html">SPM Tutorial #5: Statistics and Modeling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPM_06_Scripting.html">SPM Tutorial #6: Scripting</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">SPM Tutorial #7: Setting the Origin</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#setting-the-origin">Setting the Origin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#should-the-origin-be-reset-for-each-subject">Should the Origin be Reset for Each Subject?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#video">Video</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#next-steps">Next Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="SPM_08_GroupAnalysis.html">SPM Tutorial #8: Group Analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPM_Intermezzo_Toolboxes.html">SPM Intermezzo: Toolboxes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPM_09_ROIAnalysis.html">SPM Tutorial #9: ROI Analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="SummaryStatistics.html">Appendix A: Summary Statistics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="SPM_PPI.html">Appendix B: Psychophysiological Interactions (PPI) in SPM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="AppendixC_ParametricModulation.html">Appendix C: Parametric Modulation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="AppendixD_DesignOptimization.html">Appendix D: DesignOptimization</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Functional Connectivity with the CONN Toolbox</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../FunctionalConnectivity/CONN_Overview.html">Functional Connectivity and the CONN Toolbox</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Parametric Modulation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../PM/PM_Overview.html">Parametric Modulation in SPM, FSL, and AFNI</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Image Visualization with MRIcroGL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../MRIcroGL/MRIcroGL_Overview.html">Image Visualization with MRIcroGL</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Introduction to the Human Connectome Project (HCP)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../HCP/HCP_Overview.html">Introduction to the Human Connectome Project</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Finite Impulse Response (FIR) Models</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../FIR/FIR_Overview.html">Finite Impulse Response (FIR)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">fMRI Concepts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Practicals/DesignOptimization.html">Design Optimization</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Diffusion Analysis with MRtrix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../MRtrix/MRtrix_Introduction.html">Introduction to MRtrix</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ASL Analysis</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/ASL_Techniques.html">fASL Tutorial #1: Background</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/fASL_02_Download.html">fASL Tutorial #2: Downloading and Installing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/fASL_03_Task.html">fASL Tutorial #3: The N-Back Task</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/04_fASL_GUI.html">fASL Tutorial #4: The GUI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/05_fASL_Results.html">fASL Tutorial #5: Examining the Results</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/06_fASL_Quantification.html">fASL Tutorial #6: Quantification</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Frequently Asked Questions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../FrequentlyAskedQuestions/FrequentlyAskedQuestions.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Statistics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Statistics/GIMME.html">GIMME (Group Iterative Multiple Model Estimation)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Open Science</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../OpenScience/OS_Overview.html">Open Science</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced Normalization Tools (ANTs)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ANTs/ANTs_Overview.html">Advanced Normalization Tools (ANTs)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tract-Based Spatial Statistics (TBSS)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../TBSS/TBSS_Overview.html">Introduction to Tract-Based Spatial Statistics (TBSS)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Statistics for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Stats/Stats_Overview.html">Statistics for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Machine Learning for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ML/ML_Overview.html">Machine Learning for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Slicer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Slicer/Slicer_Overview.html">Slicer Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">CAT12</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../CAT12/CAT12_Overview.html">Voxel-Based Morphometry with CAT12</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Using the Supercomputer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Supercomputer/Supercomputer_Overview.html">Introduction to Supercomputing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Matlab for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Matlab/Matlab_Overview.html">Matlab for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ITK-Snap</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ITK-Snap/ITK-Snap_Overview.html">ITK-Snap_Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Python for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../PythonForNeuroimagers/PythonForNeuroimagers_Overview.html">Python for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Meta-Analysis for fMRI</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../MetaAnalysis/MetaAnalysis_Overview.html">Meta-Analysis for Neuroimagers</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Andy's Brain Book</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../SPM_Overview.html">SPM Overview</a></li>
+      <li class="breadcrumb-item active">SPM Tutorial #7: Setting the Origin</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/SPM/SPM_Short_Course/SPM_07_SettingTheOrigin.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="spm-tutorial-7-setting-the-origin">
+<span id="spm-07-settingtheorigin"></span><h1>SPM Tutorial #7: Setting the Origin<a class="headerlink" href="#spm-tutorial-7-setting-the-origin" title="Link to this heading"></a></h1>
+<hr class="docutils" />
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading"></a></h2>
+<p>After we <a class="reference internal" href="SPM_06_Scripting.html#spm-06-scripting"><span class="std std-ref">scripted our analysis</span></a>, it would appear that all we need to do is run the script for the rest of the subjects. Before going on, it is wise to check whether the scripted analysis did as well as the analysis we did by hand for sub-08. If there are any errors in the script, they will propagate throughout all of our subjects - a good habit is to run the script for one or two subjects, and see whether there are any problems.</p>
+<p>If you examine the output from each preprocessing step by loading the images into the Display viewer of the SPM GUI, you will notice that the initial preprocessing steps, such as realignment and slice-timing correction, appear to have run without any errors. When we look at the output of coregistration, however, we begin to see an anomaly: Although the functional data looks normal, the realigned anatomical image looks as though the orientations have been flipped. When we look at the output of later stages, such as normalization or the 1st-level analysis, this error has been propagated to the functional data as well. Consequently, any results that we generate from this analysis will be meaningless.</p>
+<figure class="align-default" id="id1">
+<img alt="../../_images/07_CoregistrationError_Anatomical.png" src="../../_images/07_CoregistrationError_Anatomical.png" />
+<figcaption>
+<p><span class="caption-text">Example of a coregistration failure. The large distance between the origins of the anatomical and functional scans leads to an inaccurate match between the images; the mismatch is so extreme that the orientation inferior-superior axis of the anatomical image is flipped.</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id2">
+<img alt="../../_images/07_NormalizationError_Functional.png" src="../../_images/07_NormalizationError_Functional.png" />
+<figcaption>
+<p><span class="caption-text">The error above is propagated to the functional images. Since the anatomical image is in the wrong orientation, the normalization between the anatomical image and the template will result in a mismatch as well. These faulty warping parameters are then applied to the normalized functional data shown here.</span><a class="headerlink" href="#id2" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>To see why this error happens in the first place, click on the <code class="docutils literal notranslate"><span class="pre">Check</span> <span class="pre">Reg</span></code> button from the SPM GUI, and select the raw anatomical image and one of the functional images. The centers of the images are very far away from each other, which causes the errors listed above.</p>
+<figure class="align-default">
+<img alt="../../_images/07_CheckRegAnatFunc.png" src="../../_images/07_CheckRegAnatFunc.png" />
+</figure>
+</section>
+<section id="setting-the-origin">
+<h2>Setting the Origin<a class="headerlink" href="#setting-the-origin" title="Link to this heading"></a></h2>
+<p>The problem is not in the data itself; nor is it an error in the script. Instead, it is a problem with the initial alignment of the anatomical image, which causes the later preprocessing steps to fail. If you have read the other walkthroughs, you may recall from the <a class="reference internal" href="../../AFNI/AFNI_Short_Course/AFNI_Preprocessing/07_AFNI_Checking_Preprocessing.html#afni-checking-preprocessing"><span class="std std-ref">AFNI tutorial</span></a> that an anatomical image sometimes requires a nudge or a push for a better initial alignment with the template that is being normalized to. While AFNI and FSL have methods to automatically perform these adjustments, SPM requires us to manually set the origin (i.e., values of 0,0,0 for the x-, y-, and z-dimensions). Specifically, we need to set the origin at the <strong>anterior commissure</strong>, a bundle of white matter fibers that connect the anterior lobes of the brain. The MNI templates that we use have the anterior commissure at their origin, and setting the origin of the anatomical images to the anterior commissure as well will improve the chances that our normalization will be successful.</p>
+<p>To do this, click on the Display button and load the raw anatomical image for sub-01. (You may need to use Matlab’s <code class="docutils literal notranslate"><span class="pre">gunzip</span></code> command to decompress the original gzipped image again before you can select it from the Display GUI.) Note that if you click on the <code class="docutils literal notranslate"><span class="pre">Origin</span></code> button, the origin is far away from the anterior commissure. Our task is to undo these differences in coordinates so that the origin will be set at that structure.</p>
+<figure class="align-default" id="id3">
+<img alt="../../_images/07_Anatomical_Origins_Before.png" src="../../_images/07_Anatomical_Origins_Before.png" />
+<figcaption>
+<p><span class="caption-text">Clicking the origin button reveals that the origin is far away from the center of the image. We will transform the image so that the origin lies at the anterior commissure instead.</span><a class="headerlink" href="#id3" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>Now, click and drag the crosshairs until they are on the anterior commissure. This thin band of white matter fibers can be found at the base of the fornix, an arch-like band of white matter extending downward from the corpus callosum. The anterior commissure can be found most easily from the sagittal view; once you have placed your crosshairs in the vicinity of the anterior commissure, you should also see a thin band of white matter in the axial view and the coronal view. (In the coronal view, imagine that the ventricles are eyes; the anterior commissure then looks like a white mustache.)</p>
+<figure class="align-default">
+<img alt="../../_images/07_FindingTheAC.png" src="../../_images/07_FindingTheAC.png" />
+</figure>
+<p>Take a look at the numbers in the <code class="docutils literal notranslate"><span class="pre">mm:</span></code> field; these are how far away from the origin the crosshairs are along the right/left, anterior/posterior, and inferior/superior axes. We will use the fields found below - <code class="docutils literal notranslate"><span class="pre">right</span> <span class="pre">{mm}</span></code>, <code class="docutils literal notranslate"><span class="pre">forward</span> <span class="pre">{mm}</span></code>, and <code class="docutils literal notranslate"><span class="pre">up</span> <span class="pre">{mm}</span></code> - to manually shift the origin to the anterior commissure. Enter the opposite of each number in the <code class="docutils literal notranslate"><span class="pre">mm:</span></code> field with its corresponding field below.</p>
+<p>For example, if you clicked the <code class="docutils literal notranslate"><span class="pre">Origin</span></code> button and the numbers <code class="docutils literal notranslate"><span class="pre">-84.0,</span> <span class="pre">18.7,</span> <span class="pre">-15.1</span></code> were returned in the <code class="docutils literal notranslate"><span class="pre">mm:</span></code> field, you would enter the following opposite numbers in the right, forward, and up fields:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mf">84.0</span>
+<span class="o">-</span><span class="mf">18.7</span>
+<span class="mf">15.1</span>
+</pre></div>
+</div>
+<figure class="align-default" id="id4">
+<img alt="../../_images/07_SettingTheOrigin.png" src="../../_images/07_SettingTheOrigin.png" />
+<figcaption>
+<p><span class="caption-text">Setting the origin to the anterior commissure. Once you have filled in these numbers for the right, forward, and up fields, press <code class="docutils literal notranslate"><span class="pre">Enter</span></code>. To make sure that the new origin is at the anterior commissure, press the <code class="docutils literal notranslate"><span class="pre">Origin</span></code> button.</span><a class="headerlink" href="#id4" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>An easier method to set the origin is to point your crosshairs to the anterior commissure, and simply click the <code class="docutils literal notranslate"><span class="pre">Set</span> <span class="pre">Origin</span></code> button at the bottom of the screen. The point of doing it the other way first was to introduce the reader to functions of the Display GUI that he may use later when manually adjusting an image. For setting the origin of future images, you are encouraged to use the simpler way of clicking the <code class="docutils literal notranslate"><span class="pre">Set</span> <span class="pre">Origin</span></code> button.</p>
+</div>
+<p>We will now click the <code class="docutils literal notranslate"><span class="pre">Reorient</span></code> button to permanently set this new origin of the anatomical image and any functional images. When you click on the Reorient button, you will be prompted to select any images to reorient, with the anatomical image already selected. Click <code class="docutils literal notranslate"><span class="pre">Done</span></code>, and save the reorientation matrix when prompted.</p>
+<p>Now check the initial registration again between the anatomical and functional images. The centers of the images, while not perfectly aligned, are now in a much better initial position. This increases the odds that coregistration, and by extension normalization and the 1st-level modeling, will succeed.</p>
+<figure class="align-default">
+<img alt="../../_images/07_CheckUpdatedRegAnatFunc.png" src="../../_images/07_CheckUpdatedRegAnatFunc.png" />
+</figure>
+</section>
+<section id="should-the-origin-be-reset-for-each-subject">
+<h2>Should the Origin be Reset for Each Subject?<a class="headerlink" href="#should-the-origin-be-reset-for-each-subject" title="Link to this heading"></a></h2>
+<p>If you attempted to analyze all of your subjects using the script mentioned in the previous chapter, you may have noticed that the preprocessing succeeded for the majority of the subjects, and failed for about a fourth of the subjects. This raises the question of whether the origin should be reset to each subject’s anterior commissure. The conservative approach would be to do it for each subject; although you should still check the output of the preprocessing to make sure that there were no errors.</p>
+</section>
+<section id="video">
+<h2>Video<a class="headerlink" href="#video" title="Link to this heading"></a></h2>
+<p>For a video demonstration of how to set the origin in SPM12, click <a class="reference external" href="https://www.youtube.com/watch?v=19gvTytjBUU">here</a>.</p>
+</section>
+<section id="next-steps">
+<h2>Next Steps<a class="headerlink" href="#next-steps" title="Link to this heading"></a></h2>
+<p>Once you have reset the origin for each subject, rerun the preprocessing script. Note that if the script has already been run for some of the subjects (such as sub-01, sub-02, and sub-08), at the model estimation stage you will be asked whether you want to overwrite the currently existing statistical output. You will either have to do this by hand, or delete the currently existing 1st-level directories. The other preprocessing output will be overwritten.</p>
+<p>Once you have analyzed all of the individual subjects, you are now ready to perform a group level analysis. For an overview of the method and how to do it in SPM, click the <code class="docutils literal notranslate"><span class="pre">Next</span></code> button.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="SPM_06_Scripting.html" class="btn btn-neutral float-left" title="SPM Tutorial #6: Scripting" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="SPM_08_GroupAnalysis.html" class="btn btn-neutral float-right" title="SPM Tutorial #8: Group Analysis" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Andy Jahn.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

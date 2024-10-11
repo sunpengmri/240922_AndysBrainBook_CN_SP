@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chapter #1: FIR Analysis in AFNI &mdash; Andy&#39;s Brain Book 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b76e3c8a" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=f2a433a1"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Chapter #2: FIR Analysis in SPM" href="FIR_02_SPM.html" />
+    <link rel="prev" title="Finite Impulse Response (FIR)" href="../FIR_Overview.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Andy's Brain Book
+          </a>
+              <div class="version">
+                1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Install</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../installation/fsl_mac_install.html">Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Unix for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_Intro.html">What is Unix?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_01_Navigation.html">Unix Tutorial #1: 目录操作 (Directories and Navigation)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_02_CopyRemove.html">Unix Tutorial #2: Copying and Removing Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_03_ReadingTextFiles.html">Unix Tutorial #3: Reading Text Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_04_ShellsVariables.html">Unix Tutorial #4: Shells and Path Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_05_ForLoops.html">Unix Tutorial #5: For-Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_06_IfElse.html">Unix Tutorial #6: Conditional Statements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_07_Scripting.html">Unix Tutorial #7: Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_08_Sed.html">Unix Tutorial #8: The Sed Command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_09_AutomatingTheAnalysis.html">Unix Tutorial #9: Automating The Analysis</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">fMRI Short Course with FSL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_Intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_01_DataDownload.html">fMRI Tutorial #1: Downloading the Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_02_ExperimentalDesign.html">fMRI Tutorial #2: Overview of The Flanker Task</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_03_LookingAtTheData.html">fMRI Tutorial #3: Looking at the Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_04_Preprocessing.html">fMRI Tutorial #4: Preprocessing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_05_1stLevelAnalysis.html">fMRI Tutorial #5: Statistics and Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_06_Scripting.html">fMRI Tutorial #6: Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_07_2ndLevelAnalysis.html">fMRI Tutorial #7: 2nd-Level Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_08_3rdLevelAnalysis.html">fMRI Tutorial #8: 3rd-Level Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_09_ROIAnalysis.html">fMRI Tutorial #9: ROI Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_10_Summary.html">fMRI Tutorial #10: Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_Appendices.html">fMRI Short Course: Appendices</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">FreeSurfer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../FreeSurfer/FreeSurfer_Introduction.html">FreeSurfer Short Course</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">E-Prime</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../E-Prime/E-Prime_Overview.html">Overview of E-Prime</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">AFNI</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../AFNI/AFNI_Overview.html">AFNI Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">SPM</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../SPM/SPM_Overview.html">SPM Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Functional Connectivity with the CONN Toolbox</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../FunctionalConnectivity/CONN_Overview.html">Functional Connectivity and the CONN Toolbox</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Parametric Modulation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../PM/PM_Overview.html">Parametric Modulation in SPM, FSL, and AFNI</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Image Visualization with MRIcroGL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../MRIcroGL/MRIcroGL_Overview.html">Image Visualization with MRIcroGL</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Introduction to the Human Connectome Project (HCP)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../HCP/HCP_Overview.html">Introduction to the Human Connectome Project</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Finite Impulse Response (FIR) Models</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../FIR_Overview.html">Finite Impulse Response (FIR)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../FIR_Overview.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../FIR_Overview.html#next-steps">Next Steps</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../FIR_Overview.html#video">Video</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Chapter #1: FIR Analysis in AFNI</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#editing-the-script">Editing the Script</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#examining-the-results">Examining the Results</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#group-level-analysis">Group-Level Analysis</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#exercises">Exercises</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#video">Video</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#next-steps">Next Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="FIR_02_SPM.html">Chapter #2: FIR Analysis in SPM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="FIR_03_FSL.html">Chapter #3: FIR Analysis in FSL</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">fMRI Concepts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Practicals/DesignOptimization.html">Design Optimization</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Diffusion Analysis with MRtrix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../MRtrix/MRtrix_Introduction.html">Introduction to MRtrix</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ASL Analysis</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/ASL_Techniques.html">fASL Tutorial #1: Background</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/fASL_02_Download.html">fASL Tutorial #2: Downloading and Installing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/fASL_03_Task.html">fASL Tutorial #3: The N-Back Task</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/04_fASL_GUI.html">fASL Tutorial #4: The GUI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/05_fASL_Results.html">fASL Tutorial #5: Examining the Results</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/06_fASL_Quantification.html">fASL Tutorial #6: Quantification</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Frequently Asked Questions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../FrequentlyAskedQuestions/FrequentlyAskedQuestions.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Statistics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Statistics/GIMME.html">GIMME (Group Iterative Multiple Model Estimation)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Open Science</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../OpenScience/OS_Overview.html">Open Science</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced Normalization Tools (ANTs)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ANTs/ANTs_Overview.html">Advanced Normalization Tools (ANTs)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tract-Based Spatial Statistics (TBSS)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../TBSS/TBSS_Overview.html">Introduction to Tract-Based Spatial Statistics (TBSS)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Statistics for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Stats/Stats_Overview.html">Statistics for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Machine Learning for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ML/ML_Overview.html">Machine Learning for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Slicer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Slicer/Slicer_Overview.html">Slicer Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">CAT12</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../CAT12/CAT12_Overview.html">Voxel-Based Morphometry with CAT12</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Using the Supercomputer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Supercomputer/Supercomputer_Overview.html">Introduction to Supercomputing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Matlab for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Matlab/Matlab_Overview.html">Matlab for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ITK-Snap</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ITK-Snap/ITK-Snap_Overview.html">ITK-Snap_Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Python for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../PythonForNeuroimagers/PythonForNeuroimagers_Overview.html">Python for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Meta-Analysis for fMRI</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../MetaAnalysis/MetaAnalysis_Overview.html">Meta-Analysis for Neuroimagers</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Andy's Brain Book</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../FIR_Overview.html">Finite Impulse Response (FIR)</a></li>
+      <li class="breadcrumb-item active">Chapter #1: FIR Analysis in AFNI</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/FIR/FIR_ShortCourse/FIR_01_AFNI.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="chapter-1-fir-analysis-in-afni">
+<span id="fir-01-afni"></span><h1>Chapter #1: FIR Analysis in AFNI<a class="headerlink" href="#chapter-1-fir-analysis-in-afni" title="Link to this heading"></a></h1>
+<hr class="docutils" />
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading"></a></h2>
+<p>In AFNI, the individual time-points you estimate are called TENTs - possibly because each basis function looks like a pup tent. The peak of this TENT function is estimated for each time-point that is specified, including the end-points of the interval; for example, if you wanted to estimate each time-point from zero (that is, when the stimulus occurs) to twelve seconds after the start of the stimulus, there would be seven estimates total: at the time-points 0, 2, 4, 6, 8, 10, and 12.</p>
+<p>To begin, navigate to the directory <code class="docutils literal notranslate"><span class="pre">ToneCounting_AFNI</span></code> by opening a Terminal and typing <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">ToneCounting_AFNI</span></code>. Then, download <a class="reference external" href="https://github.com/andrewjahn/AFNI_Scripts/blob/master/make_AFNI_Timings_TENT.sh">this script</a> to the <code class="docutils literal notranslate"><span class="pre">ToneCounting_AFNI</span></code> directory, and execute the script by typing <code class="docutils literal notranslate"><span class="pre">bash</span> <span class="pre">make_AFNI_Timings_TENT.sh</span></code>. This will create two separate timing files for each subject, <code class="docutils literal notranslate"><span class="pre">tone_counting_onset_times.txt</span></code> and <code class="docutils literal notranslate"><span class="pre">tone_counting_probe_onsets.txt</span></code>.</p>
+<p>For the rest of this analysis, we will make edits to the <code class="docutils literal notranslate"><span class="pre">cmd</span></code> file provided on the study’s associated <a class="reference external" href="https://www.nitrc.org/projects/frcl">NITRC website</a> (the directory can be found by clicking on the button <code class="docutils literal notranslate"><span class="pre">See</span> <span class="pre">All</span> <span class="pre">Files</span></code> next to the Download dropdown menu, and selecting <code class="docutils literal notranslate"><span class="pre">afni_hrf_tent.tar.gz</span></code>). This file uses the command <code class="docutils literal notranslate"><span class="pre">afni_proc.py</span></code> to create a script with all of the individual AFNI commands needed to do each step of the preprocessing and statistical analysis.</p>
+</section>
+<section id="editing-the-script">
+<h2>Editing the Script<a class="headerlink" href="#editing-the-script" title="Link to this heading"></a></h2>
+<p>To use the script in a for-loop to analyze all of the subjects in this dataset, we will change the <code class="docutils literal notranslate"><span class="pre">set</span> <span class="pre">subj</span></code> line to equal <code class="docutils literal notranslate"><span class="pre">$1</span></code>, so that our input from the for-loop will be the subject identification code. To save time, we will also insert the line <code class="docutils literal notranslate"><span class="pre">-regress_run_clustsim</span> <span class="pre">no</span></code>. The edited script will look like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/usr/bin/env tcsh
+
+# created by uber_subject.py: version 0.37 (April 14, 2015)
+# creation date: Tue Mar 22 11:56:09 2016
+
+# set data directories
+set top_dir = $PWD
+
+# set subject and group identifiers
+set subj      = $1
+set group_id  = ToneCounting
+
+# run afni_proc.py to create a single subject processing script
+afni_proc.py -subj_id $subj                                      \
+        -script proc.$subj -scr_overwrite                        \
+        -blocks tshift align tlrc volreg blur mask scale regress \
+        -copy_anat $top_dir/anat/${subj}_T1w.nii.gz                    \
+        -tcat_remove_first_trs 0                                 \
+        -dsets $top_dir/func/${subj}_task-tonecounting_bold.nii.gz     \
+        -volreg_align_to third                                   \
+        -volreg_align_e2a                                        \
+        -volreg_tlrc_warp                                        \
+        -blur_size 4.0                                           \
+        -regress_stim_times                                      \
+            $top_dir/func/tone_counting_onset_times.txt               \
+            $top_dir/func/tone_counting_probe_onsets.txt              \
+        -regress_stim_labels                                     \
+            tone_counting probe                                  \
+        -regress_basis_multi                                     \
+            &#39;TENT(0,12,7)&#39; &#39;TENT(0,14,8)&#39;                        \
+        -regress_censor_motion 0.3                               \
+        -regress_make_ideal_sum sum_ideal.1D                     \
+        -regress_run_clustsim no                                \
+        -html_review_style none
+
+tcsh -xef proc.$subj |&amp; tee output.proc.$subj
+</pre></div>
+</div>
+<p>Either make these edits to the original script, or copy and paste the above code into a file called <code class="docutils literal notranslate"><span class="pre">cmd.ap.AFNI_Tent</span></code>. The main difference between this analysis and previous ones using the canonical hemodynamic response function is the line <code class="docutils literal notranslate"><span class="pre">-regress_basis_multi</span> <span class="pre">'TENT(0,12,7)'</span> <span class="pre">'TENT(0,14,8)'</span></code>, which uses a TENT analysis for the onset_times condition spanning an interval from 0 to 12 seconds with 7 TENTs each, and 8 TENTs spanning the interval 0 to 14 seconds for the probe_onsets condition. Make sure the above script is in the folder that contains all of the subjects, and then copy and paste the following code into your terminal:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
+
+if [[ ! -e subjList.txt ]]; then
+  ls | grep ^sub- &gt; subjList.txt
+fi
+
+for i in `cat subjList.txt`; do
+  cp cmd.ap.AFNI_Tent $i;
+  cd $i;
+  tcsh cmd.ap.AFNI_Tent $i;
+  cd ..;
+done
+</pre></div>
+</div>
+<p>This will create the file <code class="docutils literal notranslate"><span class="pre">subjList.txt</span></code> (if it doesn’t exist already), and use a for-loop to run the above <code class="docutils literal notranslate"><span class="pre">cmd</span></code> script for each subject. This will take a couple of hours to run.</p>
+</section>
+<section id="examining-the-results">
+<h2>Examining the Results<a class="headerlink" href="#examining-the-results" title="Link to this heading"></a></h2>
+<p>Once the preprocessing and analysis is finished, navigate to the directory <code class="docutils literal notranslate"><span class="pre">sub-01/sub-01.results</span></code>. Similar to the results folder from the AFNI tutorials, we see output from all of the steps; however, if we look at the output from the statistical analysis by typing <code class="docutils literal notranslate"><span class="pre">3dinfo</span> <span class="pre">-verb</span> <span class="pre">stats.sub-01+tlrc</span></code>, we see the following (truncated to just the tone_counting condition):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">--</span> <span class="n">At</span> <span class="n">sub</span><span class="o">-</span><span class="n">brick</span> <span class="c1">#1 &#39;tone_counting#0_Coef&#39; datum type is float:       -50.34 to         60.68</span>
+<span class="o">--</span> <span class="n">At</span> <span class="n">sub</span><span class="o">-</span><span class="n">brick</span> <span class="c1">#2 &#39;tone_counting#0_Tstat&#39; datum type is float:     -6.03381 to       4.62057</span>
+   <span class="n">statcode</span> <span class="o">=</span> <span class="n">fitt</span><span class="p">;</span>  <span class="n">statpar</span> <span class="o">=</span> <span class="mi">68</span>
+<span class="o">--</span> <span class="n">At</span> <span class="n">sub</span><span class="o">-</span><span class="n">brick</span> <span class="c1">#3 &#39;tone_counting#1_Coef&#39; datum type is float:     -64.2838 to       89.6593</span>
+<span class="o">--</span> <span class="n">At</span> <span class="n">sub</span><span class="o">-</span><span class="n">brick</span> <span class="c1">#4 &#39;tone_counting#1_Tstat&#39; datum type is float:     -5.57096 to       4.79652</span>
+   <span class="n">statcode</span> <span class="o">=</span> <span class="n">fitt</span><span class="p">;</span>  <span class="n">statpar</span> <span class="o">=</span> <span class="mi">68</span>
+<span class="o">--</span> <span class="n">At</span> <span class="n">sub</span><span class="o">-</span><span class="n">brick</span> <span class="c1">#5 &#39;tone_counting#2_Coef&#39; datum type is float:       -119.9 to        102.47</span>
+<span class="o">--</span> <span class="n">At</span> <span class="n">sub</span><span class="o">-</span><span class="n">brick</span> <span class="c1">#6 &#39;tone_counting#2_Tstat&#39; datum type is float:     -5.04005 to       4.87468</span>
+   <span class="n">statcode</span> <span class="o">=</span> <span class="n">fitt</span><span class="p">;</span>  <span class="n">statpar</span> <span class="o">=</span> <span class="mi">68</span>
+<span class="o">--</span> <span class="n">At</span> <span class="n">sub</span><span class="o">-</span><span class="n">brick</span> <span class="c1">#7 &#39;tone_counting#3_Coef&#39; datum type is float:     -132.215 to       136.358</span>
+<span class="o">--</span> <span class="n">At</span> <span class="n">sub</span><span class="o">-</span><span class="n">brick</span> <span class="c1">#8 &#39;tone_counting#3_Tstat&#39; datum type is float:     -5.70406 to       5.24604</span>
+   <span class="n">statcode</span> <span class="o">=</span> <span class="n">fitt</span><span class="p">;</span>  <span class="n">statpar</span> <span class="o">=</span> <span class="mi">68</span>
+<span class="o">--</span> <span class="n">At</span> <span class="n">sub</span><span class="o">-</span><span class="n">brick</span> <span class="c1">#9 &#39;tone_counting#4_Coef&#39; datum type is float:     -100.065 to       99.7619</span>
+<span class="o">--</span> <span class="n">At</span> <span class="n">sub</span><span class="o">-</span><span class="n">brick</span> <span class="c1">#10 &#39;tone_counting#4_Tstat&#39; datum type is float:     -5.50184 to       5.14456</span>
+   <span class="n">statcode</span> <span class="o">=</span> <span class="n">fitt</span><span class="p">;</span>  <span class="n">statpar</span> <span class="o">=</span> <span class="mi">68</span>
+<span class="o">--</span> <span class="n">At</span> <span class="n">sub</span><span class="o">-</span><span class="n">brick</span> <span class="c1">#11 &#39;tone_counting#5_Coef&#39; datum type is float:      -134.37 to       156.491</span>
+<span class="o">--</span> <span class="n">At</span> <span class="n">sub</span><span class="o">-</span><span class="n">brick</span> <span class="c1">#12 &#39;tone_counting#5_Tstat&#39; datum type is float:     -5.12016 to        6.7376</span>
+   <span class="n">statcode</span> <span class="o">=</span> <span class="n">fitt</span><span class="p">;</span>  <span class="n">statpar</span> <span class="o">=</span> <span class="mi">68</span>
+<span class="o">--</span> <span class="n">At</span> <span class="n">sub</span><span class="o">-</span><span class="n">brick</span> <span class="c1">#13 &#39;tone_counting#6_Coef&#39; datum type is float:     -76.8142 to        77.716</span>
+<span class="o">--</span> <span class="n">At</span> <span class="n">sub</span><span class="o">-</span><span class="n">brick</span> <span class="c1">#14 &#39;tone_counting#6_Tstat&#39; datum type is float:     -4.45098 to        4.4271</span>
+   <span class="n">statcode</span> <span class="o">=</span> <span class="n">fitt</span><span class="p">;</span>  <span class="n">statpar</span> <span class="o">=</span> <span class="mi">68</span>
+</pre></div>
+</div>
+<p>There are 14 sub-briks total for the tone_counting condition, with 7 beta weights (i.e., those labeled “Coef”) and 7 T-statistics. In other words, we have an average beta estimate for each time-point in a 12-second window after the onset of each tone_counting condition; these beta weights can then be submitted to a group-level analysis just like the beta weights from a canonical HRF analysis.</p>
+<section id="plotting-the-tent-activity">
+<h3>Plotting the TENT Activity<a class="headerlink" href="#plotting-the-tent-activity" title="Link to this heading"></a></h3>
+<p>Each of the “coef” sub-briks representing the activity at each time-point are also contained within the files beginning with <code class="docutils literal notranslate"><span class="pre">iresp</span></code>. In this example, the file <code class="docutils literal notranslate"><span class="pre">iresp_probe.sub-01+tlrc</span></code> contains just the TENT sub-briks for the 14-second window after the onset of the probe stimuli, while the file <code class="docutils literal notranslate"><span class="pre">iresp_tone_counting.sub-01+tlrc</span></code> contains the TENT sub-briks for the tone counting stimuli. If you open the AFNI GUI by typing <code class="docutils literal notranslate"><span class="pre">afni</span></code>, click <code class="docutils literal notranslate"><span class="pre">Underlay</span></code> and select the file <code class="docutils literal notranslate"><span class="pre">iresp_tone_counting.sub-01+tlrc</span></code>. Place the crosshairs on a voxel around the primary auditory cortex and click the <code class="docutils literal notranslate"><span class="pre">Graph</span></code> button next to any of the orthogonal viewers; you will see a 3x3 matrix of the center voxel and its neighbors, with the estimated activity at each time-point.</p>
+<figure class="align-default">
+<img alt="../../_images/01_FIR_AFNI_Plot.png" src="../../_images/01_FIR_AFNI_Plot.png" />
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Some researchers find it more useful to force the activity of the first time-point to zero as a constant baseline for comparison with the activity of the other time-points. This can be done by changing the basis function in the above script from <code class="docutils literal notranslate"><span class="pre">TENT</span></code> to <code class="docutils literal notranslate"><span class="pre">TENTzero</span></code>. Keeping all of the other options the same, the resulting activity profile at the same voxel in the above figure would look like this:</p>
+<figure class="align-default">
+<img alt="../../_images/01_FIR_AFNI_TENTzero.png" src="../../_images/01_FIR_AFNI_TENTzero.png" />
+</figure>
+<p>The overall profile looks almost the same, but the values are now relative to the first sub-brik’s value of zero.</p>
+</div>
+</section>
+</section>
+<section id="group-level-analysis">
+<h2>Group-Level Analysis<a class="headerlink" href="#group-level-analysis" title="Link to this heading"></a></h2>
+<p>The group-level analysis of the TENT sub-briks is virtually identical to those analyses using the canonical HRF; the only difference is that you will select which sub-briks you want to compare against each other.</p>
+<p>For example, let’s say that we wanted to compare the zero time-point to the third time-point - in this case, those sub-briks corresponding to time-points 0s and 6s, since the TR is 2 seconds. From the above output from the <code class="docutils literal notranslate"><span class="pre">stats</span></code> dataset, we see that the sub-brik 7 is the third time-point after the onset of the tone counting condition, and sub-brik 1 is the onset of the condition. Thus, we could write a paired t-test script like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/tcsh -xef
+
+# created by uber_ttest.py: version 2.0 (December 28, 2017)
+# creation date: Wed Feb 19 11:33:21 2020
+
+# ---------------------- set process variables ----------------------
+
+set mask_dset = $PWD/sub-01/sub-01.results/mask_group+tlrc
+
+set dirA = $PWD
+
+# specify and possibly create results directory
+set results_dir = test.results_6s-0s
+if ( ! -d $results_dir ) mkdir $results_dir
+
+# ------------------------- process the data -------------------------
+
+3dttest++ -prefix $results_dir/results_6s-0s -paired                    \
+        -mask $mask_dset                                         \
+        -setA SixSeconds                                           \
+           01 &quot;$dirA/sub-01/sub-01.results/stats.sub-01+tlrc[7]&quot; \
+           02 &quot;$dirA/sub-02/sub-02.results/stats.sub-02+tlrc[7]&quot; \
+           03 &quot;$dirA/sub-03/sub-03.results/stats.sub-03+tlrc[7]&quot; \
+           04 &quot;$dirA/sub-04/sub-04.results/stats.sub-04+tlrc[7]&quot; \
+           05 &quot;$dirA/sub-05/sub-05.results/stats.sub-05+tlrc[7]&quot; \
+           06 &quot;$dirA/sub-06/sub-06.results/stats.sub-06+tlrc[7]&quot; \
+           07 &quot;$dirA/sub-07/sub-07.results/stats.sub-07+tlrc[7]&quot; \
+           08 &quot;$dirA/sub-08/sub-08.results/stats.sub-08+tlrc[7]&quot; \
+           09 &quot;$dirA/sub-09/sub-09.results/stats.sub-09+tlrc[7]&quot; \
+           10 &quot;$dirA/sub-10/sub-10.results/stats.sub-10+tlrc[7]&quot; \
+           11 &quot;$dirA/sub-11/sub-11.results/stats.sub-11+tlrc[7]&quot; \
+           12 &quot;$dirA/sub-12/sub-12.results/stats.sub-12+tlrc[7]&quot; \
+           13 &quot;$dirA/sub-13/sub-13.results/stats.sub-13+tlrc[7]&quot; \
+           14 &quot;$dirA/sub-14/sub-14.results/stats.sub-14+tlrc[7]&quot; \
+        -setB ZeroSeconds                                           \
+           01 &quot;$dirA/sub-01/sub-01.results/stats.sub-01+tlrc[1]&quot; \
+           02 &quot;$dirA/sub-02/sub-02.results/stats.sub-02+tlrc[1]&quot; \
+           03 &quot;$dirA/sub-03/sub-03.results/stats.sub-03+tlrc[1]&quot; \
+           04 &quot;$dirA/sub-04/sub-04.results/stats.sub-04+tlrc[1]&quot; \
+           05 &quot;$dirA/sub-05/sub-05.results/stats.sub-05+tlrc[1]&quot; \
+           06 &quot;$dirA/sub-06/sub-06.results/stats.sub-06+tlrc[1]&quot; \
+           07 &quot;$dirA/sub-07/sub-07.results/stats.sub-07+tlrc[1]&quot; \
+           08 &quot;$dirA/sub-08/sub-08.results/stats.sub-08+tlrc[1]&quot; \
+           09 &quot;$dirA/sub-09/sub-09.results/stats.sub-09+tlrc[1]&quot; \
+           10 &quot;$dirA/sub-10/sub-10.results/stats.sub-10+tlrc[1]&quot; \
+           11 &quot;$dirA/sub-11/sub-11.results/stats.sub-11+tlrc[1]&quot; \
+           12 &quot;$dirA/sub-12/sub-12.results/stats.sub-12+tlrc[1]&quot; \
+           13 &quot;$dirA/sub-13/sub-13.results/stats.sub-13+tlrc[1]&quot; \
+           14 &quot;$dirA/sub-14/sub-14.results/stats.sub-14+tlrc[1]&quot;
+</pre></div>
+</div>
+<p>Visualizing these results and determining a significance threshold for them is the same as in the previous AFNI tutorials.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For more details on how to set up contrasts within AFNI for to compare different TENTs, as well as a comparison of TENT to other basis functions, see <a class="reference external" href="https://blog.cogneurostats.com/2014/10/08/tidbits-on-afnis-tent-function/">this post</a> by Pete Molfese.</p>
+</div>
+</section>
+<section id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>Imagine that instead of analyzing the interval of 0-12 seconds, we wanted to just look the interval of 0-8 seconds for the <code class="docutils literal notranslate"><span class="pre">tone_counting</span></code> condition. Show how you would modify the <code class="docutils literal notranslate"><span class="pre">afni_proc.py</span></code> script above, and run the script for <code class="docutils literal notranslate"><span class="pre">sub-01</span></code>. How has the 0-8 second interval changed compared to the previous TENT analysis, if at all? Choose a voxel located at MNI coordinates [47, 3, -6] to illustrate the comparison between the analyses.</p></li>
+<li><p>FIR analyses can also analyze an interval with a given number of TENT functions that is not divisible by your TR. For example, change the <code class="docutils literal notranslate"><span class="pre">afni_proc.py</span></code> script for the <code class="docutils literal notranslate"><span class="pre">tone_counting</span></code> condition to ‘TENT(0,12,5)’, which will span the 12-second range with 5 TENT functions; these will be interpolated to match the time grid. (Using TENTs that evenly divide into your TRs will be more accurate, but there may be theoretical reasons for using a different time scale.) Run this updated analyses, and examine how the output compares to the original afni_proc.py script, again using MNI coordinates [47, 3, -6] to illustrate the comparison between the analyses.</p></li>
+</ol>
+</section>
+<section id="video">
+<h2>Video<a class="headerlink" href="#video" title="Link to this heading"></a></h2>
+<p>For a video overview of how to do FIR analysis in AFNI, click <a class="reference external" href="https://youtu.be/prl6JOoQxkY">here</a>.</p>
+</section>
+<section id="next-steps">
+<h2>Next Steps<a class="headerlink" href="#next-steps" title="Link to this heading"></a></h2>
+<p>Now that you are familiar with how to analyze the data with AFNI, we will move on to analyzing the data in SPM. To see how to do that, click the <code class="docutils literal notranslate"><span class="pre">Next</span></code> button.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../FIR_Overview.html" class="btn btn-neutral float-left" title="Finite Impulse Response (FIR)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="FIR_02_SPM.html" class="btn btn-neutral float-right" title="Chapter #2: FIR Analysis in SPM" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Andy Jahn.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

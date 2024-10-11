@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BIDS App Tutorial #1: MRIQC &mdash; Andy&#39;s Brain Book 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b76e3c8a" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=f2a433a1"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="BIDS App Tutorial #2: fMRIPrep" href="fMRIPrep.html" />
+    <link rel="prev" title="BIDS Overview" href="BIDS_Overview.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Andy's Brain Book
+          </a>
+              <div class="version">
+                1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Install</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../installation/fsl_mac_install.html">Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Unix for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_Intro.html">What is Unix?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_01_Navigation.html">Unix Tutorial #1: 目录操作 (Directories and Navigation)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_02_CopyRemove.html">Unix Tutorial #2: Copying and Removing Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_03_ReadingTextFiles.html">Unix Tutorial #3: Reading Text Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_04_ShellsVariables.html">Unix Tutorial #4: Shells and Path Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_05_ForLoops.html">Unix Tutorial #5: For-Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_06_IfElse.html">Unix Tutorial #6: Conditional Statements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_07_Scripting.html">Unix Tutorial #7: Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_08_Sed.html">Unix Tutorial #8: The Sed Command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_09_AutomatingTheAnalysis.html">Unix Tutorial #9: Automating The Analysis</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">fMRI Short Course with FSL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_Intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_01_DataDownload.html">fMRI Tutorial #1: Downloading the Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_02_ExperimentalDesign.html">fMRI Tutorial #2: Overview of The Flanker Task</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_03_LookingAtTheData.html">fMRI Tutorial #3: Looking at the Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_04_Preprocessing.html">fMRI Tutorial #4: Preprocessing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_05_1stLevelAnalysis.html">fMRI Tutorial #5: Statistics and Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_06_Scripting.html">fMRI Tutorial #6: Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_07_2ndLevelAnalysis.html">fMRI Tutorial #7: 2nd-Level Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_08_3rdLevelAnalysis.html">fMRI Tutorial #8: 3rd-Level Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_09_ROIAnalysis.html">fMRI Tutorial #9: ROI Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_10_Summary.html">fMRI Tutorial #10: Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_Appendices.html">fMRI Short Course: Appendices</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">FreeSurfer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../FreeSurfer/FreeSurfer_Introduction.html">FreeSurfer Short Course</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">E-Prime</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../E-Prime/E-Prime_Overview.html">Overview of E-Prime</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">AFNI</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../AFNI/AFNI_Overview.html">AFNI Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">SPM</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../SPM/SPM_Overview.html">SPM Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Functional Connectivity with the CONN Toolbox</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../FunctionalConnectivity/CONN_Overview.html">Functional Connectivity and the CONN Toolbox</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Parametric Modulation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../PM/PM_Overview.html">Parametric Modulation in SPM, FSL, and AFNI</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Image Visualization with MRIcroGL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../MRIcroGL/MRIcroGL_Overview.html">Image Visualization with MRIcroGL</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Introduction to the Human Connectome Project (HCP)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../HCP/HCP_Overview.html">Introduction to the Human Connectome Project</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Finite Impulse Response (FIR) Models</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../FIR/FIR_Overview.html">Finite Impulse Response (FIR)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">fMRI Concepts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Practicals/DesignOptimization.html">Design Optimization</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Diffusion Analysis with MRtrix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../MRtrix/MRtrix_Introduction.html">Introduction to MRtrix</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ASL Analysis</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/ASL_Techniques.html">fASL Tutorial #1: Background</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/fASL_02_Download.html">fASL Tutorial #2: Downloading and Installing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/fASL_03_Task.html">fASL Tutorial #3: The N-Back Task</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/04_fASL_GUI.html">fASL Tutorial #4: The GUI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/05_fASL_Results.html">fASL Tutorial #5: Examining the Results</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/06_fASL_Quantification.html">fASL Tutorial #6: Quantification</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Frequently Asked Questions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../FrequentlyAskedQuestions/FrequentlyAskedQuestions.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Statistics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Statistics/GIMME.html">GIMME (Group Iterative Multiple Model Estimation)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Open Science</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../OS_Overview.html">Open Science</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="BIDS_Overview.html">BIDS Overview</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">BIDS App Tutorial #1: MRIQC</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#what-is-mriqc">What is MRIQC?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mriqc-tutorial">MRIQC Tutorial</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mriqc-installation-option-1-singularity">MRIQC Installation Option #1: Singularity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mriqc-installation-option-2-docker">MRIQC Installation Option #2: Docker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#making-a-script-to-run-mriqc">Making a script to run MRIQC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#assessing-mriqc-qa-reports">Assessing MRIQC QA Reports</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#final-thoughts">Final Thoughts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#additional-mriqc-links">Additional MRIQC links</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="fMRIPrep.html">BIDS App Tutorial #2: fMRIPrep</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fMRIPrep_Demo.html">fMRIPrep Demonstration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Github_Overview.html">Overview of Github</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced Normalization Tools (ANTs)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ANTs/ANTs_Overview.html">Advanced Normalization Tools (ANTs)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tract-Based Spatial Statistics (TBSS)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../TBSS/TBSS_Overview.html">Introduction to Tract-Based Spatial Statistics (TBSS)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Statistics for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Stats/Stats_Overview.html">Statistics for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Machine Learning for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ML/ML_Overview.html">Machine Learning for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Slicer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Slicer/Slicer_Overview.html">Slicer Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">CAT12</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../CAT12/CAT12_Overview.html">Voxel-Based Morphometry with CAT12</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Using the Supercomputer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Supercomputer/Supercomputer_Overview.html">Introduction to Supercomputing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Matlab for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Matlab/Matlab_Overview.html">Matlab for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ITK-Snap</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ITK-Snap/ITK-Snap_Overview.html">ITK-Snap_Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Python for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../PythonForNeuroimagers/PythonForNeuroimagers_Overview.html">Python for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Meta-Analysis for fMRI</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../MetaAnalysis/MetaAnalysis_Overview.html">Meta-Analysis for Neuroimagers</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Andy's Brain Book</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../OS_Overview.html">Open Science</a></li>
+      <li class="breadcrumb-item active">BIDS App Tutorial #1: MRIQC</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/OpenScience/OS/MRIQC.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="bids-app-tutorial-1-mriqc">
+<span id="mriqc"></span><h1>BIDS App Tutorial #1: MRIQC<a class="headerlink" href="#bids-app-tutorial-1-mriqc" title="Link to this heading"></a></h1>
+<hr class="docutils" />
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This article was contributed by <a class="reference external" href="https://perceptionandneuroimaging.psych.indiana.edu/people/daniellevitas.html">Daniel Levitas</a> of the Perception and Neuroimaging Lab at Indiana University.</p>
+</div>
+<section id="what-is-mriqc">
+<h2>What is MRIQC?<a class="headerlink" href="#what-is-mriqc" title="Link to this heading"></a></h2>
+<p>MRIQC is a BIDS App that leverages BIDS compliant datasets in order to perform quality assessments (QA) on T1w, T2w, and/or functional MRI acqusitions. These assessments come in the form of handy HTML reports that can be used to examine the quality of the collected data, and determine whether the data quality is sufficient for subsequent pre-processing and analysis. For a more in-depth (and better) overview of MRIQC, check out their homepage <a class="reference external" href="https://mriqc.readthedocs.io/en/stable/">here</a>.</p>
+</section>
+<section id="mriqc-tutorial">
+<h2>MRIQC Tutorial<a class="headerlink" href="#mriqc-tutorial" title="Link to this heading"></a></h2>
+<p>This tutorial will demonstrate how to install MRIQC and run it on a dataset. The data that we’ll be using is the BIDS-ified output from the <a class="reference external" href="https://andysbrainbook.readthedocs.io/en/latest/OpenScience/OS/BIDS_Overview.html">BIDS Overview and Tutorial</a>. If you haven’t checked out the BIDS tutorial, or aren’t familiar with BIDS conversion, I’d highly recommend completing that before getting started here. If however you fancy yourself a BIDS god (or goddess) and/or are looking to take the path of least resistance, you can download the BIDS output data <a class="reference external" href="https://drive.google.com/file/d/1Gx4GdWJEvT5O-2MYjDoyJIiirSpVFV4O/view?usp=sharing">here</a>. Be sure to download the entire folder and not just the subfolders or files. If the download appears to have stalled, cancel the current download and retry. Once downloaded, extract/unzip the files if they haven’t been already (presumably to your Downloads folder), and type the following into the terminal, line by line:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>mkdir $HOME/BIDS_tutorial
+mv ~/Downloads/BIDS_data/* $HOME/BIDS_tutorial
+rm -rf ~/Downloads/BIDS_data*
+</pre></div>
+</div>
+</section>
+<section id="mriqc-installation-option-1-singularity">
+<h2>MRIQC Installation Option #1: Singularity<a class="headerlink" href="#mriqc-installation-option-1-singularity" title="Link to this heading"></a></h2>
+<p>MRIQC runs as a Docker or Singularity container, so we’ll first need to build the container. If you’re on a High Performance Computing (HPC) cluster then you’ll want to build a Singularity container because Docker containers are not permitted on HPC systems due to required root access permissions that no HPC admin is going to allow (don’t they trust us?). If you’re using MacOS or Windows, skip this and review the Docker installation section instead. If you are working on a university HPC, you may already have the Singularity software available (just make sure you have version &gt;= 2.5). Once ready, type the following into the terminal to build the container:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>singularity build $HOME/mriqc-0.15.1.simg docker://poldracklab/mriqc:0.15.1
+</pre></div>
+</div>
+</section>
+<section id="mriqc-installation-option-2-docker">
+<h2>MRIQC Installation Option #2: Docker<a class="headerlink" href="#mriqc-installation-option-2-docker" title="Link to this heading"></a></h2>
+<p>Go to the Docker <a class="reference external" href="https://docs.docker.com/install/">installation page</a> and select the download for your operating system. Once downloaded, click on the Docker.dmg installer and drag the Docker icon into your Applications (you may need your computer’s admin password for this). <strong>Be sure to click the Docker icon to open it</strong>. At this point the docker command should now be in your $PATH, and you can type the following into the terminal to build the container.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">run</span> <span class="o">-</span><span class="n">it</span> <span class="n">poldracklab</span><span class="o">/</span><span class="n">mriqc</span><span class="p">:</span><span class="mf">0.15.1</span> <span class="o">--</span><span class="n">version</span>
+</pre></div>
+</div>
+</section>
+<section id="making-a-script-to-run-mriqc">
+<h2>Making a script to run MRIQC<a class="headerlink" href="#making-a-script-to-run-mriqc" title="Link to this heading"></a></h2>
+<p>Running MRIQC entails specifying different command line options in order to properly run. Rather than doing this directly through the terminal, we will make a script to run it. Firstly, type the following into the terminal:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>touch $HOME/BIDS_tutorial/code/mriqc.sh
+</pre></div>
+</div>
+<p>This creates a blank bash script file to run MRIQC. Below, a mock script is providfed that you can copy and paste into the mriqc.sh file. To do this, first copy the mock script below and then open the mriqc.sh file by typing the following into the terminal:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>vim $HOME/BIDS_tutorial/code/mriqc.sh
+</pre></div>
+</div>
+<p>Press the “i” key, and paste the contents below into the file. To save and close the file, press the Escape button, and type the following: :wq</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
+
+#User inputs:
+bids_root_dir=$HOME/BIDS_tutorial
+subj=01
+nthreads=2
+mem=10 #gb
+container=docker #docker or singularity
+
+#Make mriqc directory and participant directory in derivatives folder
+if [ ! -d $bids_root_dir/derivatives/mriqc ]; then
+mkdir $bids_root_dir/derivatives/mriqc
+fi
+
+if [ ! -d $bids_root_dir/derivatives/mriqc/sub-${subj} ]; then
+mkdir $bids_root_dir/derivatives/mriqc/sub-${subj}
+fi
+
+#Run MRIQC
+echo &quot;&quot;
+echo &quot;Running MRIQC on participant $s&quot;
+echo &quot;&quot;
+
+if [ $container == singularity ]; then
+  unset PYTHONPATH; singularity run $HOME/mriqc_0.15.1.simg \
+  $bids_root_dir $bids_root_dir/derivatives/mriqc/sub-${subj} \
+  participant \
+  --n_proc $nthreads \
+  --hmc-fsl \
+  --correct-slice-timing \
+  --mem_gb $mem \
+  --float32 \
+  --ants-nthreads $nthreads \
+  -w $bids_root_dir/derivatives/mriqc/sub-${subj}
+else
+  docker run -it --rm -v $bids_root_dir:/data:ro -v $bids_root_dir/derivatives/mriqc/sub-${subj}:/out \
+  poldracklab/mriqc:0.15.1 /data /out \
+  participant \
+  --n_proc $nthreads \
+  --hmc-fsl \
+  --correct-slice-timing \
+  --mem_gb $mem \
+  --float32 \
+  --ants-nthreads $nthreads \
+  -w $bids_root_dir/derivatives/mriqc/sub-${subj}
+fi
+</pre></div>
+</div>
+<p>To ensure that the information was added and saved to the mriqc.sh file, you can type the following into the terminal:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>cat $HOME/BIDS_tutorial/code/mriqc.sh
+</pre></div>
+</div>
+<p><strong>Before running, change the container variable in the script to either *docker* or *singularity*, depending on which container you installed.</strong> To run the script type the following into the terminal, line by line:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>bash
+source $HOME/BIDS_tutorial/code/mriqc.sh
+</pre></div>
+</div>
+<p>MRIQC will take a little awhile to run to completion (<strong>approximately 40 min</strong>), so you can leave the terminal window aside until then. It’s worth noting that the example MRIQC command is rather bare-bones; if you’re interested in applying additional or different options to your MRIQC command, refer to them <a class="reference external" href="https://mriqc.readthedocs.io/en/stable/running.html">here</a>. The time it takes MRIQC to finish is contingent on the size of your data, the amount of processing power you’re feeding MRIQC, and the feature options selected, so running MRIQC on a different dataset with different options may result in a longer (or shorter) completition time.</p>
+</section>
+<section id="assessing-mriqc-qa-reports">
+<h2>Assessing MRIQC QA Reports<a class="headerlink" href="#assessing-mriqc-qa-reports" title="Link to this heading"></a></h2>
+<p>To access the reports, go to the output directory by typing the following into the terminal:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>cd $HOME/BIDS_tutorial/derivatives/mriqc/sub-01
+</pre></div>
+</div>
+<p>MRIQC performs two analysis stages: participant and group. In a nutshell, the participant level analysis stage computes the various diagnoistics and visualizations per subject, and the group level merges the diagnostics across all subjects, sessions, and runs. The group level reports can be easily identified by the “group” label in the file names. The participant reports are the other HTML files – each T1w, T2w, and functional acqusition has an associated HTML report; you will need to use a browser to view them. If you are on an HPC, you may already have a browser installed. For example, mine contains Firefox, so in order to open the T1w HTML report via the terminal I would type this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>firefox $HOME/BIDS_tutorial/derivatives/mriqc/sub-01/sub-01_T1w.html
+</pre></div>
+</div>
+<p>If you’re working on a personal laptop (for example, a Mac), you can open Finder and type “html” in the Search bar to find the files. Clicking on them will open them up in your default browser.</p>
+<p>Regardless of which HTML report you open, you will quickly notice that there is <strong>A LOT</strong> of information provided. A lot. While parsing and trying to understand all the diagnostics can be daunting, there are several ones that I would recommend you absolutely check. If you’re viewing any of the participant level reports, these can be found towards the bottom of the report in the <em>Extracted Image Quality Metrics (IQMs)</em> tab.</p>
+<p><em>T1w and T2w reports</em>: Contrast-to-Noise Ratio (CNS)</p>
+<p><em>task reports</em>: motion parameters (fd mean, fd num, fd perc), and Signal-to-Noise Ratio (SNR)</p>
+<p>For the plots in the functional reports, I’d highly recommend examining the <em>fMRI summary plot</em> to assess the motion across the functional acquisition period.</p>
+<p>The group HTML reports will take the values from the <em>Extracted Image Quality Metrics (IQMs)</em> in the participant HTML files and plot them together. This provides a wonderful visualization of your data, based on various diagnostics. Since we only have one participant, the group reports aren’t particularily meaningful, but with a dataset set containing many subjects you can visually inspect for outliers. In addition to the HTML reports, there are also corresponding .tsv files that contain the diagnostics, which are tremendously useful for excluding data (e.g. specific subject runs) based on a-priori criteria.</p>
+<p>For additional information on the many diagnostics MRIQC provides, check out their documentation <a class="reference external" href="https://mriqc.readthedocs.io/en/stable/measures.html">here</a>.</p>
+</section>
+<section id="final-thoughts">
+<h2>Final Thoughts<a class="headerlink" href="#final-thoughts" title="Link to this heading"></a></h2>
+<p>In this tutorial we went over how to set up and run MRIQC on a BIDS dataset containing one subject. The purpose was to become familiar with how to run the software and assess the QA reports. If you found this useful and would like to apply MRIQC to your own data, you may want to include additional features in the script, or make your own. Since this tutorial was an extrememly simplified implentation of MRIQC, you may encounter issues when running it on your own data. Fear not, you can post your questions/issues on <a class="reference external" href="https://neurostars.org/">NeuroStars</a> or MRIQC’s <a class="reference external" href="https://github.com/poldracklab/mriqc/issues">github page</a></p>
+</section>
+<section id="additional-mriqc-links">
+<h2>Additional MRIQC links<a class="headerlink" href="#additional-mriqc-links" title="Link to this heading"></a></h2>
+<p>If you’ve finished this tutorial and find yourself craving more, check out <a class="reference external" href="https://rpubs.com/sarenseeley/bids-fmriprep-mriqc">Saren Seeley’s BIDS, MRIQC, and fMRIPrep Tutorial</a>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="BIDS_Overview.html" class="btn btn-neutral float-left" title="BIDS Overview" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="fMRIPrep.html" class="btn btn-neutral float-right" title="BIDS App Tutorial #2: fMRIPrep" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Andy Jahn.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

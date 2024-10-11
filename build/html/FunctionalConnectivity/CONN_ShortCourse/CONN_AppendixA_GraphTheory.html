@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Appendix A: Graph Theory &mdash; Andy&#39;s Brain Book 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b76e3c8a" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=f2a433a1"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Appendix B: Other Second-Level Analyses" href="CONN_AppendixB_OtherSecondLevelDesigns.html" />
+    <link rel="prev" title="Chapter #12: Scripting" href="CONN_12_Scripting.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Andy's Brain Book
+          </a>
+              <div class="version">
+                1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Install</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../installation/fsl_mac_install.html">Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Unix for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_Intro.html">What is Unix?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_01_Navigation.html">Unix Tutorial #1: 目录操作 (Directories and Navigation)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_02_CopyRemove.html">Unix Tutorial #2: Copying and Removing Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_03_ReadingTextFiles.html">Unix Tutorial #3: Reading Text Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_04_ShellsVariables.html">Unix Tutorial #4: Shells and Path Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_05_ForLoops.html">Unix Tutorial #5: For-Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_06_IfElse.html">Unix Tutorial #6: Conditional Statements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_07_Scripting.html">Unix Tutorial #7: Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_08_Sed.html">Unix Tutorial #8: The Sed Command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unix/Unix_09_AutomatingTheAnalysis.html">Unix Tutorial #9: Automating The Analysis</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">fMRI Short Course with FSL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_Intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_01_DataDownload.html">fMRI Tutorial #1: Downloading the Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_02_ExperimentalDesign.html">fMRI Tutorial #2: Overview of The Flanker Task</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_03_LookingAtTheData.html">fMRI Tutorial #3: Looking at the Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_04_Preprocessing.html">fMRI Tutorial #4: Preprocessing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_05_1stLevelAnalysis.html">fMRI Tutorial #5: Statistics and Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_06_Scripting.html">fMRI Tutorial #6: Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_07_2ndLevelAnalysis.html">fMRI Tutorial #7: 2nd-Level Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_08_3rdLevelAnalysis.html">fMRI Tutorial #8: 3rd-Level Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_09_ROIAnalysis.html">fMRI Tutorial #9: ROI Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_10_Summary.html">fMRI Tutorial #10: Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../fMRI_Short_Course/fMRI_Appendices.html">fMRI Short Course: Appendices</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">FreeSurfer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../FreeSurfer/FreeSurfer_Introduction.html">FreeSurfer Short Course</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">E-Prime</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../E-Prime/E-Prime_Overview.html">Overview of E-Prime</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">AFNI</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../AFNI/AFNI_Overview.html">AFNI Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">SPM</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../SPM/SPM_Overview.html">SPM Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Functional Connectivity with the CONN Toolbox</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../CONN_Overview.html">Functional Connectivity and the CONN Toolbox</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../CONN_Overview.html#overview">Overview</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../CONN_Overview.html#recommended-tutorials">Recommended Tutorials</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="CONN_00_History.html">History of Functional Connectivity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CONN_01_FSL_Demo.html">Chapter #1: Functional Connectivity Demonstration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CONN_02_DataDownload.html">Chapter #2: Downloading the Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CONN_03_LookingAtData.html">Chapter #3: Downloading the CONN Toolbox</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CONN_04_GUI_Overview.html">Chapter #4: The CONN GUI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CONN_05_Preprocessing.html">Chapter #5: Preprocessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CONN_06_QA_Checks.html">Chapter #6: Quality Assurance Checks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CONN_07_Denoising.html">Chapter #7: Denoising</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CONN_08_1stLevel_Analysis.html">Chapter #8: 1st-Level Analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CONN_09_2ndLevel_Analysis.html">Chapter #9: Group-level analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CONN_10_Viewing_Results.html">Chapter #10: Viewing the Results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CONN_11_Task_gPPI.html">Chapter #11: Task-Related Connectivity and gPPI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CONN_12_Scripting.html">Chapter #12: Scripting</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Appendix A: Graph Theory</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#graph-theory-basics">Graph Theory Basics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#graph-theory-in-the-conn-toolbox">Graph Theory in the CONN Toolbox</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#conclusion">Conclusion</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="CONN_AppendixB_OtherSecondLevelDesigns.html">Appendix B: Other Second-Level Analyses</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CONN_AppendixC_ImportingROIs.html">Appendix C: Importing ROIs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CONN_AppendixD_SurfaceBasedConnectivity.html">Appendix D: Surface-Based Connectivity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CONN_AppendixE_DynamicConnectivity.html">Appendix E: Dynamic Connectivity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CONN_AppendixF_OpenScienceConnToolbox.html">Appendix F: Open Science and the CONN Toolbox</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Parametric Modulation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../PM/PM_Overview.html">Parametric Modulation in SPM, FSL, and AFNI</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Image Visualization with MRIcroGL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../MRIcroGL/MRIcroGL_Overview.html">Image Visualization with MRIcroGL</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Introduction to the Human Connectome Project (HCP)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../HCP/HCP_Overview.html">Introduction to the Human Connectome Project</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Finite Impulse Response (FIR) Models</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../FIR/FIR_Overview.html">Finite Impulse Response (FIR)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">fMRI Concepts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Practicals/DesignOptimization.html">Design Optimization</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Diffusion Analysis with MRtrix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../MRtrix/MRtrix_Introduction.html">Introduction to MRtrix</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ASL Analysis</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/ASL_Techniques.html">fASL Tutorial #1: Background</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/fASL_02_Download.html">fASL Tutorial #2: Downloading and Installing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/fASL_03_Task.html">fASL Tutorial #3: The N-Back Task</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/04_fASL_GUI.html">fASL Tutorial #4: The GUI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/05_fASL_Results.html">fASL Tutorial #5: Examining the Results</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ASL/06_fASL_Quantification.html">fASL Tutorial #6: Quantification</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Frequently Asked Questions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../FrequentlyAskedQuestions/FrequentlyAskedQuestions.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Statistics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Statistics/GIMME.html">GIMME (Group Iterative Multiple Model Estimation)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Open Science</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../OpenScience/OS_Overview.html">Open Science</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced Normalization Tools (ANTs)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ANTs/ANTs_Overview.html">Advanced Normalization Tools (ANTs)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tract-Based Spatial Statistics (TBSS)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../TBSS/TBSS_Overview.html">Introduction to Tract-Based Spatial Statistics (TBSS)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Statistics for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Stats/Stats_Overview.html">Statistics for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Machine Learning for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ML/ML_Overview.html">Machine Learning for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Slicer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Slicer/Slicer_Overview.html">Slicer Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">CAT12</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../CAT12/CAT12_Overview.html">Voxel-Based Morphometry with CAT12</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Using the Supercomputer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Supercomputer/Supercomputer_Overview.html">Introduction to Supercomputing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Matlab for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Matlab/Matlab_Overview.html">Matlab for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ITK-Snap</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ITK-Snap/ITK-Snap_Overview.html">ITK-Snap_Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Python for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../PythonForNeuroimagers/PythonForNeuroimagers_Overview.html">Python for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Meta-Analysis for fMRI</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../MetaAnalysis/MetaAnalysis_Overview.html">Meta-Analysis for Neuroimagers</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Andy's Brain Book</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../CONN_Overview.html">Functional Connectivity and the CONN Toolbox</a></li>
+      <li class="breadcrumb-item active">Appendix A: Graph Theory</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/FunctionalConnectivity/CONN_ShortCourse/CONN_AppendixA_GraphTheory.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="appendix-a-graph-theory">
+<span id="conn-appendixa-graphtheory"></span><h1>Appendix A: Graph Theory<a class="headerlink" href="#appendix-a-graph-theory" title="Link to this heading"></a></h1>
+<hr class="docutils" />
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading"></a></h2>
+<p>This chapter is a brief overview of <strong>graph theory</strong>, a method of describing the pairwise relationships between two or more objects. In mathematics, graph theory can model any pair of objects - neurons, people, cities, and so on. For our purposes, we will be focusing on graph theory as applied to neuroimaging data, and in particular resting-state data. In this scenario, individual <strong>voxels</strong> or clusters of voxels are the pairs of objects that we are interested in modeling. Graph theory can provide a different perspective on how these voxels are connected, and in turn inform us of how the brain is organized.</p>
+</section>
+<section id="graph-theory-basics">
+<h2>Graph Theory Basics<a class="headerlink" href="#graph-theory-basics" title="Link to this heading"></a></h2>
+<section id="nodes-and-edges">
+<h3>Nodes and Edges<a class="headerlink" href="#nodes-and-edges" title="Link to this heading"></a></h3>
+<p>Let’s use a set of railroads as an example. A train may be able to go directly from one city to another, such as from Kalamazoo to Port Huron, Michigan. However, the train cannot go <em>directly</em> from Kalamazoo to Port Huron; it has to pass through Battle Creek first. Someone taking a train from Battle Creek, on the other hand, can go to either Port Huron, Detroit, or Kalamazoo, without having to stop at any other cities. One can also travel directly from Port Huron to Detroit and vice versa, and go from either of those cities to Battle Creek.</p>
+<figure class="align-default">
+<img alt="../../_images/AppendixA_TrainExample.png" src="../../_images/AppendixA_TrainExample.png" />
+</figure>
+<p>Instead of looking at these train stops on a map, let’s instead assign each of them a number; that way, we can compare these networks whether they are train stops or neural connections. For example, let’s assign the following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Battle</span> <span class="n">Creek</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">Detroit</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">Port</span> <span class="n">Huron</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">Kalamazoo</span> <span class="o">=</span> <span class="mi">3</span>
+</pre></div>
+</div>
+<p>We can compress the train map into a more compact figure using the numbers as indicators for each city:</p>
+<figure class="align-default">
+<img alt="../../_images/AppendixA_GraphTheoryDemo.png" src="../../_images/AppendixA_GraphTheoryDemo.png" />
+</figure>
+<p>In this figure, we represent each city as a <strong>node</strong> (also called a <strong>vertex</strong>). Each node has connections to different nodes; in graph theory, these connections are called <strong>edges</strong>. On the right side of the figure, we can present the same network in a different way, as an <strong>adjaceny matrix</strong>. Connections between nodes are marked with a 1, whereas nodes that are not connected are marked with a 0. For example, Kalamazoo (3) is directly connected to Battle Creek (0), but not with wither Detroit (1) or Port Huron (2). The fact that Battle Creek has so many direct connections within this network makes it a <strong>hub</strong>, or node with more edges than average. We will return to this concept later.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Adjacency matrices are <strong>symmetrical</strong>, meaning that the upper diagonal (i.e., all of the numbers above the diagonal of zeros that bisects the graph) are redundant with the lower diagonal (i.e., all of those numbers below the diagonal of the graph). This is true only for undirected graphs, but for the present tutorial we will assume that symmetry holds.</p>
+</div>
+<p>To sum up, this <strong>network</strong> is represented as a collection of nodes connected by edges. Some of the connections are direct - for example, between Detroit and Port Huron - while others are indirect, such as the connection between Port Huron and Kalamazoo. More complicated networks will have different levels of connectivity depending on how many steps each node is removed from the other nodes, but all networks in graph theory rest upon these building blocks.</p>
+</section>
+<section id="modularity">
+<h3>Modularity<a class="headerlink" href="#modularity" title="Link to this heading"></a></h3>
+<p>If we zoom out of Michigan and look at the train system across all of America, you will notice something else: Certain regions of the country have a high density of high-traffic train connections within themselves (such as Boston, New Haven, and New York City on the East Coast), but only a few, lower-traffic connections for traveling to other cities in other regions of the country (such as Seattle, Houston, and San Diego).</p>
+<figure class="align-default">
+<img alt="../../_images/AppendixA_TrainNetworkUSA.png" src="../../_images/AppendixA_TrainNetworkUSA.png" />
+</figure>
+<p>This clustering of nodes and edges into discrete pockets is known as <strong>modularity</strong>. Technically, this is a threshold that is set to determine when the density of intra-modular connections (such as the train network of the East Coast) is greater than inter-modular connections (such as connections between New York City and Los Angeles). Many algorithms exist for creating this threshold, but the general idea is the same. The basic idea behind modularity boils down to: When is the density of intra-modular connections greater than inter-modular connections?</p>
+<p>The simplest algorithm is to maximize the value of what is called the <strong>modularity index</strong>, represented by the letter <strong>Q</strong>:</p>
+<figure class="align-default" id="id1">
+<img alt="../../_images/AppendixA_ModularityIndex.png" src="../../_images/AppendixA_ModularityIndex.png" />
+<figcaption>
+<p><span class="caption-text">The modularity index, as defined by <a class="reference external" href="https://www.pnas.org/content/103/23/8577.full">Newman (2005)</a>.</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>The total number of edges in the network is represented by <strong>m</strong>, and the fraction <strong>1/4m</strong> is a normalization parameter that seems to work well for most studies. <strong>s</strong> is a column vector which, for two groups, contains either a 1 (if the node belongs to group A) or a -1 (if the node belongs to group B). The last term, <strong>B</strong>, is what is called a <strong>modularity matrix</strong>; this matrix contains the <strong>degree</strong> (i.e., the number of edges) between two nodes if they were placed at random. (For more details about the mathematics behind each of these terms, see the <a class="reference external" href="https://www.pnas.org/content/103/23/8577.full">Newman (2005) paper</a>.) Conceptually, the equation represents the number of edges falling within a group, as compared to the expected number of edges that are placed at random within a similar-sized network.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A different explanation of modularity can be found in this review by <a class="reference external" href="https://www.annualreviews.org/doi/abs/10.1146/annurev-psych-122414-033634?casa_token=Q9be2mqaTKsAAAAA:sx6xrzjrEtxIEaHm3NZdoUuL3bMfsoTNY6KRNQ689UpPM6KLEZvkkBjv8XMDBrZbJCH--Xg6YhZQ">Sporns &amp; Betzel, 2016</a>.</p>
+</div>
+<section id="the-louvain-algorithm">
+<h4>The Louvain Algorithm<a class="headerlink" href="#the-louvain-algorithm" title="Link to this heading"></a></h4>
+<p>One of the most popular algorithms for maximizing this index is the <strong>Louvain Algorithm</strong> (<a class="reference external" href="https://iopscience.iop.org/article/10.1088/1742-5468/2008/10/P10008/pdf?casa_token=Bqn_uVUg-N4AAAAA:rmElcqEgc9PmhQY_MDroocX24m-Vmgqd6N_wQon46oD3jvTxOJPmIF-8K9PVbTnzXIOzUW3CHA">Blondel et al., (2008)</a>). The algorithm first assigns a node to a module at random and calculates the resulting modularity index. If the index increases, then the node joins the new module; if the modularity decreases, then the node remains in its original module.</p>
+<p>This procedure, also called <strong>community detection</strong>, organizes the nodes into modules, or communities, on each pass. A number of passes can be specified by the user to make as fine-grained partitions as is wanted.</p>
+<figure class="align-default" id="id2">
+<img alt="../../_images/AppendixA_Louvain.png" src="../../_images/AppendixA_Louvain.png" />
+<figcaption>
+<p><span class="caption-text">An illustration of the Louvain algorithm (figure taken from Blondel et al, 2008). Nodes are assigned to a module based on the density of edges connecting nearby nodes - if the modularity index increases, then the node is assigned to that module. This procedure can proceed through several passes until a desired number of modules is reached.</span><a class="headerlink" href="#id2" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>Let’s use the brain as an example to illustrate this algorithm. If we calculated all of the correlation coefficients between every voxel in the brain and decided to categorize them into four modules, one possibility is that we would end up dividing the brain into the four lobes (frontal, temporal, occipital, and parietal): regions that are anatomically and functionally distinct from each other. If we decided to do another pass, it is likely that we would end up with a network representation of the two hemispheres of the brain.</p>
+<p>A related parameter is called <strong>resolution</strong>, which determines how fine-grained the resulting networks are. This is similar conceptually to the idea of multiple passes using the Louvain algorithm, but this method places a limit on how large the resulting modules can be. Using a certain resolution parameter with the brain example above may reproduce the canonical four lobes, while a higher resolution parameter can further divide these lobes into smaller sub-regions.</p>
+<figure class="align-default" id="id3">
+<img alt="../../_images/AppendixA_Resolution.png" src="../../_images/AppendixA_Resolution.png" />
+<figcaption>
+<p><span class="caption-text">Example of tuning the resolution parameter, as shown in <a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S1053811916306152">Betzel &amp; Basset (2017)</a>. The resolution parameter reflects the topological scale of interest: increasing it leads to finer scaled modules, but at some point it may start to model noise rather than biologically plausible modules. This parameter can’t be set using the CONN toolbox, but it can be set in other toolboxes (such as the Brain Connectivity Toolbox).</span><a class="headerlink" href="#id3" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p><strong>Thresholding</strong> can also be used to remove edge values below a certain value. For example, a graph analysis of resting-state data may threshold the resulting connectivity maps to only show correlation values above 0.2, and remove everything else. This can increase signal to noise-ratio, and it can either be absolute (in the example just given) or proportional (e.g., keeping 20% strongest connections) - which in CONN is called <strong>fixed network cost</strong>.</p>
+<figure class="align-default" id="id4">
+<img alt="../../_images/AppendixA_Thresholding.png" src="../../_images/AppendixA_Thresholding.png" />
+<figcaption>
+<p><span class="caption-text">Example of thresholding, taken from Taya et al. (2016).</span><a class="headerlink" href="#id4" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+</section>
+<section id="graph-theory-in-the-conn-toolbox">
+<h2>Graph Theory in the CONN Toolbox<a class="headerlink" href="#graph-theory-in-the-conn-toolbox" title="Link to this heading"></a></h2>
+<p>As you saw in a previous chapter on <a class="reference internal" href="CONN_10_Viewing_Results.html#conn-10-viewing-results"><span class="std std-ref">viewing the results</span></a>, one of the options to display the group-analysis is called “Graph Theory”. Using the correlation maps as input, either ROIs are used as nodes, and the correlation values between the nodes represent the edges. As with any network dataset, the correlation values can be thresholded to only display those values that are the strongest and most robust.</p>
+<figure class="align-default" id="id5">
+<img alt="../../_images/AppendixA_CONN_Graph.png" src="../../_images/AppendixA_CONN_Graph.png" />
+<figcaption>
+<p><span class="caption-text">Within the CONN Results window, nodes are depicted as red circles, with the strength of the currently selected graph theory metric represented by the size of the circle. Edges between the nodes are depicted as black lines.</span><a class="headerlink" href="#id5" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>Here is a brief summary of what some of the measures mean. A fuller treatment of all of the graph theory metrics can be found on the <a class="reference external" href="https://web.conn-toolbox.org/fmri-methods/connectivity-measures/graphs-roi-level">CONN website</a>.</p>
+<ol class="arabic simple">
+<li><p><strong>Degree</strong>: Simply the number nodes that the current node is connected to, i.e. its number of edges.</p></li>
+<li><p><strong>Cost</strong>: Proportion of edges for the current node.</p></li>
+<li><p><strong>Clustering Coefficient</strong>: Proportion of connected nodes across all neighboring nodes.</p></li>
+<li><p><strong>Global Efficiency</strong>: Inverse of the average distance matrix.</p></li>
+<li><p><strong>Average path length</strong>: Average shortest-path distance between the node and all other nodes.</p></li>
+</ol>
+<p>Which one you use is up to you. Let’s take a look at two of the most popular graph metrics, clusting coefficient and global efficiency, and see how they would apply to our data.</p>
+<p>One measurement of local connectivity is a node’s <strong>clustering coefficient</strong>, or the proportion of connected nodes across all neighboring nodes. If a node’s neighbors are highly connected, then the clustering coefficient is high as well; if there is a low proportion of connections between its neighbors relative to all possible connections among the neighbors, the clustering coefficient is low.</p>
+<p>To illustrate this, let’s represent as a network friendship among individuals. In the figure below, each of the edges represents a friendship between two individuals, represented by nodes. (In this case, friendship is binary: Either you are friends with someone, or you are not.) Jenny is friends with three people in this graph: Amily, Tom, and Dan. There could be three possible friendships among her neighbors: Dan with Amily, Amily with Tom, and Tom with Dan. However, only one of those pairs are friends - Tom and Dan. Since there is only one friendship out of a possible three friendships total, the clustering coefficient for Jenny is 1/3, or 0.33.</p>
+<figure class="align-default" id="id6">
+<img alt="../../_images/AppendixA_Friends_ClusteringCoefficient.png" src="../../_images/AppendixA_Friends_ClusteringCoefficient.png" />
+<figcaption>
+<p><span class="caption-text">Figure from docs.TigerGraph.com</span><a class="headerlink" href="#id6" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>Tom, on the other hand, is friends with two people: Jenny and Dan. Consequently, there is only one possible friendship among his neighbors, and they do indeed happen to be friends. Tom’s clustering coefficient is therefore 1/1, or 1.</p>
+<p>Lastly, let’s focus on Dan. He is friends with four other people: Jenny, Tom, Kevin, and Nancy. There are six possible friendships among his friends, but only one pair are friends (Tom and Jenny). His clustering cofficient is 1/6, or 0.1667.</p>
+<p>We can apply this to our current dataset by going to the 2nd-level tab for our group-level analysis, and highlighting <code class="docutils literal notranslate"><span class="pre">AllSubjects</span></code> under <code class="docutils literal notranslate"><span class="pre">Subject</span> <span class="pre">Effects</span></code>. Select <code class="docutils literal notranslate"><span class="pre">SBC_01</span> <span class="pre">(ROI-to_ROI)</span></code> from the drop-down menu (click on <code class="docutils literal notranslate"><span class="pre">SBC_01</span> <span class="pre">(Seed-to-Voxel)</span></code> to show the options), and then click on <code class="docutils literal notranslate"><span class="pre">graph-theory</span> <span class="pre">results</span></code> in the right window pane. You should see something like this:</p>
+<figure class="align-default">
+<img alt="../../_images/AppendixA_NetworkTheory_Results.png" src="../../_images/AppendixA_NetworkTheory_Results.png" />
+</figure>
+<p>The defaults will be to use all of the ROIs you selected in the 1st-level tab, and to use a cost threshold of 0.15 to intially threshold the edges between the nodes. The second row of options specify the graph theory metric, and will compute the significance relative to a randomly generated graph with an equal number of nodes.</p>
+<p>Let’s make our graph slightly different by changing the initial threshold from cost to correlation coefficient, and change the analysis measure from Global Efficiency to Clustering Coefficient:</p>
+<figure class="align-default">
+<img alt="../../_images/AppendixA_NetworkTheory_ClusteringCoefficient.png" src="../../_images/AppendixA_NetworkTheory_ClusteringCoefficient.png" />
+</figure>
+<p>If we look at individual ROIs, each node’s clustering coefficient is located under the <code class="docutils literal notranslate"><span class="pre">beta</span></code> column in the results window. For example, if we highlight the ROI <code class="docutils literal notranslate"><span class="pre">DefaultMode.LP</span> <span class="pre">r</span></code>, the clustering coefficient is 0.94, meaning that 94% of this node’s neighbors have connections with each other. The beta next to the <code class="docutils literal notranslate"><span class="pre">network</span></code> ROI is the average clustering coefficient for all of the ROIs; you can see this yourself by adding up all fo the betas for the individual ROIs, and then dividing them by 11.</p>
+<p>Another popular graph metric is Global Efficiency, technically defined as the inverse of the average distance matrix. If we assume that each edge is binary (i.e., either it passes a given correlation coefficient threshold or it does not), then the distance between two nodes can be measured by the number of edges you need to get from one node to the other. Using our example above with the friend graph, Tom would need to “go through” Dan and Nancy in order to get to Jack; therefore, the distance between them is 3.</p>
+<p>Turning to our connectivity data, we can change the Analysis measure back to Global Efficiency. In this example, the beta next to the network ROI is the global efficiency for the entire set of nodes; the average inverse of the distance matrix for this entire set of nodes, is 0.63, indicating that it is relatively quick to get from one node to the other in this graph. As with some other graph theory metrics, this is a measurement that needs to be seen in context relative to global efficiencies calculated from other studies.</p>
+<figure class="align-default">
+<img alt="../../_images/AppendixA_NetworkTheory_GlobalEfficiency.png" src="../../_images/AppendixA_NetworkTheory_GlobalEfficiency.png" />
+</figure>
+<p>Global efficiency is calculated for the individual nodes as well; the interpretation of individual global efficiencies is more complicated, but it is explained clearly by Alfonso in <a class="reference external" href="https://www.nitrc.org/forum/message.php?msg_id=6695">this thread</a>, which I have also reprinted below:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The statistical test comparing the global efficiency of the entire network across your two subject groups is reported in the top-right list (in the row labeled as ‘network’); in addition, the global efficiency of the entire network can be represented as the average of the global efficiency of each node of the network (global efficiency of a node in a graph is defined as the average inverse shortest-path distance from this node to all other nodes in the graph). So yes, in addition to comparing between groups the global efficiency of the ‘whole-brain’ network, you can also compare between groups the global efficiency of individual nodes (ROIs) within this network (this is sometimes thought of as a measure of centrality or relative importance of a given node within a graph); the rest of the result rows shown in the top-right list correspond to the statistical test on the global efficiency measure for each of the nodes/ROIs (only shown those nodes that survive the chosen false positive threshold; the labels of these nodes are displayed in the bottom-right list). In your example attached it would seem that the increased global efficiency (of the entire brain network) in groupA (from the positive beta value and significant p-value in the ‘network’ row) could be perhaps attributed to an increased efficiency/centrality within the network of the particular ROIs shown in the results display (from their positive beta values and significant FDR-corrected p-values in the corresponding rows for each ROI).</p>
+</div>
+</section>
+<section id="conclusion">
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading"></a></h2>
+<p>We have examined only a couple of different metrics, but I encourage you to study the others in more detail. The fundamentals covered here should give you the means to calculate and visualize any metric you want, and to make an educated interpretation.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="CONN_12_Scripting.html" class="btn btn-neutral float-left" title="Chapter #12: Scripting" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="CONN_AppendixB_OtherSecondLevelDesigns.html" class="btn btn-neutral float-right" title="Appendix B: Other Second-Level Analyses" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Andy Jahn.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

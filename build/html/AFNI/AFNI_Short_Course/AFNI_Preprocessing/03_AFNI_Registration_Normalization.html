@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chapter 3: Registration and Normalization &mdash; Andy&#39;s Brain Book 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b76e3c8a" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=f2a433a1"></script>
+        <script src="../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Chapter 4: Alignment and Motion Correction" href="04_AFNI_Alignment.html" />
+    <link rel="prev" title="Chapter 2: Slice-Timing Correction" href="02_AFNI_Slice_Timing_Correction.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            Andy's Brain Book
+          </a>
+              <div class="version">
+                1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Install</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../installation/fsl_mac_install.html">Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Unix for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../unix/Unix_Intro.html">What is Unix?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../unix/Unix_01_Navigation.html">Unix Tutorial #1: 目录操作 (Directories and Navigation)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../unix/Unix_02_CopyRemove.html">Unix Tutorial #2: Copying and Removing Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../unix/Unix_03_ReadingTextFiles.html">Unix Tutorial #3: Reading Text Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../unix/Unix_04_ShellsVariables.html">Unix Tutorial #4: Shells and Path Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../unix/Unix_05_ForLoops.html">Unix Tutorial #5: For-Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../unix/Unix_06_IfElse.html">Unix Tutorial #6: Conditional Statements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../unix/Unix_07_Scripting.html">Unix Tutorial #7: Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../unix/Unix_08_Sed.html">Unix Tutorial #8: The Sed Command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../unix/Unix_09_AutomatingTheAnalysis.html">Unix Tutorial #9: Automating The Analysis</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">fMRI Short Course with FSL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../fMRI_Short_Course/fMRI_Intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../fMRI_Short_Course/fMRI_01_DataDownload.html">fMRI Tutorial #1: Downloading the Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../fMRI_Short_Course/fMRI_02_ExperimentalDesign.html">fMRI Tutorial #2: Overview of The Flanker Task</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../fMRI_Short_Course/fMRI_03_LookingAtTheData.html">fMRI Tutorial #3: Looking at the Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../fMRI_Short_Course/fMRI_04_Preprocessing.html">fMRI Tutorial #4: Preprocessing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../fMRI_Short_Course/fMRI_05_1stLevelAnalysis.html">fMRI Tutorial #5: Statistics and Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../fMRI_Short_Course/fMRI_06_Scripting.html">fMRI Tutorial #6: Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../fMRI_Short_Course/fMRI_07_2ndLevelAnalysis.html">fMRI Tutorial #7: 2nd-Level Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../fMRI_Short_Course/fMRI_08_3rdLevelAnalysis.html">fMRI Tutorial #8: 3rd-Level Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../fMRI_Short_Course/fMRI_09_ROIAnalysis.html">fMRI Tutorial #9: ROI Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../fMRI_Short_Course/fMRI_10_Summary.html">fMRI Tutorial #10: Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../fMRI_Short_Course/fMRI_Appendices.html">fMRI Short Course: Appendices</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">FreeSurfer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../FreeSurfer/FreeSurfer_Introduction.html">FreeSurfer Short Course</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">E-Prime</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../E-Prime/E-Prime_Overview.html">Overview of E-Prime</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">AFNI</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../AFNI_Overview.html">AFNI Overview</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../AFNI_Overview.html#what-is-afni">What is AFNI?</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../AFNI_fMRI_Intro.html">Introduction to AFNI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../AFNI_01_DataDownload.html">AFNI Tutorial #1: Downloading the Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../AFNI_02_ExperimentalDesign.html">AFNI Tutorial #2: The Flanker Experiment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../AFNI_03_LookingAtTheData.html">AFNI Tutorial #3: Looking at the Data</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../AFNI_04_Preprocessing.html">AFNI Tutorial #4: AFNI Commands and Preprocessing</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="../AFNI_04_Preprocessing.html#overview">Overview</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../AFNI_05_1stLevelAnalysis.html">AFNI Tutorial #5: Statistics and Modeling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../AFNI_06_Scripting.html">AFNI Tutorial #6: Scripting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../AFNI_07_GroupAnalysis.html">AFNI Tutorial #7: Group Analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../AFNI_08_ROIAnalysis.html">AFNI Tutorial #8: ROI Analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../AFNI_09_SurfaceAnalysis.html">AFNI Tutorial #9: Surface-Based Analysis with SUMA</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../AppendixA_ParametricModulation.html">Appendix A: Parametric Modulation in AFNI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../AppendixB_AnimalAnalysis.html">Appendix B: Analyzing Rat Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../AppendixC_HighlightingResults.html">Appendix C: Highlighting Vs. Hiding Results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../AppendixD_EffectSizes.html">Appendix D: Reporting Effect Sizes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">SPM</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../SPM/SPM_Overview.html">SPM Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Functional Connectivity with the CONN Toolbox</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../FunctionalConnectivity/CONN_Overview.html">Functional Connectivity and the CONN Toolbox</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Parametric Modulation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../PM/PM_Overview.html">Parametric Modulation in SPM, FSL, and AFNI</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Image Visualization with MRIcroGL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../MRIcroGL/MRIcroGL_Overview.html">Image Visualization with MRIcroGL</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Introduction to the Human Connectome Project (HCP)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../HCP/HCP_Overview.html">Introduction to the Human Connectome Project</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Finite Impulse Response (FIR) Models</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../FIR/FIR_Overview.html">Finite Impulse Response (FIR)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">fMRI Concepts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../Practicals/DesignOptimization.html">Design Optimization</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Diffusion Analysis with MRtrix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../MRtrix/MRtrix_Introduction.html">Introduction to MRtrix</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ASL Analysis</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../ASL/ASL_Techniques.html">fASL Tutorial #1: Background</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../ASL/fASL_02_Download.html">fASL Tutorial #2: Downloading and Installing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../ASL/fASL_03_Task.html">fASL Tutorial #3: The N-Back Task</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../ASL/04_fASL_GUI.html">fASL Tutorial #4: The GUI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../ASL/05_fASL_Results.html">fASL Tutorial #5: Examining the Results</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../ASL/06_fASL_Quantification.html">fASL Tutorial #6: Quantification</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Frequently Asked Questions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../FrequentlyAskedQuestions/FrequentlyAskedQuestions.html">Frequently Asked Questions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Statistics</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../Statistics/GIMME.html">GIMME (Group Iterative Multiple Model Estimation)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Open Science</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../OpenScience/OS_Overview.html">Open Science</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced Normalization Tools (ANTs)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../ANTs/ANTs_Overview.html">Advanced Normalization Tools (ANTs)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tract-Based Spatial Statistics (TBSS)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../TBSS/TBSS_Overview.html">Introduction to Tract-Based Spatial Statistics (TBSS)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Statistics for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../Stats/Stats_Overview.html">Statistics for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Machine Learning for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../ML/ML_Overview.html">Machine Learning for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Slicer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../Slicer/Slicer_Overview.html">Slicer Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">CAT12</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../CAT12/CAT12_Overview.html">Voxel-Based Morphometry with CAT12</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Using the Supercomputer</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../Supercomputer/Supercomputer_Overview.html">Introduction to Supercomputing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Matlab for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../Matlab/Matlab_Overview.html">Matlab for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ITK-Snap</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../ITK-Snap/ITK-Snap_Overview.html">ITK-Snap_Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Python for Neuroimagers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../PythonForNeuroimagers/PythonForNeuroimagers_Overview.html">Python for Neuroimagers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Meta-Analysis for fMRI</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../MetaAnalysis/MetaAnalysis_Overview.html">Meta-Analysis for Neuroimagers</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Andy's Brain Book</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../AFNI_Overview.html">AFNI Overview</a></li>
+          <li class="breadcrumb-item"><a href="../AFNI_04_Preprocessing.html">AFNI Tutorial #4: AFNI Commands and Preprocessing</a></li>
+      <li class="breadcrumb-item active">Chapter 3: Registration and Normalization</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../_sources/AFNI/AFNI_Short_Course/AFNI_Preprocessing/03_AFNI_Registration_Normalization.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="chapter-3-registration-and-normalization">
+<span id="afni-registration-normalization"></span><h1>Chapter 3: Registration and Normalization<a class="headerlink" href="#chapter-3-registration-and-normalization" title="Link to this heading"></a></h1>
+<hr class="docutils" />
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading"></a></h2>
+<p>Although most people’s brains are similar - everyone has a cingulate gyrus and a corpus callosum, for instance - there are also differences in brain size and shape. As a consequence, if we want to do a group analysis we need to ensure that each voxel for each subject corresponds to the same part of the brain. If we are measuring a voxel in the visual cortex, for example, we would want to make sure that every subject’s visual cortex is in alignment with each other.</p>
+<p>This is done by <strong>Registering</strong> and <strong>Normalizing</strong> the images. Just as you would fold clothes to fit them inside of a suitcase, each brain needs to be transformed to have the same size, shape, and dimensions. We do this by normalizing (or <strong>warping</strong>) to a <strong>template</strong>. A template is a brain that has standard dimensions and coordinates - standard, because most researchers have agreed to use them when reporting their results. That way, if you normalize your data to that template and find an effect at coordinates X=3, Y=20, Z=42, someone else who has warped their data to the same template can check their results against yours. The dimensions and coordinates of the template brain are also referred to as <strong>standardized space</strong>.</p>
+<figure class="align-default" id="id1">
+<img alt="../../../_images/04_03_MNI_Template.png" src="../../../_images/04_03_MNI_Template.png" />
+<figcaption>
+<p><span class="caption-text">An example of a commonly used template, the <span class="xref std std-ref">MNI152 brain</span>. This is an average of 152 healthy adult brains, which represent the population that most studies draw from. If you are studying another population - such as children or the elderly, for example - consider using a template created from representatives of that population. (Question: Why is the template blurry?)</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="affine-transformations">
+<h2>Affine Transformations<a class="headerlink" href="#affine-transformations" title="Link to this heading"></a></h2>
+<p>To warp the images to a template, we will use an <strong>affine transformation</strong>. This is similar to the rigid-body transformation described above in Motion Correction, but it adds two more transformations: <strong>zooms</strong> and <strong>shears</strong>. Whereas translations and rotations are easy enough to do with an everyday object such as a pen, zooms and shears are more unusual - zooms either shrink or enlarge the image, while shears take the diagonally opposite corners of the image and stretch them away from each other. The animation below summarizes these four types of <strong>linear transformations</strong>.</p>
+<figure class="align-default">
+<img alt="../../../_images/04_03_AffineTransformations.gif" src="../../../_images/04_03_AffineTransformations.gif" />
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>As with rigid-body transformations, zooms and shears each have three degrees of freedom: You can zoom or shear an image along the x-, y-, or z-axis. In total, then, affine transformations have twelve degrees of freedom. These are also called linear transformations because a transformation applied in one direction along an axis is accompanied by a transformation of equal magnitude in the opposite direction. A translation of one millimeter <em>to</em> the left, for example, implies that the image has been moved one millimeter <em>from</em> the right. Likewise, if an image is enlarged by one millimeter along the z-axis, it is enlarged by one millimeter in both directions along that axis. Transformations without these constraints are called <strong>nonlinear transformations</strong>. For example, a nonlinear transformation can enlarge the image in one direction while shrinking it in the other direction, as when squeezing a sponge. These types of transformations will be discussed later.</p>
+</div>
+</section>
+<section id="registration-and-normalization">
+<h2>Registration and Normalization<a class="headerlink" href="#registration-and-normalization" title="Link to this heading"></a></h2>
+<p>Recall that we have both anatomical and functional images in our dataset. Our goal is to warp the functional images to the template so that we can do a group-level analysis across all of our subjects. Although it may seem reasonable to simply warp the functional images directly to the template, in practice that doesn’t work very well - the images are low-resolution, and therefore less likely to match up with the anatomical details of the template. The anatomical image is a better candidate.</p>
+<p>Although this may not seem to help us towards our goal, in fact warping the anatomical image can assist with bringing the functional images into standardized space. Remember that the anatomical and functional scans are typically acquired in the same session, and that the subject’s head moves little, if at all, between the scans. If we have already normalized our anatomical image to a template and recorded what transformations were done, we can apply the same transformations to the functional images - provided they start in the same place as the anatomical image.</p>
+<p>This alignment between the functional and anatomical images is called <strong>Registration</strong>. Most registration algorithms use the following steps:</p>
+<ol class="arabic simple">
+<li><p>Assume that the functional and anatomical images are in roughly the same location. If they are not, align the outlines of the images.</p></li>
+<li><p>Take advantage of the fact that the anatomical and functional images have different contrast weightings - that is, areas where the image is dark on the anatomical image (such as cerebrospinal fluid) will appear bright on the functional image, and vice versa. This is called <strong>mutual information</strong>. The registration algorithm moves the images around to test different overlays of the anatomical and functional images, matching the bright voxels on one image with the dark voxels of another image, and the dark with the bright, until it finds a match that cannot be improved upon. (AFNI’s preferred approach is a method called <strong>LPC</strong>, or Local Pearson Correlation, which gives greater weight to those regions of the functional image that are brighter: see <a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S1053811908010409">this paper</a> for more details.)</p></li>
+<li><p>Once the best match has been found, then the same transformations that were used to warp the anatomical image to the template are applied to the functional images.</p></li>
+</ol>
+<figure class="align-default">
+<img alt="../../../_images/04_03_Registration_Normalization_Demo.gif" src="../../../_images/04_03_Registration_Normalization_Demo.gif" />
+</figure>
+</section>
+<hr class="docutils" />
+<section id="registration-with-afni-s-align-epi-anat-py">
+<h2>Registration with AFNI’s align_epi_anat.py<a class="headerlink" href="#registration-with-afni-s-align-epi-anat-py" title="Link to this heading"></a></h2>
+<p>The command <code class="docutils literal notranslate"><span class="pre">align_epi_anat.py</span></code> can do several preprocessing steps at once - registration, aligning the volumes of the functional images together, and slice-timing correction. In this example, however, we will just use it for registration. The code for this step will be found in lines 110-115 of your proc script:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">align_epi_anat</span><span class="o">.</span><span class="n">py</span> <span class="o">-</span><span class="n">anat2epi</span> <span class="o">-</span><span class="n">anat</span> <span class="n">sub</span><span class="o">-</span><span class="mi">08</span><span class="n">_T1w</span><span class="o">+</span><span class="n">orig</span> \
+     <span class="o">-</span><span class="n">save_skullstrip</span> <span class="o">-</span><span class="n">suffix</span> <span class="n">_al_junk</span>          \
+     <span class="o">-</span><span class="n">epi</span> <span class="n">vr_base_min_outlier</span><span class="o">+</span><span class="n">orig</span> <span class="o">-</span><span class="n">epi_base</span> <span class="mi">0</span>  \
+     <span class="o">-</span><span class="n">epi_strip</span> <span class="mi">3</span><span class="n">dAutomask</span>                      \
+     <span class="o">-</span><span class="n">giant_move</span>                                \
+     <span class="o">-</span><span class="n">volreg</span> <span class="n">off</span> <span class="o">-</span><span class="n">tshift</span> <span class="n">off</span>
+</pre></div>
+</div>
+<p>The first option, <code class="docutils literal notranslate"><span class="pre">-anat2epi</span></code>, indicates that the anatomical image will be aligned to the functional images - not vice versa. As a general rule, we want to introduce as few changes and interpolations to our functional data as possible. Therefore, if an image has to be moved and slightly deformed, we choose to do it to the anatomical image.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">-suffix</span></code> command appends the string “_al_junk” to some of the intermediate stages of the registration, which we will use later for normalizing the functional images. The “epi” options (i.e., <code class="docutils literal notranslate"><span class="pre">-epi</span></code>, <code class="docutils literal notranslate"><span class="pre">-epi_base</span></code>, and <code class="docutils literal notranslate"><span class="pre">-epi_strip</span></code>) signalize that the functional volume with the least variability will be used as a reference image, and that non-brain tissue should be stripped using 3dAutomask, an alternative to 3dSkullStrip. <code class="docutils literal notranslate"><span class="pre">-giant_move</span></code> attempts to find a good initial starting alignment between the anatomical and functional images; and the last two options indicate that we do not want to include alignment and slice-timing correction in the current command.</p>
+</section>
+<section id="normalization-with-afni-s-auto-tlrc">
+<h2>Normalization with AFNI’s &#64;auto_tlrc<a class="headerlink" href="#normalization-with-afni-s-auto-tlrc" title="Link to this heading"></a></h2>
+<p>Once we have aligned the anatomical and functional images, we will first normalize the anatomical image to a template. These warps, as you will see in the next chapter, will be applied to the functional images as well. To normalize the anatomical image, we will use the <code class="docutils literal notranslate"><span class="pre">&#64;auto_tlrc</span></code> command; this and a following command, <code class="docutils literal notranslate"><span class="pre">cat_matvec</span></code>, are found in lines 118-122 of your proc script:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># warp anatomy to standard space</span>
+<span class="nd">@auto_tlrc</span> <span class="o">-</span><span class="n">base</span> <span class="n">MNI_avg152T1</span><span class="o">+</span><span class="n">tlrc</span> <span class="o">-</span><span class="nb">input</span> <span class="n">sub</span><span class="o">-</span><span class="mi">08</span><span class="n">_T1w_ns</span><span class="o">+</span><span class="n">orig</span> <span class="o">-</span><span class="n">no_ss</span>
+
+<span class="c1"># store forward transformation matrix in a text file</span>
+<span class="n">cat_matvec</span> <span class="n">sub</span><span class="o">-</span><span class="mi">08</span><span class="n">_T1w_ns</span><span class="o">+</span><span class="n">tlrc</span><span class="p">::</span><span class="n">WARP_DATA</span> <span class="o">-</span><span class="n">I</span> <span class="o">&gt;</span> <span class="n">warp</span><span class="o">.</span><span class="n">anat</span><span class="o">.</span><span class="n">Xat</span><span class="mf">.1</span><span class="n">D</span>
+</pre></div>
+</div>
+<p>The first command indicates to use the image MNI_avg152T1 as a template, and the skull-stripped anatomical image as a <strong>source image</strong>, or the image to be moved around to best match the base, or reference, image. The <code class="docutils literal notranslate"><span class="pre">-no_ss</span></code> option indicates that the anatomical image has already been skull-stripped.</p>
+<p>In order to align the template and the anatomical image, the anatomical image needs to be moved and transformed using the transformations described above. This creates a series of numbers organized in an <strong>affine transformation matrix</strong> which is stored in the header of the anatomical image. The second command, <code class="docutils literal notranslate"><span class="pre">cat_matvec</span></code>, extracts this matrix and copies it into a file called <code class="docutils literal notranslate"><span class="pre">warp.anat.Xat.1D</span></code>. How this matrix is used to bring the functional images to the same normalized space will be seen in the next chapter.</p>
+</section>
+<section id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>In the <code class="docutils literal notranslate"><span class="pre">&#64;auto_tlrc</span></code> command above, the default template is <code class="docutils literal notranslate"><span class="pre">MNI_avg152+tlrc</span></code>, which can be found in your <code class="docutils literal notranslate"><span class="pre">~/abin</span></code> directory. Take a look at available templates in MNI space by typing <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">~/abin</span> <span class="pre">|</span> <span class="pre">grep</span> <span class="pre">MNI</span></code>. Not all of these are candidates for normalizing T1 anatomical scans, but a couple of them are, including <code class="docutils literal notranslate"><span class="pre">MNI152_1mm_uni+tlrc</span></code> and <code class="docutils literal notranslate"><span class="pre">MNI152_T1_2009c+tlrc</span></code>. Once you have skull-stripped an anatomical image, try using this command:</p></li>
+</ol>
+<dl class="simple">
+<dt>::</dt><dd><p>3dcopy sub-01_T1w_ns+orig. T1w_cop
+&#64;auto_tlrc -base MNI152_T1_2009c+tlrc -input T1w_copy+orig. -no_ss</p>
+</dd>
+</dl>
+<p>And observe how the output is different from the original command above. Try it also with the <code class="docutils literal notranslate"><span class="pre">MNI152_T1_2009c+tlrc</span></code> template, creating a new copy of the original T1-weighted anatomical image in orig space. Which template would you prefer to use? Why? Also, why do you think that the default is the <code class="docutils literal notranslate"><span class="pre">MNI_avg152T1+tlrc</span></code> brain? (Hint: Look at each of these templates in the AFNI viewer by typing <code class="docutils literal notranslate"><span class="pre">afni</span> <span class="pre">~/abin</span></code>.)</p>
+<ol class="arabic simple" start="2">
+<li><p>As a follow-up exercise, what would you change about the command listed in Exercise #1 if you hadn’t skull-stripped the anatomical image?</p></li>
+</ol>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="02_AFNI_Slice_Timing_Correction.html" class="btn btn-neutral float-left" title="Chapter 2: Slice-Timing Correction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="04_AFNI_Alignment.html" class="btn btn-neutral float-right" title="Chapter 4: Alignment and Motion Correction" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Andy Jahn.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
