@@ -1,21 +1,14 @@
-Welcome to Andy's Brain Book!
+Welcome to SP's MRI Book!
 =============================
 
 .. figure:: ABB_logo_book.png
 
-    This resource is sponsored by the `University of Michigan <https://umich.edu/>`__.
+你好！这本书，SP's MRI Book 基于 Andy’s Brain Book修改而来，是为那些想要学习如何分析磁共振成像的人而设计的，尤其对与那些有科研需求的研究人员。
 
-Hello! This book, *Andy's Brain Book*, is the ReadTheDocs companion
-to `Andy's Brain Blog <https://www.andysbrainblog.com>`__. It is intended for fMRI beginners, with more advanced imaging techniques being added later on. If this is your first time here, watch `this video <https://www.youtube.com/watch?v=zUxOdq3sAFU>`__ for a quick overview of the website.
-
-This book, *Andy's Brain Book*, is intended for fMRI beginners, with more advanced imaging techniques being added later on.
-
-If you are completely new to fMRI analysis, I recommend starting with the :ref:`installation page <fsl_mac_install>`. Good luck!
 
 .. note::
 
-    Reading this book is easier with a slightly larger font size; I recommend using a zoom of 125%. You can do this on a Macintosh by holding down the ``Command`` key and pressing ``+``, or from the browser menu you can click on ``View -> Zoom In``.
-    
+    使用稍大一点的字体大小阅读这本书会更容易；我建议使用 125% 的缩放比例。在 Macintosh 上，你可以按住 “Command” 键并按 “+” 来实现，或者从浏览器菜单中点击 “查看 -> 放大”。    
 
 .. toctree::
    :maxdepth: 1
