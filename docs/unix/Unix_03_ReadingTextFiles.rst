@@ -1,28 +1,26 @@
 .. _Unix_03_ReadingTextFiles:
 
 =======
-Unix Tutorial #3: Reading Text Files
+第3节: 阅读文本文件
 =======
 
 .. note::
-   Topics covered: File manipulation, redirection, streams, stdin, stdout, stderr
+   主题: 文件操作, 重定向, 流, 标准输入, 标准输出, 标准错误
    
-   Commands used: cat, less, head, wc
+   使用命令: cat, less, head, wc
 
-The command line is useful for both viewing and manipulating text files. **Manipulation** means editing text - for example, replacing words in text files, or appending text from the command line to the end of a file (also known as **redirection**). This is useful for creating **scripts**, text files containing one or more commands that are run consecutively. In later tutorials, you will use these techniques to automate your analyses, which can save enormous amounts of time.
+命令行对于查看和操作文本文件都很有用。**操作** 意味着编辑文本 —— 例如，在文本文件中替换单词，或者将命令行中的文本附加到文件末尾（也称为 “重定向”）。这对于创建 “脚本” 很有用，脚本是包含一个或多个连续运行的命令的文本文件。在后面的教程中，你将使用这些技术来自动化你的分析，这可以节省大量的时间。
 
-You can display the contents of a file using the ``cat`` command, which stands for concatenate. Let's say we have a file on our Desktop called myFile.txt, which contains the words one through fifteen (i.e., one, two, three...fifteen), with each number on a separate line. Use the command line to navigate to the Desktop, and then type ``cat myFile.txt``. This will print the contents of the file to your command line. This is the same idea as using the GUI to double-click on the text file to see its contents.
+你可以使用 ``cat`` 命令来显示文件的内容， ``cat``是 “concatenate（连接）” 的缩写。假设我们在桌面上有一个名为 “myFile.txt” 的文件，它包含从一到十五这些单词（即 one, two, three……fifteen），每个数字占一行。使用命令行导航到桌面，然后输入 ``cat myFile.txt``。这将把文件的内容打印到你的命令行中。这与使用图形用户界面双击文本文件以查看其内容是相同的概念。
 
 .. figure:: Cat_File.png
 
-   Using the command line and the GUI to read the contents of a text file. On the left is the command line using the ``cat`` command, which prints the contents to the Terminal. On the right is the contents of the file displayed after using the mouse to double-click the file.
+使用命令行和图形用户界面来读取文本文件的内容。左边是使用 ``cat``命令的命令行，它将内容打印到终端。右边是使用鼠标双击文件后显示的文件内容。
 
-We refer to the output from this command as **stdout**, or standard output. The commands that are typed into the Terminal are called **stdin**, or standard input. This touches on the concept of **streams**, or the flow of information into and out of the command line, and we will use these ideas to give us more flexibility in manipulating text files. For now, think of **stdin** as anything you type into the Terminal, and **stdout** as what is returned if the command is run without any errors. If the command that you type does result in an error - for example, because the command was misspelled or because not enough arguments were provided - the text that is output to the Terminal is called **stderr**, or standard error.
-
+我们将这个命令的输出称为 “标准输出（stdout）”，即标准输出流。输入到终端的命令被称为 “标准输入（stdin）”，即标准输入流。这涉及到 “流（streams）” 的概念，即信息流入和流出命令行的流程，我们将利用这些概念在操作文本文件时获得更大的灵活性。目前，你可以把 “标准输入（stdin）” 看作是你输入到终端的任何内容，把 “标准输出（stdout）” 看作是如果命令在没有任何错误的情况下运行所返回的内容。如果输入的命令确实导致了错误 —— 例如，因为命令拼写错误或者因为没有提供足够的参数 —— 输出到终端的文本被称为 “标准错误（stderr）”，即标准错误流。
 .. figure:: Streams.png
 
-   Illustration of streams in Unix. Whatever is typed into the Terminal is **stdin**, and, if it runs without error, whatever is output is called **stdout**. If there is an error, the output is instead called **stderr**.
-
+   Unix 中关于流的图示。输入到终端的任何内容都是 “标准输入（stdin）”，并且如果它在没有错误的情况下运行，输出的任何内容都称为 “标准输出（stdout）”。如果有错误，输出则被称为 “标准错误（stderr）”。
    
 The ``cat`` command is useful for viewing the contents of smaller files, but if the file contains hundreds of lines of text, it is overwhelming to have everything printed to the Terminal at once. To see only a part of the file, we can use the commands ``head`` and ``tail`` to see the first few or the last few lines of the file, respectively. Using myFile.txt as an example, typing
 
@@ -76,14 +74,6 @@ It will overwrite the file with whatever we printed to standard output. If you w
 If you type ``cat tmp.txt``, you will see both seventeen and eighteen.
 
 Although these examples are trivial, redirection is invaluable for quickly editing text files and for writing **scripts**, which allow you to run analyses for hundreds or thousands of subjects with only a few lines of code.
-
-
-
-Video
-----------
-
-Click `here <https://www.youtube.com/watch?v=JdXFq6lMlX4&index=4&list=PLIQIswOrUH69xOiblvvEz5KBwWaNRMEUp>`__ for a video walkthrough of commands for reading text files. This video will also show you how to read help files using the ``less`` command and a paging window.
-
 
 ----------
 
