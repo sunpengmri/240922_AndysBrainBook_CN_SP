@@ -1,52 +1,44 @@
 .. _Unix_02_CopyRemove:
 
 ============================================
-Unix Tutorial #2: Copying and Removing Files
+第一节: : 复制、移动文件
 ============================================
 
 .. note::
-  Topics covered: File manipulation; arguments; options; copying, deleting, and renaming files
-  
-  Commands used: cp, mv, rm
+  主题：文件操作；参数；选项；复制、删除和重命名文件。
 
-Now that you have experience getting around your directories with ``cd`` and ``ls``, let’s expand our repertoire with the commands ``cp``, ``mv``, and ``rm``. These are **file manipulation** commands, analogous to right clicking on a file and copying and pasting it, renaming or moving it to a folder, or moving it to the trash bin. The cp and mv commands are more complex than the commands in the previous tutorial, since they require two inputs, or **arguments**. We will also use these commands to introduce the concept of **options**, or flags, which give your commands greater flexibility.
+  需要的命令: cp, mv, rm
 
+  既然你已经有了使用 “cd” 和 “ls” 在目录中进行导航的经验，现在让我们用 “cp”、“mv” 和 “rm” 命令来扩充我们的技能。这些是文件操作命令，类似于在文件上右键点击然后进行复制粘贴、重命名或移动到一个文件夹中，或者将其移动到回收站。“cp” 和 “mv” 命令比上一个教程中的命令更复杂，因为它们需要两个输入，即参数。我们还将使用这些命令来引入选项（即标志）的概念，它使你的命令具有更大的灵活性。
 .. figure:: LS_option.png
 
-  An example of using the ``ls`` command with the ``-l`` option, which lists files and directories in "long" format. This option extends the ability of the ``ls`` command to not only list the file name, but also show details about when the file was last updated, who has permission to edit the file, and how large the file is.
-  
+  使用带有 “-l” 选项的 “ls” 命令的一个例子，该选项以 “长格式” 列出文件和目录。这个选项扩展了 “ls” 命令的能力，使其不仅能列出文件名，还能显示关于文件最后更新时间、谁有权编辑文件以及文件大小等细节。  
 
-To see the similarities between using the graphical interface and using the command line, create a text file in an editor of your choice, such as TextEdit. Save the file to your Desktop - in this example, I'll call it myFile.txt - and try the following commands, remembering to press the Enter key after each line:
-
+为了查看使用图形界面和使用命令行之间的相似之处，在你选择的一个编辑器中创建一个文本文件，例如 TextEdit。将文件保存到你的桌面 —— 在这个例子中，我将把它命名为 myFile.txt—— 然后尝试以下命令，记住在每一行之后按下回车键：
 ::
 
   cp myFile.txt myFile2.txt
   mv myFile.txt myNewFile.txt
   rm myFile2.txt
   
-The first line creates a copy of myFile.txt and labels it myFile2.txt; the second line renames myFile.txt to myNewFile.txt; and the last line removes myFile2.txt. As you type these in the command line you should see the files being copied, renamed, and deleted - just as you would if you were using your mouse with the graphical user interface.
-
+第一行创建了一个 myFile.txt 的副本并将其标记为 myFile2.txt；第二行将 myFile.txt 重命名为 myNewFile.txt；最后一行删除 myFile2.txt。当你在命令行中输入这些命令时，你应该会看到文件被复制、重命名和删除 —— 就像你使用图形用户界面并用鼠标操作时一样。
 
 .. figure:: CP_RM_commands.png
 
-  An illustration of how commands typed in the Terminal have the same effect as copying and renaming files through the GUI.
+  关于在终端中输入的命令与通过图形用户界面复制和重命名文件具有相同效果的示例说明。
 
 
 .. warning::
-  There is one important difference between the GUI and the command line when removing files and directories. A file that is removed using the GUI will first be put it in the Trash bin, and will only be permanently deleted if you choose to empty the Trash bin. Removing a file with ``rm``, on the other hand, permanently deletes the file right away; you will not be able to recover the file after you remove it with ``rm``!
+  在删除文件和目录时，图形用户界面（GUI）和命令行之间有一个重要的区别。使用图形用户界面删除的文件首先会被放入回收站，并且只有当你选择清空回收站时才会被永久删除。另一方面，使用 “rm” 删除文件会立即永久删除该文件；用 “rm” 删除文件后，你将无法恢复该文件！
 
-Video
-----------
-
-Click `here <https://www.youtube.com/watch?v=2F0DLbP5ans&list=PLIQIswOrUH69xOiblvvEz5KBwWaNRMEUp&index=3>`__ to see a video walkthrough about copying and removing files. This video will also show you how to move, rename, and delete folders. When you've finished watching it, try these exercises to retain what you've learned.
 
 -----------
 
-Exercises
+练习
 -----------
 
-1.  Make a new directory in your home directory and either create a couple of new files in that directory, or copy files in to that directory from another directory.
+1.  在你的主目录下创建一个新目录，然后在该目录中创建几个新文件，或者从另一个目录中将文件复制到这个新目录中。
 
-2.  Now copy the directory to the Desktop, but append a forward slash to the end of the directory tha tyou are copying. For example, if the directory is called myFileder, type cp -R myFolder/ Desktop. What happens?
+2.  现在将这个目录复制到桌面，但是在你要复制的目录末尾添加一个正斜杠。例如，如果这个目录叫做 “myFolder”，输入 “cp -R myFolder/ Desktop”。会发生什么？
 
-3.  Type ``man cp`` and find the section about the -R option. Try using one of the other options with the cp command, and observe what happens.
+3.  输入 “man cp”，然后找到关于 “-R” 选项的部分。尝试将 “cp” 命令与其他选项一起使用，并观察会发生什么。
