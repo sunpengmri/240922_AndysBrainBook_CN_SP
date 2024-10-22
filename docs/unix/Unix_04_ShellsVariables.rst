@@ -1,60 +1,52 @@
 .. _Unix_04_ShellsVariables:
 
 ===========================================
-Unix Tutorial #4: Shells and Path Variables
+第4节: 壳层（命令行解释器）与路径变量
 ===========================================
 
 .. note::
-  Topics covered: paths, variables, shells, FSL, installation, syntax, redirection
-  Commands covered: set, setenv, export, tcsh, bash
+  主题: paths, variables, shells, FSL, installation, syntax, redirection
+  命令: set, setenv, export, tcsh, bash
   
   
-Now that you’ve become more familiar with Unix commands, we can download an fMRI package and install it with Unix. If you haven’t already downloaded FSL, watch `this video <https://youtu.be/E9FwDCYAto8?t=14>`__. After you’re done, come back to this tutorial. 
+现在你对 Unix 命令已经更加熟悉了，我们可以下载一个功能性磁共振成像（fMRI）软件包并使用 Unix 进行安装。如果你还没有下载 FSL，可以观看 `this video <https://youtu.be/E9FwDCYAto8?t=14>`__. 完成后，请回到本教程。
 
-When you downloaded and installed FSL, you may have seen a few things you didn’t completely understand. For example, if you go to your home directory and type “cat .bashrc”, you’ll see this block of code. 
+当你下载并安装了 FSL 时，你可能看到了一些你不完全理解的内容。例如，如果你转到你的主目录并输入 “cat .bashrc”，你会看到这一段代码。
 
 .. figure:: Bash_RC_Contents.png
 
-To understand what this means, you’ll need to understand shells, paths, and variables. Let's begin with **shells**. Think of the shell as an environment in which you can type Unix commands. Or, think of it as an interpreter that translates what you type into the actual operations performed by the computer. We used a shell in the previous tutorials, but you may not have been aware of it. When you open the terminal, it uses a shell to interpret what you’re typing. Also, there are many different shells, and each one has a different **syntax**, or specific way that the words in your command need to be organized in order to be understood correctly - just like the syntax of human languages. 
+要理解这意味着什么，你需要理解 shell、路径和变量。让我们从 **shell** 开始。可以把 shell 想象成一个你可以在其中输入 Unix 命令的环境。或者，把它想象成一个将你输入的内容转换为计算机实际执行的操作的解释器。在之前的教程中我们使用了一个 shell，但你可能没有意识到它。当你打开终端时，它使用一个 shell 来解释你正在输入的内容。此外，有许多不同的 shell，并且每个 shell 都有不同的 **语法**，或者说为了被正确理解，你命令中的单词需要以特定的方式组织 —— 就像人类语言的语法一样。
 
-There are two shells you will come across: the Bourne shell, with a widely-used version called **bash**, or Bourne-again shell; and the C-shells, of which one popular variation is the t-shell, or **tcsh**. The commands we’ve used so far - cd, ls, pwd, and so on - are called **built-in commands**, and they can be used the same way in both shells. But there are important differences when you do a more advanced operation, such as setting a variable.
+你会遇到两种 shell：Bourne shell，其一个广泛使用的版本称为 **bash**，即 Bourne Again shell；以及 C-shell，其中一个流行的变体是 t-shell，即 **tcsh**。我们到目前为止使用的命令 ——cd、ls、pwd 等等 —— 被称为 **内置命令**，它们在这两种 shell 中可以以相同的方式使用。但是当你进行更高级的操作（例如设置变量）时，会有重要的区别。
 
-**Setting a variable** means assigning a value to a string. Variables are used as shorthand for a value, which can be either a number or a string. They are called variables because the value can vary, or be udpated as needed. 
+**设置变量** 意味着为一个字符串分配一个值。变量用作值的简写形式，这个值可以是数字或字符串。它们被称为变量是因为这个值可以变化，或者根据需要进行更新。
 
-For example, let’s assign the value 3 to the variable ``x``. If you are in the bash shell, which is the default on most computers, you can do this by typing ``x=3``. To check the value stored in the variable, type ``echo $x``. The dollar sign is a **reserved character** that has a special meaning and cannot be used as a variable. A dollar sign indicates that what comes immediately after it - in this case, x - is a variable. The command returns 3, the value stored in the variable x.
+例如，让我们将值 3 分配给变量 ``x``。如果你在 bash shell 中（这在大多数计算机上是默认的），你可以通过输入 ``x=3`` 来实现。要检查存储在变量中的值，输入 ``echo $x``。美元符号是一个 **保留字符**，它有特殊的含义，不能用作变量。美元符号表示紧跟其后的内容 —— 在这种情况下是 x—— 是一个变量。这个命令会返回 3，即存储在变量 x 中的值。
 
-Compare this with a different shell - the t-shell. Switch your terminal to the t-shell by typing ``tcsh`` and pressing enter. If we typed the same command as before, you’ll get an error that says “command not found.” That’s because the syntax for assigning a variable is different in the t-shell. To do the same variable assignment, we have to type ``set x=3``; then type ``echo $x`` to make sure it set the correct value. If you become lost and want to know which shell you are currently in, type ``echo $0``.
+将这与另一个 shell——t-shell 进行比较。通过输入 ``tcsh`` 并按下回车键将你的终端切换到 t-shell。如果我们输入与之前相同的命令，你会得到一个 **command not found（未找到命令）** 的错误。那是因为在 t-shell 中设置变量的语法是不同的。要进行相同的变量赋值，我们必须输入 ``set x=3``；然后输入 ``echo $x``以确保它设置了正确的值。如果你迷失了并且想知道你当前处于哪个 shell 中，可以输入 ``echo $0``。
 
 .. figure:: VariableAssignment.gif
 
 
-Right now we’re in what is called a subshell; we were initially in the bash shell, and then we switched to a t-shell. When you open up a new Terminal, think of that terminal as the Unix world; we call this “world” the **environment**. To keep the ``x`` variable constant same no matter which shell we’re in, we would type ``export x=3``; in tcsh, we would type ``setenv x 3``. Note that if you set this global variable, it’s available only to the current shell and to subshells; if you set a global variable in the current subshell and then return to a previous shell, you will not have access to it. To leave the current subshell and return to the previous shell, type ``exit`` and press enter. 
+现在我们处于所谓的子 shell 中；我们最初在 bash shell 中，然后切换到了 t-shell。当你打开一个新的终端时，可以把那个终端想象成 Unix 世界；我们把这个 **世界** 称为 **环境**。为了无论我们处于哪个 shell 中都让 ``x`` 变量保持不变，在 bash 中我们可以输入 ``export x=3``；在 tcsh 中，我们可以输入 ``setenv x 3``。请注意，如果你设置了这个全局变量，它仅对当前 shell 和子 shell 可用；如果你在当前子 shell 中设置了一个全局变量，然后返回到先前的 shell，你将无法访问它。要离开当前子 shell 并返回到先前的 shell，输入 ``exit`` 并按下回车键。
 
-Now that we know what variables are, we can see how they are being used in the FSL setup. The code in the .bashrc file - which stands for “bash run commands”, and is the code that is run anytime you create a new shell in bash - updates something called the **path variable**. The path variable is a list of directories that are searched anytime you run a command; you can see this list of directories by typing ``echo $PATH``. Notice that there are several absolute paths pointing to different directories, with the colon acting as a separator between paths. When you type a command and press enter, the shell looks for that command within each directory in your path. If it’s not there, it returns an error saying that the command is not found.
+现在我们知道了变量是什么，我们可以看看它们在 FSL 安装设置中是如何被使用的。.bashrc 文件中的代码 —— 它代表 “bash 运行命令”，并且是在你每次在 bash 中创建一个新 shell 时都会运行的代码 —— 更新了被称为 **路径变量** 的东西。路径变量是一个目录列表，在你运行任何命令时都会搜索这个列表；你可以通过输入 ``echo $PATH`` 来查看这个目录列表。注意，有几个绝对路径指向不同的目录，冒号作为路径之间的分隔符。当你输入一个命令并按下回车键时，shell 会在你的路径中的每个目录中寻找那个命令。如果不在那里，它会返回一个错误，说找不到该命令。
 
-Paths allow you to use FSL commands from anywhere in the Terminal. FSL, like all the other software packages, has a **library**, or directory that contains all of the functions needed to run FSL - such as fslinfo, fslmaths, flirt, and so on. To run those commands, we would need to either be in that directory, or we would need to specify the absolute path to the command that we want to run. To give us the flexibility to run FSL commands anywhere, we’ll set the path variable to indicate where the FSL library is.
+路径允许你在终端的任何地方使用 FSL 命令。FSL，像所有其他软件包一样，有一个 **库**，或者说一个包含运行 FSL 所需的所有功能的目录 —— 比如 **fslinfo、fslmaths、flirt** 等等。要运行那些命令，我们要么需要在那个目录中，要么需要指定我们想要运行的命令的绝对路径。为了让我们能够在任何地方灵活地运行 FSL 命令，我们将设置路径变量来指示 FSL 库在哪里。
 
 .. figure:: FSL_Library.png
 
-  Once you have installed FSL, type ``ls $FSLDIR/bin`` to see a list of all of the available commands (or binaries - hence the directory name) in the FSL library. If your path is set correctly, you can run these commands from anywhere in your directory structure.
+  一旦你安装了 FSL，输入 ``ls $FSLDIR/bin`` 以查看 FSL 库中所有可用命令（或者说二进制文件 —— 因此这个目录名为 bin）的列表。如果你的路径设置正确，你可以在你的目录结构中的任何地方运行这些命令。
 
-Note that the FSL installation script automatically creates these paths in both bash and tcsh. Other packages - such as AFNI and FreeSurfer - do not automatically create these paths, and you’ll have to add the lines they give you either using redirection, or by opening up the run command files in a text editor (for example, by typing “open .bashrc”). Now that you understand what paths and variable are and how they are created, you’ll be able to create and modify them as needed.
-
+请注意，FSL 安装脚本会在 bash 和 tcsh 中自动创建这些路径。其他软件包 —— 比如 **AFNI** 和 **FreeSurfer**—— 不会自动创建这些路径，你将不得不使用重定向或者通过在文本编辑器中打开运行命令文件（例如，输入 ``open.bashrc``）来添加它们给你的行。现在你理解了路径和变量是什么以及它们是如何创建的，你将能够根据需要创建和修改它们。
 
 -----------
 
-Exercises
+练习
 ---------
 
-1. Change your default shell with ``chsh -s tcsh``. What happens when you open a new Terminal and type ``echo $0``? How would you change your default shell back to bash? 
+1. 使用 ``chsh -s tcsh`` 更改默认 shell。当你打开一个新的终端并输入 ``echo $0`` 时会发生什么？你如何将默认 shell 改回 bash？ 
 
-2. Look at these lines in your .bashrc file: ``export FSLDIR=/usr/local/fsl``, and ``export PATH=${FSLDIR}/bin:${PATH}``. (For these lines of code, the curly braces don’t add anything; e.g., ${PATH} is the same thing as $PATH.) In your own words, how would you define what these lines do? 
+2. 查看你的.bashrc 文件中的这些行： ``export FSLDIR=/usr/local/fsl`` 以及 ``export PATH={PATH}``。（对于这些代码行，花括号没有任何作用；例如，${PATH}与$PATH 是一样的。）用你自己的话来说，你如何定义这些行的作用？ 
 
-3. From your default Terminal (assuming you are in bash), launch a tcsh subshell. Then set an environmental variable, x=3. From your current shell, launch a bash subshell and type ``echo $x``. Then type ``exit``, and ``exit`` again to return to your original shell. Type ``echo $x``. What is returned? Why? Using a Venn diagram, illustrate why this happens.
-
-
-
-Video
------
-
-Click `here <https://www.youtube.com/watch?v=KAs94hs_aXY>`__ for a video walkthrough explaining what shells and path variables are.
+3. 从你的默认终端（假设你在 bash 中）启动一个 tcsh 子 shell。然后设置一个环境变量，x=3。从当前的 shell 启动一个 bash 子 shell 并输入 ``echo $x``。然后输入 ``exit``，再输入 ``exit``以返回到原始 shell。输入 ``echo $x``。会返回什么？为什么？使用维恩图说明为什么会发生这种情况。
