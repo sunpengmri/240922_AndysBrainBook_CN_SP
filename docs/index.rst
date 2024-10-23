@@ -1,7 +1,7 @@
 Welcome to SP's MRI Book!
 =============================
 
-.. figure:: ABB_logo_book.png
+.. figure:: MRI.jpeg
 
 你好！这本书，SP's MRI Book 基于 Andy’s Brain Book修改而来，是为那些想要学习如何分析磁共振成像的人而设计的，尤其对与那些有科研需求的研究人员。
 
@@ -19,7 +19,7 @@ Welcome to SP's MRI Book!
    
 .. toctree::
     :maxdepth: 1
-    :caption: Unix for Neuroimagers
+    :caption: 影像人的简易UNIX教程
     
     unix/Unix_Intro
     unix/Unix_01_Navigation

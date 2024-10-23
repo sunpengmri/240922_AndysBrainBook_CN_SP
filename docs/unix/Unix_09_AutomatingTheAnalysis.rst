@@ -1,19 +1,19 @@
 .. _Unix_09_AutomatingTheAnalysis:
 
-Unix Tutorial #9: Automating The Analysis
+第9节: 自动化分析
 ==================
 
 ----------------
 
-Overview
+概述
 *********
 
-As we begin this tutorial, we have fully merged with the associated :ref:`fMRI course <fMRI_01_DataDownload>`. Most of the text here is borrowed from the fMRI chapter on :ref:`scripting <fMRI_06_Scripting>`, which uses all of the commands we have learned. The following section will show you how to integrate conditionals, for-loops, and sed in order to integrate separate lines of code into a useful script.
+当我们开始本教程时, 我们主要参考 :ref:`fMRI course <fMRI_01_DataDownload>`。 这里的大部分文本是从关于功能性磁共振成像的章节中借用的 :ref:`scripting <fMRI_06_Scripting>`, 它使用了我们所学的所有命令。以下部分将向您展示如何集成条件语句、for 循环和 sed，以便将单独的代码行集成到一个有用的脚本中。
 
-Running the Script
+运行脚本
 **********
 
-The code below is designed to edit and run a file that analyzes each subject in the Flanker dataset. Once you have `created the template <https://andysbrainbook.readthedocs.io/en/latest/fMRI_Short_Course/fMRI_06_Scripting.html#creating-the-template>`__, move the design_run1.fsf and design_run2.fsf files to the directory containing your subjects (i.e., ``mv design*.fsf ..``, and then ``cd ..``). Then download the script `run_1stLevel_Analysis.sh <https://github.com/andrewjahn/FSL_Scripts/blob/master/run_1stLevel_Analysis.sh>`__ and move it to the Flanker directory. The script is reprinted here:
+下面的代码旨在编辑和运行一个文件，该文件分析 Flanker 数据集中的每个被试。当你 `创建模板 <https://andysbrainbook.readthedocs.io/en/latest/fMRI_Short_Course/fMRI_06_Scripting.html#creating-the-template>`__ 后，将 design_run1.fsf 和 design_run2.fsf 文件移动到包含您的被试的目录中 (i.e., ``mv design*.fsf ..``, and then ``cd ..``)。 然后下载脚本 `run_1stLevel_Analysis.sh <https://github.com/andrewjahn/FSL_Scripts/blob/master/run_1stLevel_Analysis.sh>`__ 并将其移动到 Flanker 目录。该脚本内容已经在此打印：
 
 ::
 
@@ -61,15 +61,16 @@ The code below is designed to edit and run a file that analyzes each subject in 
 
   echo
 
-Analyzing the Script
+分析脚本
 **********
 
-Let's walk through each part of this script and describe what it does. 
+让我们逐步了解此脚本的每个部分并描述其作用。
 
-Initializing the for-loop
+
+初始化 for 循环
 ^^^^^^^^^^
 
-It begins with a shebang and some comments describing what exactly the script does; and then backticks are used to expand ``seq -w 1 26`` in order to create a loop that will run the body of the code over all of the subjects. This will expand to ``01, 02, 03 ... 26`` and update the number that is assigned to the variable ``id`` on each iteration of the loop.
+它以一个 shebang 和一些描述脚本确切作用的注释开头；然后使用反引号来包围 ``seq -w 1 26`` 以创建一个循环，该循环将对所有被试运行代码主体。这将拓展为 ``01、02、03... 26`` ，并在循环的每次迭代中更新分配给变量 id 的数字。
 
 ::
 
@@ -84,14 +85,12 @@ It begins with a shebang and some comments describing what exactly the script do
       echo
       cd $subj
 
+例如，此代码的第一个循环将字符串 ``sub-01`` 分配给变量 ``subj`` ，然后输出 "===> 开始处理 sub-01"。然后它将导航到 ``sub-01`` 目录。
 
-For example, the first loop of this code will assign the string ``sub-01`` to the variable ``subj``, then echo "===> Starting processing of sub-01". It will then navigate into the ``sub-01`` directory.
-
-
-Conditionals to check for the skull-stripped anatomical
+条件语句：检查去颅骨后的解剖结构
 ^^^^^^^^^^
 
-The script then uses a conditional to check whether the skull-stripped anatomical exists, and if it doesn't, the skull-stripped image is generated. 
+然后，脚本使用一个条件语句来检查去颅骨的解剖结构是否存在，如果不存在，则生成去颅骨的图像。
 
 ::
 
@@ -103,10 +102,11 @@ The script then uses a conditional to check whether the skull-stripped anatomica
           fi
       
       
-Editing and running the template file
+编辑和运行模板文件
 ^^^^^^^^^^
 
-Then the template design*.fsf file is edited to replace the string ``sub-08`` with the current subject's name. The *.fsf files are run with the command ``feat``, which is like running the FEAT GUI from the command line. Echo commands are used throughout the script to let the user know when a new step is being run.
+
+然后，模板 design*.fsf 文件被编辑，以将字符串 ``sub-08`` 替换为当前主题的名称。*.fsf 文件使用 ``feat`` 命令运行，这就像从命令行运行 FEAT GUI 一样。在整个脚本中使用 Echo 命令让用户知道何时正在运行新的步骤。
 
 ::
 
@@ -123,9 +123,8 @@ Then the template design*.fsf file is edited to replace the string ``sub-08`` wi
           sed -i '' "s|sub-08|${subj}|g" \
               design_run2.fsf
               
-           
-The design.fsf files, which are located in the main Flanker directory, are copied into the current subject's directory. Sed then replaces the string ``sub-08`` with the current value of ``subj`` that has been assigned in the loop. The last part of the code runs the .fsf files with the ``feat`` command, and prints to the Terminal which run is being analyzed.
-
+        
+位于 Flanker 主目录中的 design.fsf 文件被复制到当前主题的目录中。然后，Sed 将字符串 ``sub-08`` 替换为在循环中分配的 ``subj`` 的当前值。代码的最后一部分使用 ``feat`` 命令运行.fsf 文件，并打印到终端正在分析的是哪一次运行。
 ::
 
           # Now everything is set up to run feat
@@ -136,21 +135,16 @@ The design.fsf files, which are located in the main Flanker directory, are copie
                   echo
                   
                   
-You can run the script by simply typing ``bash run_1stLevel_Analysis.sh``. The echo commands will print text to the Terminal when a new step is run, and HTML pages will track the progress of the preprocessing and statistics.
+您可以通过简单地输入 ``bash run_1stLevel_Analysis.sh`` 来运行脚本。当运行新步骤时， ``echo`` 命令将向终端打印文本，并且 HTML 页面将跟踪预处理和统计的进度。
 
 ----------
 
-Summary
+总结
 ***********
 
-At this point you have learned all the necessary Unix commands and concepts to run an fMRI analysis script. If this is your first time using Unix, this may seem complicated; but with practice, you will be able to see why the script is composed the way it is, and how in relatively few lines is able to represent what can take dozens of hours of human labor. 
+有 Unix 命令和概念。如果这是您第一次使用 Unix，这可能看起来很复杂；但通过练习，您将能够明白为什么脚本是这样组成的，以及相对较少的几行代码如何能够代表可能需要数十小时人工劳动的工作。
 
-By investing the time to learn Unix now, you will be able to make your analyses quicker, more efficient, and less prone to error. You will also, I hope, have become more confident in taking the first steps toward applying your new skills to writing analysis script of your own.
+通过现在投入时间学习 Unix，您将能够使您的分析更快、更高效，并且更不容易出错。我也希望您在朝着将新技能应用于编写自己的分析脚本迈出第一步时变得更加自信。
 
 
 ----------
-
-Video
-**********
-
-For a screencast demonstration of how to download and run the script above, click `here <https://www.youtube.com/watch?v=oXSHbRlogaA>`__. 

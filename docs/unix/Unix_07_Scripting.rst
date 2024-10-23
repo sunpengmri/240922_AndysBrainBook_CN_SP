@@ -1,40 +1,39 @@
 .. _Unix_07_Scripting:
 
-Unix Tutorial #7: Scripting
+第7节: 脚本
 ================
 
 .. note::
   
-  Topics covered: wildcards, scripting
+  主题: 通配符，脚本
   
-  Commands covered: awk
+  命令: awk
 
 ---------------
 
-Combining Commands
+组合命令
 ***************
 
-So far you have learned how to use for-loops and conditional statements to both automate and make decisions about when to run blocks of code. You'll soon find, however, that large and complex blocks of code are tedious to write out by hand every time you want to run them. It is also difficult to debug a long string of code that you wrote in the Terminal.
+到目前为止，您已经学习了如何使用 for 循环和条件语句来自动化并决定何时运行代码块。然而，您很快就会发现，每次想要运行大型和复杂的代码块时，手动编写它们是很繁琐的。在终端中编写的一长串代码也很难调试。
 
-Instead, we can put everything into a **script**, or file that contains code. This allows you to make your code compact and easy to move between directories if you need to. It also makes debugging much easier.
+相反，我们可以把所有内容放入一个 **脚本**，即包含代码的文件中。这使您的代码紧凑，如果需要，还能轻松在不同目录之间移动。这也使调试变得容易得多。
 
-
-Downloading a Text Editor for Coding
+文本编辑器
 ****************
 
-Before we begin scripting, you should download an appropriate code editor. Windows users can download Notepad++, and Mac users should download `TextWrangler <https://www.barebones.com/products/textwrangler/>`__ from the Apple Store. It is important to use one of these rather than the default text editor; otherwise, you may run into problems with the carriage returns, which is demonstrated in a video `here <https://www.youtube.com/watch?v=m4p3fYO6dCI>`__.
+在我们开始编写脚本之前，您应该下载一个合适的代码编辑器。Windows 用户可以下载 Notepad++，Mac 用户应该从苹果商店下载 `TextWrangler <https://www.barebones.com/products/textwrangler/>`__ 。 使用其中之一而不是默认的文本编辑器是很重要的; 否则，您可能会遇到回车符的问题，这在一个视频中有演示 `here <https://www.youtube.com/watch?v=m4p3fYO6dCI>`__.
 
 
-Writing your First Script
+编写您的第一个脚本
 ****************
 
-Once you’ve downloaded TextWrangler, open it and write this code on the first line, also known as a **shebang**: ``#!/bin/bash``. It signifies that the following code should be interpreted with the bash shell and follow bash syntax.
+一旦您下载了 TextWrangler，打开它并在第一行编写此代码，也称为shebang：  ``#!/bin/bash`` 。它表示以下代码应使用 bash shell 进行解释并遵循 bash 语法。
 
 .. figure:: TextWrangler_Shebang.png
 
- Example of the shebang in a file edited in TextWrangler. The shebang is always written on the first line of the file starting with a pound sign and exclamation mark, followed by an absolute path to the shell that is used to interpret the code.
+ TextWrangler 中编辑的文件中 shebang 的示例。shebang 总是写在文件的第一行，以井号和感叹号开头，后跟用于解释代码的 shell 的绝对路径。
 
-Next, write one of the for-loops you saw previously, such as this:
+接下来，编写您之前看到的其中一个 for 循环，例如：
 
 ::
 
@@ -42,47 +41,41 @@ Next, write one of the for-loops you saw previously, such as this:
    echo $i; 
  done
  
-It is good coding practice to indent the body of a for-loop or conditional statement, usually with a tab or a few spaces. This allows the eye to quickly see the structure of the code and guess where certain commands are located. It is also helpful to include comments with the pound sign: Anything written after the pound sign will not be interpreted by the shell, but is useful for the reader to know what the command is doing. For example, before the loop we could write a comment  about how the following code will print the numbers 1 through 3. Some coders prefer to put a space between each major section of code; this is a stylistic choice that is up to you.
+缩进 for 循环或条件语句的主体是良好的编码实践，通常使用制表符或几个空格。这能让眼睛快速看到代码的结构，并猜测某些命令的位置。使用井号包含注释也很有帮助：井号后面写的任何内容都不会被 shell 解释，但对读者了解命令的作用很有用。例如，在循环之前，我们可以写一个关于以下代码如何打印 1 到 3 的注释。有些编码人员喜欢在代码的每个主要部分之间留一个空格；这是一个风格选择，由您决定。
 
-Now click on ``File -> Save As`` and call it ``printNums.sh``, with the .sh extension signifying that the file is a shell script. Save it to the Desktop. In a Terminal, navigate to the Desktop and then type ``bash printNums.sh`` to run it. You can also run the command by typing ``./printNums.sh``. This will run all of the code in the script, just as if you had typed it out by hand. This is a simple example, but you can see how you can add as many lines of code as you want.
+现在点击 ``File -> Save As``，并将其命名为 ``printNums.sh``,.sh 扩展名表示该文件是一个 shell 脚本。 将其保存到桌面。在终端中，导航到桌面，然后输入 ``bash printNums.sh`` 来运行它。 您也可以通过输入 ``./printNums.sh``来运行该命令。这将运行脚本中的所有代码，就好像您手动输入了一样。这是一个简单的示例，但您可以看到您可以根据需要添加任意多行代码。
 
-
-Running Larger Scripts
+运行较大的脚本。
 ***************
 
-Let’s see how we can run a larger script containing many lines of code. Go to `this link <https://www.github.com/andrewjahn/FSL_Scripts>`__ and click on ``make_FSL_Timings.sh``. Click on the ``Raw`` button to see the raw text. You can either right click anywhere on the page and save this as a script, or you can copy and paste the code into TextWrangler. Save it as ``make_FSL_Timings.sh``, and move it to the Flanker directory. 
+让我们看看如何运行一个包含多行代码的较大脚本。转到 `this link <https://www.github.com/andrewjahn/FSL_Scripts>`__ 选中 ``make_FSL_Timings.sh``。 点击 ``Raw`` 按钮来查看其内容. 您可以在页面的任何位置右键单击并将其保存为脚本，或者您可以将代码复制并粘贴到 TextWrangler 中。 把它存为 ``make_FSL_Timings.sh``, 并将其移动到 Flanker 目录。 
 
-Let’s take a look at what this code does. Notice that we have a shebang indicating that the script is written in Bash syntax; we also have comments after each pound sign marking the major sections of the code. The first block of code is a conditional statement that checks whether a file called ``subjList.txt`` exists; if it doesn’t, then list each subject directory and redirect that list of subjects to a file called subjList.txt.
+让我们看看这段代码的作用。注意，我们有一个 shebang 表明脚本是用 Bash 语法编写的；我们在每个井号后面也有注释，标记了代码的主要部分。第一块代码是一个条件语句，检查名为 ``subjList.txt`` 的文件是否存在；如果不存在，那么列出每个受试者目录，并将受试者列表重定向到一个名为 subjList.txt 的文件。
 
-Wildcards
+通配符
 ^^^^^^^^^^^^^^^
 
-This brings up an important concept: **Wildcards**. There are two types of wildcards you will often use. The first is an asterisk, which looks for one or more characters. For example, navigate to the Flanker directory and type ``mkdir sub-100``. If you type ``ls -d sub-*`` It will return every directory that starts with sub-, whether it is sub-01 or sub-100. The asterisk wildcard doesn’t discriminate whether the directory is six characters long or six hundred; it will match and return all of them, as long as they start with ``sub-``. The other type of wildcard is the question mark, which matches a single occurrence of any character. If you type ``ls -d sub-??``, it will only return directories with two integers after the dash - in other words, it will return sub-01 through sub-26, but not sub-100.
+这引出了一个重要的概念：通配符。您经常会使用两种类型的 **通配符** 。第一种是星号，它查找一个或多个字符。例如，导航到 Flanker 目录并输入 ``mkdir sub-100`` 。如果您输入 ``ls -d sub-*`` ，它将返回以 sub- 开头的每个目录，无论是 sub-01 还是 sub-100。星号通配符不区分目录是六个字符长还是六百个字符长；只要它们以 ``sub-`` 开头，它就会匹配并返回所有目录。另一种类型的通配符是问号，它匹配任何字符的单个出现。如果您输入 ``ls -d sub-??`` ，它将仅返回破折号后有两个整数的目录 - 换句话说，它将返回 sub-01 到 sub-26，但不返回 sub-100。
 
 .. figure:: Wildcards_Demo.gif
 
 
-Text Manipulation with Awk
+使用 Awk 进行文本操作
 ^^^^^^^^^^^^^^^^
 
-The body of the for-loop contains something else that is new, a command called **awk**. Awk is a text processing command that prints columns from a text file. Here are the basics about how it works: If you go into a subjects’ func directory and type cat ``sub-08_task-flanker_run-1_events.tsv``, it will return all of the text in that file. For our fMRI analysis, we want the columns that specify the onset time and duration, as well as the number 1 as a placeholder in the last column. You can redirect the output of this command into the input for the awk command by using a vertical pipe. Then, you can use conditional statements in awk to print the onset times for specific experimental conditions, and redirect that output into a corresponding text file. This is discussed in more detail in the book chapter in the link below.
+for 循环的主体包含了一些新的东西，一个叫做awk的命令。 **awk** 是一个文本处理命令，用于打印文本文件中的列。以下是它的工作原理的基础知识：如果您进入一个受试者的 func 目录并输入 ``cat sub-08_task-flanker_run-1_events.tsv``，它将返回该文件中的所有文本。对于我们的 fMRI 分析，我们想要指定起始时间和持续时间的列，以及在最后一列中作为占位符的数字 1 。您可以使用竖线将此命令的输出重定向为 awk 命令的输入。然后，您可以在 awk 中使用条件语句来打印特定实验条件的起始时间，并将该输出重定向到相应的文本文件。下面链接中的书中章节对此有更详细的讨论。
 
-Now navigate back to the directory containing all the subjects, remove the sub-100 directory and run the script. It will take a few moments, and then create timing files for all of your subjects. You can inspect them using the cat command, and they should all look something like this:
+现在导航回到包含所有受试者的目录，删除 sub-100 目录并运行脚本。这需要一些时间，然后为您所有的受试者创建时间文件。您可以使用 cat 命令检查它们，它们应该都看起来像这样：
 
 .. figure:: OnsetFile_Output.png
 
-Scripts and wildcards give you more flexibility with your code, and can save you countless hours of labor - just imagine typing out each of the commands in our script for each subject. Later on we will use these scripts to automate the analysis of an entire dataset - but to do that, we will need to learn about one more command for manipulating text - the sed command.
+脚本和通配符使您的代码更具灵活性，并可以为您节省无数小时的劳动 - 想象一下为每个受试者在我们的脚本中输入每个命令。稍后，我们将使用这些脚本来自动分析整个数据集 - 但要做到这一点，我们还需要了解一个用于操作文本的命令 - sed 命令。
 
 
 -------------
 
-Exercises
+练习
 ************
 
 
 ------------
-
-Video
-***********
-
-`This video <https://www.youtube.com/watch?v=DQazIIIUXWo>`__ will walk you through how to write a script using TextWrangler, and how to execute the script in the Terminal.
