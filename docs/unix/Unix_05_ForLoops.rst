@@ -1,14 +1,14 @@
 .. _Unix_05_ForLoops:
 
 ===========================
-Unix Tutorial #5: For-Loops
+第4节: For循环
 ===========================
 
 .. note::
 
-  Topics covered: variables, for loops, zero padding, semicolons
+  主题: variables, for loops, zero padding, semicolons
   
-  Commands covered: for, seq
+  命令: for, seq
 
 
 
