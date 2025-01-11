@@ -1,24 +1,24 @@
 .. _fMRI_02_ExperimentalDesign:
 
 ==============
-fMRI Tutorial #2: Overview of The Flanker Task
+fMRI(FSL) 第二章: Flanker 任务概述
 ==============
 
-The dataset you downloaded uses the Flanker task, which is designed to tap into a mental process known as cognitive control. For this course, we’re going to define cognitive control as the ability to ignore irrelevant stimuli in order to do the task correctly.
+您下载的数据集使用了 Flanker 任务，该任务旨在挖掘一种称为认知控制的心理过程。在本课程中，我们将认知控制定义为忽略不相关刺激以正确完成任务的能力。
 
-In the Flanker task, arrows point either to the left or the right, and the subject is instructed to press one of two buttons indicating the direction of the arrow in the middle. If it’s pointing to the left, the subject presses the “left” button; if it’s pointing to the right, the subject presses the “right” button. The middle arrow is flanked by other arrows which either point in the same direction as the middle arrow, or point in the opposite direction from the middle arrow.
+在 Flanker 任务中，箭头指向左边或右边，受试者被指示按下两个按钮中的一个，以指示中间箭头的方向。如果指向左边，受试者按下 “左” 按钮；如果指向右边，受试者按下 “右” 按钮。中间的箭头两侧有其他箭头，这些箭头要么与中间的箭头指向相同的方向，要么指向与中间箭头相反的方向。
 
 .. figure:: Flanker_Example.png
 
-	An example of the two conditions of the Flanker task. In the Incongruent condition, the central arrow (which the subject is focusing on) points in the opposite direction as the flanking arrows; in the Congruent condition, the central arrow points in the same direction as the flanking arrows. In this example the correct response in the Incongruent condition would be to push the "left" button, and the correct response in the Congruent condition would be to push the "right" button. To run through a version of the Flanker task yourself, click `here <http://cognitivefun.net/test/6>`__.
+	Flanker 任务两种情况的一个示例。在不一致的条件下，中心箭头（受试者关注的）指向与侧翼箭头相反的方向；在一致的条件下，中心箭头指向与侧翼箭头相同的方向。在这个例子中，不一致条件下的正确反应是按下 “左” 按钮，一致条件下的正确反应是按下 “右” 按钮。要自己体验一下 Flanker 任务, 点击 `这里 <http://cognitivefun.net/test/6>`__.
 
-You can imagine that the task is easier if the central arrow points in the same direction as the flanking arrow, and more difficult if it points in the opposite direction. We’ll call the former condition the “Congruent” condition and the latter the “Incongruent” condition. Subjects are typically slower and less accurate in the Incongruent condition, and faster and more accurate in the Congruent condition. Since the difference in reaction times is robust and reliable, it follows that in our fMRI data we should see a noticeable difference in the :ref:`BOLD signal <BOLD_Response>` as well.
+您可以想象，如果中心箭头与侧翼箭头指向相同的方向，任务会更容易，如果指向相反的方向，任务会更困难。我们将前者称为 “一致” 条件，后者称为 “不一致” 条件。受试者在不一致条件下通常反应更慢且准确性更低，在一致条件下反应更快且准确性更高。由于反应时间的差异是显著且可靠的，因此在我们的 fMRI 数据中，我们应该也会看到 :ref:`BOLD 信号 <BOLD_Response>` 显著不同.
 
 .. figure:: Flanker_Design.png
 
-	Illustration of the Flanker task for this study, adapted from Kelly et al. (2008). The subject is shown a fixation cross in order to focus on the center of the screen, and then either a Congruent or Incongruent Flanker trial is presented for 2000ms. During the trial the subject presses either the left or right button. A jittered interval follows which lasts anywhere from 8,000ms to 14,000ms. (Note that jittered intervals typically increment in seconds; in this case, the jitter for a given trial would be a random selection of one of the following: 8,000ms, 9,000ms, 10,000ms, 11,000ms, 12,000ms, 13,000ms, and 14,000ms) Another fixation cross is presented to begin the next trial.
+	本研究中 Flanker 任务的图示，改编自 Kelly 等人（2008 年）。向受试者展示一个注视十字以使其专注于屏幕中心，然后呈现 2000 毫秒的一致或不一致的 Flanker 试验。在试验期间，受试者按下左或右按钮。随后是一个抖动间隔，持续时间从 8000 毫秒到 14000 毫秒不等。（请注意，抖动间隔通常以秒递增；在这种情况下，给定试验的抖动将是以下随机选择之一：8000 毫秒、9000 毫秒、10000 毫秒、11000 毫秒、12000 毫秒、13000 毫秒和 14000 毫秒）呈现另一个注视十字以开始下一次试验。
 
-Our goal is to estimate the magnitude of the BOLD signal to each condition, and then **contrast** (i.e., take the difference of) the two conditions to see whether they are significantly different from each other.
+我们的目标是估计每种条件下 BOLD 信号的大小，然后进行 **对比**（即，取两者的差）这两种条件，看它们是否彼此显著不同。
 
 .. note::
-	This description of the task brings up an important point about good practice for designing fMRI studies: If you can design a behavioral task that produces a strong and reliable effect, you will increase your odds of finding an effect in your imaging data. fMRI data is notoriously noisy - if you don’t see a behavioral effect in your study, you most likely will not find an effect in your imaging data either.
+	对该任务的这一描述提出了关于设计 fMRI 研究的良好实践的一个重要观点：如果您能够设计一个产生强大且可靠效果的行为任务，您将增加在成像数据中发现效果的几率。fMRI 数据众所周知是有噪声的 —— 如果在您的研究中没有看到行为效果，您很可能在成像数据中也找不到效果。

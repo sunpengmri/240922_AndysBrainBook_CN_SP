@@ -2,32 +2,32 @@
 
 
 =============
-fMRI Tutorial #4: Preprocessing
+fMRI(FSL) 第四章: 数据预处理
 =============
 
 
 .. note::
-  Many of the examples are run from the ``Flanker/sub-08`` directory; I recommend navigating to that directory with your Terminal before reading the rest of the chapter.
+  许多示例都是从 ``Flanker/sub-08`` 目录运行的；我建议您在阅读本章其余部分之前，使用终端导航到该目录。
   
    
-Overview
+概述
 -------------
 
-Now that we know where our data is and what it looks like, we will do the first step of fMRI analysis: **Preprocessing**.
+既然我们知道了我们的数据在哪里以及它是什么样子，我们将进行 fMRI 分析的第一步： **预处理**.
 
-Think of preprocessing as cleaning up the images. When you take a photo with a camera, for example, there are several things you can do to make the image look better:
+把预处理想象成清理图像。例如，当您用相机拍照时，您可以做几件事让图像看起来更好：
 
-* Remove red eye;
-* Increase color saturation;
-* Remove shadows.
+* 消除红眼；
+* 增加色彩饱和度；
+* 去除阴影。
 
 .. figure:: Before_After_Editing.png
 
-  A picture we take with a camera may be dark, blurry, or noisy (left panel). After editing the image by enhancing contrast, reducing blur, and increasing brightness, we end up with a more defined and clearer picture.
+  我们用相机拍摄的照片可能会很暗、模糊或有噪点（左图）。通过增强对比度、减少模糊和增加亮度来编辑图像后，我们最终得到了一张更清晰、更明确的图片。
 
-Similarly, when we preprocess fMRI data we are cleaning up the three-dimensional images that we acquire every :ref:`TR <Repetition_Time>`. An fMRI volume contains not only the signal that we are interested in - changes in oxygenated blood - but also fluctuations that we are not interested in, such as head motion, random drifts, breathing, and heartbeats. We call these other fluctuations **noise**, since we want to separate them from the signal that we are interested in. Some of these can be regressed out of the data by modeling them (which is discussed in the chapter on modeling fitting), and others can be reduced or removed by preprocessing.
+同样，当我们预处理 fMRI 数据时，我们正在清理我们每次  :ref:`TR <Repetition_Time>` 获取的三维图像. fMRI 图像不仅包含我们感兴趣的信号 —— 氧合血的变化 —— 还包含我们不感兴趣的波动，例如头部运动、随机漂移、呼吸和心跳。 我们将这些其他波动称为 **噪声**，因为我们希望将它们与我们感兴趣的信号分开。其中一些可以通过对它们进行建模从数据中回归出来（在关于模型拟合的章节中讨论），而其他的可以通过预处理来减少或去除。
 
-To begin preprocessing sub-08's data, read the following descriptions of each step.
+要开始预处理 sub-08 的数据，请阅读以下关于每个步骤的描述。
 
 .. toctree::
    :maxdepth: 1

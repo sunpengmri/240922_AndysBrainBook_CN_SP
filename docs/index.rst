@@ -10,11 +10,11 @@ Welcome to SP's MRI Book!
 
     使用稍大一点的字体大小阅读这本书会更容易；我建议使用 125% 的缩放比例。在 Macintosh 上，你可以按住 “Command” 键并按 “+” 来实现，或者从浏览器菜单中点击 “查看 -> 放大”。    
 
-.. toctree::
-   :maxdepth: 1
-   :caption: Install
+.. .. toctree::
+..    :maxdepth: 1
+..    :caption: Install
 
-   installation/fsl_mac_install
+..    installation/fsl_mac_install
    
    
 .. toctree::
@@ -35,8 +35,9 @@ Welcome to SP's MRI Book!
     
 .. toctree::
     :maxdepth: 1
-    :caption: fMRI Short Course with FSL
-    
+    :caption: 基于FSL的fMRI数据处理短课程
+
+    fMRI_Short_Course/fsl_mac_install
     fMRI_Short_Course/fMRI_Intro
     fMRI_Short_Course/fMRI_01_DataDownload
     fMRI_Short_Course/fMRI_02_ExperimentalDesign
