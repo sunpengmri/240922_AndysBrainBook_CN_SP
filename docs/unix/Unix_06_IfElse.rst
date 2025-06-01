@@ -1,26 +1,25 @@
 .. _Unix_06_IfElse:
 
-.. note
+=============  
+第6节: 条件判断  
+=============  
 
-  Topics covered: conditionals, if/else statements
   
-  Commands covered: if/else, -e, ! -e, elif
-  
-.. note
+.. note::  
 
-  5.17.2019 Right now this is just a transcription of the video screenplay; will be removing some of these examples from the video, and keeping them here instead.
+  主题: conditionals, if/else statements  
 
-=============
-Unix Tutorial #6: Conditional Statements
-=============
+  命令: if/else, -e, ! -e, elif  
 
-At this point, we’ll start to use our Unix commands with fMRI data. Click :ref:`here <fMRI_01_DataDownload>` for instructions about how to download the Flanker dataset, install FSL, and what skull-stripping is. When you’ve finished, come back to this tutorial.
 
-The previous video on for-loops showed us how to run many blocks of code with slight alterations between each execution. But what if we only want to run the code if certain conditions are met? We can automate these decisions with **conditional statements**, also called if-else statements: IF a certain condition is true, THEN do something; else if the condition is not true, do something else.
 
-For example, we might want to check the anatomical directory for whether the anatomical image has been skull-stripped. If it hasn’t been skull-stripped, then do the skull-stripping; if it’s already been stripped, then do nothing.
+首先，我们将开始用 Unix 命令处理 fMRI 数据。点击 :ref:`这里 <fMRI_01_DataDownload>` 查看如何下载 Flanker 数据集、安装 FSL 以及什么是去颅骨处理。完成后，返回本教程。
 
-Navigate into the sub-01 anatomical directory. From the command line, type:
+前一节关于 for 循环的视频向我们展示了如何运行许多代码块，并在每次执行时做出细微调整。但如果我们只想在满足某些条件时才运行代码怎么办？我们可以用 **条件语句**（也叫 if-else 语句）来自动化这些决策：如果某个条件为真，则执行某些操作；否则，如果条件不为真，则执行其他操作。
+
+例如，我们可能想检查解剖目录，看看解剖图像是否已经过去颅骨处理。如果还没有去颅骨处理，那么就进行去颅骨处理；如果已经去过颅骨，那么什么也不做。
+
+导航到 sub-01 解剖目录。从命令行输入：
 
 ::
 
@@ -28,11 +27,11 @@ Navigate into the sub-01 anatomical directory. From the command line, type:
   	echo “Skull-stripped brain exists”
   fi
 
-Like the for-loops, an if-else statement has three distinct sections. The first section begins with the word “if”, and then evaluates, or checks, whether the statement in the brackets is true or false. Within the brackets, the -e stands for “check whether this file exists.” If anat_brain.nii.gz exists, then the statement goes on to run the code in the body of the conditional statement. You can have as many lines of code in the body as you want. The last line, fi - or “if” spelled backwards - ends the conditional, and then proceeds to run any code listed afterwards.
+与 for 循环一样，if-else 语句也有三个不同的部分。第一部分以“if”一词开头，然后评估或检查括号内的语句是真还是假。在括号内，-e 代表“检查此文件是否存在”。如果 anat_brain.nii.gz 存在，则语句继续执行条件语句主体中的代码。主体中可以有任意多的代码行。最后一行 fi - 或者说是反向拼写的“if” - 结束条件语句，然后继续执行之后列出的任何代码。
 
-NOTE: the format of the if-else statement needs to be exact: You need exactly one space between the first bracket and the -e, for example. If it’s not formatted like this, you will get an error.
+注意：if-else 语句的格式需要完全正确：例如，第一括号和 -e 之间需要有一个空格。如果格式不正确，您将收到错误提示。
 
-Note that if you typed out the conditional statement above, nothing happened. That’s because in this case the statement was evaluated as FALSE: That file doesn’t exist, so the code isn’t run. If we want to do something if the conditional statement is false, we need to add another section: An ELSE section, which looks like this:
+请注意，如果您输入了上述条件语句，则不会发生任何事情。这是因为在这种情况下，语句被评估为 FALSE：该文件不存在，因此代码不会被执行。如果我们想在条件语句为假时做某事，我们需要添加另一个部分：ELSE 部分，如下所示：
 
 ::
 
@@ -42,9 +41,9 @@ Note that if you typed out the conditional statement above, nothing happened. Th
 		echo “Skull-stripped brain does not exist”
 	fi
 
-This means that if this conditional statement is true, then run this block of code (highlight). If it isn’t true, then run this block of code (highlight).
+这意味着如果该条件语句为真，则运行这段代码（高亮显示）。如果不为真，则运行这段代码（高亮显示）。
 
-You can use multiple conditionals to give your if/else statement more flexibility. For example, let’s say we want to check whether the skull-stripped image exists. If it doesn’t, evaluate whether the original anatomical image exists. If that doesn’t exist either, then print that neither the skull-stripped nor the original anatomical image exists. This requires an elif statement, which stands for “else, if”. 
+您可以使用多个条件语句为您的 if/else 语句提供更多灵活性。例如，假设我们想检查去颅骨处理的图像是否存在。如果不存在，则判断原始解剖图像是否存在。如果原始图像也不存在，则打印出既没有去颅骨处理的图像也没有原始解剖图像。这需要一个 elif 语句，代表“else, if”。
 
 ::
 
@@ -56,7 +55,7 @@ You can use multiple conditionals to give your if/else statement more flexibilit
 		echo “Neither the skull-stripped nor the original brain exists”
 	fi
 
-You can use other so-called logical expressions to evaluate whether statements are true or false. For example, within the brackets you can use a pair of ampersands to check whether both files exist:
+您还可以使用其他所谓的逻辑表达式来评估语句的真假。例如，在括号内，您可以使用一对 && 来检查两个文件是否都存在：
 
 ::
 
@@ -66,7 +65,7 @@ You can use other so-called logical expressions to evaluate whether statements a
 		echo “One or more files do not exist”
 	fi
 
-Or you can use a pair of vertical pipes to check whether one file OR the other exists:
+或者，您可以使用一对竖线来检查一个文件或另一个文件是否存在：
 
 ::
 
@@ -76,7 +75,7 @@ Or you can use a pair of vertical pipes to check whether one file OR the other e
 		echo “Neither of the files exists”
 	fi
 
-You can also check if a file DOESN’T exist by placing an exclamation mark before the -e option:
+您还可以通过在 -e 选项前面加上感叹号来检查文件是否不存在：
 
 ::
 
@@ -86,7 +85,7 @@ You can also check if a file DOESN’T exist by placing an exclamation mark befo
 		echo “The skull-stripped brain does exist”
 	fi
 
-For now, we will end with a demonstration of how to combine a for-loop with an if/else statement. Let’s say that we want to check whether subjects 1, 2, and 3 have a skull-stripped anatomical image. If it doesn’t exist, strip the skull using bet2. Navigate to the directory containing all of your subjects, and then run the following code:
+现在，我们将演示如何将 for 循环与 if/else 语句结合使用。假设我们想检查被试 1、2 和 3 是否具有去颅骨处理的解剖图像。如果不存在，则使用 bet2 去除颅骨。导航到包含所有受试者的目录，然后运行以下代码：
 
 ::
 
@@ -99,25 +98,3 @@ For now, we will end with a demonstration of how to combine a for-loop with an i
 			echo “Skull-Stripped brain already exists; doing nothing”
 		fi
 		cd ../..
-	done
-
-This will navigate into each subject’s anatomical directory and check whether the skull-stripped image exists. If it doesn’t, then run bet to skull-strip the anatomical. The echo commands are optional; I like to include them so that the user knows what command is currently being run.
-
-We covered a lot of concepts in this tutorial, but time and practice will make you more familiar with how to integrate for-loops and conditional statements into your code. The next tutorial will show you how to write all of these commands into a script, which makes your code more portable and easier to edit.
-
-
-----------
-
-
-Exercises
-*******
-
-
-
---------
-
-
-Video
-********
-
-Click `here <https://tinyurl.com/yxrn3jmb>`__ for a video demonstrating how to write conditional statements.

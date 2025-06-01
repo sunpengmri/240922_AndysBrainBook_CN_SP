@@ -1,156 +1,148 @@
 .. _Unix_09_AutomatingTheAnalysis:
 
-Unix Tutorial #9: Automating The Analysis
+第9节: 自动化分析
 ==================
 
 ----------------
 
-Overview
+概述
 *********
 
-As we begin this tutorial, we have fully merged with the associated :ref:`fMRI course <fMRI_01_DataDownload>`. Most of the text here is borrowed from the fMRI chapter on :ref:`scripting <fMRI_06_Scripting>`, which uses all of the commands we have learned. The following section will show you how to integrate conditionals, for-loops, and sed in order to integrate separate lines of code into a useful script.
+在我们开始本教程时，我们已经完全与相关的 :ref:`fMRI 课程 <fMRI_01_DataDownload>` 合并。这里的大部分内容借鉴了 fMRI 章节中的 :ref:`脚本编写 <fMRI_06_Scripting>`，该章节使用了我们学过的所有命令。以下部分将向您展示如何整合条件语句、for 循环和 sed，将单独的代码行整合到一个有用的脚本中。
 
-Running the Script
+运行脚本
 **********
 
-The code below is designed to edit and run a file that analyzes each subject in the Flanker dataset. Once you have `created the template <https://andysbrainbook.readthedocs.io/en/latest/fMRI_Short_Course/fMRI_06_Scripting.html#creating-the-template>`__, move the design_run1.fsf and design_run2.fsf files to the directory containing your subjects (i.e., ``mv design*.fsf ..``, and then ``cd ..``). Then download the script `run_1stLevel_Analysis.sh <https://github.com/andrewjahn/FSL_Scripts/blob/master/run_1stLevel_Analysis.sh>`__ and move it to the Flanker directory. The script is reprinted here:
+下面的代码旨在编辑并运行一个文件，该文件分析 Flanker 数据集中的每个受试者。一旦您 `创建了模板 <https://andysbrainbook.readthedocs.io/en/latest/fMRI_Short_Course/fMRI_06_Scripting.html#creating-the-template>`__，将 design_run1.fsf 和 design_run2.fsf 文件移动到包含您的受试者的目录中（即，``mv design*.fsf ..``，然后 ``cd ..``）。然后下载脚本 `run_1stLevel_Analysis.sh <https://github.com/andrewjahn/FSL_Scripts/blob/master/run_1stLevel_Analysis.sh>`__ 并将其移动到 Flanker 目录中。脚本内容如下：
 
 ::
 
   #!/bin/bash
 
-  # Generate the subject list to make modifying this script
-  # to run just a subset of subjects easier.
+  # 生成受试者列表，以便更容易修改此脚本
+  # 以仅运行部分受试者。
 
   for id in `seq -w 1 26` ; do
       subj="sub-$id"
-      echo "===> Starting processing of $subj"
+      echo "===> 开始处理 $subj"
       echo
       cd $subj
 
-          # If the brain mask doesn’t exist, create it
+          # 如果脑掩膜不存在，则创建它
           if [ ! -f anat/${subj}_T1w_brain_f02.nii.gz ]; then
               bet2 anat/${subj}_T1w.nii.gz \
-                  echo "Skull-stripped brain not found, using bet with a fractional intensity threshold of 0.2" \
-                  anat/${subj}_T1w_brain_f02.nii.gz -f 0.2 #Note: This fractional intensity appears to work well for most of the subjects in the Flanker dataset. You may want to change it if you modify this script for your own study.
+                  echo "未找到去颅骨的脑图像，使用 bet 并设置分数强度阈值为 0.2" \
+                  anat/${subj}_T1w_brain_f02.nii.gz -f 0.2 #注意：此分数强度对 Flanker 数据集中的大多数受试者效果良好。如果您将此脚本用于自己的研究，可能需要更改它。
           fi
 
-          # Copy the design files into the subject directory, and then
-          # change “sub-08” to the current subject number
+          # 将设计文件复制到受试者目录中，然后
+          # 将“sub-08”更改为当前受试者编号
           cp ../design_run1.fsf .
           cp ../design_run2.fsf .
 
-          # Note that we are using the | character to delimit the patterns
-          # instead of the usual / character because there are / characters
-          # in the pattern.
+          # 注意，我们使用 | 字符作为模式的分隔符
+          # 而不是通常的 / 字符，因为模式中包含 / 字符。
           sed -i '' "s|sub-08|${subj}|g" \
               design_run1.fsf
           sed -i '' "s|sub-08|${subj}|g" \
               design_run2.fsf
 
-          # Now everything is set up to run feat
-          echo "===> Starting feat for run 1"
+          # 现在一切都准备好运行 feat
+          echo "===> 开始运行 feat，运行 1"
           feat design_run1.fsf
-          echo "===> Starting feat for run 2"
+          echo "===> 开始运行 feat，运行 2"
           feat design_run2.fsf
                   echo
 
-      # Go back to the directory containing all of the subjects, and repeat the loop
+      # 返回包含所有受试者的目录，并重复循环
       cd ..
   done
 
   echo
 
-Analyzing the Script
+分析脚本
 **********
 
-Let's walk through each part of this script and describe what it does. 
+让我们逐步分析脚本的每个部分并描述其功能。
 
-Initializing the for-loop
+初始化 for 循环
 ^^^^^^^^^^
 
-It begins with a shebang and some comments describing what exactly the script does; and then backticks are used to expand ``seq -w 1 26`` in order to create a loop that will run the body of the code over all of the subjects. This will expand to ``01, 02, 03 ... 26`` and update the number that is assigned to the variable ``id`` on each iteration of the loop.
+脚本以 shebang 和一些注释开始，描述了脚本的具体功能；然后使用反引号扩展 ``seq -w 1 26``，以创建一个循环，该循环将在所有受试者上运行代码主体。这将扩展为 ``01, 02, 03 ... 26``，并在循环的每次迭代中更新分配给变量 ``id`` 的编号。
 
 ::
 
   #!/bin/bash
 
-  # Generate the subject list to make modifying this script
-  # to run just a subset of subjects easier.
+  # 生成受试者列表，以便更容易修改此脚本
+  # 以仅运行部分受试者。
 
   for id in `seq -w 1 26` ; do
       subj="sub-$id"
-      echo "===> Starting processing of $subj"
+      echo "===> 开始处理 $subj"
       echo
       cd $subj
 
 
-For example, the first loop of this code will assign the string ``sub-01`` to the variable ``subj``, then echo "===> Starting processing of sub-01". It will then navigate into the ``sub-01`` directory.
+例如，此代码的第一次循环将字符串 ``sub-01`` 分配给变量 ``subj``，然后输出 "===> 开始处理 sub-01"。接着，它将导航到 ``sub-01`` 目录。
 
-
-Conditionals to check for the skull-stripped anatomical
+检查去颅骨解剖图像的条件语句
 ^^^^^^^^^^
 
-The script then uses a conditional to check whether the skull-stripped anatomical exists, and if it doesn't, the skull-stripped image is generated. 
+脚本随后使用条件语句检查去颅骨解剖图像是否存在，如果不存在，则生成去颅骨图像。
 
 ::
 
-          # If the brain mask doesn’t exist, create it
+          # 如果脑掩膜不存在，则创建它
           if [ ! -f anat/${subj}_T1w_brain_f02.nii.gz ]; then
               bet2 anat/${subj}_T1w.nii.gz \
-                  echo "Skull-stripped brain not found, using bet with a fractional intensity threshold of 0.2" \
-                  anat/${subj}_T1w_brain_f02.nii.gz -f 0.2 #Note: This fractional intensity appears to work well for most of the subjects in the Flanker dataset. You may want to change it if you modify this script for your own study.
+                  echo "未找到去颅骨的脑图像，使用 bet 并设置分数强度阈值为 0.2" \
+                  anat/${subj}_T1w_brain_f02.nii.gz -f 0.2 #注意：此分数强度对 Flanker 数据集中的大多数受试者效果良好。如果您将此脚本用于自己的研究，可能需要更改它。
           fi
       
-      
-Editing and running the template file
+
+编辑并运行模板文件
 ^^^^^^^^^^
 
-Then the template design*.fsf file is edited to replace the string ``sub-08`` with the current subject's name. The *.fsf files are run with the command ``feat``, which is like running the FEAT GUI from the command line. Echo commands are used throughout the script to let the user know when a new step is being run.
+然后，模板 design*.fsf 文件被编辑，以将字符串 ``sub-08`` 替换为当前受试者的名称。*.fsf 文件通过 ``feat`` 命令运行，这类似于从命令行运行 FEAT GUI。脚本中使用了 echo 命令，向用户显示每个新步骤的运行情况。
 
 ::
 
-          # Copy the design files into the subject directory, and then
-          # change “sub-08” to the current subject number
+          # 将设计文件复制到受试者目录中，然后
+          # 将“sub-08”更改为当前受试者编号
           cp ../design_run1.fsf .
           cp ../design_run2.fsf .
 
-          # Note that we are using the | character to delimit the patterns
-          # instead of the usual / character because there are / characters
-          # in the pattern.
+          # 注意，我们使用 | 字符作为模式的分隔符
+          # 而不是通常的 / 字符，因为模式中包含 / 字符。
           sed -i '' "s|sub-08|${subj}|g" \
               design_run1.fsf
           sed -i '' "s|sub-08|${subj}|g" \
               design_run2.fsf
               
            
-The design.fsf files, which are located in the main Flanker directory, are copied into the current subject's directory. Sed then replaces the string ``sub-08`` with the current value of ``subj`` that has been assigned in the loop. The last part of the code runs the .fsf files with the ``feat`` command, and prints to the Terminal which run is being analyzed.
+设计.fsf 文件位于主 Flanker 目录中，被复制到当前受试者的目录中。Sed 随后将字符串 ``sub-08`` 替换为循环中分配给 ``subj`` 的当前值。代码的最后部分通过 ``feat`` 命令运行 .fsf 文件，并在终端中打印正在分析的运行。
 
 ::
 
-          # Now everything is set up to run feat
-          echo "===> Starting feat for run 1"
+          # 现在一切都准备好运行 feat
+          echo "===> 开始运行 feat，运行 1"
           feat design_run1.fsf
-          echo "===> Starting feat for run 2"
+          echo "===> 开始运行 feat，运行 2"
           feat design_run2.fsf
                   echo
                   
                   
-You can run the script by simply typing ``bash run_1stLevel_Analysis.sh``. The echo commands will print text to the Terminal when a new step is run, and HTML pages will track the progress of the preprocessing and statistics.
+您可以通过简单地输入 ``bash run_1stLevel_Analysis.sh`` 来运行脚本。echo 命令将在运行每个新步骤时向终端打印文本，而 HTML 页面将跟踪预处理和统计的进度。
 
 ----------
 
-Summary
+总结
 ***********
 
-At this point you have learned all the necessary Unix commands and concepts to run an fMRI analysis script. If this is your first time using Unix, this may seem complicated; but with practice, you will be able to see why the script is composed the way it is, and how in relatively few lines is able to represent what can take dozens of hours of human labor. 
+到目前为止，您已经学习了运行 fMRI 分析脚本所需的所有 Unix 命令和概念。如果这是您第一次使用 Unix，这可能看起来很复杂；但通过练习，您将能够理解脚本为何以这种方式组成，以及如何通过相对较少的代码行表示可能需要数十小时人工劳动的工作。
 
-By investing the time to learn Unix now, you will be able to make your analyses quicker, more efficient, and less prone to error. You will also, I hope, have become more confident in taking the first steps toward applying your new skills to writing analysis script of your own.
+通过现在花时间学习 Unix，您将能够使分析更快、更高效且更少出错。我也希望，您已经更有信心迈出第一步，将新技能应用于编写您自己的分析脚本。
 
 
-----------
 
-Video
-**********
-
-For a screencast demonstration of how to download and run the script above, click `here <https://www.youtube.com/watch?v=oXSHbRlogaA>`__. 

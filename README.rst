@@ -1,4 +1,4 @@
-Welcome to Andy's Brain Book! This will be updated as the book is written.
+Welcome to SP's Brain Book! This will be updated as the book is written.
 
 Update 1.19.2022: The e-book now has a DOI:
 

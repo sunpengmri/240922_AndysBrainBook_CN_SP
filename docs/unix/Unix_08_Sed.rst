@@ -1,26 +1,26 @@
 .. _Unix_08_Sed:
 
-Unix Tutorial #8: The Sed Command
+第8节: Sed 命令
 ================
 
 .. note::
 
-  Topics covered: Stream editing, swapping
+  涉及主题: 流编辑, 替换
   
-  Commands covered: sed
+  涉及命令: sed
   
 
-Overview
+概述
 **********
 
-The commands you have learned so far will allow you to create flexible scripts that can be adapted to many different scenarios. There is one more command you will learn to round out your toolkit of Unix commands: The ``sed`` command.
+到目前为止，您已经学习了如何创建灵活的脚本，这些脚本可以适应许多不同的场景。现在您将学习一个新的命令来完善您的 Unix 工具集：``sed`` 命令。
 
-Sed is an abbreviation for "stream editor", in that the input to sed is a stream of text - the same concept as the input and output streams that were discussed in a :ref:`previous chapter <Unix_03_ReadingTextFiles>`. Our goal is to take a stream of input text and replace one string with another. Sed's advantage over doing a similar procedure with for-loops is that sed can edit a file and only change certain words while overwriting the file and leaving the rest of the text intact.
+Sed 是 "stream editor"（流编辑器）的缩写，因为 sed 的输入是一个文本流——与之前章节 :ref:`<Unix_03_ReadingTextFiles>` 中讨论的输入和输出流概念相同。我们的目标是获取一个输入文本流，并将其中的一个字符串替换为另一个字符串。与使用 for 循环执行类似操作相比，sed 的优势在于它可以编辑文件，仅更改某些单词，同时覆盖文件并保留其余文本不变。
 
-Example with Sed
+使用 Sed 的示例
 **********
 
-To see how sed works, create a text file called ``Hello.sh`` that contains the following line:
+为了了解 sed 的工作原理，创建一个名为 ``Hello.sh`` 的文本文件，其中包含以下内容：
 
 ::
 
@@ -29,21 +29,21 @@ To see how sed works, create a text file called ``Hello.sh`` that contains the f
   echo "Hello, my name is Andy. Here is the name Andy again."
   
 
-This is simply a text file that runs one line of code. If you wanted to swap the name Andy with Bill, you would type the following:
+这只是一个运行一行代码的文本文件。如果您想将名字 Andy 替换为 Bill，可以输入以下命令：
 
 ::
 
   sed "s|Andy|Bill|g" Hello.sh
   
-Notice that the sed command is divided into three sections:
+注意，sed 命令分为三个部分：
 
-1. Declaring the sed command;
-2. A pattern to match and replace with another pattern, enclosed in quotes;
-3. The file to be read into sed (in this case, Hello.sh)
+1. 声明 sed 命令；
+2. 一个匹配模式和替换模式，用引号括起来；
+3. 要读取到 sed 中的文件（在本例中是 Hello.sh)
 
-Let's focus on the pattern section. I prefer to enclose this section in double quotes, so that if I include a variable in the pattern, it will be expanded before the sed command is run. The first part of this section is an "s", which means to "swap" the following pair of strings. The first of the pair is what is being searched for in the text file, and the second of the pair is what it will be replaced with. The "g" stands for "global", which means to replace every instance of the first word with the second word.
+我们重点关注模式部分。我更喜欢用双引号括住这一部分，这样如果模式中包含变量，它会在运行 sed 命令之前被展开。该部分的第一部分是一个 "s"，表示“替换”接下来的字符串对。字符串对的第一个是要在文本文件中搜索的内容，第二个是要替换的内容。"g" 表示“全局”，即将第一个单词的所有实例替换为第二个单词。
 
-If you run this command, you should see the following output:
+运行此命令后，您应该会看到以下输出：
 
 ::
 
@@ -51,30 +51,29 @@ If you run this command, you should see the following output:
   
   echo "Hello, my name is Bill. Here is the name Bill again."
   
-If you wanted to redirect this output into a new text file, you would use this code:
+如果您想将此输出重定向到一个新文本文件，可以使用以下代码：
 
 ::
 
   sed "s|Andy|Bill|g" Hello.sh > Hello_Bill.sh
   
-As always, you can call the output file whatever you like.
+如往常一样，您可以随意命名输出文件。
 
-Editing Files In Place
+就地编辑文件
 **********
 
-If you want to edit the file and overwrite it instead of redirecting the output into a new file, you can use the -i and -e options:
+如果您想编辑文件并覆盖它，而不是将输出重定向到新文件，可以使用 -i 和 -e 选项：
 
 ::
 
   sed -i -e "s|Andy|Bill|g" Hello.sh
 
-The -i option stands for "in-place", and signifies that the text file should be overwritten after the words have been swapped. The -e option is used to get the -i option to work with Macintosh operating systems; if it isn't included, sed throws an error.
+-i 选项表示“就地”（in-place），意味着在替换单词后覆盖文本文件。-e 选项用于使 -i 选项在 Mac 操作系统上正常工作；如果不包含它，sed 会抛出错误。
 
-
-Using sed with for-loops
+结合 for 循环使用 sed
 ***********
 
-As with other commands, sed can be combined with for-loops and conditional statements to write more sophisticated code. For example, let's say that we want to create several copies of a template file, and only change one word of it over a list of names. Let's start by creating a file called ``Names.sh`` which contains the following:
+与其他命令一样，sed 可以与 for 循环和条件语句结合使用，以编写更复杂的代码。例如，假设我们想创建模板文件的多个副本，并仅在名称列表中更改一个单词。首先创建一个名为 ``Names.sh`` 的文件，其中包含以下内容：
 
 ::
 
@@ -83,7 +82,7 @@ As with other commands, sed can be combined with for-loops and conditional state
   echo "Hi, my name is CHANGENAME."
   
 
-Here, CHANGENAME is a placeholder; I've typed it in all capital letters to make it stand out, which is especially useful in larger text files. Now we can use a for-loop to create several copies of this file, replacing CHANGENAME with whichever name is currently in the loop:
+这里，CHANGENAME 是一个占位符；我将其全部大写以使其突出显示，这在较大的文本文件中特别有用。现在我们可以使用 for 循环创建该文件的多个副本，将 CHANGENAME 替换为当前循环中的名称：
 
 ::
 
@@ -91,39 +90,33 @@ Here, CHANGENAME is a placeholder; I've typed it in all capital letters to make 
     sed -i -e "s|CHANGENAME|${name}|g" Names.sh > ${name}_Names.sh
   done
   
-Before you type this code and run it, think about what will happen. Visualize how the items in the list will replace the variable ${name}, and how this will be swapped with CHANGENAME in the Names.sh file.
+在输入并运行此代码之前，思考一下会发生什么。想象列表中的项目如何替换变量 ${name}，以及如何将其与 Names.sh 文件中的 CHANGENAME 交换。
 
-Now run the code. Do you get the output you expected? Why or why not?
-
+现在运行代码。您是否得到了预期的输出？
 
 ----------
 
-Exercises
+练习
 *********
 
-1. The sed command can use any character for a file separator; for example, try this code with the Hello.sh script:
+1. sed 命令可以使用任何字符作为文件分隔符；例如，尝试以下代码与 Hello.sh 脚本一起使用：
 
 ::
 
   sed "s/name/last name/g" Hello.sh
   
-Now replace the forward slash with some other character. Which separators (also known as delimiters) seem better than others? Why? When would a forward slash separator be problematic?
+现在将正斜杠替换为其他字符。哪些分隔符（也称为定界符）似乎比其他更好？为什么？在什么情况下正斜杠分隔符会有问题？
 
 
-2. You can delete a line in sed by changing the last ``g`` to a ``d``. When using sed to delete a line, you must 1) remove the initial ``s``, and 2) only use forward slashes as delimiters. For example, if you wanted to delete a line containing the string "name", you would type:
+2. 您可以通过将最后的 ``g`` 更改为 ``d`` 来删除 sed 中的一行。在使用 sed 删除一行时，您必须 1）删除初始的 ``s``，并且 2）仅使用正斜杠作为分隔符。例如，如果您想删除包含字符串 "name" 的一行，可以输入：
 
 ::
 
   sed "/name/d" Hello.sh
 
-Knowing this, download the `Make FSL Timings <https://github.com/andrewjahn/FSL_Scripts/blob/master/make_FSL_Timings.sh>`__ script, and use sed to delete any lines that contain the string ``run-1``. Compare the output to what was in the script before you ran sed.
+了解这一点后，下载 `Make FSL Timings <https://github.com/andrewjahn/FSL_Scripts/blob/master/make_FSL_Timings.sh>`__ 脚本，并使用 sed 删除包含字符串 ``run-1`` 的任何行。将输出与运行 sed 之前的脚本进行比较。
 
 ---------
-
-Video
-***********
-
-Click `here <https://www.youtube.com/watch?v=TkVhtWgim8M>`__ for an screencast overview of the sed command. 
 
 
 

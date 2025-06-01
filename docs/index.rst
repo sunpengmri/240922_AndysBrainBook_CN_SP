@@ -1,7 +1,7 @@
 Welcome to SP's MRI Book!
 =============================
 
-.. figure:: ABB_logo_book.png
+.. figure:: SBB_LOGO.jpg
 
 你好！这本书，SP's MRI Book 基于 Andy’s Brain Book修改而来，是为那些想要学习如何分析磁共振成像的人而设计的，尤其对与那些有科研需求的研究人员。
 
@@ -12,14 +12,14 @@ Welcome to SP's MRI Book!
 
 .. toctree::
    :maxdepth: 1
-   :caption: Install
+   :caption: 安装
 
    installation/fsl_mac_install
    
    
 .. toctree::
     :maxdepth: 1
-    :caption: Unix for Neuroimagers
+    :caption: Unix 系统简介
     
     unix/Unix_Intro
     unix/Unix_01_Navigation
@@ -35,20 +35,20 @@ Welcome to SP's MRI Book!
     
 .. toctree::
     :maxdepth: 1
-    :caption: fMRI Short Course with FSL
+    :caption: 基于FSL的fMRI简要教程
     
-    fMRI_Short_Course/fMRI_Intro
-    fMRI_Short_Course/fMRI_01_DataDownload
-    fMRI_Short_Course/fMRI_02_ExperimentalDesign
-    fMRI_Short_Course/fMRI_03_LookingAtTheData
-    fMRI_Short_Course/fMRI_04_Preprocessing
-    fMRI_Short_Course/fMRI_05_1stLevelAnalysis
-    fMRI_Short_Course/fMRI_06_Scripting
-    fMRI_Short_Course/fMRI_07_2ndLevelAnalysis
-    fMRI_Short_Course/fMRI_08_3rdLevelAnalysis
-    fMRI_Short_Course/fMRI_09_ROIAnalysis
-    fMRI_Short_Course/fMRI_10_Summary
-    fMRI_Short_Course/fMRI_Appendices
+    FSL/fMRI_Intro
+    FSL/fMRI_01_DataDownload
+    FSL/fMRI_02_ExperimentalDesign
+    FSL/fMRI_03_LookingAtTheData
+    FSL/fMRI_04_Preprocessing
+    FSL/fMRI_05_1stLevelAnalysis
+    FSL/fMRI_06_Scripting
+    FSL/fMRI_07_2ndLevelAnalysis
+    FSL/fMRI_08_3rdLevelAnalysis
+    FSL/fMRI_09_ROIAnalysis
+    FSL/fMRI_10_Summary
+    FSL/fMRI_Appendices
     
     
 .. toctree::
