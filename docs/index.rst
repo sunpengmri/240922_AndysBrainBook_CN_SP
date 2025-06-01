@@ -14,7 +14,7 @@ Welcome to SP's MRI Book!
    :maxdepth: 1
    :caption: 安装
 
-   installation/fsl_mac_install
+..    installation/fsl_mac_install
    
    
 .. toctree::

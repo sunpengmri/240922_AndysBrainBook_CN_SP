@@ -12,37 +12,36 @@
 
 
 
-Overview
+概述
 --------
 
-Neuroimaging analysis often involves running many commands, but with only a small alteration each time you run a new command. For example, you might have to analyze subject 1, then subject 2, subject 3, and so on. To save time, we will use something called a Loop - also known as a for-loop.
+神经影像分析通常涉及运行许多命令，但每次运行新命令时仅有很小的改动。例如，你可能需要先分析对象 1，接着是对象 2、对象 3 等等。为了节省时间，我们将使用一种被称为循环（也被称为 for 循环）的东西。
 
-Let’s illustrate what this is with a simple example. Let’s say that you need to print the numbers 1, 2, and 3. You could do this by typing “echo 1” and hitting return; then echo 2, and echo 3. This gets the job done, but you can see that this would quickly become tedious if your goal was to print dozens or hundreds of numbers.
+让我们用一个简单的例子来说明这是什么。假设你需要打印数字 1、2 和 3。你可以通过输入 ``echo 1`` 并回车，然后输入 ``echo 2`` ，再输入 ``echo 3`` 来实现。这样可以完成任务，但是你可以看到，如果你的目标是打印几十个或几百个数字，这很快就会变得很繁琐。
 
-How can we make this easier? You probably noticed that each time we ran the command we changed the number after the echo command. A for-loop will automatically do this for you.
+我们如何让这件事变得更容易呢？你可能已经注意到，每次我们运行命令时，我们都会更改 **echo** 命令后面的数字。一个 for 循环将自动为你完成这个操作。
 
-Here is an example of a for-loop to print the numbers 1, 2, and 3:
+以下是一个用 for 循环打印数字 1、2 和 3 的例子：
 ::
 
   for i in 1 2 3
   do echo $i
   done
 
-Or, doing it in one line, with each section separated by semicolons:
-
+或者，在一行中完成，每个部分用分号分隔：
 ::
 
   for i in 1 2 3; do echo $i; done
 
-The for-loop has three sections, separated by semicolons. The first section is the Declaration: it begins by assigning the first item after “in” to the variable “i”; in this case, it would assign the value “1” to “i”. The numbers after “in” are called the “List”. The next section is the Body, which runs the commands written after “do,” replacing the variable with whichever value is currently assigned to the variable - for the first loop, this will be the number “1”. Since items remain in the list, the loop goes back to the declaration and assigns the next number in the list to the variable i; in this case, the number “2”. Then the body is run, and the process repeats until the end of the list is reached. The last section, called the End, contains only the word “done”, meaning to exit the loop after all of the items in the list have been run through the Body of the loop.
+这个 for 循环有三个部分，用分号分隔。第一部分是声明：它首先将 “in” 后面的第一个项目赋值给变量 “i”；在这种情况下，它会将值 “1” 赋值给 “i”。“in” 后面的数字被称为 “列表”。下一部分是主体，它运行 “do” 后面编写的命令，用当前赋给变量的值替换变量 —— 对于第一次循环，这将是数字 “1”。由于项目仍在列表中，循环回到声明并将列表中的下一个数字赋值给变量 i；在这种情况下，是数字 “2”。然后运行主体，这个过程重复进行，直到到达列表的末尾。最后一部分，称为结束部分，只包含单词 “done”，意思是在列表中的所有项目都通过循环主体运行完毕后退出循环。
 
-You can add more commands to the Body section, if they are separated with a semicolon. For example, we could change the loop to:
+如果用分号分隔，你可以在主体部分添加更多命令。例如，我们可以将循环改为：
 
 ::
 
   for i in 1 2 3; do echo $i; echo “You just printed the number $i”; done
   
-And this is what the output would look like:
+这是输出的样子：
 
 ::
 
@@ -53,45 +52,37 @@ And this is what the output would look like:
   3
   You just printed the number 3
 
-Looking ahead, eventually we’ll use for-loops to analyze twenty-six subjects, with directories named sub-01, sub-02, all the way to sub-26. We will use the loop to navigate into each directory and then run a script, but for now, imagine that we simply wanted to print the name of each directory. Something like this would work, but would also be tedious to write out:
+展望未来，最终我们将使用 for 循环来分析二十六个对象，这些对象所在的目录名为 sub-01、sub-02，一直到 sub-26。我们将使用循环进入每个目录，然后运行一个脚本，但现在，想象一下我们只是想打印每个目录的名称。像下面这样的做法会起作用，但写出来也会很繁琐：
 
 ::
 
   for i in sub-01 sub-02 … sub-26; do echo $i; done
 
-This also quickly becomes impractical with large numbers. You can make this command more concise by using the seq command, which prints every number in a range that you specify; for example, seq 1 10 prints the numbers one through ten. We can include it in our for-loop using backticks, in which the command within the backticks is executed first and expanded:
+对于大量的数字，这种方法也很快变得不切实际。你可以通过使用 “seq” 命令使这个命令更加简洁，“seq” 命令可以打印你指定范围内的每个数字；例如，“seq 1 10” 会打印从一到十的数字。我们可以在我们的 for 循环中使用反引号包含它，在反引号中的命令会首先被执行并展开：
 
 ::
 
   for i in `seq 1 26`; do echo “sub-$i”; done
 
-In this case, the first run of the loop would assign 1 to i, print sub-1, and then go through the rest of the items in the list.
+在这种情况下，循环的第一次运行会将 1 赋值给 i，打印出 “sub-1”，然后遍历列表中的其余项。
 
-This gets us closer to our goal, but it still isn’t exactly what we want. Notice that the subject names each have two integers, such as 01, 02, 03, and so on, which ensures that each subject’s name is the same length; it also keeps them in order when they are listed with the ls command. This is called zero padding, and we can implement it in our for-loop with the -w option in seq, which looks like this:
+这让我们更接近我们的目标，但它仍然不完全是我们想要的。请注意，对象名称每个都有两个整数，例如 01、02、03 等等，这确保了每个对象的名称长度相同；当它们用 “ls” 命令列出时，也能保持它们的顺序。这被称为零填充，我们可以在我们的 for 循环中使用 “seq” 的 “-w” 选项来实现它，如下所示：
 
-::
-
+:: 
+  
   for i in `seq -w 1 26`; do echo “sub-$i”; done
 
-This sets each number in this range to have a width of two integers; if it’s a number less than ten, for example, it is zero-padded with one zero to the left of the number. This will be important later on when we use these loops to automate analyses over all of our subjects.
+这将这个范围内的每个数字设置为具有两个整数的宽度；例如，如果是一个小于十的数字，它会在数字左边用一个零进行零填充。这在我们稍后使用这些循环来自动对我们所有的对象进行分析时会很重要。
 
 -------
 
-Exercises
+练习
 *********
 
-Today we covered the basics of for loops; later on, you’ll learn how to use them in more sophisticated contexts, such as automating the analysis of an entire dataset. But no matter how complicated the analysis, every for-loop is built on the fundamentals you learned today. Try these exercises to develop your understanding:
+今天我们介绍了 for 循环的基础知识；稍后，你将学习如何在更复杂的情境中使用它们，例如自动对整个数据集进行分析。但无论分析多么复杂，每个 for 循环都是建立在你今天所学的基础知识之上的。尝试以下练习来加深你的理解：
 
-1. Type the following line of code: ``for i in `ls`; do echo $i; done``. Before you press Enter, think about what it will return. See if the output matches your prediction.
+1. 输入以下代码行： ``for i in `ls`; do echo $i; done`` 。在你按下回车键之前，思考一下它会返回什么。看看输出是否与你的预测相符。
 
-2. Write a for-loop to do the following for the numbers 1 through 3: Print the first number in the list, and then print the present working directory. Then, go up one directory. Repeat for all of the other numbers in the list.
+2. 写一个 for 循环来对 1 到 3 执行以下操作：打印列表中的第一个数字，然后打印当前工作目录。然后，向上移动一个目录。对列表中的所有其他数字重复此操作。
 
-3. Look up the syntax of a for-loop with tcsh, and use it to redo the examples above.
-
-
---------
-
-Video
-*****
-
-Click `here <https://tinyurl.com/y6297v4e>`__ for an example of how to code for-loops.
+3. 查找 tcsh 中 for 循环的语法，并使用它来重做上述示例。
