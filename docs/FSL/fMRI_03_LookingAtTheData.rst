@@ -3,7 +3,7 @@
 .. |movieIcon|  image:: movieIcon.png
 
 ================
-fMRI教程 #3: 查看数据
+FSL教程 #3: 查看数据
 ================
 
 

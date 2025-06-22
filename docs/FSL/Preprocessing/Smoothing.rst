@@ -1,25 +1,25 @@
 .. _Smoothing.rst:
   
-Chapter 5: Smoothing
+第5章：平滑
 =============
 
 ------
 
-Why Smooth?
+为什么要平滑？
 -----------
 
-It is common to **smooth** the functional data, or replace the signal at each voxel with a weighted average of that voxel's neighbors. This may seem strange at first - why would we want to make the images blurrier than they already are?
+通常我们会对功能数据进行**平滑**，也就是用该体素邻域的加权平均值来替换每个体素的信号。乍一看这似乎很奇怪——为什么我们要让图像变得比原来更模糊呢？
 
-It is true that smoothing does decrease the spatial resolution of your functional data, and we don't want less resolution. But there are benefits to smoothing as well, and these benefits can outweigh the drawbacks. For example, we know that fMRI data contain a lot of noise, and that the noise is frequently greater than the signal. By averaging over nearby voxels we can cancel out the noise and enhance the signal.
+确实，平滑会降低功能数据的空间分辨率，而我们并不希望分辨率变低。但平滑也有一些好处，这些好处有时会超过它的缺点。例如，我们知道fMRI数据中包含大量噪声，而且噪声往往大于信号。通过对邻近体素进行平均，我们可以抵消噪声并增强信号。
 
 
 .. figure:: Smoothing_Demo.gif
 
-  In this animation, two different smoothing kernels (4mm and 10mm) are applied to an fMRI scan. Notice that as we use larger smoothing kernels, the images become blurrier and the anatomical details become less distinct. Also note that, for the sake of simplicity, this animation uses a 2D slice of the brain to demonstrate this preprocessing step. In actual fMRI data, the kernel would be applied in all three dimensions.
+  在这个动画中，分别对fMRI扫描应用了两种不同的平滑核（4mm和10mm）。可以看到，随着平滑核的增大，图像变得更加模糊，解剖细节也变得不那么清晰。需要注意的是，为了简化演示，这个动画只用了大脑的二维切片。实际上，在fMRI数据中，平滑核会应用于三维空间的所有方向。
 
-.. (Talk about an example here of how averaging works to give rise to a true signal? I'm thinking about the example in which ten students are asked the population of the city they are in; no individual estimate is right, but averaged together it is pretty close to the true population.)
+.. （这里可以举一个平均如何产生真实信号的例子吗？我想到的例子是让十个学生估算他们所在城市的人口数；没有一个人的估算是准确的，但把他们的估算平均后，结果会非常接近真实人口。）
 
-There is another benefit to smoothing. As you will see in the next chapter, our goal is to **normalize** every subject's brain to a template brain which has standardized coordinates. Click on the Next button to learn more about Normalization, and how smoothing can help improve statistical power.
+平滑还有另一个好处。正如你将在下一章看到的，我们的目标是将每个受试者的大脑**标准化**到一个具有标准坐标的模板大脑。点击“下一步”按钮，了解更多关于标准化的信息，以及平滑如何帮助提高统计效能。
 
 
 
